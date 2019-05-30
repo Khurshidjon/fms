@@ -1,0 +1,563 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Application;
+use App\Sale;
+use App\Texnolog;
+use App\ContractPrice;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+
+class ApplicationController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $applications = Application::latest()->paginate(10);
+        return view('backend.Applications.index', [
+            'applications' => $applications,
+            'is_active' => 'steps'
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Application  $application
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Application $application)
+    {
+        return view('backend.Applications.edit-steps.third-step', [
+            'application' => $application,
+            'is_active' => 'steps'
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Application  $application
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Application $application)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Application  $application
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Application $application)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Application  $application
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Application $application)
+    {
+        //
+    }
+
+
+    /**--------------------------------------------------------------------- Zayvkani qadamma qadam to'ldirish forlmasi */
+
+    public function firstStep(Request $request)
+    {
+       $request->session()->remove('application');
+       $request->session()->remove('second_step');
+        $cities = DB::table('regions')->select(['id', 'regions'])->get();
+        $application = $request->session()->get('application');
+
+        return view('backend.Applications.steps.first-step', [
+            'is_active' => 'steps',
+            'application' => $application,
+            'cities' => $cities
+        ]);
+    }
+
+    public function cityChange(Request $request)
+    {
+        $city_id = $request->city_id;
+        $districts = DB::table('districts')->where('region_id', $city_id)->get();
+        return response()->json($districts);
+    }
+
+    public function firstStepResult(Request $request)
+    {
+        $date = date('y');
+        $increment =  str_pad(mt_rand(1,99999999),8,'0',STR_PAD_LEFT);
+        $increment = $increment.$date;
+
+        \DNS1D::getBarcodeSVG($increment, "C128",2,33,"black", true);
+        \DNS1D::getBarcodePNG($increment, "C128",2,33,array(1,1,1), true);
+        \DNS1D::getBarcodeHTML($increment, "C128");
+        \DNS1D::getBarcodePNGPath($increment, "C128",3,33);
+        $request->validate([
+            'from_city' => 'required|numeric',
+            'to_city' => 'required|numeric',
+            'weight' => 'required|regex:/^[0-9]+((\\.)*(\\,)*[0-9]+)?$/',
+            'from_district' => 'required|numeric',
+            'to_district' => 'required|numeric',
+            'from_address' => 'required',
+            'to_address' => 'required',
+            'from_phone' => 'required',
+            'to_phone' => 'required',
+            'from_fio' => 'required',
+            'to_fio' => 'required',
+            'transfers' => 'required',
+            'from_date' => 'required',
+            'pieces' => 'required',
+            'category_product' => 'required',
+        ]);
+
+        $step = DB::table('steps')->select('steps')->first()->steps;
+        
+        $step = 1*$step;
+
+        if($request->number_contract != null){
+            $tariff = ContractPrice::where('from_city_id', $request->from_city)
+            ->where('to_city_id', $request->to_city)
+            ->where('from_district_id', $request->from_district)
+            ->where('to_district_id', $request->to_district)
+            ->where('contract_id', $request->number_contract)
+            ->first();
+        }else{
+            $tariff = Texnolog::where('from_city_id', $request->from_city)
+            ->where('to_city_id', $request->to_city)
+            ->where('from_district_id', $request->from_district)
+            ->where('to_district_id', $request->to_district)
+            ->first();
+        }
+        $volume_x = 1*$request->volume_x;
+        $volume_y = 1*$request->volume_y;
+        $volume_z = 1*$request->volume_z;
+        $incorrect_weight = str_replace(',', '.', $request->weight);
+        $weight = 1*$incorrect_weight;
+
+        $is_price = $tariff->service_price*$step;
+        $volume = (($volume_x*$volume_y*$volume_z)/6000);
+
+        $w = ($weight)/($step);
+        $v = ($volume)/($step);
+
+        $price_weight = explode('.', round($w, 2))[0]*$is_price;
+
+        $price_volume = explode('.', round($v, 2))[0]*$is_price;
+
+        $tariff_from_courier_price = $tariff->with_courier_from_home_price;
+        $tariff_to_courier_price = $tariff->with_courier_to_home_price;
+
+
+
+        $with_weight_price_service = $price_weight;
+
+        $with_volume_price_service = $price_volume;
+
+        $applicationSession = $request->session()->get('application');
+
+        if($applicationSession == null){
+            $application = new Application();
+            $application->user_id = \Auth::id();
+            $application->guid =  $increment;
+            $application->from_city_id = $request->get('from_city');
+            $application->from_district_id = $request->get('from_district');
+            $application->to_city_id = $request->get('to_city');
+            $application->to_district_id = $request->get('to_district');
+            $application->from_address = $request->from_address;
+            $application->to_address = $request->to_address;
+            $application->from_phone = $request->from_phone;
+            $application->to_phone = $request->to_phone;
+            $application->from_fio = $request->from_fio;
+            $application->to_fio = $request->to_fio;
+            $application->weight = $weight;
+            $application->volume = $volume;
+            $application->category_pay_service = $request->transfers;
+            $application->number_contract = $request->number_contract;
+            $application->from_date = $request->from_date;
+            // $application->to_date = $request->to_date;
+            // $application->delivered_date = $request->delivered_date;
+            $application->category_product = $request->category_product;
+            $application->pieces = $request->pieces;
+
+            if($with_volume_price_service >= $with_weight_price_service){
+                $application->cost_service = $with_volume_price_service;
+            }else{
+                $application->cost_service = $with_weight_price_service;
+            }
+            if($request->get('from_courier') == 'on'){
+                $application->cost_from_courier = $tariff_from_courier_price;
+            }
+            if($request->get('to_courier') == 'on'){
+                $application->cost_to_courier = $tariff_to_courier_price;
+            }
+            $application->from_organ_name = $request->from_organ_name;
+            $application->to_organ_name = $request->to_organ_name;
+            $application->status = 1;
+            $application->save();
+            $request->session()->put(['application' => $application]);
+        }else{
+
+            // code ...
+
+        }
+        return redirect()->route('admin.second-step');
+    }
+    public function secondStep(Request $request)
+    {
+        $application = $request->session()->get('application');
+        $sales = Sale::all();
+        $int = PHP_INT_MAX;
+        $x = 0;
+    
+        foreach($sales as $sale){
+            if($sale->weight >= $application->weight){
+                if($int > ($sale->weight - $application->weight)){
+                    $int = $sale->weight - $application->weight;
+                    $x = $sale->weight;
+                }
+            }    
+        }
+        
+        $sale = Sale::where('weight', $x)->first();
+
+        return view('backend.Applications.steps.second-step', [
+            'is_active' => 'steps',
+            'sale' => $sale,
+            'application' => $application
+        ]);
+    }
+    public function secondStepResult(Request $request)
+    {
+        $request->validate([
+            'sale_for_from_courier' => '|min:0|max:100',
+            'sale_for_service' => 'min:0|max:100',
+            'sale_for_to_courier' => 'min:0|max:100',
+        ]);
+        $sale_for_from_courier = 1*$request->sale_for_from_courier;
+        $sale_for_service = 1*$request->sale_for_service;
+        $sale_for_to_courier = 1*$request->sale_for_to_courier;
+
+        $cost_from_courier = 1*$request->cost_from_courier;
+        $cost_service = 1*$request->cost_service;
+        $cost_to_courier = 1*$request->cost_to_courier;
+
+        if ($sale_for_from_courier){
+            $cost_from_courier = ($cost_from_courier - (($cost_from_courier)*($sale_for_from_courier))/100);
+        }
+        if ($sale_for_service){
+            $cost_service = ($cost_service - (($cost_service)*($sale_for_service))/100);
+        }
+        if ($sale_for_to_courier){
+            $cost_to_courier = ($cost_to_courier - (($cost_to_courier)*($sale_for_to_courier))/100);
+        }
+
+        $appSession = $request->session()->get('application');
+        $second_step = $request->session()->get('second_step');
+
+        if($second_step != null){
+            return redirect()->back()->with('error', 'Kechirasiz ushu zayavka qabul qilingan');
+        }
+            $application = Application::find($appSession->id);
+
+            $application->cost_from_courier = $cost_from_courier;
+            $application->cost_service = $cost_service;
+            $application->cost_to_courier = $cost_to_courier;
+
+            if($request->from_pay_courier == 'on'){
+                $application->from_pay_courier = 'sender';
+            }else{
+                $application->from_pay_courier = 'receiver';
+            }
+
+            if($request->pay_service == 'on'){
+                $application->pay_service = 'sender';
+            }else{
+                $application->pay_service = 'receiver';
+            }
+
+            if($request->to_pay_courier == 'on'){
+                $application->to_pay_courier = 'sender';
+            }else{
+                $application->to_pay_courier = 'receiver';
+            }
+
+            $application->category_pay_from_courier = $request->category_pay_from_courier;
+            $application->category_pay_to_courier = $request->category_pay_to_courier;
+
+            $application->sale_for_from_courier = $sale_for_from_courier;
+            $application->sale_for_service = $sale_for_service;
+            $application->sale_for_to_courier = $sale_for_to_courier;
+
+            $application->save();
+            $request->session()->put('application', $application);
+            $request->session()->put('second_step', 'second_step');
+            return redirect()->route('admin.third-step');
+    }
+    public function thirdStep(Request $request)
+    {           
+        $application = $request->session()->get('application');
+        return view('backend.Applications.steps.third-step', [
+            'is_active' => 'steps',
+            'application' => $application
+        ]);
+    }
+
+    /*Nakladnoyni yangilash agar shunga ehtiyoj bo'lsa*/
+
+    public function firstStepEdit(Request $request, Application $application)
+    {
+        $cities = DB::table('regions')->select(['id', 'regions'])->get();
+
+        return view('backend.Applications.edit-steps.first-step', [
+            'is_active' => 'steps',
+            'application' => $application,
+            'cities' => $cities
+        ]);
+    }
+
+    public function firstStepResultEdit(Request $request, Application $application)
+    {
+        $date = date('y');
+        $increment =  str_pad(mt_rand(1,99999999),8,'0',STR_PAD_LEFT);
+        $increment = $increment.$date;
+
+        \DNS1D::getBarcodeSVG($increment, "C128",2,33,"black", true);
+        \DNS1D::getBarcodePNG($increment, "C128",2,33,array(1,1,1), true);
+        \DNS1D::getBarcodeHTML($increment, "C128");
+        \DNS1D::getBarcodePNGPath($increment, "C128",3,33);
+
+        $request->validate([
+            'from_city' => 'required|numeric',
+            'to_city' => 'required|numeric',
+            'weight' => 'required|regex:/^[0-9]+((\\.)*(\\,)*[0-9]+)?$/',
+            'from_district' => 'required|numeric',
+            'to_district' => 'required|numeric',
+            'from_address' => 'required',
+            'to_address' => 'required',
+            'from_phone' => 'required',
+            'to_phone' => 'required',
+            'from_fio' => 'required',
+            'to_fio' => 'required',
+            'transfers' => 'required',
+            'from_date' => 'required',
+            'pieces' => 'required',
+            'category_product' => 'required',
+        ]);
+
+        $step = DB::table('steps')->select('steps')->first()->steps;
+
+        $step = 1*$step;
+
+        if($request->number_contract != null){
+            $tariff = ContractPrice::where('from_city_id', $request->from_city)
+                ->where('to_city_id', $request->to_city)
+                ->where('from_district_id', $request->from_district)
+                ->where('to_district_id', $request->to_district)
+                ->where('contract_id', $request->number_contract)
+                ->first();
+        }else{
+            $tariff = Texnolog::where('from_city_id', $request->from_city)
+                ->where('to_city_id', $request->to_city)
+                ->where('from_district_id', $request->from_district)
+                ->where('to_district_id', $request->to_district)
+                ->first();
+        }
+        $volume_x = 1*$request->volume_x;
+        $volume_y = 1*$request->volume_y;
+        $volume_z = 1*$request->volume_z;
+        $incorrect_weight = str_replace(',', '.', $request->weight);
+        $weight = 1*$incorrect_weight;
+
+        $is_price = $tariff->service_price*$step;
+        $volume = (($volume_x*$volume_y*$volume_z)/6000);
+
+        $w = ($weight)/($step);
+        $v = ($volume)/($step);
+
+        $price_weight = explode('.', round($w, 2))[0]*$is_price;
+
+        $price_volume = explode('.', round($v, 2))[0]*$is_price;
+
+        $tariff_from_courier_price = $tariff->with_courier_from_home_price;
+        $tariff_to_courier_price = $tariff->with_courier_to_home_price;
+
+        $with_weight_price_service = $price_weight;
+
+        $with_volume_price_service = $price_volume;
+
+            $application->user_id = \Auth::id();
+            $application->guid =  $increment;
+            $application->from_city_id = $request->get('from_city');
+            $application->from_district_id = $request->get('from_district');
+            $application->to_city_id = $request->get('to_city');
+            $application->to_district_id = $request->get('to_district');
+            $application->from_address = $request->from_address;
+            $application->to_address = $request->to_address;
+            $application->from_phone = $request->from_phone;
+            $application->to_phone = $request->to_phone;
+            $application->from_fio = $request->from_fio;
+            $application->to_fio = $request->to_fio;
+            $application->weight = $weight;
+            $application->volume = $volume;
+            $application->category_pay_service = $request->transfers;
+            $application->number_contract = $request->number_contract;
+            $application->from_date = $request->from_date;
+            // $application->to_date = $request->to_date;
+            // $application->delivered_date = $request->delivered_date;
+            $application->category_product = $request->category_product;
+            $application->pieces = $request->pieces;
+
+            if($with_volume_price_service >= $with_weight_price_service){
+                $application->cost_service = $with_volume_price_service;
+            }else{
+                $application->cost_service = $with_weight_price_service;
+            }
+            if($request->get('from_courier') == 'on'){
+                $application->cost_from_courier = $tariff_from_courier_price;
+            }else{
+                $application->cost_from_courier = null;
+            }
+            if($request->get('to_courier') == 'on'){
+                $application->cost_to_courier = $tariff_to_courier_price;
+            }else{
+                $application->cost_to_courier = null;
+            }
+            $application->from_organ_name = $request->from_organ_name;
+            $application->to_organ_name = $request->to_organ_name;
+            $application->status = 1;
+            $application->save();
+
+        return redirect()->route('admin.second-step-edit', ['application' => $application]);
+    }
+    public function secondStepEdit(Application $application)
+    {
+        $sales = Sale::all();
+        $int = PHP_INT_MAX;
+        $x = 0;
+        foreach($sales as $sale){
+            if($sale->weight >= $application->weight){
+                if($int > ($sale->weight - $application->weight)){
+                    $int = $sale->weight - $application->weight;
+                    $x = $sale->weight;
+                }
+            }    
+        }
+        
+        $sale = Sale::where('weight', $x)->first();
+
+        return view('backend.Applications.edit-steps.second-step', [
+            'is_active' => 'steps',
+            'sale' => $sale,
+            'application' => $application
+        ]);
+    }
+
+    public function secondStepResultEdit(Request $request, Application $application)
+    {
+        $sale_for_from_courier = 1*$request->sale_for_from_courier;
+        $sale_for_service = 1*$request->sale_for_service;
+        $sale_for_to_courier = 1*$request->sale_for_to_courier;
+
+        $cost_from_courier = 1*$request->cost_from_courier;
+        $cost_service = 1*$request->cost_service;
+        $cost_to_courier = 1*$request->cost_to_courier;
+
+        if ($sale_for_from_courier){
+            $cost_from_courier = ($cost_from_courier - (($cost_from_courier)*($sale_for_from_courier))/100);
+        }
+        if ($sale_for_service){
+            $cost_service = ($cost_service - (($cost_service)*($sale_for_service))/100);
+        }
+        if ($sale_for_to_courier){
+            $cost_to_courier = ($cost_to_courier - (($cost_to_courier)*($sale_for_to_courier))/100);
+        }
+
+
+        $application->cost_from_courier = $cost_from_courier;
+        $application->cost_service = $cost_service;
+        $application->cost_to_courier = $cost_to_courier;
+
+
+        if($request->from_pay_courier == 'on'){
+            $application->from_pay_courier = 'sender';
+        }else{
+            $application->from_pay_courier = 'receiver';
+        }
+
+        if($request->pay_service == 'on'){
+            $application->pay_service = 'sender';
+        }else{
+            $application->pay_service = 'receiver';
+        }
+
+        if($request->to_pay_courier == 'on'){
+            $application->to_pay_courier = 'sender';
+        }else{
+            $application->to_pay_courier = 'receiver';
+        }
+        if ($application->cost_from_courier){
+            $application->category_pay_from_courier = $request->category_pay_from_courier;
+        }else{
+            $application->category_pay_from_courier = null;
+        }
+        if ($application->cost_to_courier){
+            $application->category_pay_to_courier = $request->category_pay_to_courier;
+        }else{
+            $application->category_pay_to_courier = null;
+        }
+
+        $application->sale_for_from_courier = $sale_for_from_courier;
+        $application->sale_for_service = $sale_for_service;
+        $application->sale_for_to_courier = $sale_for_to_courier;
+
+        $application->save();
+
+        return redirect()->route('admin.third-step-edit', ['application' => $application]);
+    }
+
+    public function thirdStepEdit(Application $application)
+    {
+        return view('backend.Applications.edit-steps.third-step', [
+            'is_active' => 'steps',
+            'application' => $application
+        ]);
+    }
+
+}

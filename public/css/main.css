@@ -1,0 +1,20 @@
+
+nav .fa-bars{
+    color: white !important;
+}
+nav.navbar a{
+    color: #ffffff !important;
+}
+nav.navbar .dropdown-item{
+    color: #ff5e00 !important;
+}
+.fms-logo{
+    color: #ffffff !important;
+    padding-top: 7px;
+    font-size: 20px;
+    text-decoration: none !important;
+}
+.fms-logo span {
+    color: #ff5e00;
+}
+
