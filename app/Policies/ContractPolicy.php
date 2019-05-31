@@ -19,8 +19,10 @@ class ContractPolicy
      */
     public function view(User $user, Contract $contract)
     {
-        return $user->id === $contract->user_id;
-
+        if ($user->id === $contract->user_id || $user->hasRole('Admin')){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -43,7 +45,10 @@ class ContractPolicy
      */
     public function update(User $user, Contract $contract)
     {
-        return $user->id === $contract->user_id;
+        if ($user->id === $contract->user_id || $user->hasRole('Admin')){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -55,7 +60,10 @@ class ContractPolicy
      */
     public function delete(User $user, Contract $contract)
     {
-        return $user->id === $contract->user_id;
+        if ($user->id === $contract->user_id || $user->hasRole('Admin')){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -67,7 +75,10 @@ class ContractPolicy
      */
     public function restore(User $user, Contract $contract)
     {
-        return $user->id === $contract->user_id;
+        if ($user->id === $contract->user_id || $user->hasRole('Admin')){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -79,6 +90,9 @@ class ContractPolicy
      */
     public function forceDelete(User $user, Contract $contract)
     {
-        return $user->id === $contract->user_id;
+        if ($user->id === $contract->user_id || $user->hasRole('Admin')){
+            return true;
+        }
+        return false;
     }
 }
