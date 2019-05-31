@@ -71,11 +71,13 @@
                         <th>oked</th>
                         <th>email</th>
                         <th>Статус</th>
+                        <th>Операторы</th>
                         <th>Другие действия</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
                     @forelse($contracts as $contract)
+                        @if(Auth::user()->can('view', $contract) || Auth::user()->hasRole('Admin'))
                         <tr>
                             <td>{{ $i++ }}</td>
                             <td>{{ $contract->company_name }}</td>
@@ -98,6 +100,9 @@
                                 @endif
                             </td>
                             <td>
+                                {{ $contract->operator->username }}
+                            </td>
+                            <td>
                                 <div class="btn-group btn-group-sm">
                                     <a href="{{ route('contracts.show', ['contract' => $contract]) }}" class="btn blue">
                                         <i class="fa fa-print"></i>
@@ -111,6 +116,7 @@
                                 </div>
                             </td>
                         </tr>
+                        @endif
                     @empty
                         <tr class="text-center">
                             <td colspan="13">No records in here :(</td>

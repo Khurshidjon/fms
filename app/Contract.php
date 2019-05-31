@@ -23,9 +23,9 @@ class Contract extends Model
         'email',
         'status'
     ];
-    // protected $dates = [
-    //     'contract_start', 
-    //     'contract_expiration'
-    // ];
-    // protected $dateFormat = 'd-m-Y';
+  public function operator()
+  {
+      return $this->belongsTo(User::class, 'user_id');
+  }
+
 }

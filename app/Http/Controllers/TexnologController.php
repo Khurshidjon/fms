@@ -13,6 +13,11 @@ class TexnologController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('role:texnolog');
+    }
+
     public function index()
     {
         $texnologs = Texnolog::latest()->paginate(15);

@@ -17,6 +17,12 @@ class ApplicationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('permission:application create')->except(['index']);
+    }
+
+
     public function index()
     {
         $applications = Application::latest()->paginate(10);
@@ -177,9 +183,22 @@ class ApplicationController extends Controller
         $w = ($weight)/($step);
         $v = ($volume)/($step);
 
-        $price_weight = explode('.', round($w, 2))[0]*$is_price;
+        /*------------------------------------------------------------------------------------------------------*/
+        $first_step = $tariff->weight + $step;
 
-        $price_volume = explode('.', round($v, 2))[0]*$is_price;
+        if ($weight > 0 && $weight < $first_step){
+            $price_weight = $tariff->service_price;
+        }else{
+            $price_weight = explode('.', round($w, 2))[0]*$is_price;
+        }
+
+        if ($volume > 0 && $volume < $first_step){
+            $price_volume = $tariff->service_price;
+        }else{
+            $price_volume = explode('.', round($v, 2))[0]*$is_price;
+        }
+
+        /*------------------------------------------------------------------------------------------------------*/
 
         $tariff_from_courier_price = $tariff->with_courier_from_home_price;
         $tariff_to_courier_price = $tariff->with_courier_to_home_price;
@@ -343,6 +362,7 @@ class ApplicationController extends Controller
 
     public function firstStepEdit(Request $request, Application $application)
     {
+        $this->authorize('update', $application);
         $cities = DB::table('regions')->select(['id', 'regions'])->get();
 
         return view('backend.Applications.edit-steps.first-step', [
@@ -411,9 +431,22 @@ class ApplicationController extends Controller
         $w = ($weight)/($step);
         $v = ($volume)/($step);
 
-        $price_weight = explode('.', round($w, 2))[0]*$is_price;
+/*------------------------------------------------------------------------------------------------------*/
+        $first_step = $tariff->weight + $step;
 
-        $price_volume = explode('.', round($v, 2))[0]*$is_price;
+        if ($weight > 0 && $weight < $first_step){
+            $price_weight = $tariff->service_price;
+        }else{
+            $price_weight = explode('.', round($w, 2))[0]*$is_price;
+        }
+
+        if ($volume > 0 && $volume < $first_step){
+            $price_volume = $tariff->service_price;
+        }else{
+            $price_volume = explode('.', round($v, 2))[0]*$is_price;
+        }
+
+/*------------------------------------------------------------------------------------------------------*/
 
         $tariff_from_courier_price = $tariff->with_courier_from_home_price;
         $tariff_to_courier_price = $tariff->with_courier_to_home_price;

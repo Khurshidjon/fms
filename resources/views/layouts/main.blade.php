@@ -523,6 +523,7 @@
                                 @endif
                             </a>
                         </li>
+                        @can('settings')
                         <li>
                             <a href="javascript:;">
                                 <i class="fa fa-cog"></i>
@@ -556,6 +557,7 @@
                                 </li>
                             </ul>
                         </li>
+                        @endcan
                     </ul>
                     <!-- END SIDEBAR MENU -->
                 </div>

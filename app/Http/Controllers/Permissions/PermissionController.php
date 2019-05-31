@@ -14,6 +14,11 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('permission:settings');
+    }
+
     public function index()
     {
         $permissions = Permission::latest()->paginate(10);

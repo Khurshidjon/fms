@@ -16,6 +16,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('permission:user create|settings');
+    }
+
     public function index()
     {
         $users = User::latest()->paginate(10);
@@ -31,6 +37,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         $roles = Role::all();

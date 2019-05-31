@@ -22,4 +22,8 @@ class Application extends Model
     {
         return $this->belongsTo(Contract::class, 'number_contract', 'contract_id');
     }
+    public function operator()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

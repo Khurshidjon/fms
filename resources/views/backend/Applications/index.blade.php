@@ -7,7 +7,9 @@
     <div class="container-fluid" style="margin-bottom: 35px">
         <div class="row">
             <div class="col-md-3">
+                @can('application create')
                 <a href="{{ route('admin.first-step') }}" class="btn blue">Добавить новая заявка <i class="fa fa-plus"></i></a>  
+                @endcan
             </div>
             <div class="col-md-6"></div>
             <div class="col-md-3">
@@ -27,11 +29,13 @@
                         <th>Курьер</th>
                         <th>Доставка</th>
                         <th>Статусы</th>
+                        <th>Операторы</th>
                         <th>Другие действия</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
                     @forelse($applications as $application)
+                        @if(Auth::user()->can('view',  $application) || Auth::user()->hasRole('Admin'))
                         <tr>
                             <td>{{ $i++ }}</td>
                             <td>{{ $application->from_city->regions }}</td>
@@ -68,6 +72,9 @@
                                 @endif
                             </td>
                             <td>
+                                <b>{{ $application->operator->username }}</b>
+                            </td>
+                            <td>
                                 <div class="btn-group btn-group-sm">
                                     <a href="{{ route('applications.show', ['application' => $application]) }}" class="btn blue">
                                         <i class="fa fa-print"></i>
@@ -75,12 +82,15 @@
                                     <a href="{{ route('admin.first-step-edit', ['application' => $application]) }}" class="btn blue">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <button type="button" class="btn blue" data-toggle="modal" data-target="#myModal">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
+                                    @role('Admin')
+                                        <button type="button" class="btn blue" data-toggle="modal" data-target="#myModal">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    @endrole
                                 </div>
                             </td>
                         </tr>
+                        @endif
                     @empty
                         <tr>
                             <td class="text-center" colspan="9">No records in here :(</td>
