@@ -1,21 +1,21 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <line-chart :chart-data="data" :height="200" :options="{responsive: true, maintainAspectRatio: true}"></line-chart>
+                <radar-chart :chart-data="data" :height="200" :options="{responsive: true, maintainAspectRatio: true}"></radar-chart>
             </div>
             <div class="col-md-6">
-                <line-chart :chart-data="data" :height="200" :options="{responsive: true, maintainAspectRatio: true}"></line-chart>
+                <radar-chart :chart-data="data" :height="200" :options="{responsive: true, maintainAspectRatio: true}"></radar-chart>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import LineChart from './js/LineChart';
+    import RadarChart from './js/RadarChart';
     export default {
         components: {
-          LineChart
+            RadarChart
         },
         data: function(){
             return {
@@ -27,7 +27,7 @@
         },
         methods: {
             update: function () {
-                axios.get('/line-chart-js').then((response) => {
+                axios.get('/radar-chart-js').then((response) => {
                     this.data = response.data;
                 })
             }

@@ -52,17 +52,19 @@
     <script src="{{ asset('backend/assets/global/plugins/jquery.sparkline.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('backend/assets/global/scripts/metronic.js') }}" type="text/javascript"></script>
     <script src="{{ asset('backend/assets/admin/layout/scripts/layout.js') }}" type="text/javascript"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="{{ asset('backend/js/jquery.counterup.js') }}" type="text/javascript"></script>
     <script type="text/javascript" src="{{ asset('backend/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
     @toastr_js
     @toastr_render
-    <style scoped>
+    <style>
         .toggle-group span.toggle-handle{
             border: 1px solid grey !important;
         }
     </style>
 </head>
 <body class="page-header-fixed page-quick-sidebar-over-content ">
-    <div id="main">
+    <div>
         <div class="page-header -i navbar navbar-fixed-top">
             <!-- BEGIN HEADER INNER -->
             <div class="page-header-inner">
@@ -1229,5 +1231,17 @@
             </div>
         </div>
     </div>
+    <script>
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
 </body>
 </html>

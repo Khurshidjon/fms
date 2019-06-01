@@ -59,6 +59,10 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::resource('/users', 'User\UserController');
 
+    Route::get('/line-chart-js', 'AdminController@lineChartjs');
+    Route::get('/pie-chart-js', 'AdminController@pieChartjs');
+    Route::get('/bar-chart-js', 'AdminController@barChartjs');
+    Route::get('/radar-chart-js', 'AdminController@radarChartjs');
 
 
     Route::resource('/texnologs', 'TexnologController');

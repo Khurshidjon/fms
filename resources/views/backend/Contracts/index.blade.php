@@ -149,18 +149,17 @@
                     </div>
                 </div>
             </div>
-
-    </div>
-    <script>
-        $(function () {
-            Metronic.init(); // init metronic core components
-            Layout.init(); // init current layout
-            $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                    $("#myTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            <script>
+                $(function () {
+                    Metronic.init(); // init metronic core components
+                    Layout.init(); // init current layout
+                    $("#myInput").on("keyup", function() {
+                        var value = $(this).val().toLowerCase();
+                        $("#myTable tr").filter(function() {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                    });
                 });
-            });
-        });
-    </script>
+            </script>
+    </div>
 @endsection
