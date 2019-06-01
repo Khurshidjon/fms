@@ -35,24 +35,24 @@ class AdminController extends Controller
     public function pieChartjs()
     {
         return [
-            'labels' => ['January', 'February', 'March', 'April'],
+            'labels' => ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
             'datasets' => array([
                 'label' => 'Posts',
-//                'borderColor' => ['#002e5b', '#F26202'],
-                'backgroundColor' => ['#F26202', '#002e5b', '#F26202', '#002e5b'],
-                'data' => [rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000)]
+                'borderColor' => '#44b6ae',
+                'backgroundColor' => ['#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202', '#002e5b'],
+                'data' => [rand(0,100), rand(0,100), rand(0,100), rand(0,100), rand(0,100), rand(0,100), rand(0,100), rand(0,100), rand(0,100), rand(0,100), rand(0,100), rand(0,500)]
             ])
         ];
     }
     public function barChartjs()
     {
         return [
-            'labels' => ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            'labels' => ['Tashkent', 'Andijan', 'Bukhara', 'Ferghana', 'Jizzakh', 'Karakalpakistan', 'Kashkadarya', 'Khoresm', 'Namangan', 'Navoiy', 'Samarkand', 'Surkhandarya', 'Syrdarya'],
             'datasets' => array([
-                'label' => 'Posts',
-                'borderColor' => '#44b6ae',
-                'backgroundColor' => ['#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202', '#002e5b',],
-                'data' => [rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000)]
+                'label' => 'Filial',
+//                'borderColor' => ['#002e5b', '#F26202'],
+                'backgroundColor' => ['#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202'],
+                'data' => [rand(0,5000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000)]
             ])
         ];
     }
