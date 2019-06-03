@@ -77,6 +77,7 @@ class ContractController extends Controller
 
         $contract = Contract::create([
             'company_name' => $request->company_name,
+            'user_id' => \Auth::id(),
             'contract_id' => (integer)$request->contract_id,
             'contract_period' => $request->contract_period . ' ' . $request->contract_period_date,
             'contract_start' => $contract_start,
@@ -206,6 +207,7 @@ class ContractController extends Controller
 
         $contract = $contract->update([
             'company_name' => $request->company_name,
+            'user_id' => \Auth::id(),
             'contract_id' => (integer)$request->contract_id,
             'contract_period' => $request->contract_period . ' ' . $request->contract_period_date,
             'contract_start' => $contract_start,

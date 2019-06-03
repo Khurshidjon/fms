@@ -8,6 +8,7 @@ class Contract extends Model
 {
     protected $fillable = [
         'company_name',
+        'user_id',
         'contract_period',
         'contract_id',
         'contract_start',

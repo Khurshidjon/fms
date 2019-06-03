@@ -347,14 +347,30 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-4 from-courier-container"></div>
-                                        <div class="col-md-4 courier-container"></div>
-                                        <div class="col-md-4 to-courier-container"></div>
+                                <button type="button" class="btn btn-info btn-lg courier-modal" data-toggle="modal" data-target="#myModal" style="display: none"></button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog modal-lg" style="width: 100%; padding: 0 5em;">
+                                        <div class="modal-content" >
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Modal Courier</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-4 from-courier-container"></div>
+                                                        <div class="col-md-4 courier-container"></div>
+                                                        <div class="col-md-4 to-courier-container"></div>
+                                                    </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                                <hr>
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-6 col-6 text-left">

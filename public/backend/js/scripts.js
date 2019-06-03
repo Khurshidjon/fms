@@ -70,6 +70,7 @@ $(function () {
             success: function (data) {
                 var json = JSON.parse(data);
                 if (json.data == 'true') {
+                    $('.courier-modal').trigger('click');
                     if (dataForm == 'from') {
                         $('.from_courier_name').attr('disabled', true);
                         $('.from-courier-container').html('<h3>From courier</h3>' + '<br>' + json.result);
@@ -81,6 +82,9 @@ $(function () {
                         $('.to-courier-container').html('<h3>To courier</h3>' + '<br>' + json.result);
                     }
                 }else{
+                    if (json.result != null){
+                        $('.courier-modal').trigger('click');
+                    }
                     if (dataForm == 'from') {
                         $('.from_courier_name').attr('disabled', false);
                         $('.from-courier-container').html('');
