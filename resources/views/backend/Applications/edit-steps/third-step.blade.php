@@ -13,7 +13,7 @@
             }
         }
     </style>
-    @php 
+    @php
         $from_city = \DB::table('regions')->where('id', $application->from_city_id)->first();
         $to_city = \DB::table('regions')->where('id', $application->to_city_id)->first();
         $from_district = \DB::table('districts')->where('id', $application->from_district_id)->first();
@@ -31,7 +31,7 @@
                         <div class="tools hidden-xs">
                             <div class="form-actions">
                                 <a class="btn blue border" style="border: 1px solid #002e5b !important;">
-                                <i class="m-icon-swapleft m-icon-white"></i> Назад
+                                    <i class="m-icon-swapleft m-icon-white"></i> Назад
                                 </a>
                                 <a href="{{ route('admin.first-step') }}" class="btn blue" style="border: 1px solid #002e5b !important;">Добавить новая заявка <i class="fa fa-plus"></i></a>
                                 <button onclick="printDiv('printableArea')"  type="button" class="btn blue border" style="border: 1px solid #002e5b !important;">
@@ -50,7 +50,7 @@
                                             <span class="number">
                                             1 </span>
                                             <span class="desc">
-                                            <i class="fa fa-check"></i> Account Setup </span>
+                                            <i class="fa fa-check"></i> Информация о почте </span>
                                         </a>
                                     </li>
                                     <li class="done" style="pointer-events: none">
@@ -58,7 +58,7 @@
                                             <span class="number">
                                             2 </span>
                                             <span class="desc">
-                                            <i class="fa fa-check"></i> Profile Setup </span>
+                                            <i class="fa fa-check"></i> Сервисные сборы </span>
                                         </a>
                                     </li>
                                     <li class="active">
@@ -72,7 +72,7 @@
                                 </ul>
                                 <div class="progress">
                                     <div class="progress-bar progress-bar-striped progress-bar-success active" role="progressbar"
-                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                                     </div>
                                 </div>
                                 <div class="tab-content">
@@ -108,7 +108,7 @@
                                                 <td style="border:1px solid black; text-align:center;"><b>Габариты, см <sup>3</sup></b></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3" style="border:1px solid black;padding-left:5px;"><b> Организация: </b> <i> {{ $application->number_contract!=null?$application->company->company_name:'' }} </i> </td>
+                                                <td colspan="3" style="border:1px solid black;padding-left:5px;"><b> Организация: </b> <i> {{ $application->from_organ_name }} </i> </td>
                                                 <td style="border:1px solid black; text-align:center;"><i>{{ $application->weight }}</i></td>
                                                 <td colspan="2" style="border:1px solid black; text-align:center;"><i>{{ $application->pieces }}</i></td>
                                                 <td style="border:1px solid black; text-align:center; color:red"><i>{{ $application->volume*6000 }} </i></td>
@@ -144,7 +144,7 @@
                                                 <td style="border:1px solid black;text-align:center;"><i class="fa {{ $application->category_product=='envelope'?'fa-check':'' }}"></i></td>
                                                 <td style="border:1px solid black;text-align:center;"> <i class="fa {{ $application->category_product=='package'?'fa-check':'' }}"></i> </td>
                                                 <td style="border:1px solid black;text-align:center;"><i class="fa {{ $application->category_product=='others'?'fa-check':'' }}"></i></td>
-                                                
+
                                                 <td style="border:1px solid black;text-align:center;"><i class="fa {{ $application->category_pay_service=='transfer'?'fa-check':'' }}"></i></td>
                                                 <td style="border:1px solid black;text-align:center;"><i class="fa {{ $application->category_pay_service=='cash'?'fa-check':'' }}"></i></td>
                                                 <td style="border:1px solid black;text-align:center;"><i class="fa {{ $application->category_pay_service=='payme'?'fa-check':'' }}"></i></td>
@@ -165,21 +165,21 @@
                                             <tr>
                                                 <td colspan="2" style="border:1px solid black;padding-left:5px;"><b>Ф.И.О:</b> <i>{{ $application->to_fio }}</i></td>
                                                 <td style="border:1px solid black;padding-left:5px;"><b>Тел:</b> <i>{{ $application->to_phone }}</i></td>
-                                                <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Ф.И.О:</b> <i>Иванов О. И</i></td>
+                                                <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Ф.И.О:</b> <i> {{ $courier!=null?$courier->courier_name:'' }}</i></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3" style="border:1px solid black;padding-left:5px;"><b>Организация:</b> <i>OOO "CE-SERVICE"</i> </td>
+                                                <td colspan="3" style="border:1px solid black;padding-left:5px;"><b>Организация:</b> <i>{{ $application->to_organ_name }}</i> </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3"  style="border:1px solid black;padding-left:5px;"><b>Город:</b> <i>{{ $to_city->regions }}</i></td>
-                                                <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Тел:</b><i>+99891 555 22 33</i></td>
+                                                <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Тел:</b><i> {{ $courier!=null?$courier->courier_phone:'' }}</i></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" style="border:1px solid black;padding-left:5px;"><b>Адрес: </b><i> {{ $application->to_address }}</i></td>
                                                 <td colspan="3"></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2" style="border:1px solid black;padding-left:5px;"><b>Подпись:</b></td><td style="padding-left:5px; border:1px solid black;text-align:center;" colspan="1"><b>Дата:</b><i> 17.05.2019г.</i></td>
+                                                <td colspan="2" style="border:1px solid black;padding-left:5px;"><b>Подпись:</b></td><td style="padding-left:5px; border:1px solid black;text-align:center;" colspan="1" class="text-danger"><b>Дата:</b><i> 17.05.2019г.</i></td>
                                                 <td colspan="4" style="border:1px solid black;padding-left:5px;"><b>Подпись:</b></td>
                                             </tr>
                                         </table>
@@ -245,7 +245,7 @@
                                                 <td style="border:1px solid black;text-align:center;"><i class="fa {{ $application->category_product=='envelope'?'fa-check':'' }}"></i></td>
                                                 <td style="border:1px solid black;text-align:center;"> <i class="fa {{ $application->category_product=='package'?'fa-check':'' }}"></i> </td>
                                                 <td style="border:1px solid black;text-align:center;"><i class="fa {{ $application->category_product=='others'?'fa-check':'' }}"></i></td>
-                                                
+
                                                 <td style="border:1px solid black;text-align:center;"><i class="fa {{ $application->category_pay_service=='transfer'?'fa-check':'' }}"></i></td>
                                                 <td style="border:1px solid black;text-align:center;"><i class="fa {{ $application->category_pay_service=='cash'?'fa-check':'' }}"></i></td>
                                                 <td style="border:1px solid black;text-align:center;"><i class="fa {{ $application->category_pay_service=='payme'?'fa-check':'' }}"></i></td>
@@ -266,21 +266,21 @@
                                             <tr>
                                                 <td colspan="2" style="border:1px solid black;padding-left:5px;"><b>Ф.И.О:</b> <i>{{ $application->to_fio }}</i></td>
                                                 <td style="border:1px solid black;padding-left:5px;"><b>Тел:</b> <i>{{ $application->to_phone }}</i></td>
-                                                <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Ф.И.О:</b> <i>Иванов О. И</i></td>
+                                                <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Ф.И.О:</b> <i>{{ $courier!=null?$courier->courier_name:'' }}</i></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3" style="border:1px solid black;padding-left:5px;"><b>Организация:</b> <i>$application->to_organ_name</i> </td>
+                                                <td colspan="3" style="border:1px solid black;padding-left:5px;"><b>Организация:</b> <i>{{ $application->to_organ_name }}</i> </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3"  style="border:1px solid black;padding-left:5px;"><b>Город:</b> <i>{{ $to_city->regions }}</i></td>
-                                                <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Тел:</b><i>+99891 555 22 33</i></td>
+                                                <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Тел:</b><i>{{ $courier!=null?$courier->courier_phone:'' }}</i></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" style="border:1px solid black;padding-left:5px;"><b>Адрес: </b><i> {{ $application->to_address }}</i></td>
                                                 <td colspan="3"></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2" style="border:1px solid black;padding-left:5px;"><b>Подпись:</b></td><td style="padding-left:5px; border:1px solid black;text-align:center;" colspan="1"><b>Дата:</b><i> 17.05.2019г.</i></td>
+                                                <td colspan="2" style="border:1px solid black;padding-left:5px;"><b>Подпись:</b></td><td style="padding-left:5px; border:1px solid black;text-align:center;" colspan="1" class="text-danger" ><b>Дата:</b><i> 17.05.2019г.</i></td>
                                                 <td colspan="4" style="border:1px solid black;padding-left:5px;"><b>Подпись:</b></td>
                                             </tr>
                                             <tr>

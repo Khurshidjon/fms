@@ -64,10 +64,11 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/bar-chart-js', 'AdminController@barChartjs');
     Route::get('/radar-chart-js', 'AdminController@radarChartjs');
 
+    /*Result change courier*/
+    Route::get('/change-courier', 'AdminController@changeCourier')->name('change-courier');
 
     Route::resource('/texnologs', 'TexnologController');
     Route::resource('/applications', 'ApplicationController');
     Route::resource('/contracts', 'ContractController');
-
 });
 Auth::routes();

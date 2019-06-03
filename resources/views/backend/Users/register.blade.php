@@ -90,8 +90,9 @@ License: You must have a valid license purchased only from themeforest(the above
                 <i class="fa fa-building"></i>
                 <select style="padding-left: 20px" class="form-control placeholder-no-fix select2" name="organs">
                     <option selected>--select once--</option>
-                    <option value="1">Tashkent</option>
-                    <option value="2">Samarqand</option>
+                    @foreach($organs as $organ)
+                        <option value="{{ $organ->id }}">{{ $organ->regions }}</option>
+                    @endforeach
                 </select>
             </div>
             @error('organs')

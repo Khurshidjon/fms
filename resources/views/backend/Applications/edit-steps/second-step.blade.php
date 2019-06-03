@@ -9,6 +9,9 @@
             background-color: #ff5e00 !important;
             color: white !important;
         }
+        .md-radio label {
+            font-size: 12px;
+        }
     </style>
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
@@ -123,174 +126,239 @@
                                             Your form validation is successful!
                                         </div>
                                         <div class="tab-pane active" id="tab2">
+                                            @if ($message = Session::get('error'))
+                                                <div class="alert alert-danger alert-block">
+                                                    <button style="margin-top: 5px !important;" type="button" class="close" data-dismiss="alert">×</button>
+                                                    <strong>{{ $message }}</strong>
+                                                </div>
+                                            @endif
                                             <h3 class="block">Предоставьте данные вашего сервиса</h3>
                                             <table class="table">
                                                 <thead>
-                                                    <tr>
-                                                        <th class="text-center">Сервисы</th>
-                                                        <th class="text-center">Цена</th>
-                                                        <th class="text-center">Кто оплачивает почтовые расходы?</th>
-                                                        <th class="text-center">Скидка</th>
-                                                        <th class="text-center">Типы оплаты</th>
-                                                    </tr>
+                                                <tr>
+                                                    <th class="text-center">Сервисы</th>
+                                                    <th class="text-center">Цена</th>
+                                                    <th class="text-center">Кто оплачивает почтовые расходы?</th>
+                                                    <th class="text-center">Скидка</th>
+                                                    <th class="text-center">Курьер</th>
+                                                    <th class="text-center">Заказ / Работник</th>
+                                                    <th class="text-center">Типы оплаты</th>
+                                                </tr>
                                                 </thead>
-                                                <tbody class="text-center">
-                                                    <tr>
-                                                        <td class="form-group">
-                                                            <label class="control-label">From courier
-                                                                <span class="required">*</span>
+                                                <tbody class="text-center tbody-content" data-courier="{{ route('change-courier') }}">
+                                                <tr>
+                                                    <td class="form-group">
+                                                        <label class="control-label">From courier
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                    </td>
+                                                    <td class="form-group">
+                                                        <input type="number" class="form-control" name="cost_from_courier" value="{{ $application!=null?$application->cost_from_courier:'' }}">
+                                                    </td>
+                                                    <td class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" data-toggle="toggle" name="from_pay_courier" data-on="Отправитель" data-off="Получатель" class="form-control">
                                                             </label>
-                                                        </td>
-                                                        @php
-                                                            //dd($zayavka)
-                                                        @endphp
-                                                        <td class="form-group">
-                                                            <input type="number" class="form-control" name="cost_from_courier" value="{{ $application!=null?$application->cost_from_courier:'' }}">
-                                                        </td>
-                                                        <td class="form-group">
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" data-toggle="toggle" name="from_pay_courier" data-on="Отправитель" data-off="Получатель" class="form-control" {{ $application->from_pay_courier=='sender'?'checked':'' }}>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td class="form-group">
-                                                            <input type="text" class="form-control" name="sale_for_from_courier" readonly placeholder="Sale for courier (%)" value="{{ old('sale_for_from_courier', $application->sale_for_from_courier) }}">
-                                                        </td>
-                                                        <td class="form-group">
-                                                            <div class="form-md-radios">
-                                                                <div class="md-radio-inline">
-                                                                    <div class="md-radio">
-                                                                        <input type="radio" id="terminal_from_courier" name="category_pay_from_courier" value="terminal" {{ $application->category_pay_from_courier=='terminal'?'checked':'' }} class="md-radiobtn">
-                                                                        <label for="terminal_from_courier">
-                                                                            <span></span>
-                                                                            <span class="check"></span>
-                                                                            <span class="box"></span>
-                                                                            Терминал 
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="md-radio">
-                                                                        <input type="radio" id="payme_from_courier" name="category_pay_from_courier" value="payme" {{ $application->category_pay_from_courier=='payme'?'checked':'' }} class="md-radiobtn" >
-                                                                        <label for="payme_from_courier">
-                                                                            <span></span>
-                                                                            <span class="check"></span>
-                                                                            <span class="box"></span>
-                                                                            Payme 
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="md-radio">
-                                                                        <input type="radio" id="transfer_from_courier" name="category_pay_from_courier" value="transfer" {{ $application->category_pay_from_courier=='transfer'?'checked':'' }} class="md-radiobtn">
-                                                                        <label for="transfer_from_courier">
-                                                                            <span></span>
-                                                                            <span class="check"></span>
-                                                                            <span class="box"></span>
-                                                                            Перечисления 
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="md-radio">
-                                                                        <input type="radio" id="cash_from_courier" name="category_pay_from_courier" class="md-radiobtn" value="cash" {{ $application->category_pay_from_courier=='cash'?'checked':'' }}>
-                                                                        <label for="cash_from_courier">
-                                                                            <span></span>
-                                                                            <span class="check"></span>
-                                                                            <span class="box"></span>
-                                                                            Наличные деньги 
-                                                                        </label>
-                                                                    </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="form-group">
+                                                        <input type="text" class="form-control" name="sale_for_from_courier" placeholder="Sale for courier (%)" value="{{ $sale!=null?$sale->from_courier_sale:'0' }}" readonly>
+                                                    </td>
+                                                    <td class="form-group">
+                                                        <select name="from_courier_name" class="form-control select2 from_courier_name" {{ $application->cost_from_courier==null?'disabled':'' }}>
+                                                            <option value="">--select once--</option>
+                                                            @foreach($couriers as $courier)
+                                                                @if($courier->hasRole('Courier') && $courier->organ_id == $application->from_city_id)
+                                                                    <option value="{{ $courier->id }}">{{ $courier->username }}</option>
+                                                                @endif
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td class="form-group" style="padding-left: 40px">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" data-toggle="toggle" name="from_courier_type" data-on="Заказ" data-off="Работник" class="form-control courier_type" data-form="from">
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                    <td class="form-group">
+                                                        <div class="form-md-radios">
+                                                            <div class="md-radio-inline">
+                                                                <div class="md-radio">
+                                                                    <input type="radio" id="terminal_from_courier" name="category_pay_from_courier" value="terminal" {{ old('category_pay_from_courier')=='terminal'?'checked':'' }} class="md-radiobtn">
+                                                                    <label for="terminal_from_courier">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span>
+                                                                        Терминал
+                                                                    </label>
+                                                                </div>
+                                                                <div class="md-radio">
+                                                                    <input type="radio" id="payme_from_courier" name="category_pay_from_courier" value="payme" {{ old('category_pay_from_courier')=='payme'?'checked':'' }} class="md-radiobtn" >
+                                                                    <label for="payme_from_courier">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span>
+                                                                        Payme
+                                                                    </label>
+                                                                </div>
+                                                                <div class="md-radio">
+                                                                    <input type="radio" id="transfer_from_courier" name="category_pay_from_courier" value="transfer" {{ old('category_pay_from_courier')=='transfer'?'checked':'' }} class="md-radiobtn">
+                                                                    <label for="transfer_from_courier">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span>
+                                                                        Перечисления
+                                                                    </label>
+                                                                </div>
+                                                                <div class="md-radio">
+                                                                    <input type="radio" id="cash_from_courier" name="category_pay_from_courier" class="md-radiobtn" value="cash" {{ old('category_pay_from_courier')=='cash'?'checked':'' }} checked>
+                                                                    <label for="cash_from_courier">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span>
+                                                                        Наличные деньги
+                                                                    </label>
                                                                 </div>
                                                             </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="form-group">
-                                                            <label class="control-label">Post
-                                                                <span class="required">*</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="form-group">
+                                                        <label class="control-label">Post
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                    </td>
+                                                    <td class="form-group">
+                                                        <input type="text" class="form-control" name="cost_service" value="{{ $application!=null?$application->cost_service:'' }}">
+                                                    </td>
+                                                    <td class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" data-toggle="toggle" name="pay_service" data-on="Отправитель" data-off="Получатель" class="form-control">
                                                             </label>
-                                                        </td>
-                                                        <td class="form-group">
-                                                            <input type="text" class="form-control" name="cost_service" value="{{ $application!=null?$application->cost_service:'' }}" readonly>
-                                                        </td>
-                                                        <td class="form-group">
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" data-toggle="toggle" name="pay_service" data-on="Отправитель" data-off="Получатель" class="form-control" {{ $application->pay_service=='sender'?'checked':'' }}>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td class="form-group">
-                                                            <input type="text" class="form-control" name="sale_for_service" readonly placeholder="Sale for service (%)" value="{{ old('sale_for_service', $application->sale_for_service) }}">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="form-group">
-                                                            <label class="control-label">To courier
-                                                                <span class="required">*</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="form-group">
+                                                        <input type="text" class="form-control" name="sale_for_service" placeholder="Sale for service (%)" value="{{ $sale!=null?$sale->service_sale:'0' }}" readonly>
+                                                    </td>
+                                                    <td class="form-group">
+                                                        <select name="courier_name" class="form-control select2 courier_name">
+                                                            <option value="">--select once--</option>
+                                                            @foreach($couriers as $courier)
+                                                                @if($courier->hasRole('Courier') && $courier->organ_id == $application->from_city_id)
+                                                                    <option value="{{ $courier->id }}">{{ $courier->username }}</option>
+                                                                @endif
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td class="form-group" style="padding-left: 40px">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" data-toggle="toggle" name="courier_type" data-on="Заказ" data-off="Работник" class="form-control courier_type" data-form="post">
                                                             </label>
-                                                        </td>
-                                                        <td class="form-group">
-                                                            <input type="text" class="form-control" name="cost_to_courier" value="{{ $application!=null?$application->cost_to_courier:'' }}">
-                                                        </td>
-                                                        <td class="form-group">
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <input type="checkbox" data-toggle="toggle" name="to_pay_courier" data-on="Отправитель" data-off="Получатель" class="form-control"  {{ $application->to_pay_courier=='sender'?'checked':'' }}>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td class="form-group">
-                                                            <input type="text" class="form-control" name="sale_for_to_courier" readonly placeholder="Sale for delivery (%)" value="{{ old('sale_for_to_courier', $application->sale_for_to_courier) }}">
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-md-radios">
-                                                                <div class="md-radio-inline">
-                                                                    <div class="md-radio">
-                                                                        <input type="radio" id="terminal_to_courier" name="category_pay_to_courier" value="terminal" {{ $application->category_pay_to_courier=='terminal'?'checked':'' }} class="md-radiobtn">
-                                                                        <label for="terminal_to_courier">
-                                                                            <span></span>
-                                                                            <span class="check"></span>
-                                                                            <span class="box"></span>
-                                                                            Терминал 
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="md-radio">
-                                                                        <input type="radio" id="payme_to_courier" name="category_pay_to_courier" value="payme" {{ $application->category_pay_to_courier=='payme'?'checked':'' }} class="md-radiobtn" >
-                                                                        <label for="payme_to_courier">
-                                                                            <span></span>
-                                                                            <span class="check"></span>
-                                                                            <span class="box"></span>
-                                                                            Payme 
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="md-radio">
-                                                                        <input type="radio" id="transfer_to_courier" name="category_pay_to_courier" value="transfer" {{ $application->category_pay_to_courier=='transfer'?'checked':'' }} class="md-radiobtn">
-                                                                        <label for="transfer_to_courier">
-                                                                            <span></span>
-                                                                            <span class="check"></span>
-                                                                            <span class="box"></span>
-                                                                            Перечисления 
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="md-radio">
-                                                                        <input type="radio" id="cash_to_courier" name="category_pay_to_courier" class="md-radiobtn" value="cash" {{ $application->category_pay_to_courier=='cash'?'checked':'' }}>
-                                                                        <label for="cash_to_courier">
-                                                                            <span></span>
-                                                                            <span class="check"></span>
-                                                                            <span class="box"></span>
-                                                                            Наличные деньги 
-                                                                        </label>
-                                                                    </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="form-group"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="form-group">
+                                                        <label class="control-label">To courier
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                    </td>
+                                                    <td class="form-group">
+                                                        <input type="text" class="form-control" name="cost_to_courier" value="{{ $application!=null?$application->cost_to_courier:'' }}">
+                                                    </td>
+                                                    <td class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" data-toggle="toggle" name="to_pay_courier" data-on="Отправитель" data-off="Получатель" class="form-control">
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                    <td class="form-group">
+                                                        <input type="text" class="form-control" name="sale_for_to_courier" placeholder="Sale for delivery (%)" value="{{ $sale!=null?$sale->to_courier_sale:'0' }}" readonly>
+                                                    </td>
+                                                    <td class="form-group">
+                                                        <select name="to_courier_name" class="form-control select2 to_courier_name" {{ $application->cost_to_courier==null?'disabled':'' }}>
+                                                            <option value="">--select once--</option>
+                                                            @foreach($couriers as $courier)
+                                                                @if($courier->hasRole('Courier') && $courier->organ_id == $application->to_city_id)
+                                                                    <option value="{{ $courier->id }}">{{ $courier->username }}</option>
+                                                                @endif
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td class="form-group" style="padding-left: 40px">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" data-toggle="toggle" name="to_courier_type" data-on="Заказ" data-off="Работник" class="form-control courier_type" data-form="to">
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                    <td class="form-group">
+                                                        <div class="form-md-radios">
+                                                            <div class="md-radio-inline">
+                                                                <div class="md-radio">
+                                                                    <input type="radio" id="terminal_to_courier" name="category_pay_to_courier" value="terminal" {{ old('category_pay_to_courier')=='terminal'?'checked':'' }} class="md-radiobtn">
+                                                                    <label for="terminal_to_courier">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span>
+                                                                        Терминал
+                                                                    </label>
+                                                                </div>
+                                                                <div class="md-radio">
+                                                                    <input type="radio" id="payme_to_courier" name="category_pay_to_courier" value="payme" {{ old('category_pay_to_courier')=='payme'?'checked':'' }} class="md-radiobtn" >
+                                                                    <label for="payme_to_courier">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span>
+                                                                        Payme
+                                                                    </label>
+                                                                </div>
+                                                                <div class="md-radio">
+                                                                    <input type="radio" id="transfer_to_courier" name="category_pay_to_courier" value="transfer" {{ old('category_pay_to_courier')=='transfer'?'checked':'' }} class="md-radiobtn">
+                                                                    <label for="transfer_to_courier">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span>
+                                                                        Перечисления
+                                                                    </label>
+                                                                </div>
+                                                                <div class="md-radio">
+                                                                    <input type="radio" id="cash_to_courier" name="category_pay_to_courier" class="md-radiobtn" value="cash" {{ old('category_pay_to_courier')=='cash'?'checked':'' }} checked>
+                                                                    <label for="cash_to_courier">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span>
+                                                                        Наличные деньги
+                                                                    </label>
                                                                 </div>
                                                             </div>
-                                                        </td>
-                                                    </tr>
+                                                        </div>
+                                                    </td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
+                                <hr>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4 from-courier-container"></div>
+                                        <div class="col-md-4 courier-container"></div>
+                                        <div class="col-md-4 to-courier-container"></div>
+                                    </div>
+                                </div>
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-6 col-6 text-left">
-                                            <a href="{{ url()->previous() }}" class="btn blue">
+                                            <a href="{{ route('admin.first-step') }}" class="btn blue">
                                                 <i class="m-icon-swapleft m-icon-white"></i> Back
                                             </a>
                                         </div>
@@ -317,6 +385,7 @@
             // QuickSidebar.init(); // init quick sidebar
             // Demo.init(); // init demo features
             // FormWizard.init();
+            $('.select2').select2();
         })
     </script>
 @endsection

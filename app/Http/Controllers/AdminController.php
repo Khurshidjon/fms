@@ -20,6 +20,21 @@ class AdminController extends Controller
     {
         return view('backend.Users.register');
     }
+
+    public function changeCourier(Request $request)
+    {
+        $result = view('backend.Applications.courier-form', [
+            'dataName' => $request->dataName
+        ])->render();
+        $data = $request->result;
+
+        $res = [
+                'result' => $result,
+                'data' => $data
+            ];
+        return json_encode($res);
+    }
+
     public function lineChartjs()
     {
         return [
@@ -38,7 +53,7 @@ class AdminController extends Controller
             'labels' => ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
             'datasets' => array([
                 'label' => 'Posts',
-                'borderColor' => '#44b6ae',
+//                'borderColor' => '#44b6ae',
                 'backgroundColor' => ['#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202', '#002e5b', '#F26202', '#002e5b'],
                 'data' => [rand(0,100), rand(0,100), rand(0,100), rand(0,100), rand(0,100), rand(0,100), rand(0,100), rand(0,100), rand(0,100), rand(0,100), rand(0,100), rand(0,500)]
             ])

@@ -51,11 +51,61 @@ $(function () {
             async:true,
         })
     });
+
+    $(document).on('change', '.courier_type', function () {
+        var url = $('.tbody-content').attr('data-courier');
+        var dataForm = $(this).attr('data-form');
+        var data;
+        if($(this).prop("checked") == true){
+            data = 'true';
+        }else{
+            data = 'false';
+        }
+        $.ajax({
+            url:url,
+            data: {
+                result: data,
+                dataName: dataForm
+            },
+            success: function (data) {
+                var json = JSON.parse(data);
+                if (json.data == 'true') {
+                    if (dataForm == 'from') {
+                        $('.from_courier_name').attr('disabled', true);
+                        $('.from-courier-container').html('<h3>From courier</h3>' + '<br>' + json.result);
+                    } else if (dataForm == 'post') {
+                        $('.courier_name').attr('disabled', true);
+                        $('.courier-container').html('<h3>Region courier</h3>' + '<br>' + json.result);
+                    } else {
+                        $('.to_courier_name').attr('disabled', true);
+                        $('.to-courier-container').html('<h3>To courier</h3>' + '<br>' + json.result);
+                    }
+                }else{
+                    if (dataForm == 'from') {
+                        $('.from_courier_name').attr('disabled', false);
+                        $('.from-courier-container').html('');
+                    } else if (dataForm == 'post') {
+                        $('.courier_name').attr('disabled', false);
+                        $('.courier-container').html('');
+                    } else {
+                        $('.to_courier_name').attr('disabled', false);
+                        $('.to-courier-container').html('');
+                    }
+                }
+            }
+        })
+    });
+
     window.onload = function() {
         MaskedInput({
            elm: document.getElementById('phone'), // select only by id
            format: '+998 (__) ___-__-__',
            separator: '+998 ()-'
+        });
+        MaskedInput({
+            elm: document.getElementsByClassName('phone'), // select only by id
+            format: '+998 (__) ___-__-__',
+            separator: '+998 ()-'
         });
        MaskedInput({
            elm: document.getElementById('phone_reg'), // select only by id
@@ -75,10 +125,6 @@ $(function () {
             separator: '+998 ()-'
          });
      };
-     
-     
-     
-     
      
      // masked_input_1.4-min.js
      // angelwatt.com/coding/masked_input.php

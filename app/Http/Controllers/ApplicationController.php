@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Application;
+use App\Courier;
 use App\Sale;
 use App\Texnolog;
 use App\ContractPrice;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
@@ -23,8 +25,10 @@ class ApplicationController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
+        $request->session()->remove('application');
+        $request->session()->remove('second_step');
         $applications = Application::latest()->paginate(10);
         return view('backend.Applications.index', [
             'applications' => $applications,
@@ -61,9 +65,11 @@ class ApplicationController extends Controller
      */
     public function show(Application $application)
     {
+        $courier = Courier::where('application_id', $application->id)->first();
         return view('backend.Applications.edit-steps.third-step', [
             'application' => $application,
-            'is_active' => 'steps'
+            'is_active' => 'steps',
+            'courier' => $courier
         ]);
     }
 
@@ -275,11 +281,12 @@ class ApplicationController extends Controller
         }
         
         $sale = Sale::where('weight', $x)->first();
-
+        $couriers = User::all();
         return view('backend.Applications.steps.second-step', [
             'is_active' => 'steps',
             'sale' => $sale,
-            'application' => $application
+            'application' => $application,
+            'couriers' => $couriers
         ]);
     }
     public function secondStepResult(Request $request)
@@ -289,6 +296,7 @@ class ApplicationController extends Controller
             'sale_for_service' => 'min:0|max:100',
             'sale_for_to_courier' => 'min:0|max:100',
         ]);
+
         $sale_for_from_courier = 1*$request->sale_for_from_courier;
         $sale_for_service = 1*$request->sale_for_service;
         $sale_for_to_courier = 1*$request->sale_for_to_courier;
@@ -345,6 +353,43 @@ class ApplicationController extends Controller
             $application->sale_for_to_courier = $sale_for_to_courier;
 
             $application->save();
+
+            $courier = new Courier();
+            $courier->application_id = $application->id;
+
+            if($request->from_courier_type == 'on'){
+                $courier->from_courier_name = $request->from;
+                $courier->from_courier_phone = $request->from_phone;
+            }else{
+                if ($request->get('to_courier_name')){
+                    $from_courier = User::find($request->get('to_courier_name'));
+                    $courier->from_courier_name = $from_courier->username;
+                    $courier->from_courier_phone = $from_courier->phone;
+                }
+            }
+            if($request->courier_type == 'on'){
+                $courier->courier_name = $request->post;
+                $courier->courier_phone = $request->post_phone;
+            }else{
+                if ($request->get('courier_name')){
+                    $post_courier = User::find($request->get('courier_name'));
+                    $courier->courier_name  = $post_courier->username;
+                    $courier->courier_phone = $post_courier->phone;
+                }
+            }
+            if($request->to_courier_type == 'on'){
+                $courier->to_courier_name = $request->to;
+                $courier->to_courier_phone = $request->to_phone;
+            }else{
+                if ($request->get('to_courier_name')){
+                    $to_courier = User::find($request->get('to_courier_name'));
+                    $courier->to_courier_name = $to_courier->username;
+                    $courier->to_courier_phone = $to_courier->phone;
+                }
+            }
+
+            $courier->save();
+
             $request->session()->put('application', $application);
             $request->session()->put('second_step', 'second_step');
             return redirect()->route('admin.third-step');
@@ -352,9 +397,11 @@ class ApplicationController extends Controller
     public function thirdStep(Request $request)
     {           
         $application = $request->session()->get('application');
+        $courier = Courier::where('application_id', $application->id)->first();
         return view('backend.Applications.steps.third-step', [
             'is_active' => 'steps',
-            'application' => $application
+            'application' => $application,
+            'courier' => $courier
         ]);
     }
 
@@ -514,11 +561,12 @@ class ApplicationController extends Controller
         }
         
         $sale = Sale::where('weight', $x)->first();
-
+        $couriers = User::all();
         return view('backend.Applications.edit-steps.second-step', [
             'is_active' => 'steps',
             'sale' => $sale,
-            'application' => $application
+            'application' => $application,
+            'couriers' => $couriers
         ]);
     }
 
@@ -582,14 +630,54 @@ class ApplicationController extends Controller
 
         $application->save();
 
+        $courier = Courier::where('application_id', $application->id)->first();
+
+//        $courier->application_id = $application->id;
+
+        if($request->from_courier_type == 'on'){
+            $courier->from_courier_name = $request->from;
+            $courier->from_courier_phone = $request->from_phone;
+        }else{
+            if ($request->get('to_courier_name')){
+                $from_courier = User::find($request->get('to_courier_name'));
+                $courier->from_courier_name = $from_courier->username;
+                $courier->from_courier_phone = $from_courier->phone;
+            }
+        }
+        if($request->courier_type == 'on'){
+            $courier->courier_name = $request->post;
+            $courier->courier_phone = $request->post_phone;
+        }else{
+            if ($request->get('courier_name')){
+                $post_courier = User::find($request->get('courier_name'));
+                $courier->courier_name  = $post_courier->username;
+                $courier->courier_phone = $post_courier->phone;
+            }
+        }
+        if($request->to_courier_type == 'on'){
+            $courier->to_courier_name = $request->to;
+            $courier->to_courier_phone = $request->to_phone;
+        }else{
+            if ($request->get('to_courier_name')){
+                $to_courier = User::find($request->get('to_courier_name'));
+                $courier->to_courier_name = $to_courier->username;
+                $courier->to_courier_phone = $to_courier->phone;
+            }
+        }
+
+        $courier->save();
+
         return redirect()->route('admin.third-step-edit', ['application' => $application]);
     }
 
     public function thirdStepEdit(Application $application)
     {
+        $courier = Courier::where('application_id', $application->id)->first();
+
         return view('backend.Applications.edit-steps.third-step', [
             'is_active' => 'steps',
-            'application' => $application
+            'application' => $application,
+            'courier' => $courier
         ]);
     }
 

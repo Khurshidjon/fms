@@ -165,14 +165,14 @@
                                             <tr>
                                                 <td colspan="2" style="border:1px solid black;padding-left:5px;"><b>Ф.И.О:</b> <i>{{ $application->to_fio }}</i></td>
                                                 <td style="border:1px solid black;padding-left:5px;"><b>Тел:</b> <i>{{ $application->to_phone }}</i></td>
-                                                <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Ф.И.О:</b> <i></i></td>
+                                                <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Ф.И.О:</b> <i> {{ $courier!=null?$courier->courier_name:'' }}</i></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" style="border:1px solid black;padding-left:5px;"><b>Организация:</b> <i>{{ $application->to_organ_name }}</i> </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3"  style="border:1px solid black;padding-left:5px;"><b>Город:</b> <i>{{ $to_city->regions }}</i></td>
-                                                <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Тел:</b><i></i></td>
+                                                <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Тел:</b><i> {{ $courier!=null?$courier->courier_phone:'' }}</i></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" style="border:1px solid black;padding-left:5px;"><b>Адрес: </b><i> {{ $application->to_address }}</i></td>
@@ -266,14 +266,14 @@
                                             <tr>
                                                 <td colspan="2" style="border:1px solid black;padding-left:5px;"><b>Ф.И.О:</b> <i>{{ $application->to_fio }}</i></td>
                                                 <td style="border:1px solid black;padding-left:5px;"><b>Тел:</b> <i>{{ $application->to_phone }}</i></td>
-                                                <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Ф.И.О:</b> <i></i></td>
+                                                <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Ф.И.О:</b> <i>{{ $courier!=null?$courier->courier_name:'' }}</i></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" style="border:1px solid black;padding-left:5px;"><b>Организация:</b> <i>{{ $application->to_organ_name }}</i> </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3"  style="border:1px solid black;padding-left:5px;"><b>Город:</b> <i>{{ $to_city->regions }}</i></td>
-                                                <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Тел:</b><i></i></td>
+                                                <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Тел:</b><i>{{ $courier!=null?$courier->courier_phone:'' }}</i></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" style="border:1px solid black;padding-left:5px;"><b>Адрес: </b><i> {{ $application->to_address }}</i></td>

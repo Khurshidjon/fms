@@ -9,6 +9,9 @@
             background-color: #ff5e00 !important;
             color: white !important;
         }
+        .md-radio label {
+            font-size: 12px;
+        }
     </style>
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
@@ -136,19 +139,18 @@
                                                         <th class="text-center">Цена</th>
                                                         <th class="text-center">Кто оплачивает почтовые расходы?</th>
                                                         <th class="text-center">Скидка</th>
+                                                        <th class="text-center">Курьер</th>
+                                                        <th class="text-center">Заказ / Работник</th>
                                                         <th class="text-center">Типы оплаты</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody class="text-center">
+                                                <tbody class="text-center tbody-content" data-courier="{{ route('change-courier') }}">
                                                     <tr>
                                                         <td class="form-group">
                                                             <label class="control-label">From courier
                                                                 <span class="required">*</span>
                                                             </label>
                                                         </td>
-                                                        @php
-                                                            //dd($zayavka)
-                                                        @endphp
                                                         <td class="form-group">
                                                             <input type="number" class="form-control" name="cost_from_courier" value="{{ $application!=null?$application->cost_from_courier:'' }}">
                                                         </td>
@@ -161,6 +163,23 @@
                                                         </td>
                                                         <td class="form-group">
                                                             <input type="text" class="form-control" name="sale_for_from_courier" placeholder="Sale for courier (%)" value="{{ $sale!=null?$sale->from_courier_sale:'0' }}" readonly>
+                                                        </td>
+                                                        <td class="form-group">
+                                                            <select name="from_courier_name" class="form-control select2 from_courier_name" {{ $application->cost_from_courier==null?'disabled':'' }}>
+                                                                <option value="">--select once--</option>
+                                                                @foreach($couriers as $courier)
+                                                                    @if($courier->hasRole('Courier') && $courier->organ_id == $application->from_city_id)
+                                                                        <option value="{{ $courier->id }}">{{ $courier->username }}</option>
+                                                                    @endif
+                                                                @endforeach
+                                                            </select>
+                                                        </td>
+                                                        <td class="form-group" style="padding-left: 40px">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" data-toggle="toggle" name="from_courier_type" data-on="Заказ" data-off="Работник" class="form-control courier_type" data-form="from">
+                                                                </label>
+                                                            </div>
                                                         </td>
                                                         <td class="form-group">
                                                             <div class="form-md-radios">
@@ -198,7 +217,7 @@
                                                                             <span></span>
                                                                             <span class="check"></span>
                                                                             <span class="box"></span>
-                                                                            Наличные деньги 
+                                                                            Наличные деньги
                                                                         </label>
                                                                     </div>
                                                                 </div>
@@ -224,6 +243,24 @@
                                                         <td class="form-group">
                                                             <input type="text" class="form-control" name="sale_for_service" placeholder="Sale for service (%)" value="{{ $sale!=null?$sale->service_sale:'0' }}" readonly>
                                                         </td>
+                                                        <td class="form-group">
+                                                            <select name="courier_name" class="form-control select2 courier_name">
+                                                                <option value="">--select once--</option>
+                                                                @foreach($couriers as $courier)
+                                                                    @if($courier->hasRole('Courier') && $courier->organ_id == $application->from_city_id)
+                                                                        <option value="{{ $courier->id }}">{{ $courier->username }}</option>
+                                                                    @endif
+                                                                @endforeach
+                                                            </select>
+                                                        </td>
+                                                        <td class="form-group" style="padding-left: 40px">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" data-toggle="toggle" name="courier_type" data-on="Заказ" data-off="Работник" class="form-control courier_type" data-form="post">
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="form-group"></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="form-group">
@@ -244,7 +281,24 @@
                                                         <td class="form-group">
                                                             <input type="text" class="form-control" name="sale_for_to_courier" placeholder="Sale for delivery (%)" value="{{ $sale!=null?$sale->to_courier_sale:'0' }}" readonly>
                                                         </td>
-                                                        <td>
+                                                        <td class="form-group">
+                                                            <select name="to_courier_name" class="form-control select2 to_courier_name" {{ $application->cost_to_courier==null?'disabled':'' }}>
+                                                                <option value="">--select once--</option>
+                                                                @foreach($couriers as $courier)
+                                                                    @if($courier->hasRole('Courier') && $courier->organ_id == $application->to_city_id)
+                                                                        <option value="{{ $courier->id }}">{{ $courier->username }}</option>
+                                                                    @endif
+                                                                @endforeach
+                                                            </select>
+                                                        </td>
+                                                        <td class="form-group" style="padding-left: 40px">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" data-toggle="toggle" name="to_courier_type" data-on="Заказ" data-off="Работник" class="form-control courier_type" data-form="to">
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="form-group">
                                                             <div class="form-md-radios">
                                                                 <div class="md-radio-inline">
                                                                     <div class="md-radio">
@@ -292,6 +346,14 @@
                                         </div>
                                     </div>
                                 </div>
+                                <hr>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4 from-courier-container"></div>
+                                        <div class="col-md-4 courier-container"></div>
+                                        <div class="col-md-4 to-courier-container"></div>
+                                    </div>
+                                </div>
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-6 col-6 text-left">
@@ -322,6 +384,7 @@
             // QuickSidebar.init(); // init quick sidebar
             // Demo.init(); // init demo features
             // FormWizard.init();
+            $('.select2').select2();
         })
     </script>
 @endsection

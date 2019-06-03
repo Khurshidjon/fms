@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Region;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -41,9 +42,11 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
+        $organs = Region::all();
         $permissions = Permission::all();
         return view('backend.Users.register', [
             'roles' => $roles,
+            'organs' => $organs,
             'permissions' => $permissions
         ]);
     }
