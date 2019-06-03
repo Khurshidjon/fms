@@ -46,7 +46,7 @@
         <div class="container-fluid" style="margin-bottom: 35px">
             <div class="row">
                 <div class="col-md-3">
-                    <a href="{{ route('contracts.create') }}" class="btn blue">Добавить новая контракт <i class="fa fa-plus"></i></a>  
+                    <a href="{{ route('contracts.create') }}" class="btn blue">Добавить новый контракт <i class="fa fa-plus"></i></a>
                 </div>
                 <div class="col-md-6"></div>
                 <div class="col-md-3">
