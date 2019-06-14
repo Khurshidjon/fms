@@ -73,7 +73,7 @@
                         </div>
                         <div class="tools hidden-xs">
                             <div class="form-actions">
-                                <a href="{{ route('applications.index') }}" class="btn blue">Вернуться к списку <i class="fa fa-list"></i> </a>
+                                <a href="{{ route('applications.index') }}" class="btn blue">@lang('pages.back_to_list') <i class="fa fa-list"></i> </a>
                             </div>
                         </div>
                     </div>
@@ -130,13 +130,13 @@
                                                         <div class="col-md-6">
                                                           <div class="form-group">
                                                               <label for="from_city" class="control-label col-md-4">
-                                                                  <small>From city</small>
+                                                                  <small>@lang('pages.from_city')</small>
                                                                   <span class="required">*</span>
                                                               </label>
                                                               <div class="col-md-8">
                                                                 <div class="@error('from_city') is-invalid @enderror">
                                                                     <select name="from_city" id="from_city" class="form-control select2" data-city="{{ route('admin.change-city') }}">
-                                                                        <option selected>--select once--</option>
+                                                                        <option selected>--@lang('pages.select_one')--</option>
                                                                         @foreach($cities as $city)
                                                                             <option value="{{ $city->id }}" @if($application!=null){{ $application->from_city_id==$city->id?'selected':'' }} @endif>{{ $city->regions }}</option>
                                                                         @endforeach
@@ -153,14 +153,14 @@
                                                         <div class="col-md-6">
                                                           <div class="form-group">
                                                               <label for="from_district" class="control-label col-md-4">
-                                                                  <small>From district
+                                                                  <small>@lang('pages.from_district')
                                                                       <span class="required">*</span>
                                                                   </small>
                                                               </label>
                                                               <div class="col-md-8">
                                                                 <div class="@error('from_district') is-invalid @enderror">
                                                                     <select name="from_district" id="from_district" class="form-control select2" disabled>
-                                                                        <option selected>--select once--</option>
+                                                                        <option selected>--@lang('pages.select_one')--</option>
                                                                     </select>
                                                                 </div>
                                                                 @error('from_district')
@@ -177,7 +177,7 @@
                                                             <div class="form-group">
                                                                 <label class="control-label col-md-4">
                                                                     <small>
-                                                                        Sender F.I.O.
+                                                                        @lang('pages.sender_fio')
                                                                         <span class="required">*</span>
                                                                     </small>
                                                                 </label>
@@ -195,7 +195,7 @@
                                                             <div class="form-group">
                                                                 <label class="control-label col-md-4">
                                                                     <small>
-                                                                        Sender phone
+                                                                        @lang('pages.sender_phone')
                                                                         <span class="required">*</span>
                                                                     </small>
                                                                 </label>
@@ -220,7 +220,7 @@
                                                             <div class="form-group">
                                                                 <label class="control-label col-md-2">
                                                                     <small>
-                                                                        Отправитель
+                                                                        @lang('pages.sender_org_name')
                                                                         <span class="text-success">*</span>
                                                                     </small>
                                                                 </label>
@@ -240,7 +240,7 @@
                                                             <div class="form-group">
                                                                 <label class="control-label col-md-2">
                                                                     <small>
-                                                                        Sender address.
+                                                                        @lang('pages.sender_address')
                                                                         <span class="required">*</span>
                                                                     </small>
                                                                 </label>
@@ -260,7 +260,7 @@
                                                             <div class="form-group">
                                                                 <label class="control-label col-md-2">
                                                                     <small>
-                                                                        From date
+                                                                        @lang('pages.from_date')
                                                                         <span class="required">*</span>
                                                                     </small>
                                                                 </label>
@@ -281,14 +281,14 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="to_city" class="control-label col-md-4">
-                                                                    <small>To city
+                                                                    <small>@lang('pages.to_city')
                                                                         <span class="required">*</span>
                                                                     </small>
                                                                 </label>
                                                                 <div class="col-md-8">
                                                                     <div class="@error('to_city') is-invalid @enderror">
                                                                         <select name="to_city" id="to_city" class="form-control select2" data-city="{{ route('admin.change-city') }}">
-                                                                            <option selected>--select once--</option>
+                                                                            <option selected>--@lang('pages.select_one')--</option>
                                                                             @foreach($cities as $city)
                                                                                 <option value="{{ $city->id }}" @if($application!=null){{ $application->to_city_id==$city->id?'selected':'' }} @endif>{{ $city->regions }}</option>
                                                                             @endforeach
@@ -305,14 +305,14 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="to_district" class="control-label col-md-4">
-                                                                    <small>To district
+                                                                    <small>@lang('pages.to_district')
                                                                         <span class="required">*</span>
                                                                     </small>
                                                                 </label>
                                                                 <div class="col-md-8">
                                                                     <div class="@error('to_district') is-invalid @enderror">
                                                                         <select name="to_district" id="to_district" class="form-control select2" disabled>
-                                                                            <option selected>--select once--</option>
+                                                                            <option selected>--@lang('pages.select_one')--</option>
                                                                         </select>
                                                                     </div>
                                                                     @error('to_district')
@@ -329,7 +329,7 @@
                                                             <div class="form-group">
                                                                 <label class="control-label col-md-4">
                                                                     <small>
-                                                                        Receiver F.I.O
+                                                                        @lang('pages.receiver_fio')
                                                                         <span class="text-danger">*</span>
                                                                     </small>
                                                                 </label>
@@ -347,7 +347,7 @@
                                                             <div class="form-group">
                                                                 <label class="control-label col-md-4">
                                                                     <small>
-                                                                        Receiver phone
+                                                                        @lang('pages.receiver_phone')
                                                                         <span class="required">*</span>
                                                                     </small>
                                                                 </label>
@@ -372,7 +372,7 @@
                                                             <div class="form-group">
                                                                 <label class="control-label col-md-2">
                                                                     <small>
-                                                                        Получатель
+                                                                        @lang('pages.receiver_org_name')
                                                                         <span class="text-success">*</span>
                                                                     </small>
                                                                 </label>
@@ -392,7 +392,7 @@
                                                             <div class="form-group">
                                                                 <label class="control-label col-md-2">
                                                                     <small>
-                                                                        Receiver address
+                                                                        @lang('pages.receiver_address')
                                                                         <span class="text-danger">*</span>
                                                                     </small>
                                                                 </label>
@@ -418,7 +418,7 @@
                                                                                 <span></span>
                                                                                 <span class="check"></span>
                                                                                 <span class="box"></span>
-                                                                                With courier from address </label>
+                                                                                @lang('pages.with_courier') </label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -434,7 +434,7 @@
                                                                                 <span></span>
                                                                                 <span class="check"></span>
                                                                                 <span class="box"></span>
-                                                                                With courier to address </label>
+                                                                                @lang('pages.with_delivery') </label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -450,7 +450,7 @@
                                                 <div class="col-md-2 post-inform-content">
                                                     <div class="form-gorup">
                                                         <label for="pieces" class="control-label" style="margin-bottom: 13px">
-                                                                Pieces
+                                                                @lang('pages.pieces')
                                                                 <span class="required">*</span>
                                                         </label>
                                                         <div class="input-group">
@@ -469,7 +469,7 @@
                                                 <div class="col-md-2 post-inform-content">
                                                     <div class="form-gorup">
                                                         <label for="weight" class="control-label" style="margin-bottom: 13px">
-                                                                Weight
+                                                                @lang('pages.weight')
                                                                 <span class="required">*</span>
                                                         </label>
                                                         <div class="input-group">
@@ -488,7 +488,7 @@
                                                 <div class="col-md-5 post-inform-content">
                                                     <div class="form-gorup">
                                                         <label for="volume" class="control-label" style="margin-bottom: 13px">
-                                                                Volume
+                                                                @lang('pages.volume')
                                                                 <span class="text-success">*</span>
                                                         </label>
                                                         <div class="row">
@@ -522,7 +522,7 @@
                                                 <div class="col-md-3 post-inform-content">
                                                     <div class="form-md-radios">
                                                         <label for="category_product" class="control-label" style="margin-bottom:9px">
-                                                                Product category
+                                                                @lang('pages.product_category')
                                                                 <span class="required">*</span>
                                                         </label>
                                                         <div class="md-radio-inline">
@@ -560,7 +560,7 @@
                                                     <div class="form-group">
                                                         <label class="control-label" style="margin-bottom: 2px;">
                                                             <small>
-                                                                Contract nomer
+                                                                @lang('pages.contract_number')
                                                                 <span class="text-success">*</span>
                                                             </small>
                                                         </label>
@@ -570,7 +570,7 @@
                                                 <div class="col-md-8 text-center post-inform-content">
                                                     <div class="form-md-radios">
                                                         <label for="" class="control-label" style="margin-bottom: 13px">
-                                                            Типы оплаты
+                                                            @lang('pages.type_pay_for_service')
                                                             <span class="required">*</span>
                                                         </label>
                                                         <div class="md-radio-inline">
@@ -622,12 +622,12 @@
                                 <div class="row">
                                     <div class="col-md-6 text-left">
                                         <a href="{{ route('admin.index') }}" class="btn blue">
-                                            <i class="m-icon-swapleft m-icon-white"></i> Back to home
+                                            <i class="m-icon-swapleft m-icon-white"></i> @lang('pages.back_to_home')
                                         </a>
                                     </div>
                                     <div class="col-md-6 text-right">
                                         <button type="submit" class="btn blue">
-                                            Continue <i class="m-icon-swapright m-icon-white"></i>
+                                            @lang('pages.continue') <i class="m-icon-swapright m-icon-white"></i>
                                         </button>
                                     </div>
                                 </div>

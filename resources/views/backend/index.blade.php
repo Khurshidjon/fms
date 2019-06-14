@@ -46,43 +46,43 @@
     <!-- END PAGE HEADER-->
     <!-- BEGIN DASHBOARD STATS -->
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="dashboard-stat blue-madison">
                 <div class="visual">
                     <i class="fa fa-comments"></i>
                 </div>
                 <div class="details">
                     <div class="number counter">
-                        1349
+                        {{ $applications_count }}
                     </div>
                     <div class="desc">
-                        New Feedbacks
+                        Заявки
                     </div>
                 </div>
-                <a class="more" href="javascript:;">
+                <a class="more" href="{{ route('applications.index')}}">
                     View more <i class="m-icon-swapright m-icon-white"></i>
                 </a>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="dashboard-stat red-intense">
                 <div class="visual">
                     <i class="fa fa-bar-chart-o"></i>
                 </div>
                 <div class="details">
                     <div class="number">
-                        <span class="counter">12.4</span> M$
+                        <span class="counter">{{ $contract_count }}</span>
                     </div>
                     <div class="desc">
-                        Total Profit
+                        Контракты
                     </div>
                 </div>
-                <a class="more" href="javascript:;">
+                <a class="more" href="{{ route('contracts.index') }}">
                     View more <i class="m-icon-swapright m-icon-white"></i>
                 </a>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        {{--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="dashboard-stat green-haze">
                 <div class="visual">
                     <i class="fa fa-shopping-cart"></i>
@@ -117,7 +117,7 @@
                     View more <i class="m-icon-swapright m-icon-white"></i>
                 </a>
             </div>
-        </div>
+        </div>--}}
     </div>
     <!-- END DASHBOARD STATS -->
     <div class="clearfix">

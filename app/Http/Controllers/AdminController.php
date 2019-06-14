@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Application;
+use App\Contract;
 use App\Tariff;
 use App\Texnolog;
 use Illuminate\Http\Request;
@@ -12,8 +14,12 @@ class AdminController extends Controller
 {
     public function index()
     {
+        $applications_count = Application::count();
+        $contract_count = Contract::count();
         return view('backend.index', [
-            'is_active' => 'index'
+            'is_active' => 'index',
+            'applications_count' => $applications_count,
+            'contract_count' => $contract_count
         ]);
     }
     public function addUser()
@@ -41,8 +47,8 @@ class AdminController extends Controller
             'labels' => ['January', 'February', 'March', 'April'],
             'datasets' => array([
                 'label' => 'Posts',
-//                'borderColor' => '#002e5b',
-                'backgroundColor' => '#F26202',
+                'borderColor' => '#ff5e00',
+                'backgroundColor' => 'rgba(255, 94, 0, .3)',
                 'data' => [rand(0,1000), rand(0,1000), rand(0,1000), rand(0,1000)]
             ])
         ];

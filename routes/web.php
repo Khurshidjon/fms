@@ -15,6 +15,10 @@ Route::get('/', function (){
     return redirect()->route('admin.index');
 });
 
+Route::get('index/{lang}', function ($lang) {
+    \Session::put('lang', $lang);
+    return redirect()->back();
+})->name('locale');
 
 
 Route::group(['middleware' => 'auth'], function (){
