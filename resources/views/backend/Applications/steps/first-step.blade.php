@@ -4,7 +4,7 @@
         #from_content, #second_content{
             border: 1px solid #002e5b;
             padding: 2em 1em;
-            min-height: 28em;
+            min-height: 22em;
             max-height: 33em;
         }
         .post-inform-content{
@@ -138,7 +138,7 @@
                                                                     <select name="from_city" id="from_city" class="form-control select2" data-city="{{ route('admin.change-city') }}">
                                                                         <option selected>--@lang('pages.select_one')--</option>
                                                                         @foreach($cities as $city)
-                                                                            <option value="{{ $city->id }}" @if($application!=null){{ $application->from_city_id==$city->id?'selected':'' }} @endif>{{ $city->regions }}</option>
+                                                                            <option value="{{ $city->id }}" @if($application!=null){{ $application->from_city_id==$city->id?'selected':'' }} @endif>{{ $city->name_ru }}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
@@ -290,7 +290,7 @@
                                                                         <select name="to_city" id="to_city" class="form-control select2" data-city="{{ route('admin.change-city') }}">
                                                                             <option selected>--@lang('pages.select_one')--</option>
                                                                             @foreach($cities as $city)
-                                                                                <option value="{{ $city->id }}" @if($application!=null){{ $application->to_city_id==$city->id?'selected':'' }} @endif>{{ $city->regions }}</option>
+                                                                                <option value="{{ $city->id }}" @if($application!=null){{ $application->to_city_id==$city->id?'selected':'' }} @endif>{{ $city->name_ru }}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>

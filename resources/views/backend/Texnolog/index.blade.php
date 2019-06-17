@@ -83,10 +83,10 @@
                     @forelse($texnologs as $texnolog)
                         <tr>
                             <td>{{ $i++ }}</td>
-                            <td>{{ $texnolog->from_city->regions }}</td>
-                            <td>{{ $texnolog->from_district->districts }}</td>
-                            <td>{{ $texnolog->to_city->regions }}</td>
-                            <td>{{ $texnolog->to_district->districts }}</td>
+                            <td>{{ $texnolog->from_city->name_ru }}</td>
+                            <td>{{ $texnolog->from_district->name_ru }}</td>
+                            <td>{{ $texnolog->to_city->name_ru }}</td>
+                            <td>{{ $texnolog->to_district->name_ru }}</td>
                             <td>{{ $texnolog->weight }} кг</td>
                             <td>{{ $texnolog->delivery_time }} дня</td>
                             <td>{{ $texnolog->service_price }} сўм</td>

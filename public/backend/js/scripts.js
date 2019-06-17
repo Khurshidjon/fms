@@ -17,7 +17,7 @@ $(function () {
                 $('#from_district').attr('disabled', false);
                 $('#from_district').empty().append("<option selected disabled>-- select once --</option>");
                 $.each(data, function(key, value) {
-                    var option = "<option value='"+ value.id + "'>" + value.districts + "</option>";
+                    var option = "<option value='"+ value.id + "'>" + value.name_ru + "</option>";
                     $('#from_district').append(option);
                 });
                 if(window.console || window.console.firebug) {
@@ -41,7 +41,7 @@ $(function () {
                 $('#to_district').attr('disabled', false);
                 $('#to_district').empty().append("<option selected disabled>-- select once --</option>");
                 $.each(data, function(key, value) {
-                    var option = "<option value='"+ value.id + "'>" + value.districts + "</option>";
+                    var option = "<option value='"+ value.id + "'>" + value.name_ru + "</option>";
                     $('#to_district').append(option);
                 });
                 if(window.console || window.console.firebug) {

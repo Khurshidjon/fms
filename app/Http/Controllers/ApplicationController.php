@@ -6,6 +6,7 @@ use App\Application;
 use App\Courier;
 use App\Sale;
 use App\Texnolog;
+use App\Region;
 use App\ContractPrice;
 use App\User;
 use Illuminate\Http\Request;
@@ -114,7 +115,7 @@ class ApplicationController extends Controller
     {
        $request->session()->remove('application');
        $request->session()->remove('second_step');
-        $cities = DB::table('regions')->select(['id', 'regions'])->get();
+        $cities = Region::all();
         $application = $request->session()->get('application');
 
         return view('backend.Applications.steps.first-step', [
@@ -410,7 +411,7 @@ class ApplicationController extends Controller
     public function firstStepEdit(Request $request, Application $application)
     {
         $this->authorize('update', $application);
-        $cities = DB::table('regions')->select(['id', 'regions'])->get();
+        $cities = DB::table('regions')->select(['id', 'name_ru'])->get();
 
         return view('backend.Applications.edit-steps.first-step', [
             'is_active' => 'steps',
