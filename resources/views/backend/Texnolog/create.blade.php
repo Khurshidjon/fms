@@ -91,7 +91,7 @@
                             <select name="to_city_id" class="form-control select2" id="to_city" data-city="{{ route('admin.change-city') }}">
                                 <option value="">--select once</option>
                                 @foreach($cities as $city)
-                                    <option value="{{ $city->id }}">{{ $city->regions }}</option>
+                                    <option value="{{ $city->id }}">{{ $city->name_ru }}</option>
                                 @endforeach
                             </select>
                         </div>
