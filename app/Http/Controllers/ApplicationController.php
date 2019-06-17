@@ -115,7 +115,8 @@ class ApplicationController extends Controller
     {
        $request->session()->remove('application');
        $request->session()->remove('second_step');
-        $cities = Region::all();
+        $cities = Texnolog::all();
+        // dd($cities);
         $application = $request->session()->get('application');
 
         return view('backend.Applications.steps.first-step', [
