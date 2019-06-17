@@ -54,7 +54,6 @@ class TexnologController extends Controller
             'to_city_id' => 'required',
             'from_district_id' => 'required',
             'to_district_id' => 'required',
-            'weight' => 'required',
             'delivery_time' => 'required',
             'with_courier_from_home_price' => 'required',
             'with_courier_to_home_price' => 'required',
