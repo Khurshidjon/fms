@@ -49,6 +49,17 @@ class TexnologController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'from_city_id' => 'required',
+            'to_city_id' => 'required',
+            'from_district_id' => 'required',
+            'to_district_id' => 'required',
+            'weight' => 'required',
+            'delivery_time' => 'required',
+            'with_courier_from_home_price' => 'required',
+            'with_courier_to_home_price' => 'required',
+            'service_price' => 'required'
+        ]);
         Texnolog::create([
             'from_city_id' => $request->get('from_city_id'),
             'to_city_id' => $request->get('to_city_id'),
