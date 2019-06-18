@@ -38,11 +38,12 @@ $(function () {
                 city_id: city_id
             },
             success: function (data) {
+                console.log(data)
                 $('#from_district_action').attr('disabled', false);
                 $('#from_district_action').empty().append("<option selected disabled>-- select once --</option>");
                 $('#from_district_action').append(data);
                 if(window.console || window.console.firebug) {
-                    console.clear();
+                    // console.clear();
                 }
             },
             async:true,
