@@ -53,12 +53,6 @@ class CreateApplicationsTable extends Migration
 
             $table->timestamps();
         });
-        Schema::table('applications', function (Blueprint $table){
-            $table->foreign('from_city_id')->references('id')->on('regions')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('from_district_id')->references('id')->on('districts')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('to_city_id')->references('id')->on('regions')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('to_district_id')->references('id')->on('districts')->onDelete('cascade')->onUpdate('cascade');
-        });
     }
 
     /**
