@@ -28,6 +28,49 @@ $(function () {
         })
     });
 
+    $('#from_city_action').on('change', function () {
+        var city_id = $('#from_city_action option:selected').val();
+        var url = $(this).attr('data-city');
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                city_id: city_id
+            },
+            success: function (data) {
+                $('#from_district_action').attr('disabled', false);
+                $('#from_district_action').empty().append("<option selected disabled>-- select once --</option>");
+                $('#from_district_action').append(data);
+                if(window.console || window.console.firebug) {
+                    console.clear();
+                }
+            },
+            async:true,
+        })
+    });
+
+    $('#to_city_action').on('change', function () {
+        var city_id = $('#to_city_action option:selected').val();
+        var url = $(this).attr('data-city');
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                city_id: city_id
+            },
+            success: function (data) {
+                $('#to_district_action').attr('disabled', false);
+                $('#to_district_action').empty().append("<option selected disabled>-- select once --</option>");
+                $('#to_district_action').append(data);
+                if(window.console || window.console.firebug) {
+                    console.clear();
+                }
+            },
+            async:true,
+        })
+    });
+
+
     $('#to_city').on('change', function () {
         var city_id = $('#to_city option:selected').val();
         var url = $(this).attr('data-city');

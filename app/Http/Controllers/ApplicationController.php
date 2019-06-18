@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Application;
 use App\Courier;
+use App\District;
 use App\Sale;
 use App\Texnolog;
 use App\Region;
@@ -131,6 +132,26 @@ class ApplicationController extends Controller
         $city_id = $request->city_id;
         $districts = DB::table('districts')->where('region_id', $city_id)->get();
         return response()->json($districts);
+    }
+
+    public function cityChangeAction(Request $request)
+    {
+        $city_id = $request->city_id;
+        $districts = Texnolog::where('from_city_id', $city_id)->get();
+        foreach($districts as $district){
+            $result[] = "<option value='" . $district->from_district->id . "'>".  $district->from_district->name_ru  . "</option";
+        }
+        return response()->json($result);
+    }
+    public function toCityChangeAction(Request $request)
+    {
+        $city_id = $request->city_id;
+        $districts = Texnolog::where('to_city_id', $city_id)->get();
+
+        foreach($districts as $district){
+            $result[] = "<option value='" . $district->to_district->id . "'>".  $district->to_district->name_ru  . "</option";
+        }
+        return response()->json($result);
     }
 
     public function firstStepResult(Request $request)

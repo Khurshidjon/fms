@@ -24,6 +24,7 @@
         }
     </style>
     <div class="page-content">
+        <div id="app"></div>
         <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -135,7 +136,7 @@
                                                               </label>
                                                               <div class="col-md-8">
                                                                 <div class="@error('from_city') is-invalid @enderror">
-                                                                    <select name="from_city" id="from_city" class="form-control select2" data-city="{{ route('admin.change-city') }}">
+                                                                    <select name="from_city" id="from_city_action" class="form-control select2" data-city="{{ route('admin.change-city-action') }}">
                                                                         <option selected>--@lang('pages.select_one')--</option>
                                                                         @foreach($cities->unique('from_city_id') as $city)
                                                                             <option value="{{ $city->from_city->id }}" @if($application!=null){{ $application->from_city_id==$city->from_city->id?'selected':'' }} @endif>{{ $city->from_city->name_ru }}</option>
@@ -159,7 +160,7 @@
                                                               </label>
                                                               <div class="col-md-8">
                                                                 <div class="@error('from_district') is-invalid @enderror">
-                                                                    <select name="from_district" id="from_district" class="form-control select2" disabled>
+                                                                    <select name="from_district" id="from_district_action" class="form-control select2" disabled>
                                                                         <option selected>--@lang('pages.select_one')--</option>
                                                                     </select>
                                                                 </div>
@@ -287,7 +288,7 @@
                                                                 </label>
                                                                 <div class="col-md-8">
                                                                     <div class="@error('to_city') is-invalid @enderror">
-                                                                        <select name="to_city" id="to_city" class="form-control select2" data-city="{{ route('admin.change-city') }}">
+                                                                        <select name="to_city" id="to_city_action" class="form-control select2" data-city="{{ route('admin.change-city-action-to') }}">
                                                                             <option selected>--@lang('pages.select_one')--</option>
                                                                             @foreach($cities->unique('to_city_id') as $city)
                                                                                 <option value="{{ $city->to_city->id }}" @if($application!=null){{ $application->to_city_id==$city->to_city->id?'selected':'' }} @endif>{{ $city->to_city->name_ru }}</option>
@@ -311,7 +312,7 @@
                                                                 </label>
                                                                 <div class="col-md-8">
                                                                     <div class="@error('to_district') is-invalid @enderror">
-                                                                        <select name="to_district" id="to_district" class="form-control select2" disabled>
+                                                                        <select name="to_district" id="to_district_action" class="form-control select2" disabled>
                                                                             <option selected>--@lang('pages.select_one')--</option>
                                                                         </select>
                                                                     </div>
@@ -649,5 +650,6 @@
                 $(this).datepicker('hide');
             });
         });
+
     </script>
 @endsection
