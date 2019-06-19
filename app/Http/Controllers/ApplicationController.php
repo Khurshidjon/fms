@@ -95,7 +95,9 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, Application $application)
     {
-        //
+        $application->status = $request->status;
+        $application->save();
+        return redirect()->back()->with('success', 'Заявка было успешно обновлен');
     }
 
     /**

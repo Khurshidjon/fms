@@ -78,7 +78,7 @@ class UserController extends Controller
 
         $user->assignRole($request->roles);
         $user->givePermissionTo($request->permissions);
-        
+
         return redirect()->route('users.index')->with('success', 'Пользователь был успешно создан');
     }
 

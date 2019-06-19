@@ -178,7 +178,7 @@
                                                             <div class="form-group">
                                                                 <label class="control-label col-md-4">
                                                                     <small>
-                                                                        @lang('pages.sender_fio')
+                                                   minDate                     @lang('pages.sender_fio')
                                                                         <span class="required">*</span>
                                                                     </small>
                                                                 </label>
@@ -649,6 +649,9 @@
             }).on('changeDate', function(e){
                 $(this).datepicker('hide');
             });
+            $('.date').datepicker({
+                minDate: new Date(),
+            })
         });
 
     </script>

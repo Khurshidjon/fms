@@ -70,7 +70,7 @@
                                     <span><i class="fa fa-check-circle text-success"></i></span>
                                 @endif
                             </td>
-                            <td>
+                            <td data-toggle="modal" class="status-application" data-target="#statusModal" data-url="{{ route('applications.update', ['application' => $application]) }}" style="cursor: pointer">
                                 @if($application->status == 1)
                                     <span class="badge badge-warning"><b>На исполнено</b></span>
                                 @elseif($application->status == 2)
@@ -87,7 +87,7 @@
                                     <a href="{{ route('applications.show', ['application' => $application]) }}" class="btn blue">
                                         <i class="fa fa-print"></i>
                                     </a>
-                                    <a href="{{ route('admin.first-step-edit', ['application' => $application]) }}" class="btn blue">
+                                    <a href="{{ route('admin.first-step-edit', ['application' => $application]) }}" class="btn blue" >
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     @role('Admin')
@@ -130,6 +130,33 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="statusModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <form class="application-status-form" action="" method="post">
+                            @csrf
+                            @method('PUT')
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title text-danger"><b>Submit confirm</b></h4>
+                            </div>
+                            <div class="modal-body text-danger text-center">
+                                <label style="margin-right: 20px">
+                                    <input type="radio" name="status" value="1"> На исполнено
+                                </label>
+                                <label style="margin-left: 20px">
+                                    <input type="radio" name="status" value="2"> Исполнено
+                                </label>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрить</button>
+                                <button type="submit" class="btn btn-danger">Отправить</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script>
@@ -146,6 +173,11 @@
                 e.preventDefault();
                 var url = $(this).attr('data-url');
                 $('.application-remove-form').attr('action', url);
+            });
+            $('.status-application').on('click', function (e) {
+                e.preventDefault();
+                var url = $(this).attr('data-url');
+                $('.application-status-form').attr('action', url);
             });
         });
     </script>
