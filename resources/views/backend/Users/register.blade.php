@@ -91,7 +91,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <select style="padding-left: 20px" class="form-control placeholder-no-fix select2" name="organs">
                     <option selected>--select once--</option>
                     @foreach($organs as $organ)
-                        <option value="{{ $organ->id }}">{{ $organ->regions }}</option>
+                        <option value="{{ $organ->id }}">{{ $organ->name_ru }}</option>
                     @endforeach
                 </select>
             </div>
@@ -104,7 +104,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="input-icon @error('roles') is-invalid @enderror">
                 <i class="fa fa-user-secret"></i>
                 <select style="padding-left: 20px" class="form-control placeholder-no-fix select2" name="roles">
-                    <option selected>--select once--</option>
+                    <option selected disabled>--select once--</option>
                     @foreach($roles as $role)
                         <option value="{{ $role->id }}">{{ $role->name }}</option>
                     @endforeach

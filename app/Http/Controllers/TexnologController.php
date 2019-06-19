@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Texnolog;
 use App\Region;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TexnologController extends Controller
 {

@@ -119,7 +119,7 @@
                         @endif
                     @empty
                         <tr class="text-center">
-                            <td colspan="13">No records in here :(</td>
+                            <td colspan="14">No records in here :(</td>
                         </tr>
                     @endforelse
                 </tbody>

@@ -31,7 +31,7 @@ class ApplicationController extends Controller
     {
         $request->session()->remove('application');
         $request->session()->remove('second_step');
-        $applications = Application::latest()->paginate(10);
+        $applications = Application::where('status', '!=', 0)->latest()->paginate(10);
         return view('backend.Applications.index', [
             'applications' => $applications,
             'is_active' => 'steps'
@@ -106,7 +106,9 @@ class ApplicationController extends Controller
      */
     public function destroy(Application $application)
     {
-        //
+        $application->status = 0;
+        $application->save();
+        return redirect()->back()->with('success', 'Заявка было успешно удалено');
     }
 
 
@@ -384,8 +386,8 @@ class ApplicationController extends Controller
                 $courier->from_courier_name = $request->from;
                 $courier->from_courier_phone = $request->from_phone;
             }else{
-                if ($request->get('to_courier_name')){
-                    $from_courier = User::find($request->get('to_courier_name'));
+                if ($request->get('from_courier_name')){
+                    $from_courier = User::find(1*$request->get('from_courier_name'));
                     $courier->from_courier_name = $from_courier->username;
                     $courier->from_courier_phone = $from_courier->phone;
                 }
@@ -393,19 +395,17 @@ class ApplicationController extends Controller
             if($request->courier_type == 'on'){
                 $courier->courier_name = $request->post;
                 $courier->courier_phone = $request->post_phone;
-            }else{
-                if ($request->get('courier_name')){
-                    $post_courier = User::find($request->get('courier_name'));
-                    $courier->courier_name  = $post_courier->username;
-                    $courier->courier_phone = $post_courier->phone;
-                }
+            }elseif ($request->get('courier_name')){
+                $post_courier = User::find(1*$request->get('courier_name'));
+                $courier->courier_name  = $post_courier->username;
+                $courier->courier_phone = $post_courier->phone;
             }
             if($request->to_courier_type == 'on'){
                 $courier->to_courier_name = $request->to;
                 $courier->to_courier_phone = $request->to_phone;
             }else{
                 if ($request->get('to_courier_name')){
-                    $to_courier = User::find($request->get('to_courier_name'));
+                    $to_courier = User::find(1*$request->get('to_courier_name'));
                     $courier->to_courier_name = $to_courier->username;
                     $courier->to_courier_phone = $to_courier->phone;
                 }
@@ -421,6 +421,7 @@ class ApplicationController extends Controller
     {           
         $application = $request->session()->get('application');
         $courier = Courier::where('application_id', $application->id)->first();
+
         return view('backend.Applications.steps.third-step', [
             'is_active' => 'steps',
             'application' => $application,
@@ -433,7 +434,7 @@ class ApplicationController extends Controller
     public function firstStepEdit(Request $request, Application $application)
     {
         $this->authorize('update', $application);
-        $cities = DB::table('regions')->select(['id', 'name_ru'])->get();
+        $cities = Texnolog::all();
 
         return view('backend.Applications.edit-steps.first-step', [
             'is_active' => 'steps',
@@ -655,27 +656,25 @@ class ApplicationController extends Controller
 
         $courier = Courier::where('application_id', $application->id)->first();
 
-//        $courier->application_id = $application->id;
-
+//        dd(1*$request->from_courier_name);
         if($request->from_courier_type == 'on'){
             $courier->from_courier_name = $request->from;
             $courier->from_courier_phone = $request->from_phone;
-        }else{
-            if ($request->get('to_courier_name')){
-                $from_courier = User::find($request->get('to_courier_name'));
-                $courier->from_courier_name = $from_courier->username;
-                $courier->from_courier_phone = $from_courier->phone;
-            }
+        }elseif ($request->get('from_courier_name') != null){
+            $from_courier = User::find(1*$request->from_courier_name);
+            $courier->from_courier_name = $from_courier->username;
+            $courier->from_courier_phone = $from_courier->phone;
         }
+
         if($request->courier_type == 'on'){
             $courier->courier_name = $request->post;
             $courier->courier_phone = $request->post_phone;
-        }else{
-            if ($request->get('courier_name')){
-                $post_courier = User::find($request->get('courier_name'));
-                $courier->courier_name  = $post_courier->username;
-                $courier->courier_phone = $post_courier->phone;
-            }
+        }elseif ($request->get('courier_name')){
+            $post_courier = User::find(1*$request->get('courier_name'));
+
+            $courier->courier_name  = $post_courier->username;
+            $courier->courier_phone = $post_courier->phone;
+
         }
         if($request->to_courier_type == 'on'){
             $courier->to_courier_name = $request->to;

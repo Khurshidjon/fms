@@ -94,15 +94,10 @@
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="external">
-                                    <h3><span class="bold">12 pending</span> notifications</h3>
-                                    <a href="extra_profile.html">view all</a>
-                                </li>
                                 <li>
-                                    <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
+                                    <ul class="dropdown-menu-list scroller" style="height: 160px;" data-handle-color="#637283">
                                         <li>
                                             <a href="{{ route('locale', ['lang' => 'uz']) }}">
-                                                <span class="time">just now</span>
                                                 <span class="details">
                                                     <span class="label label-sm label-icon label-success">
                                                     <i class="fa fa-plus"></i>
@@ -113,7 +108,6 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('locale', ['lang' => 'ru']) }}">
-                                                <span class="time">just now</span>
                                                 <span class="details">
                                                     <span class="label label-sm label-icon label-success">
                                                     <i class="fa fa-plus"></i>
@@ -122,200 +116,20 @@
                                                 </span>
                                             </a>
                                         </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- END NOTIFICATION DROPDOWN -->
-                        <!-- BEGIN INBOX DROPDOWN -->
-                        <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                        <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
-                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <i class="icon-envelope-open"></i>
-                                <span class="badge badge-default">
-                            4 </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="external">
-                                    <h3>You have <span class="bold">7 New</span> Messages</h3>
-                                    <a href="page_inbox.html">view all</a>
-                                </li>
-                                <li>
-                                    <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
                                         <li>
-                                            <a href="inbox.html?a=view">
-                                            <span class="photo">
-                                            <img src="{{ asset('backend/assets/admin/layout3/img/avatar2.jpg') }}" class="img-circle" alt="">
-                                            </span>
-                                                <span class="subject">
-                                            <span class="from">
-                                            Lisa Wong </span>
-                                            <span class="time">Just Now </span>
-                                            </span>
-                                                <span class="message">
-                                            Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="inbox.html?a=view">
-                                            <span class="photo">
-                                            <img src="{{ asset('backend/assets/admin/layout3/img/avatar3.jpg') }}" class="img-circle" alt="">
-                                            </span>
-                                                <span class="subject">
-                                            <span class="from">
-                                            Richard Doe </span>
-                                            <span class="time">16 mins </span>
-                                            </span>
-                                                <span class="message">
-                                            Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="inbox.html?a=view">
-                                            <span class="photo">
-                                            <img src="{{ asset('backend/assets/admin/layout3/img/avatar1.jpg') }}" class="img-circle" alt="">
-                                            </span>
-                                                <span class="subject">
-                                            <span class="from">
-                                            Bob Nilson </span>
-                                            <span class="time">2 hrs </span>
-                                            </span>
-                                                <span class="message">
-                                            Vivamus sed nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="inbox.html?a=view">
-                                            <span class="photo">
-                                            <img src="{{ asset('backend/assets/admin/layout3/img/avatar2.jpg') }}" class="img-circle" alt="">
-                                            </span>
-                                                <span class="subject">
-                                            <span class="from">
-                                            Lisa Wong </span>
-                                            <span class="time">40 mins </span>
-                                            </span>
-                                                <span class="message">
-                                            Vivamus sed auctor 40% nibh congue nibh... </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="inbox.html?a=view">
-                                            <span class="photo">
-                                            <img src="{{ asset('backend/assets/admin/layout3/img/avatar3.jpg') }}" class="img-circle" alt="">
-                                            </span>
-                                                <span class="subject">
-                                            <span class="from">
-                                            Richard Doe </span>
-                                            <span class="time">46 mins </span>
-                                            </span>
-                                                <span class="message">
-                                            Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+                                            <a href="{{ route('locale', ['lang' => 'en']) }}">
+                                                <span class="details">
+                                                    <span class="label label-sm label-icon label-success">
+                                                    <i class="fa fa-plus"></i>
+                                                    </span>
+                                                    Eng
+                                                </span>
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
-                        <!-- END INBOX DROPDOWN -->
-                        <!-- BEGIN TODO DROPDOWN -->
-                        <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                        <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
-                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <i class="icon-calendar"></i>
-                                <span class="badge badge-default">
-                            3 </span>
-                            </a>
-                            <ul class="dropdown-menu extended tasks">
-                                <li class="external">
-                                    <h3>You have <span class="bold">12 pending</span> tasks</h3>
-                                    <a href="page_todo.html">view all</a>
-                                </li>
-                                <li>
-                                    <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
-                                        <li>
-                                            <a href="javascript:;">
-                                            <span class="task">
-                                            <span class="desc">New release v1.2 </span>
-                                            <span class="percent">30%</span>
-                                            </span>
-                                                <span class="progress">
-                                            <span style="width: 40%;" class="progress-bar progress-bar-success" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"><span class="sr-only">40% Complete</span></span>
-                                            </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                            <span class="task">
-                                            <span class="desc">Application deployment</span>
-                                            <span class="percent">65%</span>
-                                            </span>
-                                                <span class="progress">
-                                            <span style="width: 65%;" class="progress-bar progress-bar-danger" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><span class="sr-only">65% Complete</span></span>
-                                            </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                            <span class="task">
-                                            <span class="desc">Mobile app release</span>
-                                            <span class="percent">98%</span>
-                                            </span>
-                                                <span class="progress">
-                                            <span style="width: 98%;" class="progress-bar progress-bar-success" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"><span class="sr-only">98% Complete</span></span>
-                                            </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                            <span class="task">
-                                            <span class="desc">Database migration</span>
-                                            <span class="percent">10%</span>
-                                            </span>
-                                                <span class="progress">
-                                            <span style="width: 10%;" class="progress-bar progress-bar-warning" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><span class="sr-only">10% Complete</span></span>
-                                            </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                            <span class="task">
-                                            <span class="desc">Web server upgrade</span>
-                                            <span class="percent">58%</span>
-                                            </span>
-                                                <span class="progress">
-                                            <span style="width: 58%;" class="progress-bar progress-bar-info" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100"><span class="sr-only">58% Complete</span></span>
-                                            </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                            <span class="task">
-                                            <span class="desc">Mobile development</span>
-                                            <span class="percent">85%</span>
-                                            </span>
-                                                <span class="progress">
-                                            <span style="width: 85%;" class="progress-bar progress-bar-success" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="sr-only">85% Complete</span></span>
-                                            </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                            <span class="task">
-                                            <span class="desc">New UI release</span>
-                                            <span class="percent">38%</span>
-                                            </span>
-                                                <span class="progress progress-striped">
-                                            <span style="width: 38%;" class="progress-bar progress-bar-important" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"><span class="sr-only">38% Complete</span></span>
-                                            </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- END TODO DROPDOWN -->
-                        <!-- BEGIN USER LOGIN DROPDOWN -->
-                        <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                         @guest
                             <li class="dropdown dropdown-quick-sidebar-toggler">
                                 <a href="/login" class="dropdown-toggle">
@@ -386,29 +200,15 @@
         <div class="page-container">
             <!-- BEGIN SIDEBAR -->
             <div class="page-sidebar-wrapper">
-                <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-                <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
                 <div class="page-sidebar navbar-collapse collapse">
-                    <!-- BEGIN SIDEBAR MENU -->
-                    <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
-                    <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
-                    <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
-                    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-                    <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
-                    <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
                     <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                        <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
                         <li class="sidebar-toggler-wrapper">
                             <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
                             <div class="sidebar-toggler">
                             </div>
                             <!-- END SIDEBAR TOGGLER BUTTON -->
                         </li>
-                        <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
                         <li class="sidebar-search-wrapper">
-                            <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-                            <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
-                            <!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
                             <form class="sidebar-search " action="extra_search.html" method="POST">
                                 <a href="javascript:;" class="remove">
                                     <i class="icon-close"></i>
@@ -431,6 +231,7 @@
                                 @endif
                             </a>
                         </li>
+                        @can(['show tariff'])
                         <li class="{{ $is_active=='texnolog'?'active':'' }}">
                             <a href="{{ route('texnologs.index')}}">
                                 <i class="fa fa-cogs"></i>
@@ -440,6 +241,8 @@
                                 @endif
                             </a>
                         </li>
+                        @endcan
+                        @can(['application create'])
                         <li class="{{ $is_active=='steps'?'active':'' }}">
                             <a href="{{ route('applications.index')}}">
                                 <i class="icon-envelope-open"></i>
@@ -449,6 +252,7 @@
                                 @endif
                             </a>
                         </li>
+                        @endcan
                         <li class="{{ $is_active=='contracts'?'active':'' }}">
                             <a href="{{ route('contracts.index')}}">
                                 <i class="fa fa-file-text"></i>

@@ -5,13 +5,21 @@
 @endphp
     <div class="page-content">
     <div class="container-fluid" style="margin-bottom: 35px">
+        <div id="app"></div>
         <div class="row">
             <div class="col-md-3">
                 @can('application create')
                 <a href="{{ route('admin.first-step') }}" class="btn blue">Добавить новая заявка <i class="fa fa-plus"></i></a>  
                 @endcan
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success alert-block">
+                        <button style="margin-top: 5px !important;" type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
+            </div>
             <div class="col-md-3">
                 <input class="form-control float-right" id="myInput" type="text" placeholder="Search..">
             </div>
@@ -38,8 +46,8 @@
                         @if(Auth::user()->can('view',  $application) || Auth::user()->hasRole('Admin'))
                         <tr>
                             <td>{{ $i++ }}</td>
-                            <td>{{ $application->from_city->regions }}</td>
-                            <td>{{ $application->to_city->regions }}</td>
+                            <td>{{ $application->from_city->name_ru }}</td>
+                            <td>{{ $application->to_city->name_ru }}</td>
                             <td>
                                 {{ $application->from_fio }}
                                 <span class="badge badge-dark"><b>{{ $application->from_phone }}</b></span>
@@ -83,9 +91,9 @@
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     @role('Admin')
-                                        <button type="button" class="btn blue" data-toggle="modal" data-target="#myModal">
+                                        <a class="btn blue remove-application" data-toggle="modal" data-target="#myModal" data-url="{{ route('applications.destroy', ['application' => $application]) }}">
                                             <i class="fa fa-trash"></i>
-                                        </button>
+                                        </a>
                                     @endrole
                                 </div>
                             </td>
@@ -93,7 +101,7 @@
                         @endif
                     @empty
                         <tr>
-                            <td class="text-center" colspan="9">No records in here :(</td>
+                            <td class="text-center" colspan="10">No records in here :(</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -112,9 +120,11 @@
                             <b>Some text in the modal.</b>
                         </div>
                         <div class="modal-footer">
-                            <form action="">
+                            <form class="application-remove-form" action="" method="post">
+                                @csrf
+                                @method('delete')
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </div>
                     </div>
@@ -131,6 +141,11 @@
                     $("#myTable tr").filter(function() {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
+            });
+            $('.remove-application').on('click', function (e) {
+                e.preventDefault();
+                var url = $(this).attr('data-url');
+                $('.application-remove-form').attr('action', url);
             });
         });
     </script>

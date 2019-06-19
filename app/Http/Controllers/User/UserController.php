@@ -61,7 +61,7 @@ class UserController extends Controller
     {
         $request->validate([
             'organs' => ['required', 'numeric'],
-            'roles' => ['required', 'numeric'],
+            'roles' => ['required'],
             'username' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -73,11 +73,12 @@ class UserController extends Controller
         $user->username = $request->username;
         $user->email = $request->email;
         $user->phone = $request->phone;
-        $user->password = Hash::make($request->phone);
+        $user->password = Hash::make($request->password);
         $user->save();
 
         $user->assignRole($request->roles);
         $user->givePermissionTo($request->permissions);
+        
         return redirect()->route('users.index')->with('success', 'Пользователь был успешно создан');
     }
 

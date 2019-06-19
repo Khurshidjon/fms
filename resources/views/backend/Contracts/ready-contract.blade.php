@@ -295,9 +295,9 @@
                         @foreach($contract_prices as $contract_price)
                             <tr>
                                 <td>
-                                    {{ $contract_price->from_city->regions .' - '. $contract_price->to_city->regions }}
+                                    {{ $contract_price->from_city->name_ru .' - '. $contract_price->to_city->name_ru }}
                                         <br>
-                                    {{ $contract_price->to_city->regions .' - '. $contract_price->from_city->regions  }}
+                                    {{ $contract_price->to_city->name_ru .' - '. $contract_price->from_city->name_ru  }}
                                 </td>
                                 <td>До 1кг</td>
                                 <td>{{ $contract_price->service_price }} сум</td>

@@ -14,10 +14,10 @@
         }
     </style>
     @php 
-        $from_city = \DB::table('regions')->where('id', $application->from_city_id)->first();
-        $to_city = \DB::table('regions')->where('id', $application->to_city_id)->first();
-        $from_district = \DB::table('districts')->where('id', $application->from_district_id)->first();
-        $to_district = \DB::table('districts')->where('id', $application->to_district_id)->first();
+        $from_city = \App\Region::where('id', $application->from_city_id)->first();
+        $to_city = \App\Region::where('id', $application->to_city_id)->first();
+        $from_district = \App\District::where('id', $application->from_district_id)->first();
+        $to_district = \App\District::where('id', $application->to_district_id)->first();
     @endphp
     <div class="page-content">
         <div class="row">
@@ -114,7 +114,7 @@
                                                 <td style="border:1px solid black; text-align:center; color:red"><i>{{ $application->volume*6000 }} </i></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3" rowspan="2" style="border:1px solid black;padding-left:5px;"><b>Город:</b> <i>{{ $from_city->regions }}</i></td>
+                                                <td colspan="3" rowspan="2" style="border:1px solid black;padding-left:5px;"><b>Город:</b> <i>{{ $from_city->name_ru }}</i></td>
                                                 <td colspan="4" style="border:1px solid black;padding-left:5px;"><b>Контракт №:</b> <i></i></td>
                                             </tr>
                                             <tr>
@@ -171,7 +171,7 @@
                                                 <td colspan="3" style="border:1px solid black;padding-left:5px;"><b>Организация:</b> <i>{{ $application->to_organ_name }}</i> </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3"  style="border:1px solid black;padding-left:5px;"><b>Город:</b> <i>{{ $to_city->regions }}</i></td>
+                                                <td colspan="3"  style="border:1px solid black;padding-left:5px;"><b>Город:</b> <i>{{ $to_city->name_ru }}</i></td>
                                                 <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Тел:</b><i> {{ $courier!=null?$courier->courier_phone:'' }}</i></td>
                                             </tr>
                                             <tr>
@@ -215,7 +215,7 @@
                                                 <td style="border:1px solid black; text-align:center; color:red"><i>{{ $application->volume*6000 }} </i></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3" rowspan="2" style="border:1px solid black;padding-left:5px;"><b>Город:</b> <i>{{ $from_city->regions }}</i></td>
+                                                <td colspan="3" rowspan="2" style="border:1px solid black;padding-left:5px;"><b>Город:</b> <i>{{ $from_city->name_ru }}</i></td>
                                                 <td colspan="4" style="border:1px solid black;padding-left:5px;"><b>Контракт №:</b> <i></i></td>
                                             </tr>
                                             <tr>
@@ -272,7 +272,7 @@
                                                 <td colspan="3" style="border:1px solid black;padding-left:5px;"><b>Организация:</b> <i>{{ $application->to_organ_name }}</i> </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3"  style="border:1px solid black;padding-left:5px;"><b>Город:</b> <i>{{ $to_city->regions }}</i></td>
+                                                <td colspan="3"  style="border:1px solid black;padding-left:5px;"><b>Город:</b> <i>{{ $to_city->name_ru }}</i></td>
                                                 <td colspan="4" rowspan="2" style="border:1px solid black; padding-left:5px;"><b>Тел:</b><i>{{ $courier!=null?$courier->courier_phone:'' }}</i></td>
                                             </tr>
                                             <tr>

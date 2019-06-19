@@ -14,6 +14,7 @@
         }
     </style>
     <div class="page-content">
+        <div id="app"></div>
         <!-- BEGIN PAGE HEADER-->
         <h3 class="page-title">
             Form Wizard <small>form wizard sample</small>
@@ -169,8 +170,8 @@
                                                         <select name="from_courier_name" class="form-control select2 from_courier_name" {{ $application->cost_from_courier==null?'disabled':'' }}>
                                                             <option value="">--select once--</option>
                                                             @foreach($couriers as $courier)
-                                                                @if($courier->hasRole('Courier') && $courier->organ_id == $application->from_city_id)
-                                                                    <option value="{{ $courier->id }}">{{ $courier->username }}</option>
+                                                                @if($courier->hasRole('Courier') AND $courier->organ_id == $application->from_city_id)
+                                                                    <option value="{{ $courier->id }}" {{ $courier->organ_id==$application->from_city_id?'selected':'' }}>{{ $courier->username }}</option>
                                                                 @endif
                                                             @endforeach
                                                         </select>
@@ -249,7 +250,7 @@
                                                             <option value="">--select once--</option>
                                                             @foreach($couriers as $courier)
                                                                 @if($courier->hasRole('Courier') && $courier->organ_id == $application->from_city_id)
-                                                                    <option value="{{ $courier->id }}">{{ $courier->username }}</option>
+                                                                    <option value="{{ $courier->id }}" {{ $courier->organ_id==$application->from_city_id?'selected':'' }}>{{ $courier->username }}</option>
                                                                 @endif
                                                             @endforeach
                                                         </select>
@@ -287,7 +288,7 @@
                                                             <option value="">--select once--</option>
                                                             @foreach($couriers as $courier)
                                                                 @if($courier->hasRole('Courier') && $courier->organ_id == $application->to_city_id)
-                                                                    <option value="{{ $courier->id }}">{{ $courier->username }}</option>
+                                                                    <option value="{{ $courier->id }}" {{ $courier->organ_id==$application->from_city_id?'selected':'' }}>{{ $courier->username }}</option>
                                                                 @endif
                                                             @endforeach
                                                         </select>
@@ -295,7 +296,7 @@
                                                     <td class="form-group" style="padding-left: 40px">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" data-toggle="toggle" name="to_courier_type" data-on="Заказ" data-off="Работник" class="form-control courier_type" data-form="to">
+                                                                <input type="checkbox" data-toggle="toggle" name="to_courier_type" data-on="Заказ"  data-off="Работник" class="form-control courier_type" data-form="to">
                                                             </label>
                                                         </div>
                                                     </td>

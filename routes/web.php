@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::post('/overhead/first-step/result', 'ApplicationController@firstStepResult')->name('admin.first-step-result');
     Route::post('/overhead/first-step/change-city', 'ApplicationController@cityChange')->name('admin.change-city');
-    Route::post('/overhead/first-step/change-city', 'ApplicationController@cityChangeAction')->name('admin.change-city-action');
+    Route::post('/overhead/first-step/change-city-action', 'ApplicationController@cityChangeAction')->name('admin.change-city-action');
     Route::post('/overhead/first-step/to-change-city', 'ApplicationController@toCityChangeAction')->name('admin.change-city-action-to');
     Route::get('/overhead/second-step', 'ApplicationController@secondStep')->name('admin.second-step');
     Route::post('/overhead/second-step/result', 'ApplicationController@secondStepResult')->name('admin.second-step-result');
@@ -75,7 +75,7 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/change-courier', 'AdminController@changeCourier')->name('change-courier');
 
     Route::resource('/texnologs', 'TexnologController');
-    Route::resource('/applications', 'ApplicationController');
+    Route::resource('/applications', 'ApplicationController')->middleware("permission:application create");
     Route::resource('/contracts', 'ContractController');
 });
 Auth::routes();

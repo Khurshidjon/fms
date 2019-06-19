@@ -33,6 +33,7 @@
                     <a href="#">Form Wizard</a>
                 </li>
             </ul>
+            <div id="app"></div>
             <div class="page-toolbar">
                 <div class="btn-group pull-right">
                     <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">

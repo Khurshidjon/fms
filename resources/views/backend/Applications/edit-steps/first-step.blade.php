@@ -24,6 +24,7 @@
         }
     </style>
     <div class="page-content">
+        <div id="app"></div>
         <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -160,8 +161,8 @@
                                                               </label>
                                                               <div class="col-md-8">
                                                                 <div class="@error('from_district') is-invalid @enderror">
-                                                                    <select name="from_district" id="from_district" class="form-control select2">
-                                                                        <option selected value="{{ $application->from_district_id }}">{{ $application->from_district->districts }}</option>
+                                                                    <select name="from_district" id="from_district_action" class="form-control select2">
+                                                                        <option selected value="{{ $application->from_district_id }}">{{ $application->from_district->name_ru }}</option>
                                                                     </select>
                                                                 </div>
                                                                 @error('from_district')
@@ -312,8 +313,8 @@
                                                                 </label>
                                                                 <div class="col-md-8">
                                                                     <div class="@error('to_district') is-invalid @enderror">
-                                                                        <select name="to_district" id="to_district" class="form-control select2">
-                                                                            <option selected value="{{ $application->to_district_id }}">{{ $application->to_district->districts }}</option>
+                                                                        <select name="to_district" id="to_district_action"  class="form-control select2">
+                                                                            <option selected value="{{ $application->to_district_id }}">{{ $application->to_district->name_ru }}</option>
                                                                         </select>
                                                                     </div>
                                                                     @error('to_district')

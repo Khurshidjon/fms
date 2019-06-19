@@ -6,7 +6,7 @@
         </div>
         <div class="form-group">
             <label for="phone">Phone</label>
-            <input type="text" name="{{ $dataName }}_phone" class="form-control phone" value="{{ old('phone') }}" placeholder="+998 XX XXX XX XX">
+            <input type="text" name="{{ $dataName }}_phone" class="form-control phone" placeholder="+998 XX XXX XX XX">
         </div>
     </div>
 </div>

@@ -149,16 +149,16 @@
                                             {{ $i++ }}
                                         </td>
                                         <td>
-                                            {{ $price->from_city->regions }}
+                                            {{ $price->from_city->name_ru }}
                                         </td>
                                         <td>
-                                            {{ $price->from_district->districts }}
+                                            {{ $price->from_district->name_ru}}
                                         </td>
                                         <td>
-                                            {{ $price->to_city->regions }}
+                                            {{ $price->to_city->name_ru }}
                                         </td>
                                         <td>
-                                            {{ $price->to_district->districts }}
+                                            {{ $price->to_district->name_ru }}
                                         </td>
                                         <td>
                                             {{ $price->weight }} кг

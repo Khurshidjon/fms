@@ -19,7 +19,7 @@ class ContractController extends Controller
     public function index()
     {
         $contracts = Contract::latest()->paginate(10);
-
+//        if (\Auth::user()->cannot(''))
         return view('backend.Contracts.index', [
             'contracts' => $contracts,
             'is_active' => 'contracts'

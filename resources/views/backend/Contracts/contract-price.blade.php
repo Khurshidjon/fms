@@ -152,19 +152,19 @@
                                         <input type="hidden" value="{{ $contractSession!=null?$contractSession['id']:'' }}" name="contract_id[]">
                                     </td>
                                     <td>
-                                        {{ $price->from_city->regions }}
+                                        {{ $price->from_city->name_ru }}
                                         <input type="hidden" value="{{ $price->from_city->id }}" name="from_city_id[]">
                                     </td>
                                     <td>
-                                        {{ $price->from_district->districts }}
+                                        {{ $price->from_district->name_ru }}
                                         <input type="hidden" value="{{ $price->from_district->id }}" name="from_district_id[]">
                                     </td>
                                     <td>
-                                        {{ $price->to_city->regions }}
+                                        {{ $price->to_city->name_ru }}
                                         <input type="hidden" value="{{ $price->to_city->id }}" name="to_city_id[]">
                                     </td>
                                     <td>
-                                        {{ $price->to_district->districts }}
+                                        {{ $price->to_district->name_ru }}
                                         <input type="hidden" value="{{ $price->to_district->id }}" name="to_district_id[]">
                                     </td>
                                     <td>
