@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf95fef2-40a4-43c4-a465-3052632d17f6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/steps/first-step.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/steps/first-step.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,8 +38,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="72" column="145" selection-start-line="72" selection-start-column="145" selection-end-line="72" selection-end-column="145" />
+            <state relative-caret-position="371">
+              <caret line="145" column="87" selection-start-line="145" selection-start-column="87" selection-end-line="145" selection-end-column="87" />
               <folding>
                 <element signature="e#3544#3567#0#HTML" expanded="true" />
                 <element signature="e#7688#7714#0#HTML" expanded="true" />
@@ -414,12 +410,12 @@
       <workItem from="1560471611420" duration="9217000" />
       <workItem from="1560855716886" duration="17208000" />
       <workItem from="1560919320761" duration="4988000" />
-      <workItem from="1560926033353" duration="1019000" />
+      <workItem from="1560926033353" duration="1478000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="357552000" />
+    <option name="totallyTimeSpent" value="358011000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-37" width="1920" height="1117" extended-state="6" />
@@ -798,8 +794,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="72" column="145" selection-start-line="72" selection-start-column="145" selection-end-line="72" selection-end-column="145" />
+        <state relative-caret-position="371">
+          <caret line="145" column="87" selection-start-line="145" selection-start-column="87" selection-end-line="145" selection-end-column="87" />
           <folding>
             <element signature="e#3544#3567#0#HTML" expanded="true" />
             <element signature="e#7688#7714#0#HTML" expanded="true" />

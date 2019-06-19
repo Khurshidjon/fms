@@ -143,7 +143,7 @@
                             </div>
                             <div class="modal-body text-danger text-center">
                                 <label style="margin-right: 20px">
-                                    <input type="radio" name="status" value="1"> На исполнено
+                                    <input type="radio" name="status" value="1" checked> На исполнено
                                 </label>
                                 <label style="margin-left: 20px">
                                     <input type="radio" name="status" value="2"> Исполнено
