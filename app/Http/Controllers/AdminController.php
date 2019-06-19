@@ -14,8 +14,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $applications_count = Application::count();
-        $contract_count = Contract::count();
+        $applications_count = Application::where('status', '!=', 0)->count();
+        $contract_count = Contract::where('status', '!=', 0)->count();
         return view('backend.index', [
             'is_active' => 'index',
             'applications_count' => $applications_count,
