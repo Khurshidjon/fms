@@ -49,6 +49,8 @@ class CreateApplicationsTable extends Migration
             $table->string('sale_for_to_courier')->nullable();
             $table->string('from_organ_name')->nullable();
             $table->string('to_organ_name')->nullable();
+            $table->string('performed_date')->nullable();
+            $table->integer('who_performed')->nullable();
             $table->integer('status')->nullable();
 
             $table->timestamps();
