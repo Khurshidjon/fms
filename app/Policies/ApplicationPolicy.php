@@ -19,7 +19,7 @@ class ApplicationPolicy
      */
     public function view(User $user, Application $application)
     {
-        if ($user->id === $application->user_id || $user->hasRole('Admin')){
+        if ($user->organ_id === $application->from_city_id || $user->organ_id === $application->to_city_id || $user->hasRole('Admin')){
             return true;
         }
         return false;
@@ -45,7 +45,7 @@ class ApplicationPolicy
      */
     public function update(User $user, Application $application)
     {
-        if ($user->id === $application->user_id || $user->hasRole('Admin')){
+        if ($user->organ_id === $application->from_city_id || $user->organ_id === $application->to_city_id || $user->hasRole('Admin')){
             return true;
         }
         return false;
@@ -60,7 +60,7 @@ class ApplicationPolicy
      */
     public function delete(User $user, Application $application)
     {
-        if ($user->id === $application->user_id || $user->hasRole('Admin')){
+        if ($user->organ_id === $application->from_city_id || $user->organ_id === $application->to_city_id || $user->hasRole('Admin')){
             return true;
         }
         return false;
@@ -75,7 +75,7 @@ class ApplicationPolicy
      */
     public function restore(User $user, Application $application)
     {
-        if ($user->id === $application->user_id || $user->hasRole('Admin')){
+        if ($user->organ_id === $application->from_city_id || $user->organ_id === $application->to_city_id || $user->hasRole('Admin')){
             return true;
         }
         return false;
@@ -90,7 +90,7 @@ class ApplicationPolicy
      */
     public function forceDelete(User $user, Application $application)
     {
-        if ($user->id === $application->user_id || $user->hasRole('Admin')){
+        if ($user->organ_id === $application->from_city_id || $user->organ_id === $application->to_city_id || $user->hasRole('Admin')){
             return true;
         }
         return false;
