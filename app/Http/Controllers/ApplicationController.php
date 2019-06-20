@@ -11,6 +11,7 @@ use App\Region;
 use App\ContractPrice;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 
@@ -346,7 +347,7 @@ class ApplicationController extends Controller
         $second_step = $request->session()->get('second_step');
 
         if($second_step != null){
-            return redirect()->back()->with('error', 'Kechirasiz ushu zayavka qabul qilingan');
+            return redirect()->back()->with('error', 'Извините, это заявка была получено');
         }
             $application = Application::find($appSession->id);
 
@@ -435,9 +436,11 @@ class ApplicationController extends Controller
 
     public function firstStepEdit(Request $request, Application $application)
     {
-        $this->authorize('update', $application);
+//        if (Auth::id() == $application->user_id || Auth::user()->hasRole('Admin')){
+//            return redirect()->back()->with('error', 'У вас нет прав доступа для обновления приложения');
+//        }
+        $this->authorize('edit', $application);
         $cities = Texnolog::all();
-
         return view('backend.Applications.edit-steps.first-step', [
             'is_active' => 'steps',
             'application' => $application,

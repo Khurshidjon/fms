@@ -15,58 +15,13 @@
     </style>
     <div class="page-content">
         <div id="app"></div>
-        <!-- BEGIN PAGE HEADER-->
-        <h3 class="page-title">
-            Form Wizard <small>form wizard sample</small>
-        </h3>
-        <div class="page-bar">
-            <ul class="page-breadcrumb">
-                <li>
-                    <i class="fa fa-home"></i>
-                    <a href="{{ route('admin.index') }}">Home</a>
-                    <i class="fa fa-angle-right"></i>
-                </li>
-                <li>
-                    <a href="#">Form Stuff</a>
-                    <i class="fa fa-angle-right"></i>
-                </li>
-                <li>
-                    <a href="#">Form Wizard</a>
-                </li>
-            </ul>
-            <div class="page-toolbar">
-                <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
-                        Actions <i class="fa fa-angle-down"></i>
-                    </button>
-                    <ul class="dropdown-menu pull-right" role="menu">
-                        <li>
-                            <a href="#">Action</a>
-                        </li>
-                        <li>
-                            <a href="#">Another action</a>
-                        </li>
-                        <li>
-                            <a href="#">Something else here</a>
-                        </li>
-                        <li class="divider">
-                        </li>
-                        <li>
-                            <a href="#">Separated link</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- END PAGE HEADER-->
-        <!-- BEGIN PAGE CONTENT-->
         <div class="row">
             <div class="col-md-12">
                 <div class="portlet box blue" id="form_wizard_1">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="fa fa-gift"></i> Form Wizard - <span class="step-title">
-								Step 2 of 3 </span>
+                            <i class="fa fa-gift"></i> Заявка - <span class="step-title">
+								Шаг 2 из 3 </span>
                         </div>
                         <div class="tools hidden-xs">
                             <a href="javascript:;" class="collapse">
@@ -374,14 +329,14 @@
                                 <hr>
                                 <div class="form-actions">
                                     <div class="row">
-                                        <div class="col-md-6 col-6 text-left">
-                                            <a href="{{ route('admin.first-step') }}" class="btn blue">
-                                                <i class="m-icon-swapleft m-icon-white"></i> Back
+                                        <div class="col-md-6 text-left">
+                                            <a href="{{ route('admin.index') }}" class="btn blue">
+                                                <i class="m-icon-swapleft m-icon-white"></i> @lang('pages.back_to_home')
                                             </a>
                                         </div>
-                                        <div class="col-md-6 col-6 text-right">
-                                            <button type="submit" class="btn blue button-next">
-                                                Continue <i class="m-icon-swapright m-icon-white"></i>
+                                        <div class="col-md-6 text-right">
+                                            <button type="submit" class="btn blue">
+                                                @lang('pages.continue') <i class="m-icon-swapright m-icon-white"></i>
                                             </button>
                                         </div>
                                     </div>

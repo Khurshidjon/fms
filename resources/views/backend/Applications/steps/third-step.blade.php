@@ -25,12 +25,12 @@
                 <div class="portlet box blue" id="form_wizard_1">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="fa fa-gift"></i> Form Wizard - <span class="step-title">
-								Step 3 of 3 </span>
+                            <i class="fa fa-gift"></i> Заявка - <span class="step-title">
+								Шаг 3 из 3 </span>
                         </div>
                         <div class="tools hidden-xs">
                             <div class="form-actions">
-                                <a class="btn blue border" style="border: 1px solid #002e5b !important;">
+                                <a href="{{ URL::previous() }}" class="btn blue border" style="border: 1px solid #002e5b !important;">
                                 <i class="m-icon-swapleft m-icon-white"></i> Назад
                                 </a>
                                 <a href="{{ route('admin.first-step') }}" class="btn blue" style="border: 1px solid #002e5b !important;">Добавить новая заявка <i class="fa fa-plus"></i></a>

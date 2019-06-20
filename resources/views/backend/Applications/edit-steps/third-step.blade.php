@@ -27,8 +27,8 @@
                 <div class="portlet box blue" id="form_wizard_1">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="fa fa-gift"></i> Form Wizard - <span class="step-title">
-								Step 3 of 3 </span>
+                            <i class="fa fa-gift"></i> Заявка - <span class="step-title">
+								Шаг 3 из 3 </span>
                         </div>
                         <div class="tools hidden-xs">
                             <div class="form-actions">

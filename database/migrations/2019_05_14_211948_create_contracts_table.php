@@ -30,6 +30,7 @@ class CreateContractsTable extends Migration
             $table->string('phone');
             $table->string('oked');
             $table->string('email');
+            $table->string('nds');
             $table->integer('status');
             $table->timestamps();
         });

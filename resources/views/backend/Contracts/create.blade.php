@@ -6,77 +6,11 @@
     }
 </style>
 <div class="page-content">
-    <div class="page-bar">
-        <ul class="page-breadcrumb">
-            <li>
-                <i class="fa fa-home"></i>
-                <a href="index.html">Home</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a href="#">Контракты</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a href="#">Форма нового контракта</a>
-            </li>
-        </ul>
-        <div class="page-toolbar">
-            <div class="btn-group pull-right">
-                <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
-                Actions <i class="fa fa-angle-down"></i>
-                </button>
-                <ul class="dropdown-menu pull-right" role="menu">
-                    <li>
-                        <a href="#">Action</a>
-                    </li>
-                    <li>
-                        <a href="#">Another action</a>
-                    </li>
-                    <li>
-                        <a href="#">Something else here</a>
-                    </li>
-                    <li class="divider">
-                    </li>
-                    <li>
-                        <a href="#">Separated link</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
     <div class="portlet light">
         <div class="portlet-title">
             <div class="caption font-green">
                 <i class="icon-pin font-green"></i>
                 <span class="caption-subject bold uppercase">Форма нового контракта</span>
-            </div>
-            <div class="actions">
-                <div class="btn-group">
-                    <a class="btn btn-sm default dropdown-toggle" href="javascript:;" data-toggle="dropdown">
-                    Settings <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu pull-right">
-                        <li>
-                            <a href="javascript:;">
-                            <i class="fa fa-pencil"></i> Edit </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                            <i class="fa fa-trash-o"></i> Delete </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                            <i class="fa fa-ban"></i> Ban </a>
-                        </li>
-                        <li class="divider">
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                            <i class="i"></i> Make admin </a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
         <div class="portlet-body form">
@@ -86,7 +20,7 @@
                         <span class="number">
                         1 </span>
                         <span class="desc">
-                        <i class="fa fa-check"></i> Account Setup </span>
+                        <i class="fa fa-check"></i> Информация о контракте </span>
                     </a>
                 </li>
                 <li style="pointer-events: none; background: rgba(0,0,0,0.1); border-right: 1px solid rgba(0,0,0,0.3);">
@@ -94,7 +28,7 @@
                         <span class="number">
                         2 </span>
                         <span class="desc">
-                        <i class="fa fa-check"></i> Profile Setup </span>
+                        <i class="fa fa-check"></i> Цена контракта </span>
                     </a>
                 </li>
                 <li style="pointer-events: none; background: rgba(0,0,0,0.1);">
@@ -102,7 +36,7 @@
                         <span class="number">
                         3 </span>
                         <span class="desc">
-                        <i class="fa fa-check"></i> Накладной </span>
+                        <i class="fa fa-check"></i> Контракт </span>
                     </a>
                 </li>
             </ul>
@@ -114,6 +48,13 @@
             </div>
             <form action="{{ route('contracts.store') }}" method="post" class="container">
                 @csrf
+                    <div class="form-group @error('address') has-error @enderror">
+                        <label class="control-label">Адрес компании <span class="text-danger">*</span></label>
+                        <textarea name="address" class="form-control" value="{{ old('address') }}" style="resize: none"></textarea>
+                        @error('address')
+                        <span class="text-danger" role="alert">{{ $message }}</span>
+                        @enderror
+                    </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="portlet-body form">
@@ -173,11 +114,11 @@
                                 </div>
                             </div>
                             <div class="form-body">
-                                <div class="form-group @error('address') has-error @enderror">
-                                    <label class="control-label">Адрес компании <span class="text-danger">*</span></label>
-                                    <input type="text" name="address" class="form-control" value="{{ old('address') }}">
-                                    @error('address')
-                                        <span class="text-danger" role="alert">{{ $message }}</span>
+                                <div class="form-group @error('nds') has-error @enderror">
+                                    <label class="control-label">НДС <span class="text-danger">*</span></label>
+                                    <input type="text" name="nds" class="form-control" value="{{ old('nds') }}">
+                                    @error('nds')
+                                    <span class="text-danger" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>

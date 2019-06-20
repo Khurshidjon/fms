@@ -25,52 +25,13 @@
     </style>
     <div class="page-content">
         <div id="app"></div>
-        <div class="page-bar">
-                <ul class="page-breadcrumb">
-                    <li>
-                        <i class="fa fa-home"></i>
-                        <a href="index.html">Home</a>
-                        <i class="fa fa-angle-right"></i>
-                    </li>
-                    <li>
-                        <a href="#">Form Stuff</a>
-                        <i class="fa fa-angle-right"></i>
-                    </li>
-                    <li>
-                        <a href="#">Material Design Form Controls</a>
-                    </li>
-                </ul>
-                <div class="page-toolbar">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
-                        Actions <i class="fa fa-angle-down"></i>
-                        </button>
-                        <ul class="dropdown-menu pull-right" role="menu">
-                            <li>
-                                <a href="#">Action</a>
-                            </li>
-                            <li>
-                                <a href="#">Another action</a>
-                            </li>
-                            <li>
-                                <a href="#">Something else here</a>
-                            </li>
-                            <li class="divider">
-                            </li>
-                            <li>
-                                <a href="#">Separated link</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="portlet box blue" id="form_wizard_1">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="fa fa-gift"></i> Form Wizard - <span class="step-title">
-								Step 1 of 3 </span>
+                            <i class="fa fa-gift"></i> Заявка - <span class="step-title">
+								Шаг 1 из 3 </span>
                         </div>
                         <div class="tools hidden-xs">
                             <div class="form-actions">
@@ -90,7 +51,7 @@
 												<span class="number">
 												1 </span>
                                                 <span class="desc">
-												<i class="fa fa-check"></i> Account Setup </span>
+												<i class="fa fa-check"></i> Информация о почте </span>
                                             </a>
                                         </li>
                                         <li style="pointer-events: none">
@@ -98,7 +59,7 @@
 												<span class="number">
 												2 </span>
                                                 <span class="desc">
-												<i class="fa fa-check"></i> Profile Setup </span>
+												<i class="fa fa-check"></i> Сервисные сборы </span>
                                             </a>
                                         </li>
                                         <li style="pointer-events: none">
@@ -624,12 +585,12 @@
                                 <div class="row">
                                     <div class="col-md-6 text-left">
                                         <a href="{{ route('admin.index') }}" class="btn blue">
-                                            <i class="m-icon-swapleft m-icon-white"></i> Back to home
+                                            <i class="m-icon-swapleft m-icon-white"></i> @lang('pages.back_to_home')
                                         </a>
                                     </div>
                                     <div class="col-md-6 text-right">
                                         <button type="submit" class="btn blue">
-                                            Continue <i class="m-icon-swapright m-icon-white"></i>
+                                            @lang('pages.continue') <i class="m-icon-swapright m-icon-white"></i>
                                         </button>
                                     </div>
                                 </div>

@@ -69,6 +69,7 @@ class ContractController extends Controller
             'inn' => 'required|numeric',
             'phone' => 'required',
             'oked' => 'required',
+            'nds' => 'required',
             'email' => 'required|email|unique:contracts',
         ]);
 
@@ -90,6 +91,7 @@ class ContractController extends Controller
             'inn' => $request->inn,
             'phone' => $request->phone,
             'oked' => $request->oked,
+            'nds' => $request->nds,
             'email' => $request->email,
             'status' => 1
         ]);
@@ -160,7 +162,7 @@ class ContractController extends Controller
     {
         $contract_prices = ContractPrice::where('contract_id', $contract->contract_id)->get();
         $pdf = PDF::loadView('backend.Contracts.ready-contract', ['contract_prices' => $contract_prices, 'contract' => $contract])->setPaper('a4', 'portrait');
-        return $pdf->stream('contract.pdf');
+        return $pdf->download('contract.pdf');
     }
 
     /**

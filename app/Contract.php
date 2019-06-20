@@ -21,6 +21,7 @@ class Contract extends Model
         'inn',
         'phone',
         'oked',
+        'nds',
         'email',
         'status'
     ];

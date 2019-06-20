@@ -18,6 +18,11 @@
                         <button style="margin-top: 5px !important;" type="button" class="close" data-dismiss="alert">×</button>
                         <strong>{{ $message }}</strong>
                     </div>
+                @elseif ($message = Session::get('error'))
+                        <div class="alert alert-danger alert-block">
+                            <button style="margin-top: 5px !important;" type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
                 @endif
             </div>
             <div class="col-md-3">
@@ -87,9 +92,11 @@
                                     <a href="{{ route('applications.show', ['application' => $application]) }}" class="btn blue">
                                         <i class="fa fa-print"></i>
                                     </a>
-                                    <a href="{{ route('admin.first-step-edit', ['application' => $application]) }}" class="btn blue" >
-                                        <i class="fa fa-edit"></i>
-                                    </a>
+                                    @can('edit', $application)
+                                        <a href="{{ route('admin.first-step-edit', ['application' => $application]) }}" class="btn blue" >
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    @endcan
                                     @role('Admin')
                                         <a class="btn blue remove-application" data-toggle="modal" data-target="#myModal" data-url="{{ route('applications.destroy', ['application' => $application]) }}">
                                             <i class="fa fa-trash"></i>

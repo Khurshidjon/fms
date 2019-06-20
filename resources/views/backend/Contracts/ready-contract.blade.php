@@ -2,10 +2,38 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>FMS | Fly Mail Service</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <style>
             *{ font-family: DejaVu Sans !important;}
- 
+            .text-center{
+                text-align: center;
+            }
+            table {
+                table-layout: fixed;
+                width: 100%;
+                border-collapse: collapse;
+                border: 2px solid grey;
+            }
+
+            thead th:nth-child(1) {
+                width: 30%;
+            }
+
+            thead th:nth-child(2) {
+                width: 20%;
+            }
+
+            thead th:nth-child(3) {
+                width: 15%;
+            }
+
+            thead th:nth-child(4) {
+                width: 35%;
+            }
+
+            th, td {
+                padding: 15px;
+                border: 1px solid grey;
+            }
             body{
                 font-family: 'Times New Roman', 'sans-serif';
                 font-size: 12px;
@@ -14,12 +42,12 @@
                 text-align: justify
             }
             ul li{
-                text-indent: 30px
+                text-indent: 20px
             }
             ul li ul li{
                 list-style-type: disc;
                 text-indent: 3px;
-                padding-left: 20px
+                padding-left: 5px
             }
         </style>
     </head>
@@ -34,20 +62,15 @@
                 <h5>Договор № <span style="text-decoration: underline"><b>{{ $contract->contract_id }}</b></span></h5>
                 <h5>на оказание почтово-курьерских услуг</h5>
             </div>
-            <br>
             <div class="container-fluid" style="padding-left: 40px">
                 <div class="row" style="font-size: 15px">
-                    <div class="col-md-6">
-                        <p>«  <span style="text-decoration: underline "><b>{{ date('d') }} - {{ $mounth[date('m')-1] }}</b></span>  »</p>
-                    </div>
-                    <div class="col-md-6" style="margin-left: 140px">
-                        <p> <span style="text-decoration: underline">{{ date('Y') }}<b></b></span> г.</p>
-                    </div>
+                    <p>
+                        « <span style="text-decoration: underline "><b>{{ date('d') }} - {{ $mounth[date('m')-1] }}</b></span>  »
+                        <span style="text-decoration: underline">{{ date('Y') }}<b></b></span> г.
+                    </p>
                 </div>
             </div>
-            <br>
             <div class="">
-            <br>
                 <p style="text-indent:100px; padding-left: 40px">
                     Общество с Ограниченной Ответственностью <b> «FLY MAIL SERVIS»</b>, в лице директора Асролхужаева С.И., действующего на основании Устава, именуемое в дальнейшем «Исполнитель», с одной стороны, и « <span style="text-decoration: underline">Lorem ipsum dolor.</span> », в лице <span style="text-decoration: underline">Lorem ipsum dolor.</span>, действующего на основании <span style="text-decoration: underline">Lorem ipsum dolor.</span>, именуемое в дальнейшем «Заказчик», с другой стороны, вместе именуемые в дальнейшем «Стороны» и по отдельности «Сторона», заключили настоящий договор о нижеследующем:
                 </p>
@@ -212,7 +235,7 @@
                         <li>8.2. Необходимым условием прекращения действия настоящего Договора является осуществление всех взаимных расчетов сторон.</li>
                     </ul>
                 </div>
-                <p class="text-center">9. Прочие условия</p>
+                <p class="text-center"><b>9. Прочие условия</b></p>
                 <div>
                     <ul style="list-style-type: none">
                         <li>9.1.  Приложения №1, №2 и №3 являются неотъемлемой частью настоящего договора.</li>
@@ -262,14 +285,11 @@
                         </tr>
                         <tr>
                             <td>Директор Асролхужаев С.И.</td>
-                            <td>Тел: <span style="text-decoration: underline">{{ $contract->phone }}</td>
+                            <td>Тел: <span style="text-decoration: underline;">{{ $contract->phone }}</td>
                         </tr>
                     </tbody>
                 </table>
-                <br>
-                <br>
-                <br>
-                <br>
+
                 <br>
                 <br>
                 <div class="container text-center">
@@ -305,6 +325,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                <br>
                 <div>
                     <b>
                         *Примечание: За каждый добавленный 0,5 кг 3500 Сум; <br>
@@ -326,15 +347,13 @@
                 </div>
                 <div>
                     <div class="container text-center">
-                        <h6>
+                        <p>
                             <b>ПРИЛОЖЕНИЕ №2</b> <br>
                             <b>к договору на оказание курьерских услуг № ______ </b><br>
                             <b>от «______» ________________ 20     года</b>
-                        </h6>
+                        </p>
                     </div>
                 </div>
-                <br>
-                <br>
                 <br>
                 <div>
                     <div class="container text-center">
@@ -400,7 +419,7 @@
                 <br>
                 <br>
                 <br>
-                <div class="text-right">
+                <div style="text-align: right">
                     <b>
                         ПРИЛОЖЕНИЕ №3 <br>
                         к договору на оказание курьерских услуг № ______ <br>
@@ -410,12 +429,12 @@
                 <br>
                 <br>
                 <div class="text-center">
-                    <h6>
+                    <p>
                         <b>
                             ПЕРЕЧЕНЬ <br>
                             предметов и веществ, запрещенных и ограниченных к пересылке
                         </b>
-                    </h6>
+                    </p>
                 </div>
                 <ul style="list-style-type: none; padding-left: 0 !important;">
                     <li>
