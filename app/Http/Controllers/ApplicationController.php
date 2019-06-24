@@ -45,7 +45,11 @@ class ApplicationController extends Controller
     public function indexFromCity(Request $request)
     {
         $cities = Application::where('status', '!=', 0)->get();
-        $applications = Application::where('status', '!=', 0)->where('from_city_id', $request->city_id)->get();
+        if($request->city_id == null){
+            $applications = Application::where('status', '!=', 0)->latest()->paginate(10);
+        }else{
+            $applications = Application::where('status', '!=', 0)->where('from_city_id', $request->city_id)->get();
+        }
         
         $result = view('backend.Applications.app-render', 
             [
@@ -61,7 +65,11 @@ class ApplicationController extends Controller
     public function indexToCity(Request $request)
     {
         $cities = Application::where('status', '!=', 0)->get();
-        $applications = Application::where('status', '!=', 0)->where('to_city_id', $request->city_id)->get();
+        if($request->city_id == null){
+            $applications = Application::where('status', '!=', 0)->latest()->paginate(10);
+        }else{
+            $applications = Application::where('status', '!=', 0)->where('to_city_id', $request->city_id)->get();
+        }
         
         $result = view('backend.Applications.app-render', 
             [
