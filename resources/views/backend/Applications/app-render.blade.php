@@ -65,3 +65,17 @@
         <td class="text-center" colspan="10">No records in here :(</td>
     </tr>
 @endforelse
+<script>
+    $(function () {
+        $('.remove-application').on('click', function (e) {
+            e.preventDefault();
+            var url = $(this).attr('data-url');
+            $('.application-remove-form').attr('action', url);
+        });
+        $('.status-application').on('click', function (e) {
+            e.preventDefault();
+            var url = $(this).attr('data-url');
+            $('.application-status-form').attr('action', url);
+        });
+    });
+</script>
