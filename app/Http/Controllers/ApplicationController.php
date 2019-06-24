@@ -32,11 +32,46 @@ class ApplicationController extends Controller
     {
         $request->session()->remove('application');
         $request->session()->remove('second_step');
+        $cities = Application::where('status', '!=', 0)->get();
         $applications = Application::where('status', '!=', 0)->latest()->paginate(10);
+        
         return view('backend.Applications.index', [
             'applications' => $applications,
-            'is_active' => 'steps'
+            'is_active' => 'steps',
+            'cities' => $cities
         ]);
+    }
+
+    public function indexFromCity(Request $request)
+    {
+        $cities = Application::where('status', '!=', 0)->get();
+        $applications = Application::where('status', '!=', 0)->where('from_city_id', $request->city_id)->get();
+        
+        $result = view('backend.Applications.app-render', 
+            [
+                'applications' => $applications,
+                'is_active' => 'steps',
+                'cities' => $cities
+            ]
+        )->render();
+
+        return $result;
+    }
+
+    public function indexToCity(Request $request)
+    {
+        $cities = Application::where('status', '!=', 0)->get();
+        $applications = Application::where('status', '!=', 0)->where('to_city_id', $request->city_id)->get();
+        
+        $result = view('backend.Applications.app-render', 
+            [
+                'applications' => $applications,
+                'is_active' => 'steps',
+                'cities' => $cities
+            ]
+        )->render();
+        
+        return $result;
     }
 
     /**

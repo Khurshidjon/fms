@@ -1,8 +1,5 @@
 @extends('layouts.main')
 @section('content')
-@php 
-    $i = 1;
-@endphp
     <div class="page-content">
     <div class="container-fluid" style="margin-bottom: 35px">
         <div id="app"></div>
@@ -35,8 +32,68 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Из города</th>
-                        <th>В город</th>
+                        <th>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    Из города
+                                </div>
+                                <div class="col-md-8">
+                                    <select class="select2 form-control" id="change_city_id_one" data-city="{{ route('admin.index-from-city') }}">
+                                        <option value="">-- @lang('pages.select_one') --</option>
+                                        @foreach($cities->unique('from_city_id') as $city )
+                                            <option value="{{ $city->from_city->id }}">{{ $city->from_city->name_ru }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    В город
+                                </div>
+                                <div class="col-md-8">
+                                    <select class="select2 form-control" id="change_city_id_two" data-city="{{ route('admin.index-to-city') }}">
+                                        <option value="">-- @lang('pages.select_one') --</option>
+                                        @foreach($cities->unique('to_city_id') as $city )
+                                            <option value="{{ $city->to_city->id }}">{{ $city->to_city->name_ru }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </th>
+                        <script>
+                            $(function(){
+                                $('#change_city_id_one').on('change', function(){
+                                    var city_id = $('#change_city_id_one option:selected').val();
+                                    var url = $(this).attr('data-city');
+                                    $.ajax({
+                                        url:url,
+                                        type: 'GET',
+                                        data: {
+                                            city_id: city_id
+                                        },
+                                        success: function(data){
+                                            $('#myTable').html(data)               
+                                        }
+                                    });
+                                });
+                                $('#change_city_id_two').on('change', function(){
+                                    var city_id = $('#change_city_id_two option:selected').val();
+                                    var url = $(this).attr('data-city');
+                                    $.ajax({
+                                        url:url,
+                                        type: 'GET',
+                                        data: {
+                                            city_id: city_id
+                                        },
+                                        success: function(data){
+                                            $('#myTable').html(data)               
+                                        }
+                                    });
+                                });
+                            })
+                        </script>
                         <th>От кого</th>
                         <th>Кому</th>
                         <th>Курьер</th>
@@ -47,70 +104,7 @@
                     </tr>
                 </thead>
                 <tbody id="myTable">
-                    @forelse($applications as $application)
-                        @if(Auth::user()->can('view',  $application) || Auth::user()->hasRole('Admin'))
-                        <tr>
-                            <td>{{ $i++ }}</td>
-                            <td>{{ $application->from_city->name_ru }}</td>
-                            <td>{{ $application->to_city->name_ru }}</td>
-                            <td>
-                                {{ $application->from_fio }}
-                                <span class="badge badge-dark"><b>{{ $application->from_phone }}</b></span>
-                            </td>
-                            <td>
-                                {{ $application->to_fio }}
-                                <span class="badge badge-dark"><b>{{ $application->to_phone }}</b></span>
-                            </td>
-                            <td>
-                                @if($application->cost_from_courier == null)
-                                    <span><i class="fa fa-minus-circle text-danger"></i></span>
-                                @else
-                                    <span><i class="fa fa-check-circle text-success"></i></span>
-                                @endif
-                            </td>
-                            <td>
-                                @if($application->cost_to_courier == null)
-                                    <span><i class="fa fa-minus-circle text-danger"></i></span>
-                                @else
-                                    <span><i class="fa fa-check-circle text-success"></i></span>
-                                @endif
-                            </td>
-                            <td data-toggle="modal" class="status-application" data-target="#statusModal" data-url="{{ route('applications.update', ['application' => $application]) }}" style="cursor: pointer">
-                                @if($application->status == 1)
-                                    <span class="badge badge-warning"><b>На исполнено</b></span>
-                                @elseif($application->status == 2)
-                                    <span class="badge badge-success"><b>Исполнено</b></span>
-                                @elseif($application->status == 3)
-                                    <span class="badge badge-danger"><b>Просрочка</b></span>
-                                @endif
-                            </td>
-                            <td>
-                                <b>{{ $application->operator->username }}</b>
-                            </td>
-                            <td>
-                                <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('applications.show', ['application' => $application]) }}" class="btn blue">
-                                        <i class="fa fa-print"></i>
-                                    </a>
-                                    @can('edit', $application)
-                                        <a href="{{ route('admin.first-step-edit', ['application' => $application]) }}" class="btn blue" >
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                    @endcan
-                                    @role('Admin')
-                                        <a class="btn blue remove-application" data-toggle="modal" data-target="#myModal" data-url="{{ route('applications.destroy', ['application' => $application]) }}">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    @endrole
-                                </div>
-                            </td>
-                        </tr>
-                        @endif
-                    @empty
-                        <tr>
-                            <td class="text-center" colspan="10">No records in here :(</td>
-                        </tr>
-                    @endforelse
+                    @include('backend.Applications.app-render')
                 </tbody>
             </table>
             {{ $applications->links('vendor.pagination.bootstrap-4') }}
@@ -170,6 +164,7 @@
         $(function () {
             Metronic.init(); // init metronic core components
             Layout.init(); // init current layout
+            $('.select2').select2();
             $("#myInput").on("keyup", function() {
                 var value = $(this).val().toLowerCase();
                     $("#myTable tr").filter(function() {

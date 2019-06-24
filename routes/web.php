@@ -23,7 +23,12 @@ Route::get('index/{lang}', function ($lang) {
 
 Route::group(['middleware' => 'auth'], function (){
     Route::get('/admin', 'AdminController@index')->name('admin.index');
+    
     Route::get('/add/new-user', 'AdminController@addUser')->name('add-new-user');
+
+    Route::get('/admin/from-city-index', 'ApplicationController@indexFromCity')->name('admin.index-from-city');
+    Route::get('/admin/to-city-index', 'ApplicationController@indexToCity')->name('admin.index-to-city');
+
 
     Route::get('/overhead/first-step', 'ApplicationController@firstStep')->name('admin.first-step');
 

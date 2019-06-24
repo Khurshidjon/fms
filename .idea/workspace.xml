@@ -4,10 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php" line="326" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf95fef2-40a4-43c4-a465-3052632d17f6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_14_190831_create_applications_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_14_190831_create_applications_table.php" afterDir="false" />
-    </list>
+    <list default="true" id="cf95fef2-40a4-43c4-a465-3052632d17f6" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,9 +292,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="-8" />
-    <option name="width" value="1037" />
-    <option name="height" value="411" />
+    <option name="x" value="301" />
+    <option name="y" value="158" />
+    <option name="width" value="1388" />
+    <option name="height" value="791" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -334,7 +332,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../travel" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -426,16 +424,15 @@
       <workItem from="1560919320761" duration="4988000" />
       <workItem from="1560926033353" duration="2482000" />
       <workItem from="1561005161473" duration="2945000" />
-      <workItem from="1561011112624" duration="7004000" />
+      <workItem from="1561011112624" duration="7673000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="368964000" />
+    <option name="totallyTimeSpent" value="369633000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-37" width="1920" height="1117" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49950248" visible="true" weight="0.1670224" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -452,7 +449,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50160086" side_tool="true" weight="0.29472595" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49839914" weight="0.17048854" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49839914" visible="true" weight="0.17048854" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
