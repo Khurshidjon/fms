@@ -204,7 +204,7 @@
                                                                 <label class="control-label col-md-2">
                                                                     <small>
                                                                         Sender address.
-                                                                        <span class="required">*</span>
+                                                                        <span class="text-success">*</span>
                                                                     </small>
                                                                 </label>
                                                                 <div class="col-md-10">
@@ -356,7 +356,7 @@
                                                                 <label class="control-label col-md-2">
                                                                     <small>
                                                                         Receiver address
-                                                                        <span class="text-danger">*</span>
+                                                                        <span class="text-success">*</span>
                                                                     </small>
                                                                 </label>
                                                                 <div class="col-md-10">

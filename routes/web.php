@@ -52,6 +52,7 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/contracts/price/{contract}/edit', 'ContractController@contractPriceEdit')->name('contract.price-edit');
     Route::put('/contracts/price/{id}/update', 'ContractController@contractPriceUpdate')->name('contract.price-update');
     Route::post('/make/contracts', 'ContractController@makeContract')->name('make.contract');
+    Route::post('/status/contracts/{contract}', 'ContractController@contractStatus')->name('status.contract');
 
     /*Roles and Permissions*/
     Route::post("/permissions/attach-role-to-permission/{role}/{permission}", 'Permissions\PermissionController@assignRoleToPermission')->name('attach-role-to-permission');

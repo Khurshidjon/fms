@@ -4,8 +4,8 @@
         #from_content, #second_content{
             border: 1px solid #002e5b;
             padding: 2em 1em;
-            min-height: 22em;
-            max-height: 33em;
+            min-height: 31em;
+            max-height: 31em;
         }
         .post-inform-content{
             border: 1px solid #002e5b;
@@ -203,7 +203,7 @@
                                                                 <label class="control-label col-md-2">
                                                                     <small>
                                                                         @lang('pages.sender_address')
-                                                                        <span class="required">*</span>
+                                                                        <span class="text-success">*</span>
                                                                     </small>
                                                                 </label>
                                                                 <div class="col-md-10">
@@ -355,7 +355,7 @@
                                                                 <label class="control-label col-md-2">
                                                                     <small>
                                                                         @lang('pages.receiver_address')
-                                                                        <span class="text-danger">*</span>
+                                                                        <span class="text-success">*</span>
                                                                     </small>
                                                                 </label>
                                                                 <div class="col-md-10">

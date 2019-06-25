@@ -18,7 +18,7 @@ class ContractController extends Controller
      */
     public function index()
     {
-        $contracts = Contract::latest()->paginate(10);
+        $contracts = Contract::where('status', '!=', 0)->latest()->paginate(10);
 //        if (\Auth::user()->cannot(''))
         return view('backend.Contracts.index', [
             'contracts' => $contracts,
@@ -257,6 +257,14 @@ class ContractController extends Controller
      */
     public function destroy(Contract $contract)
     {
-        //
+        $contract->status = 0;
+        $contract->save();
+        return redirect()->back()->with('error', 'Контракт был успешно удален');
+    }
+    public function contractStatus(Request $request, Contract $contract)
+    {
+        $contract->status = $request->status;
+        $contract->save();
+        return redirect()->back()->with('success', 'Контракт было успешно обновлен');
     }
 }

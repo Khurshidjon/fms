@@ -9,7 +9,19 @@
                 <div class="col-md-3">
                     <a href="{{ route('contracts.create') }}" class="btn blue">Добавить новый контракт <i class="fa fa-plus"></i></a>
                 </div>
-                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                            <button style="margin-top: 5px !important;" type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @elseif ($message = Session::get('error'))
+                        <div class="alert alert-danger alert-block">
+                            <button style="margin-top: 5px !important;" type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+                </div>
                 <div class="col-md-3">
                     <input class="form-control float-right" id="myInput" type="text" placeholder="Search..">
                 </div>
@@ -51,7 +63,7 @@
                             <td>{{ $contract->phone }}</td>
                             <td>{{ $contract->oked }}</td>
                             <td>{{ $contract->email }}</td>
-                            <td>
+                            <td class="contract-update" data-toggle="modal" data-target="#statusModal" style="cursor: pointer" data-url="{{ route('status.contract', ['contract' => $contract]) }}">
                                 @if($contract->status == 1)
                                     <span class="badge badge-warning">На исполнено</span>
                                 @elseif($contract->status == 2)
@@ -71,7 +83,7 @@
                                     <a href="{{ route('contracts.edit', ['contract' => $contract]) }}" class="btn blue">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <button type="button" class="btn blue" data-toggle="modal" data-target="#myModal">
+                                    <button type="button" class="btn blue contract-delete" data-toggle="modal" data-target="#myModal" data-url="{{ route('contracts.destroy', ['contract' => $contract]) }}">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </div>
@@ -102,11 +114,39 @@
                             <b>Some text in the modal.</b>
                         </div>
                         <div class="modal-footer">
-                            <form action="">
+                            <form action="" class="contract-remove-form" method="post">
+                                @csrf
+                                @method('DELETE')
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                                <button type="submit" class="btn btn-danger" >Delete</button>
                             </form>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="statusModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title text-danger"><b>Update confirm</b></h4>
+                        </div>
+                        <form action="" class="contract-update-form" method="post">
+                            @csrf
+                            <div class="modal-body text-danger">
+                                <label style="margin-right: 20px">
+                                    <input type="radio" name="status" value="1" checked> На исполнено
+                                </label>
+                                <label style="margin-left: 20px">
+                                    <input type="radio" name="status" value="2"> Исполнено
+                                </label>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-danger" >Update</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -119,6 +159,14 @@
                         $("#myTable tr").filter(function() {
                             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                         });
+                    });
+                    $('.contract-delete').on('click', function () {
+                        var url = $(this).data('url');
+                        $('.contract-remove-form').attr('action', url);
+                    });
+                    $('.contract-update').on('click', function () {
+                        var url = $(this).data('url');
+                        $('.contract-update-form').attr('action', url);
                     });
                 });
             </script>

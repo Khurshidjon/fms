@@ -92,15 +92,15 @@
                                                         <th class="text-center">Цена</th>
                                                         <th class="text-center">Кто оплачивает почтовые расходы?</th>
                                                         <th class="text-center">Скидка</th>
-                                                        <th class="text-center">Курьер</th>
-                                                        <th class="text-center">Заказ / Работник</th>
+                                                        <th class="text-center">Курьер <small><sub>(из базе)</sub></small></th>
+                                                        <th class="text-center">Курьер <small><sub>(Заказ/Работник)</sub></small></th>
                                                         <th class="text-center">Типы оплаты</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="text-center tbody-content" data-courier="{{ route('change-courier') }}">
                                                     <tr>
                                                         <td class="form-group">
-                                                            <label class="control-label">From courier
+                                                            <label class="control-label">С курьером
                                                                 <span class="required">*</span>
                                                             </label>
                                                         </td>
@@ -119,7 +119,7 @@
                                                         </td>
                                                         <td class="form-group">
                                                             <select name="from_courier_name" class="form-control select2 from_courier_name" {{ $application->cost_from_courier==null?'disabled':'' }}>
-                                                                <option value="">--select once--</option>
+                                                                <option value="">--@lang('pages.select_one')--</option>
                                                                 @foreach($couriers as $courier)
                                                                     @if($courier->hasRole('Courier') && $courier->organ_id == $application->from_city_id)
                                                                         <option value="{{ $courier->id }}">{{ $courier->username }}</option>
@@ -179,7 +179,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td class="form-group">
-                                                            <label class="control-label">Post
+                                                            <label class="control-label">Почта
                                                                 <span class="required">*</span>
                                                             </label>
                                                         </td>
@@ -198,7 +198,7 @@
                                                         </td>
                                                         <td class="form-group">
                                                             <select name="courier_name" class="form-control select2 courier_name">
-                                                                <option value="">--select once--</option>
+                                                                <option value="">--@lang('pages.select_one')--</option>
                                                                 @foreach($couriers as $courier)
                                                                     @if($courier->hasRole('Courier') && $courier->organ_id == $application->from_city_id)
                                                                         <option value="{{ $courier->id }}">{{ $courier->username }}</option>
@@ -217,7 +217,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td class="form-group">
-                                                            <label class="control-label">To courier
+                                                            <label class="control-label">С доставкой
                                                                 <span class="required">*</span>
                                                             </label>
                                                         </td>
@@ -236,7 +236,7 @@
                                                         </td>
                                                         <td class="form-group">
                                                             <select name="to_courier_name" class="form-control select2 to_courier_name" {{ $application->cost_to_courier==null?'disabled':'' }}>
-                                                                <option value="">--select once--</option>
+                                                                <option value="">--@lang('pages.select_one')--</option>
                                                                 @foreach($couriers as $courier)
                                                                     @if($courier->hasRole('Courier') && $courier->organ_id == $application->to_city_id)
                                                                         <option value="{{ $courier->id }}">{{ $courier->username }}</option>
