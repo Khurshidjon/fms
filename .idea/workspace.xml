@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf95fef2-40a4-43c4-a465-3052632d17f6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContractController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContractController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/first-step.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/first-step.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/steps/first-step.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/steps/first-step.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/Contracts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Contracts/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/Contracts/ready-contract.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Contracts/ready-contract.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,11 +39,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="94" column="100" selection-start-line="94" selection-start-column="100" selection-end-line="94" selection-end-column="100" />
+            <state relative-caret-position="587">
+              <caret line="219" column="100" selection-start-line="219" selection-start-column="89" selection-end-line="219" selection-end-column="100" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="545">
+              <caret line="223" column="96" selection-start-line="223" selection-start-column="96" selection-end-line="223" selection-end-column="96" />
             </state>
           </provider>
         </entry>
@@ -135,7 +138,6 @@
         <option value="$PROJECT_DIR$/resources/views/backend/Texnolog/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Texnolog/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Applications/steps/third-step.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/third-step.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/main.blade.php" />
         <option value="$PROJECT_DIR$/app/Policies/ApplicationPolicy.php" />
@@ -153,6 +155,7 @@
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Contracts/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php" />
       </list>
     </option>
   </component>
@@ -415,12 +418,12 @@
       <workItem from="1560926033353" duration="2482000" />
       <workItem from="1561005161473" duration="2945000" />
       <workItem from="1561011112624" duration="7673000" />
-      <workItem from="1561461319603" duration="5925000" />
+      <workItem from="1561461319603" duration="6358000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="375558000" />
+    <option name="totallyTimeSpent" value="375991000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-37" width="1920" height="1117" extended-state="6" />
@@ -665,13 +668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="24" column="30" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="24" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/third-step.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="609">
@@ -814,8 +810,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="94" column="100" selection-start-line="94" selection-start-column="100" selection-end-line="94" selection-end-column="100" />
+        <state relative-caret-position="587">
+          <caret line="219" column="100" selection-start-line="219" selection-start-column="89" selection-end-line="219" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="545">
+          <caret line="223" column="96" selection-start-line="223" selection-start-column="96" selection-end-line="223" selection-end-column="96" />
         </state>
       </provider>
     </entry>
