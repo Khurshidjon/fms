@@ -33,8 +33,8 @@
             <div class="col-md-6">
                 <h4>От <br> <small><b>From</b></small></h4>
                 <ul class="list-group">
-                    <li class="list-group-item"><b>Город: </b> {{ $texnolog->from_city->regions }}</li>
-                    <li class="list-group-item"><b>Район: </b> {{ $texnolog->from_district->districts }}</li>
+                    <li class="list-group-item"><b>Город: </b> {{ $texnolog->from_city->name_ru }}</li>
+                    <li class="list-group-item"><b>Район: </b> {{ $texnolog->from_district->name_ru }}</li>
                     <li class="list-group-item"><b>Стоимость услуги: </b> {{ $texnolog->service_price .' сўм  /'. $texnolog->weight }} кг</li>
                     <li class="list-group-item"><b>Курьерская цена: </b> {{ $texnolog->with_courier_from_home_price }} сўм</li>
                 </ul>
@@ -42,8 +42,8 @@
             <div class="col-md-6">
             <h4>В <br> <small><b>To</b></small></h4>
                 <ul class="list-group">
-                    <li class="list-group-item"><b>Город: </b> {{ $texnolog->to_city->regions }}</li>
-                    <li class="list-group-item"><b>Район: </b> {{ $texnolog->to_district->districts }}</li>
+                    <li class="list-group-item"><b>Город: </b> {{ $texnolog->to_city->name_ru }}</li>
+                    <li class="list-group-item"><b>Район: </b> {{ $texnolog->to_district->name_ru}}</li>
                     <li class="list-group-item"><b>Срок поставки: </b> {{ $texnolog->delivery_time }} кун</li>
                     <li class="list-group-item"><b>Цена доставки: </b> {{ $texnolog->with_courier_from_home_price }} сўм</li>
                 </ul>

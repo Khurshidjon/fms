@@ -62,7 +62,7 @@
                                     <a href="{{ route('texnologs.edit', ['texnolog' => $texnolog]) }}" class="btn blue">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <button type="button" class="btn blue" data-toggle="modal" data-target="#myModal">
+                                    <button type="button" class="btn blue texnolog-delete" data-toggle="modal" data-target="#myModal" data-url="{{ route('texnologs.destroy', ['texnolog' => $texnolog]) }}">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </div>
@@ -92,9 +92,11 @@
                             <b>Some text in the modal.</b>
                         </div>
                         <div class="modal-footer">
-                            <form action="">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                            <form action="" class="texnolog-delete-form" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрить</button>
+                                <button type="submit" class="btn btn-danger">Удалить</button>
                             </form>
                         </div>
                     </div>
@@ -111,6 +113,10 @@
                     $("#myTable tr").filter(function() {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
+            });
+            $('.texnolog-delete').on('click', function () {
+                var url = $(this).attr('data-url');
+                $('.texnolog-delete-form').attr('action', url);
             });
         });
     </script>

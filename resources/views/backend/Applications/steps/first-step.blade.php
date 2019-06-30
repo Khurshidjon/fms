@@ -99,8 +99,8 @@
                                                                 <div class="@error('from_city') is-invalid @enderror">
                                                                     <select name="from_city" id="from_city_action" class="form-control select2" data-city="{{ route('admin.change-city-action') }}">
                                                                         <option selected>--@lang('pages.select_one')--</option>
-                                                                        @foreach($cities->unique('from_city_id') as $city)
-                                                                            <option value="{{ $city->from_city->id }}" @if($application!=null){{ $application->from_city_id==$city->from_city->id?'selected':'' }} @endif>{{ $city->from_city->name_ru }}</option>
+                                                                        @foreach($regions->unique('id') as $city)
+                                                                            <option value="{{ $city->id }}" @if($application!=null){{ $application->from_city_id==$city->id?'selected':'' }} @endif>{{ $city->name_ru }}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </div>

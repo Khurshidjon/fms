@@ -30,7 +30,7 @@
                             <select name="from_city_id" class="form-control select2" id="from_city" data-city="{{ route('admin.change-city') }}">
                                 <option value="">--select once</option>
                                 @foreach($cities as $city)
-                                    <option value="{{ $city->id }}" {{ $city->id==$texnolog->from_city_id?'selected':'' }}>{{ $city->regions }}</option>
+                                    <option value="{{ $city->id }}" {{ $city->id==$texnolog->from_city_id?'selected':'' }}>{{ $city->name_ru }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -44,7 +44,7 @@
                         <label for="">Из района<span class="text-danger">*</span></label>
                         <div class="@error('from_district_id') is-invalid @enderror">
                             <select name="from_district_id" id="from_district" class="form-control select2">
-                                <option selected value="{{ $texnolog->from_district_id }}">{{ $texnolog->from_district->districts }}</option>
+                                <option selected value="{{ $texnolog->from_district_id }}">{{ $texnolog->from_district->name_ru }}</option>
                             </select>
                         </div>
                         @error('from_district_id')
@@ -69,7 +69,7 @@
                             <select name="to_city_id" class="form-control select2" id="to_city" data-city="{{ route('admin.change-city') }}">
                                 <option value="">--select once</option>
                                 @foreach($cities as $city)
-                                    <option value="{{ $city->id }}" {{ $city->id==$texnolog->to_city_id?'selected':'' }}>{{ $city->regions }}</option>
+                                    <option value="{{ $city->id }}" {{ $city->id==$texnolog->to_city_id?'selected':'' }}>{{ $city->name_ru }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -83,7 +83,7 @@
                         <label for="">В район <span class="text-danger">*</span></label>
                         <div class="@error('to_district_id') is-invalid @enderror">
                             <select name="to_district_id" id="to_district" class="form-control select2">
-                                <option selected value="{{ $texnolog->to_district_id }}">{{ $texnolog->to_district->districts }}</option>
+                                <option selected value="{{ $texnolog->to_district_id }}">{{ $texnolog->to_district->name_ru }}</option>
                             </select>
                         </div>
                         @error('to_district_id')

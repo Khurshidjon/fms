@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php" line="326" />
+    <bookmark url="file://$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php" line="328" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf95fef2-40a4-43c4-a465-3052632d17f6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TexnologController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TexnologController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_09_132502_create_texnologs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_09_132502_create_texnologs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_30_152912_create_international_tech_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_06_30_152912_create_international_tech_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_30_171239_create_techno_country_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_06_30_171239_create_techno_country_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/backend/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/backend/js/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ru/pages.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/pages.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/steps/first-step.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/steps/first-step.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Permissions/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Permissions/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Permissions/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Permissions/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Permissions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Permissions/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Permissions/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Permissions/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Roles/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Roles/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Roles/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Roles/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Roles/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Roles/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Roles/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Roles/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Texnolog/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Texnolog/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Texnolog/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Texnolog/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Texnolog/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Texnolog/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Users/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Users/show.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,23 +61,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="587">
-              <caret line="219" column="100" selection-start-line="219" selection-start-column="89" selection-end-line="219" selection-end-column="100" />
+            <state relative-caret-position="546">
+              <caret line="244" selection-start-line="244" selection-end-line="244" />
+              <folding>
+                <marker date="1561904816674" expanded="true" signature="27885:27895" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_30_152716_create_countries_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="860">
-              <caret line="302" column="60" selection-start-line="302" selection-start-column="60" selection-end-line="302" selection-end-column="60" />
-              <folding>
-                <element signature="e#5218#25494#0#HTML" />
-              </folding>
+            <state relative-caret-position="315">
+              <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_30_152841_create_category_inter_tech_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -107,57 +139,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Application.php" />
-        <option value="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/js/LineChart.js" />
-        <option value="$PROJECT_DIR$/resources/js/components/js/PieChart.js" />
-        <option value="$PROJECT_DIR$/resources/js/components/js/BarChart.js" />
-        <option value="$PROJECT_DIR$/resources/js/components/ExampleComponent3.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/js/RadarChart.js" />
-        <option value="$PROJECT_DIR$/resources/js/app.js" />
-        <option value="$PROJECT_DIR$/resources/js/components/ExampleComponent4.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/ExampleComponent2.vue" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_06_02_104939_create_couriers_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/Localization.php" />
         <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
-        <option value="$PROJECT_DIR$/resources/lang/ru/pages.php" />
         <option value="$PROJECT_DIR$/resources/lang/uz/pages.php" />
         <option value="$PROJECT_DIR$/resources/lang/en/pages.php" />
-        <option value="$PROJECT_DIR$/public/backend/js/scripts.js" />
         <option value="$PROJECT_DIR$/resources/views/backend/Applications/courier-form.blade.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Contracts/contract-price-edit.blade.php" />
         <option value="$PROJECT_DIR$/app/Policies/ContractPolicy.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/TexnologController.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Users/register.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/Texnolog/edit.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/Texnolog/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Texnolog/create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/Texnolog/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Applications/steps/third-step.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/third-step.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/main.blade.php" />
         <option value="$PROJECT_DIR$/app/Policies/ApplicationPolicy.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/Applications/index.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_14_211948_create_contracts_table.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Contracts/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Contract.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Contracts/contract-price.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_14_190831_create_applications_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/Applications/steps/first-step.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/first-step.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Contracts/ready-contract.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ContractController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Contracts/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php" />
+        <option value="$PROJECT_DIR$/resources/lang/ru/pages.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Applications/steps/first-step.blade.php" />
+        <option value="$PROJECT_DIR$/public/backend/js/scripts.js" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Applications/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Texnolog/index.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_09_132502_create_texnologs_table.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/TexnologController.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Texnolog/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Texnolog/show.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Users/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Users/show.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Roles/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Roles/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Roles/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Roles/show.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Permissions/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Permissions/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Permissions/show.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Permissions/create.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_06_30_152912_create_international_tech_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_06_30_171239_create_techno_country_table.php" />
       </list>
     </option>
   </component>
@@ -275,6 +307,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -285,42 +318,18 @@
             <path>
               <item name="FMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="FMS" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="FMS" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FMS" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FMS" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="Applications" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FMS" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="Contracts" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -420,18 +429,22 @@
       <workItem from="1560926033353" duration="2482000" />
       <workItem from="1561005161473" duration="2945000" />
       <workItem from="1561011112624" duration="7673000" />
-      <workItem from="1561461319603" duration="6486000" />
+      <workItem from="1561461319603" duration="6587000" />
+      <workItem from="1561540477658" duration="154000" />
+      <workItem from="1561568032130" duration="264000" />
+      <workItem from="1561613875166" duration="422000" />
+      <workItem from="1561875997952" duration="13262000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="376119000" />
+    <option name="totallyTimeSpent" value="390322000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-37" width="1920" height="1117" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49950248" visible="true" weight="0.16862327" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49950248" visible="true" weight="0.17502668" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.5004975" side_tool="true" weight="0.2497332" />
       <window_info id="Favorites" order="3" sideWeight="0.5004975" side_tool="true" weight="0.2497332" />
@@ -446,7 +459,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50160086" side_tool="true" weight="0.29472595" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49839914" weight="0.17027864" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49839914" weight="0.16924664" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -457,123 +470,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/js/components/js/LineChart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/ExampleComponent.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/js/PieChart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/ExampleComponent2.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/ExampleComponent3.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/ExampleComponent4.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="59" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Kernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="37" column="53" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/uz/auth.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/en/pagination.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/ru/auth.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/ru/pages.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1953">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/uz/pages.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/Localization.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-          <folding>
-            <element signature="e#39#51#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Texnolog.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="35" column="31" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/courier-form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="86" selection-start-line="8" selection-start-column="86" selection-end-line="8" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -611,13 +507,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/Texnolog/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="5" lean-forward="true" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/backend/Texnolog/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
@@ -625,20 +514,6 @@
           <folding>
             <element signature="e#76#1523#0#HTML" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/Texnolog/show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/Texnolog/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -653,13 +528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="609">
           <caret line="35" column="189" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="189" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/backend/js/scripts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -681,13 +549,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Policies/ApplicationPolicy.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="81" column="27" selection-start-line="81" selection-start-column="20" selection-end-line="81" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -733,20 +594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TexnologController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="75" column="70" selection-start-line="75" selection-start-column="70" selection-end-line="75" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/steps/first-step.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="167" column="106" selection-start-line="167" selection-start-column="96" selection-end-line="167" selection-end-column="106" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/first-step.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -786,34 +633,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="54" column="82" selection-start-line="54" selection-start-column="82" selection-end-line="54" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="150" column="40" lean-forward="true" selection-start-line="145" selection-start-column="31" selection-end-line="150" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php">
+    <entry file="file://$PROJECT_DIR$/app/Policies/ApplicationPolicy.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="145" column="83" lean-forward="true" selection-start-line="141" selection-start-column="8" selection-end-line="145" selection-end-column="83" />
-          <folding>
-            <marker date="1561462506890" expanded="true" signature="27640:27650" ph="..." />
-          </folding>
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/app-render.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Policies/PostPolicy.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="219" column="100" selection-start-line="219" selection-start-column="89" selection-end-line="219" selection-end-column="100" />
+        <state relative-caret-position="860">
+          <caret line="298" column="55" selection-start-line="298" selection-start-column="55" selection-end-line="298" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -821,8 +665,183 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="860">
           <caret line="302" column="60" selection-start-line="302" selection-start-column="60" selection-end-line="302" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/lang/ru/pages.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/backend/js/scripts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="45" column="54" selection-start-line="45" selection-start-column="54" selection-end-line="45" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/steps/first-step.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="100" column="127" lean-forward="true" selection-start-line="100" selection-start-column="127" selection-end-line="100" selection-end-column="127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_09_132502_create_texnologs_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="26" column="60" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2667">
+          <caret line="127" column="77" lean-forward="true" selection-start-line="127" selection-start-column="77" selection-end-line="127" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Texnolog/show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="45" column="97" selection-start-line="45" selection-start-column="97" selection-end-line="45" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Texnolog/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="71" column="138" selection-start-line="71" selection-start-column="138" selection-end-line="71" selection-end-column="138" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="54" column="82" selection-start-line="54" selection-start-column="82" selection-end-line="54" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TexnologController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Texnolog/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="98" column="76" selection-start-line="98" selection-start-column="76" selection-end-line="98" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Roles/show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="86" lean-forward="true" selection-start-line="14" selection-start-column="86" selection-end-line="14" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Roles/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Roles/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Roles/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Users/show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Users/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Permissions/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="8" lean-forward="true" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Permissions/show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Permissions/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Permissions/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_30_152716_create_countries_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_30_152841_create_category_inter_tech_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_30_171239_create_techno_country_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="18" column="56" lean-forward="true" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_30_152912_create_international_tech_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="244" selection-start-line="244" selection-end-line="244" />
           <folding>
-            <element signature="e#5218#25494#0#HTML" />
+            <marker date="1561904816674" expanded="true" signature="27885:27895" ph="..." />
           </folding>
         </state>
       </provider>

@@ -18,8 +18,8 @@ class CreateInternationalTechTable extends Migration
             $table->integer('id_category_inter_tech');
             $table->string('weight');
             $table->string('cost');
-            $table->string('to_pay_courier');
-            $table->integer('type');
+            $table->string('from_pay_courier');
+            $table->integer('type')->nullable()->default(0);
             $table->timestamps();
         });
     }

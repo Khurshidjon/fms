@@ -16,7 +16,7 @@ class CreateTechnoCountryTable extends Migration
         Schema::create('techno_country', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('id_country');
-            $table->integer('id_inter_techno');
+            $table->integer('id_category_inter_techno');
             $table->timestamps();
         });
     }

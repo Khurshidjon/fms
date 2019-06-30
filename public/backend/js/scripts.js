@@ -37,13 +37,20 @@ $(function () {
             data: {
                 city_id: city_id
             },
-            success: function (data) {
-                console.log(data)
+            success: function (data, textStatus, xhr) {
+                if (data == null){
+                    $('#from_district_action').attr('disabled', true);
+                }
                 $('#from_district_action').attr('disabled', false);
                 $('#from_district_action').empty().append("<option selected disabled>-- select once --</option>");
                 $('#from_district_action').append(data);
                 if(window.console || window.console.firebug) {
-                    // console.clear();
+                    console.clear();
+                }
+            },
+            complete: function(xhr) {
+                if (xhr.status == 500){
+                    alert("Этот город не существует в системе")
                 }
             },
             async:true,

@@ -166,6 +166,7 @@ class ApplicationController extends Controller
     {
        $request->session()->remove('application');
        $request->session()->remove('second_step');
+        $regions = Region::where('id', Auth::user()->organ_id)->get();
         $cities = Texnolog::all();
         // dd($cities);
         $application = $request->session()->get('application');
@@ -173,7 +174,8 @@ class ApplicationController extends Controller
         return view('backend.Applications.steps.first-step', [
             'is_active' => 'steps',
             'application' => $application,
-            'cities' => $cities
+            'cities' => $cities,
+            'regions' => $regions
         ]);
     }
 
@@ -186,8 +188,13 @@ class ApplicationController extends Controller
 
     public function cityChangeAction(Request $request)
     {
+//        $result = '';
         $city_id = $request->city_id;
         $districts = Texnolog::where('from_city_id', $city_id)->get();
+
+        if (!isset($districts) || !isset($city_id)){
+            return response()->json('error', 500);
+        }
         foreach($districts->unique('from_district_id') as $district){
             $result[] = "<option value='" . $district->from_district->id . "'>".  $district->from_district->name_ru  . "</option";
         }

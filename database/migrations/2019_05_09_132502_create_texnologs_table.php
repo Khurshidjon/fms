@@ -24,6 +24,7 @@ class CreateTexnologsTable extends Migration
             $table->integer('with_courier_from_home_price')->nullable();
             $table->integer('with_courier_to_home_price')->nullable();
             $table->string('service_price');
+            $table->integer('status')->nullable()->default(1);
             $table->timestamps();
         });
     }

@@ -25,7 +25,7 @@ return [
     'weight' => 'Вес',
     'volume' => 'Объем',
     'product_category' => 'Категория продукта',
-    'contract_number' => 'Контактный номер',
+    'contract_number' => 'Контрактный номер',
     'type_pay_for_service' => 'Категория оплаты',
 
 ];

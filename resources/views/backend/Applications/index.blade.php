@@ -124,8 +124,8 @@
                             <form class="application-remove-form" action="" method="post">
                                 @csrf
                                 @method('delete')
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрить</button>
+                                <button type="submit" class="btn btn-danger">Удалить</button>
                             </form>
                         </div>
                     </div>

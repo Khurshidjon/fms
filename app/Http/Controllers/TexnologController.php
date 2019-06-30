@@ -21,7 +21,7 @@ class TexnologController extends Controller
 
     public function index()
     {
-        $texnologs = Texnolog::latest()->paginate(15);
+        $texnologs = Texnolog::where('status', 1)->latest()->paginate(15);
         return view('backend.Texnolog.index', [
             'is_active' => 'texnolog',
             'texnologs' => $texnologs
@@ -140,6 +140,8 @@ class TexnologController extends Controller
      */
     public function destroy(Texnolog $texnolog)
     {
-        //
+        $texnolog->status = 0;
+        $texnolog->save();
+        return redirect()->route('texnologs.index')->with('success', 'Тариф успешно удалено');
     }
 }
