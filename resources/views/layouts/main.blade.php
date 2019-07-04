@@ -273,30 +273,32 @@
                             </ul>
                         </li>
                         @endcan
-                        <li class="{{ $is_active=='International'?'active':'' }}">
-                            <a href="javascript:;">
-                                <i class="fa fa-list-alt"></i>
-                                <span class="title">Международная почта</span>
-                                <span class="arrow "></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="{{ route('international-techno.index') }}">
-                                        <i class="fa fa-cogs"></i>
-                                        Меж. таъриф
-                                    </a>
-                                </li>
-                                <li class="{{ $is_active=='roles'?'active':'' }}">
-                                    <a href="{{ route('techno-countries.index') }}">
-                                        <i class="icon-flag"></i>
-                                        Techno Country
-                                        @if($is_active == 'roles')
-                                            <span class="selected"></span>
-                                        @endif
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                        @can('nimadur')
+                            <li class="{{ $is_active=='International'?'active':'' }}">
+                                <a href="javascript:;">
+                                    <i class="fa fa-list-alt"></i>
+                                    <span class="title">Международная почта</span>
+                                    <span class="arrow "></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="{{ route('international-techno.index') }}">
+                                            <i class="fa fa-cogs"></i>
+                                            Меж. таъриф
+                                        </a>
+                                    </li>
+                                    <li class="{{ $is_active=='roles'?'active':'' }}">
+                                        <a href="{{ route('techno-countries.index') }}">
+                                            <i class="icon-flag"></i>
+                                            Techno Country
+                                            @if($is_active == 'roles')
+                                                <span class="selected"></span>
+                                            @endif
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endcan
                     </ul>
                     <!-- END SIDEBAR MENU -->
                 </div>

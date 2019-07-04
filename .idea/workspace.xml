@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf95fef2-40a4-43c4-a465-3052632d17f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/InternationalTechno/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/InternationalTechno/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/InternationalTechno/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/first-step.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/first-step.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,11 +50,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="399">
               <caret line="251" column="158" selection-start-line="251" selection-start-column="158" selection-end-line="251" selection-end-column="158" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/main.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="896">
+              <caret line="301" column="25" lean-forward="true" selection-start-line="301" selection-start-column="25" selection-end-line="301" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -167,7 +167,6 @@
         <option value="$PROJECT_DIR$/app/TechnoCountry.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/InternationalTech.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/main.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/InternationalTechno/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/InternationalTechController.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/InternationalTechno/create.blade.php" />
@@ -176,6 +175,7 @@
         <option value="$PROJECT_DIR$/app/Application.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/main.blade.php" />
       </list>
     </option>
   </component>
@@ -441,12 +441,12 @@
       <workItem from="1562150923083" duration="11000" />
       <workItem from="1562150952986" duration="12986000" />
       <workItem from="1562213673098" duration="1130000" />
-      <workItem from="1562216858974" duration="5125000" />
+      <workItem from="1562216858974" duration="5526000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="414155000" />
+    <option name="totallyTimeSpent" value="414556000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-37" width="1920" height="1117" extended-state="6" />
@@ -755,13 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/main.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="749">
-          <caret line="283" column="43" selection-start-line="283" selection-start-column="43" selection-end-line="283" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1617">
@@ -846,6 +839,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="251" column="158" selection-start-line="251" selection-start-column="158" selection-end-line="251" selection-end-column="158" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/main.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="896">
+          <caret line="301" column="25" lean-forward="true" selection-start-line="301" selection-start-column="25" selection-end-line="301" selection-end-column="25" />
         </state>
       </provider>
     </entry>
