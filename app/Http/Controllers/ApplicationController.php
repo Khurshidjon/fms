@@ -166,9 +166,12 @@ class ApplicationController extends Controller
     {
        $request->session()->remove('application');
        $request->session()->remove('second_step');
-        $regions = Region::where('id', Auth::user()->organ_id)->get();
+        if (Auth::user()->hasRole('Admin')){
+            $regions = Region::all();
+        }else{
+            $regions = Region::where('id', Auth::user()->organ_id)->get();
+        }
         $cities = Texnolog::all();
-        // dd($cities);
         $application = $request->session()->get('application');
 
         return view('backend.Applications.steps.first-step', [
@@ -190,13 +193,24 @@ class ApplicationController extends Controller
     {
 //        $result = '';
         $city_id = $request->city_id;
-        $districts = Texnolog::where('from_city_id', $city_id)->get();
+        if ($city_id != 10){
+            $city_id = $request->city_id;
+            $districts = Texnolog::where('to_city_id', $city_id)->get();
+            if (!isset($districts) || !isset($city_id)){
+                return response()->json('error', 500);
+            }
+            foreach($districts->unique('to_district_id') as $district){
+                $result[] = "<option value='" . $district->to_district->id . "'>".  $district->to_district->name_ru  . "</option";
+            }
+        }else{
+            $districts = Texnolog::where('from_city_id', $city_id)->get();
 
-        if (!isset($districts) || !isset($city_id)){
-            return response()->json('error', 500);
-        }
-        foreach($districts->unique('from_district_id') as $district){
-            $result[] = "<option value='" . $district->from_district->id . "'>".  $district->from_district->name_ru  . "</option";
+            if (!isset($districts) || !isset($city_id)){
+                return response()->json('error', 500);
+            }
+            foreach($districts->unique('from_district_id') as $district){
+                $result[] = "<option value='" . $district->from_district->id . "'>".  $district->from_district->name_ru  . "</option";
+            }
         }
         return response()->json($result);
     }
@@ -205,7 +219,7 @@ class ApplicationController extends Controller
         $city_id = $request->city_id;
         $districts = Texnolog::where('to_city_id', $city_id)->get();
 
-        foreach($districts->unique('from_district_id') as $district){
+        foreach($districts->unique('to_district_id') as $district){
             $result[] = "<option value='" . $district->to_district->id . "'>".  $district->to_district->name_ru  . "</option";
         }
         return response()->json($result);
@@ -227,8 +241,6 @@ class ApplicationController extends Controller
             'weight' => 'required|regex:/^[0-9]+((\\.)*(\\,)*[0-9]+)?$/',
             'from_district' => 'required|numeric',
             'to_district' => 'required|numeric',
-//            'from_address' => 'required',
-//            'to_address' => 'required',
             'from_phone' => 'required',
             'to_phone' => 'required',
             'from_fio' => 'required',
@@ -243,19 +255,41 @@ class ApplicationController extends Controller
         
         $step = 1*$step;
 
-        if($request->number_contract != null){
-            $tariff = ContractPrice::where('from_city_id', $request->from_city)
-            ->where('to_city_id', $request->to_city)
-            ->where('from_district_id', $request->from_district)
-            ->where('to_district_id', $request->to_district)
+        $from_city = $request->from_city;
+        $to_city = $request->to_city;
+        $from_district = $request->from_district;
+        $to_district = $request->to_district;
+
+        if($request->number_contract != null)
+        {
+            $tariff = ContractPrice::where('from_city_id', $from_city)
+            ->where('to_city_id', $to_city)
+            ->where('from_district_id', $from_district)
+            ->where('to_district_id', $to_district)
             ->where('contract_id', $request->number_contract)
             ->first();
         }else{
-            $tariff = Texnolog::where('from_city_id', $request->from_city)
-            ->where('to_city_id', $request->to_city)
-            ->where('from_district_id', $request->from_district)
-            ->where('to_district_id', $request->to_district)
-            ->first();
+            if ($from_city != 10){
+                $tariff_one = Texnolog::where('from_city_id', 10)
+                    ->where('to_city_id', $from_city)
+                    ->where('from_district_id', 1005)
+                    ->where('to_district_id', $from_district)
+                    ->first();
+                $tariff_two = Texnolog::where('from_city_id', 10)
+                    ->where('to_city_id', $to_city)
+                    ->where('from_district_id', 1005)
+                    ->where('to_district_id', $to_district)
+                    ->first();
+
+                $tariff_no_tashkent = $tariff_one->service_price + $tariff_two->service_price;
+            }else{
+                $tariff = Texnolog::where('from_city_id', $request->from_city)
+                    ->where('to_city_id', $request->to_city)
+                    ->where('from_district_id', $request->from_district)
+                    ->where('to_district_id', $request->to_district)
+                    ->first();
+            }
+
         }
         $volume_x = 1*$request->volume_x;
         $volume_y = 1*$request->volume_y;
@@ -263,31 +297,51 @@ class ApplicationController extends Controller
         $incorrect_weight = str_replace(',', '.', $request->weight);
         $weight = 1*$incorrect_weight;
 
-        $is_price = $tariff->service_price*$step;
+        if ($from_city != 10){
+            $is_price = $tariff_no_tashkent*$step;
+        }else{
+            $is_price = $tariff->service_price*$step;
+        }
         $volume = (($volume_x*$volume_y*$volume_z)/6000);
 
         $w = ($weight)/($step);
         $v = ($volume)/($step);
 
         /*------------------------------------------------------------------------------------------------------*/
-        $first_step = $tariff->weight + $step;
+        if ($from_city != 10){
+            $first_step = $tariff_one->weight + $step;
+        }else{
+            $first_step = $tariff->weight + $step;
+        }
 
         if ($weight > 0 && $weight < $first_step){
-            $price_weight = $tariff->service_price;
+            if ($from_city != 10) {
+                $price_weight = $tariff_no_tashkent;
+            }else{
+                $price_weight = $tariff->service_price;
+            }
         }else{
             $price_weight = explode('.', round($w, 2))[0]*$is_price;
         }
 
         if ($volume > 0 && $volume < $first_step){
-            $price_volume = $tariff->service_price;
+            if ($from_city != 10) {
+                $price_volume = $tariff_one->service_price;
+            }else{
+                $price_volume = $tariff->service_price;
+            }
         }else{
             $price_volume = explode('.', round($v, 2))[0]*$is_price;
         }
 
         /*------------------------------------------------------------------------------------------------------*/
-
-        $tariff_from_courier_price = $tariff->with_courier_from_home_price;
-        $tariff_to_courier_price = $tariff->with_courier_to_home_price;
+        if ($from_city != 10){
+            $tariff_from_courier_price = $tariff_one->with_courier_from_home_price;
+            $tariff_to_courier_price = $tariff_two->with_courier_to_home_price;
+        }else{
+            $tariff_from_courier_price = $tariff->with_courier_from_home_price;
+            $tariff_to_courier_price = $tariff->with_courier_to_home_price;
+        }
 
 
 
@@ -491,12 +545,19 @@ class ApplicationController extends Controller
 //        if (Auth::id() == $application->user_id || Auth::user()->hasRole('Admin')){
 //            return redirect()->back()->with('error', 'У вас нет прав доступа для обновления приложения');
 //        }
+
         $this->authorize('edit', $application);
+        if (Auth::user()->hasRole('Admin')){
+            $regions = Region::all();
+        }else{
+            $regions = Region::where('id', Auth::user()->organ_id)->get();
+        }
         $cities = Texnolog::all();
         return view('backend.Applications.edit-steps.first-step', [
             'is_active' => 'steps',
             'application' => $application,
-            'cities' => $cities
+            'cities' => $cities,
+            'regions' => $regions,
         ]);
     }
 
@@ -517,8 +578,6 @@ class ApplicationController extends Controller
             'weight' => 'required|regex:/^[0-9]+((\\.)*(\\,)*[0-9]+)?$/',
             'from_district' => 'required|numeric',
             'to_district' => 'required|numeric',
-//            'from_address' => 'required',
-//            'to_address' => 'required',
             'from_phone' => 'required',
             'to_phone' => 'required',
             'from_fio' => 'required',
@@ -533,19 +592,41 @@ class ApplicationController extends Controller
 
         $step = 1*$step;
 
-        if($request->number_contract != null){
-            $tariff = ContractPrice::where('from_city_id', $request->from_city)
-                ->where('to_city_id', $request->to_city)
-                ->where('from_district_id', $request->from_district)
-                ->where('to_district_id', $request->to_district)
+        $from_city = $request->from_city;
+        $to_city = $request->to_city;
+        $from_district = $request->from_district;
+        $to_district = $request->to_district;
+
+        if($request->number_contract != null)
+        {
+            $tariff = ContractPrice::where('from_city_id', $from_city)
+                ->where('to_city_id', $to_city)
+                ->where('from_district_id', $from_district)
+                ->where('to_district_id', $to_district)
                 ->where('contract_id', $request->number_contract)
                 ->first();
         }else{
-            $tariff = Texnolog::where('from_city_id', $request->from_city)
-                ->where('to_city_id', $request->to_city)
-                ->where('from_district_id', $request->from_district)
-                ->where('to_district_id', $request->to_district)
-                ->first();
+            if ($from_city != 10){
+                $tariff_one = Texnolog::where('from_city_id', 10)
+                    ->where('to_city_id', $from_city)
+                    ->where('from_district_id', 1005)
+                    ->where('to_district_id', $from_district)
+                    ->first();
+                $tariff_two = Texnolog::where('from_city_id', 10)
+                    ->where('to_city_id', $to_city)
+                    ->where('from_district_id', 1005)
+                    ->where('to_district_id', $to_district)
+                    ->first();
+
+                $tariff_no_tashkent = $tariff_one->service_price + $tariff_two->service_price;
+            }else{
+                $tariff = Texnolog::where('from_city_id', $request->from_city)
+                    ->where('to_city_id', $request->to_city)
+                    ->where('from_district_id', $request->from_district)
+                    ->where('to_district_id', $request->to_district)
+                    ->first();
+            }
+
         }
         $volume_x = 1*$request->volume_x;
         $volume_y = 1*$request->volume_y;
@@ -553,31 +634,51 @@ class ApplicationController extends Controller
         $incorrect_weight = str_replace(',', '.', $request->weight);
         $weight = 1*$incorrect_weight;
 
-        $is_price = $tariff->service_price*$step;
+        if ($from_city != 10){
+            $is_price = $tariff_no_tashkent*$step;
+        }else{
+            $is_price = $tariff->service_price*$step;
+        }
         $volume = (($volume_x*$volume_y*$volume_z)/6000);
 
         $w = ($weight)/($step);
         $v = ($volume)/($step);
 
-/*------------------------------------------------------------------------------------------------------*/
-        $first_step = $tariff->weight + $step;
+        /*------------------------------------------------------------------------------------------------------*/
+        if ($from_city != 10){
+            $first_step = $tariff_one->weight + $step;
+        }else{
+            $first_step = $tariff->weight + $step;
+        }
 
         if ($weight > 0 && $weight < $first_step){
-            $price_weight = $tariff->service_price;
+            if ($from_city != 10) {
+                $price_weight = $tariff_no_tashkent;
+            }else{
+                $price_weight = $tariff->service_price;
+            }
         }else{
             $price_weight = explode('.', round($w, 2))[0]*$is_price;
         }
 
         if ($volume > 0 && $volume < $first_step){
-            $price_volume = $tariff->service_price;
+            if ($from_city != 10) {
+                $price_volume = $tariff_one->service_price;
+            }else{
+                $price_volume = $tariff->service_price;
+            }
         }else{
             $price_volume = explode('.', round($v, 2))[0]*$is_price;
         }
 
-/*------------------------------------------------------------------------------------------------------*/
-
-        $tariff_from_courier_price = $tariff->with_courier_from_home_price;
-        $tariff_to_courier_price = $tariff->with_courier_to_home_price;
+        /*------------------------------------------------------------------------------------------------------*/
+        if ($from_city != 10){
+            $tariff_from_courier_price = $tariff_one->with_courier_from_home_price;
+            $tariff_to_courier_price = $tariff_two->with_courier_to_home_price;
+        }else{
+            $tariff_from_courier_price = $tariff->with_courier_from_home_price;
+            $tariff_to_courier_price = $tariff->with_courier_to_home_price;
+        }
 
         $with_weight_price_service = $price_weight;
 
@@ -713,36 +814,46 @@ class ApplicationController extends Controller
 
         $courier = Courier::where('application_id', $application->id)->first();
 
+
 //        dd(1*$request->from_courier_name);
-        if($request->from_courier_type == 'on'){
-            $courier->from_courier_name = $request->from;
-            $courier->from_courier_phone = $request->from_phone;
-        }elseif ($request->get('from_courier_name') != null){
-            $from_courier = User::find(1*$request->from_courier_name);
+//        if($request->from_courier_type == 'on'){
+//            $courier->from_courier_name = $request->from;
+//            $courier->from_courier_phone = $request->from_phone;
+//        }elseif ($request->get('from_courier_name') != null){
+//        dd($application);
+
+
+        if ($request->get('from_courier_name')){
+            $from_courier = User::find(1*$request->get('from_courier_name'));
             $courier->from_courier_name = $from_courier->username;
             $courier->from_courier_phone = $from_courier->phone;
         }
 
-        if($request->courier_type == 'on'){
-            $courier->courier_name = $request->post;
-            $courier->courier_phone = $request->post_phone;
-        }elseif ($request->get('courier_name')){
-            $post_courier = User::find(1*$request->get('courier_name'));
 
+//        if($request->courier_type == 'on'){
+//            $courier->courier_name = $request->post;
+//            $courier->courier_phone = $request->post_phone;
+//        }elseif ($request->get('courier_name')){
+
+
+        if ($request->get('courier_name')){
+            $post_courier = User::find(1*$request->get('courier_name'));
             $courier->courier_name  = $post_courier->username;
             $courier->courier_phone = $post_courier->phone;
+        }
 
+//        if($request->to_courier_type == 'on'){
+//            $courier->to_courier_name = $request->to;
+//            $courier->to_courier_phone = $request->to_phone;
+//        }else{
+
+        if ($request->get('to_courier_name')){
+            $to_courier = User::find($request->get('to_courier_name'));
+            $courier->to_courier_name = $to_courier->username;
+            $courier->to_courier_phone = $to_courier->phone;
         }
-        if($request->to_courier_type == 'on'){
-            $courier->to_courier_name = $request->to;
-            $courier->to_courier_phone = $request->to_phone;
-        }else{
-            if ($request->get('to_courier_name')){
-                $to_courier = User::find($request->get('to_courier_name'));
-                $courier->to_courier_name = $to_courier->username;
-                $courier->to_courier_phone = $to_courier->phone;
-            }
-        }
+
+//        }
 
         $courier->save();
 

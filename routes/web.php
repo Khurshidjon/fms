@@ -83,5 +83,7 @@ Route::group(['middleware' => 'auth'], function (){
     Route::resource('/texnologs', 'TexnologController');
     Route::resource('/applications', 'ApplicationController')->middleware("permission:application create");
     Route::resource('/contracts', 'ContractController')->middleware('permission:contract');
+    Route::resource('/international-techno', 'InternationalTechController');
+    Route::resource('/techno-countries', 'TechnoCountryController');
 });
 Auth::routes();

@@ -20,8 +20,10 @@
                 <div class="portlet box blue" id="form_wizard_1">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="fa fa-gift"></i> Заявка - <span class="step-title">
-								Шаг 2 из 3 </span>
+                            <i class="fa fa-gift"></i> Заявка -
+                            <span class="step-title">
+								Шаг 2 из 3
+                            </span>
                         </div>
                         <div class="tools hidden-xs">
                             <a href="javascript:;" class="collapse">
@@ -98,7 +100,7 @@
                                                             <th class="text-center">Кто оплачивает почтовые расходы?</th>
                                                             <th class="text-center">Скидка</th>
                                                             <th class="text-center">Курьер <small><sub>(из базе)</sub></small></th>
-                                                            <th class="text-center">Курьер <small><sub>(Заказ/Работник)</sub></small></th>
+{{--                                                            <th class="text-center">Курьер <small><sub>(Заказ/Работник)</sub></small></th>--}}
                                                             <th class="text-center">Типы оплаты</th>
                                                         </tr>
                                                         </thead>
@@ -120,11 +122,14 @@
                                                                 </div>
                                                             </td>
                                                             <td class="form-group">
-                                                                <input type="text" class="form-control" name="sale_for_from_courier" placeholder="Sale for courier (%)" value="{{ $sale!=null?$sale->from_courier_sale:'0' }}" readonly>
+                                                                <input type="text" class="form-control @error('sale_for_from_courier') is-invalid @enderror" name="sale_for_from_courier" placeholder="Sale for courier (%)" value="{{ $sale!=null?$sale->from_courier_sale:'0' }}" readonly>
+                                                                @error('sale_for_from_courier')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
                                                             </td>
                                                             <td class="form-group">
                                                                 <select name="from_courier_name" class="form-control select2 from_courier_name" {{ $application->cost_from_courier==null?'disabled':'' }}>
-                                                                    <option value="">--@lang('pages.select_one')--</option>
+                                                                    <option value="" disabled>--@lang('pages.select_one')--</option>
                                                                     @foreach($couriers as $courier)
                                                                         @if($courier->hasRole('Courier') AND $courier->organ_id == $application->from_city_id)
                                                                             <option value="{{ $courier->id }}" {{ $courier->organ_id==$application->from_city_id?'selected':'' }}>{{ $courier->username }}</option>
@@ -132,13 +137,13 @@
                                                                     @endforeach
                                                                 </select>
                                                             </td>
-                                                            <td class="form-group" style="padding-left: 40px">
+                                                            {{--<td class="form-group" style="padding-left: 40px">
                                                                 <div class="checkbox">
                                                                     <label>
                                                                         <input type="checkbox" data-toggle="toggle" name="from_courier_type" data-on="Заказ" data-off="Работник" class="form-control courier_type" data-form="from">
                                                                     </label>
                                                                 </div>
-                                                            </td>
+                                                            </td>--}}
                                                             <td class="form-group">
                                                                 <div class="form-md-radios">
                                                                     <div class="md-radio-inline">
@@ -211,13 +216,13 @@
                                                                     @endforeach
                                                                 </select>
                                                             </td>
-                                                            <td class="form-group" style="padding-left: 40px">
+                                                            {{--<td class="form-group" style="padding-left: 40px">
                                                                 <div class="checkbox">
                                                                     <label>
                                                                         <input type="checkbox" data-toggle="toggle" name="courier_type" data-on="Заказ" data-off="Работник" class="form-control courier_type" data-form="post">
                                                                     </label>
                                                                 </div>
-                                                            </td>
+                                                            </td>--}}
                                                             <td class="form-group"></td>
                                                         </tr>
                                                         <tr>
@@ -244,18 +249,18 @@
                                                                     <option value="">--@lang('pages.select_one')--</option>
                                                                     @foreach($couriers as $courier)
                                                                         @if($courier->hasRole('Courier') && $courier->organ_id == $application->to_city_id)
-                                                                            <option value="{{ $courier->id }}" {{ $courier->organ_id==$application->from_city_id?'selected':'' }}>{{ $courier->username }}</option>
+                                                                            <option value="{{ $courier->id }}" {{ $courier->organ_id==$application->to_city_id?'selected':'' }}>{{ $courier->username }}</option>
                                                                         @endif
                                                                     @endforeach
                                                                 </select>
                                                             </td>
-                                                            <td class="form-group" style="padding-left: 40px">
+                                                            {{--<td class="form-group" style="padding-left: 40px">
                                                                 <div class="checkbox">
                                                                     <label>
                                                                         <input type="checkbox" data-toggle="toggle" name="to_courier_type" data-on="Заказ"  data-off="Работник" class="form-control courier_type" data-form="to">
                                                                     </label>
                                                                 </div>
-                                                            </td>
+                                                            </td>--}}
                                                             <td class="form-group">
                                                                 <div class="form-md-radios">
                                                                     <div class="md-radio-inline">

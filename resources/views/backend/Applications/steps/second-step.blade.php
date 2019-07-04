@@ -94,7 +94,7 @@
                                                        <th class="text-center">Кто оплачивает почтовые расходы?</th>
                                                        <th class="text-center">Скидка</th>
                                                        <th class="text-center">Курьер <small><sub>(из базе)</sub></small></th>
-                                                       <th class="text-center">Курьер <small><sub>(Заказ/Работник)</sub></small></th>
+{{--                                                       <th class="text-center">Курьер <small><sub>(Заказ/Работник)</sub></small></th>--}}
                                                        <th class="text-center">Типы оплаты</th>
                                                    </tr>
                                                    </thead>
@@ -128,13 +128,13 @@
                                                                @endforeach
                                                            </select>
                                                        </td>
-                                                       <td class="form-group" style="padding-left: 40px">
+                                                       {{--<td class="form-group" style="padding-left: 40px">
                                                            <div class="checkbox">
                                                                <label>
                                                                    <input type="checkbox" data-toggle="toggle" name="from_courier_type" data-on="Заказ" data-off="Работник" class="form-control courier_type" data-form="from">
                                                                </label>
                                                            </div>
-                                                       </td>
+                                                       </td>--}}
                                                        <td class="form-group">
                                                            <div class="form-md-radios">
                                                                <div class="md-radio-inline">
@@ -207,13 +207,13 @@
                                                                @endforeach
                                                            </select>
                                                        </td>
-                                                       <td class="form-group" style="padding-left: 40px">
+                                                       {{--<td class="form-group" style="padding-left: 40px">
                                                            <div class="checkbox">
                                                                <label>
                                                                    <input type="checkbox" data-toggle="toggle" name="courier_type" data-on="Заказ" data-off="Работник" class="form-control courier_type" data-form="post">
                                                                </label>
                                                            </div>
-                                                       </td>
+                                                       </td>--}}
                                                        <td class="form-group"></td>
                                                    </tr>
                                                    <tr>
@@ -245,13 +245,13 @@
                                                                @endforeach
                                                            </select>
                                                        </td>
-                                                       <td class="form-group" style="padding-left: 40px">
+                                                       {{--<td class="form-group" style="padding-left: 40px">
                                                            <div class="checkbox">
                                                                <label>
                                                                    <input type="checkbox" data-toggle="toggle" name="to_courier_type" data-on="Заказ" data-off="Работник" class="form-control courier_type" data-form="to">
                                                                </label>
                                                            </div>
-                                                       </td>
+                                                       </td>--}}
                                                        <td class="form-group">
                                                            <div class="form-md-radios">
                                                                <div class="md-radio-inline">
