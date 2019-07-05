@@ -262,12 +262,31 @@ class ApplicationController extends Controller
 
         if($request->number_contract != null)
         {
-            $tariff = ContractPrice::where('from_city_id', $from_city)
-            ->where('to_city_id', $to_city)
-            ->where('from_district_id', $from_district)
-            ->where('to_district_id', $to_district)
-            ->where('contract_id', $request->number_contract)
-            ->first();
+            if ($from_city != 10){
+                $tariff_one = ContractPrice::where('from_city_id', 10)
+                    ->where('to_city_id', $from_city)
+                    ->where('from_district_id', 1005)
+                    ->where('to_district_id', $from_district)
+                    ->where('contract_id', $request->number_contract)
+                    ->first();
+                $tariff_two = ContractPrice::where('from_city_id', 10)
+                    ->where('to_city_id', $to_city)
+                    ->where('from_district_id', 1005)
+                    ->where('to_district_id', $to_district)
+                    ->where('contract_id', $request->number_contract)
+                    ->first();
+                $period_date = $tariff_one->delivery_time + $tariff_two->delivery_time;
+
+                $tariff_no_tashkent = $tariff_one->service_price + $tariff_two->service_price;
+            }else{
+                $tariff = ContractPrice::where('from_city_id', $from_city)
+                    ->where('to_city_id', $to_city)
+                    ->where('from_district_id', $from_district)
+                    ->where('to_district_id', $to_district)
+                    ->where('contract_id', $request->number_contract)
+                    ->first();
+            }
+
         }else{
             if ($from_city != 10){
                 $tariff_one = Texnolog::where('from_city_id', 10)
@@ -280,6 +299,7 @@ class ApplicationController extends Controller
                     ->where('from_district_id', 1005)
                     ->where('to_district_id', $to_district)
                     ->first();
+                $period_date = $tariff_one->delivery_time + $tariff_two->delivery_time;
 
                 $tariff_no_tashkent = $tariff_one->service_price + $tariff_two->service_price;
             }else{
@@ -369,9 +389,18 @@ class ApplicationController extends Controller
             $application->volume = $volume;
             $application->category_pay_service = $request->transfers;
             $application->number_contract = $request->number_contract;
-            $application->from_date = $request->from_date;
+            $application->from_date = Carbon::parse($request->from_date);
+            if ($from_city != 10){
+                $d = strtotime(date_create($request->from_date)->format("Y-m-d") . "+ ". $period_date ." days");
+                $application->to_date = date("Y-m-d", $d);
+            }else{
+                $d = strtotime(date_create($request->from_date)->format("Y-m-d") . "+ ". $tariff->delivery_time ." days");
+                $application->to_date = date("Y-m-d", $d);
+            }
+
             // $application->to_date = $request->to_date;
             // $application->delivered_date = $request->delivered_date;
+
             $application->category_product = $request->category_product;
             $application->pieces = $request->pieces;
 
@@ -599,12 +628,30 @@ class ApplicationController extends Controller
 
         if($request->number_contract != null)
         {
-            $tariff = ContractPrice::where('from_city_id', $from_city)
-                ->where('to_city_id', $to_city)
-                ->where('from_district_id', $from_district)
-                ->where('to_district_id', $to_district)
-                ->where('contract_id', $request->number_contract)
-                ->first();
+            if ($from_city != 10){
+                $tariff_one = ContractPrice::where('from_city_id', 10)
+                    ->where('to_city_id', $from_city)
+                    ->where('from_district_id', 1005)
+                    ->where('to_district_id', $from_district)
+                    ->where('contract_id', $request->number_contract)
+                    ->first();
+                $tariff_two = ContractPrice::where('from_city_id', 10)
+                    ->where('to_city_id', $to_city)
+                    ->where('from_district_id', 1005)
+                    ->where('to_district_id', $to_district)
+                    ->where('contract_id', $request->number_contract)
+                    ->first();
+                $period_date = $tariff_one->delivery_time + $tariff_two->delivery_time;
+
+                $tariff_no_tashkent = $tariff_one->service_price + $tariff_two->service_price;
+            }else{
+                $tariff = ContractPrice::where('from_city_id', $from_city)
+                    ->where('to_city_id', $to_city)
+                    ->where('from_district_id', $from_district)
+                    ->where('to_district_id', $to_district)
+                    ->where('contract_id', $request->number_contract)
+                    ->first();
+            }
         }else{
             if ($from_city != 10){
                 $tariff_one = Texnolog::where('from_city_id', 10)
@@ -617,6 +664,8 @@ class ApplicationController extends Controller
                     ->where('from_district_id', 1005)
                     ->where('to_district_id', $to_district)
                     ->first();
+
+                $period_date = $tariff_one->delivery_time + $tariff_two->delivery_time;
 
                 $tariff_no_tashkent = $tariff_one->service_price + $tariff_two->service_price;
             }else{
@@ -701,6 +750,13 @@ class ApplicationController extends Controller
             $application->category_pay_service = $request->transfers;
             $application->number_contract = $request->number_contract;
             $application->from_date = $request->from_date;
+        if ($from_city != 10){
+            $d = strtotime(date_create($request->from_date)->format("Y-m-d") . "+ ". $period_date ." days");
+            $application->to_date = date("Y-m-d", $d);
+        }else{
+            $d = strtotime(date_create($request->from_date)->format("Y-m-d") . "+ ". $tariff->delivery_time ." days");
+            $application->to_date = date("Y-m-d", $d);
+        }
             // $application->to_date = $request->to_date;
             // $application->delivered_date = $request->delivered_date;
             $application->category_product = $request->category_product;

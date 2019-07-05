@@ -1,5 +1,9 @@
 @extends('layouts.main')
 @section('content')
+    @php
+        //$d = strtotime(date_create("16-07-1995")->format("Y-m-d") . "+ ". 2 ." days");
+           //      dd(date("d-m-Y", $d));
+    @endphp
     <style>
         #from_content, #second_content{
             border: 1px solid #002e5b;
@@ -227,7 +231,7 @@
                                                                     </small>
                                                                 </label>
                                                                 <div class="col-md-10">
-                                                                    <input class="date form-control @error('from_date') is-invalid @enderror" type="text" name="from_date" placeholder="mm-dd-yyyy" value="{{ old('from_date') }}">
+                                                                    <input class="date form-control @error('from_date') is-invalid @enderror" type="text" name="from_date" placeholder="yyyy-mm-dd" value="{{ old('from_date') }}" autocomplete="off">
                                                                     @error('from_date')
                                                                         <span class="text-danger help-block" role="alert">
                                                                             {{ $message }}
@@ -606,7 +610,7 @@
             Layout.init(); // init current layout
             $('.select2').select2();
             $('.date').datepicker({
-                format: 'mm-dd-yyyy'
+                format: 'yyyy-mm-dd'
             }).on('changeDate', function(e){
                 $(this).datepicker('hide');
             });

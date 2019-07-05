@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Application extends Model
 {
+    protected $dates = ['from_date', 'to_date'];
     public function from_city(){
         return $this->belongsTo(Region::class, 'from_city_id');
     }

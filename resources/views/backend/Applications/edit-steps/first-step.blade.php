@@ -228,7 +228,7 @@
                                                                     </small>
                                                                 </label>
                                                                 <div class="col-md-10">
-                                                                    <input class="date form-control @error('from_date') is-invalid @enderror" type="text" name="from_date" placeholder="mm-dd-yyyy" value="{{ old('from_date', $application->from_date) }}">
+                                                                    <input class="date form-control @error('from_date') is-invalid @enderror" type="text" name="from_date" placeholder="mm-dd-yyyy" value="{{ old('from_date', $application->from_date) }}" autocomplete="off">
                                                                     @error('from_date')
                                                                         <span class="text-danger help-block" role="alert">
                                                                             {{ $message }}

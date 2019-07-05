@@ -155,7 +155,7 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="3" style="border:1px solid black;padding-left:5px;"><b>Подпись:</b></td>
-                                                <td colspan="4" style="border:1px solid black;text-align:center;" colspan="3"><b>Дата:</b><i class="text-danger"> 16.05.2019г.</i></td>
+                                                <td colspan="4" style="border:1px solid black;text-align:center;" colspan="3"><b>Дата:</b><i> {{ $application->from_date->format("d.m.Y") }} г.</i></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="6" style="height:10px;"></td>
@@ -181,7 +181,7 @@
                                                 <td colspan="3"></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2" style="border:1px solid black;padding-left:5px;"><b>Подпись:</b></td><td style="padding-left:5px; border:1px solid black;text-align:center;" colspan="1" class="text-danger"><b>Дата:</b><i> 17.05.2019г.</i></td>
+                                                <td colspan="2" style="border:1px solid black;padding-left:5px;"><b>Подпись:</b></td><td style="padding-left:5px; border:1px solid black;text-align:center;" colspan="1"><b>Дата:</b><i> {{ $application->to_date->format('d.m.Y') }}г.</i></td>
                                                 <td colspan="4" style="border:1px solid black;padding-left:5px;"><b>Подпись:</b></td>
                                             </tr>
                                         </table>
@@ -256,7 +256,7 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="3" style="border:1px solid black;padding-left:5px;"><b>Подпись:</b></td>
-                                                <td colspan="4" style="border:1px solid black;text-align:center;" colspan="3"><b>Дата:</b><i class="text-danger"> 16.05.2019г.</i></td>
+                                                <td colspan="4" style="border:1px solid black;text-align:center;" colspan="3"><b>Дата:</b><i> {{ $application->from_date->format('d.m.Y') }}г.</i></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="6" style="height:10px;"></td>
@@ -282,7 +282,7 @@
                                                 <td colspan="3"></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2" style="border:1px solid black;padding-left:5px;"><b>Подпись:</b></td><td style="padding-left:5px; border:1px solid black;text-align:center;" colspan="1" class="text-danger" ><b>Дата:</b><i> 17.05.2019г.</i></td>
+                                                <td colspan="2" style="border:1px solid black;padding-left:5px;"><b>Подпись:</b></td><td style="padding-left:5px; border:1px solid black;text-align:center;" colspan="1"><b>Дата:</b><i> {{ $application->to_date->format('d.m.Y') }}г.</i></td>
                                                 <td colspan="4" style="border:1px solid black;padding-left:5px;"><b>Подпись:</b></td>
                                             </tr>
                                             <tr>
