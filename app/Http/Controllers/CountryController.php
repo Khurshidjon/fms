@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Country;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CountryController extends Controller
 {
@@ -14,7 +15,11 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
+        $countries = Country::latest()->paginate(15);
+        return view('backend.Countries.index', [
+            'countries' => $countries,
+            'is_active' => 'International'
+        ]);
     }
 
     /**
@@ -24,7 +29,9 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.Countries.create', [
+            'is_active' => 'International'
+        ]);
     }
 
     /**
@@ -35,7 +42,21 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = Validator::make($request->all(), [
+           'name' => 'required|string|max:255'
+        ]);
+
+        if ($validate->fails()){
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($validate);
+        }else{
+
+            Country::create($request->all());
+
+            return redirect()->route('countries.index')->with('success', 'Название страны успешно создано');
+        }
     }
 
     /**
@@ -57,7 +78,10 @@ class CountryController extends Controller
      */
     public function edit(Country $country)
     {
-        //
+        return view('backend.Countries.edit', [
+            'is_active' => 'International',
+            'country' => $country
+        ]);
     }
 
     /**
@@ -69,7 +93,21 @@ class CountryController extends Controller
      */
     public function update(Request $request, Country $country)
     {
-        //
+        $validate = Validator::make($request->all(), [
+            'name' => 'required|string|max:255'
+        ]);
+
+        if ($validate->fails()){
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($validate);
+        }else{
+
+           $country->update($request->all());
+
+            return redirect()->route('countries.index')->with('success', 'Страна успешно переименована');
+        }
     }
 
     /**

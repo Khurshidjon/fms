@@ -85,5 +85,11 @@ Route::group(['middleware' => 'auth'], function (){
     Route::resource('/contracts', 'ContractController')->middleware('permission:contract');
     Route::resource('/international-techno', 'InternationalTechController');
     Route::resource('/techno-countries', 'TechnoCountryController');
+    Route::resource('/countries', 'CountryController');
+
+    Route::post('/attach-country-to-zone/{categories_techno}/{country}', 'CategoryInterTechController@attach_country_to_zone')->name('attach_country_to_zone');
+    Route::post('/detach-country-from-zone/{categories_techno}/{country}', 'CategoryInterTechController@detach_country_from_zone')->name('detach_country_from_zone');
+    Route::resource('/categories-techno', 'CategoryInterTechController');
+
 });
 Auth::routes();

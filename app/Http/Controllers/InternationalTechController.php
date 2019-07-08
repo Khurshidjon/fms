@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
 use App\InternationalTech;
 use Illuminate\Http\Request;
 
@@ -28,8 +29,10 @@ class InternationalTechController extends Controller
      */
     public function create()
     {
+        $countries = Country::all();
         return view('backend.InternationalTechno.create', [
-            'is_active' => 'International'
+            'is_active' => 'International',
+            'countries' => $countries
         ]);
     }
 

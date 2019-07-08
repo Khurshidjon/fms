@@ -20,6 +20,7 @@ class CreateInternationalTechTable extends Migration
             $table->string('cost');
             $table->string('from_pay_courier');
             $table->integer('type')->nullable()->default(0);
+            $table->integer('status')->nullable()->default(1);
             $table->timestamps();
         });
     }

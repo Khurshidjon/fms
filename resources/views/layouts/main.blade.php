@@ -273,7 +273,7 @@
                             </ul>
                         </li>
                         @endcan
-                        @can('nimadur')
+                        @can('settings')
                             <li class="{{ $is_active=='International'?'active':'' }}">
                                 <a href="javascript:;">
                                     <i class="fa fa-list-alt"></i>
@@ -282,18 +282,24 @@
                                 </a>
                                 <ul class="sub-menu">
                                     <li>
+                                        <a href="{{ route('countries.index') }}">
+                                            <i class="fa fa-flag"></i>
+                                            Страны
+                                        </a>
+                                    </li>
+                                    <li class="{{ $is_active=='International'?'active':'' }}">
+                                        <a href="{{ route('categories-techno.index') }}">
+                                            <i class="icon-flag"></i>
+                                            Зоны
+                                            @if($is_active == 'International')
+                                                <span class="selected"></span>
+                                            @endif
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('international-techno.index') }}">
                                             <i class="fa fa-cogs"></i>
                                             Меж. таъриф
-                                        </a>
-                                    </li>
-                                    <li class="{{ $is_active=='roles'?'active':'' }}">
-                                        <a href="{{ route('techno-countries.index') }}">
-                                            <i class="icon-flag"></i>
-                                            Techno Country
-                                            @if($is_active == 'roles')
-                                                <span class="selected"></span>
-                                            @endif
                                         </a>
                                     </li>
                                 </ul>
