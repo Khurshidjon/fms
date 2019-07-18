@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf95fef2-40a4-43c4-a465-3052632d17f6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/third-step.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/third-step.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/Applications/steps/third-step.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/Applications/steps/third-step.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,20 +41,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/steps/third-step.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="146" column="53" selection-start-line="146" selection-start-column="53" selection-end-line="146" selection-end-column="53" />
+            <state relative-caret-position="541">
+              <caret line="277" column="78" selection-start-line="277" selection-start-column="78" selection-end-line="277" selection-end-column="78" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="239" column="272" selection-start-line="239" selection-start-column="272" selection-end-line="239" selection-end-column="272" />
+            <state relative-caret-position="2717">
+              <caret line="234" column="185" selection-start-line="234" selection-start-column="170" selection-end-line="234" selection-end-column="185" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="230" column="230" selection-start-line="230" selection-start-column="230" selection-end-line="230" selection-end-column="230" />
             </state>
           </provider>
         </entry>
@@ -59,8 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/third-step.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="807">
-              <caret line="148" column="53" lean-forward="true" selection-start-line="122" selection-start-column="47" selection-end-line="148" selection-end-column="53" />
+            <state relative-caret-position="535">
+              <caret line="268" selection-start-line="268" selection-end-line="269" />
               <folding>
                 <element signature="e#8264#8324#0#HTML" expanded="true" />
                 <element signature="e#26886#26934#0#HTML" expanded="true" />
@@ -70,11 +82,19 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="810">
+              <caret line="518" column="9" selection-start-line="518" selection-start-column="9" selection-end-line="518" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>city_id</find>
       <find>.side</find>
       <find>.page-sidebar {</find>
       <find>sidebar-toggler</find>
@@ -103,6 +123,7 @@
       <find>session</find>
       <find>from_da</find>
       <find>о</find>
+      <find>second</find>
       <find>от</find>
     </findStrings>
     <replaceStrings>
@@ -137,10 +158,8 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_06_30_171239_create_techno_country_table.php" />
         <option value="$PROJECT_DIR$/app/InternationalTech.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/InternationalTechno/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/first-step.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Applications/steps/first-step.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" />
         <option value="$PROJECT_DIR$/app/Application.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_30_152912_create_international_tech_table.php" />
@@ -166,9 +185,11 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Permissions/PermissionController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/third-step.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/Applications/steps/third-step.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/third-step.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/Applications/steps/third-step.blade.php" />
       </list>
     </option>
   </component>
@@ -421,12 +442,12 @@
       <workItem from="1562588257903" duration="2034000" />
       <workItem from="1563252691674" duration="16165000" />
       <workItem from="1563427698434" duration="45000" />
-      <workItem from="1563446588260" duration="1942000" />
+      <workItem from="1563446588260" duration="3429000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="458458000" />
+    <option name="totallyTimeSpent" value="459945000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -500,13 +521,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="875">
-          <caret line="218" column="55" lean-forward="true" selection-start-line="218" selection-start-column="55" selection-end-line="218" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/first-step.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
@@ -518,13 +532,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12665">
-          <caret line="756" column="107" selection-start-line="756" selection-start-column="107" selection-end-line="756" selection-end-column="107" />
         </state>
       </provider>
     </entry>
@@ -815,10 +822,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="518" column="9" selection-start-line="518" selection-start-column="9" selection-end-line="518" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/steps/second-step.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="230" column="230" selection-start-line="230" selection-start-column="230" selection-end-line="230" selection-end-column="230" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/third-step.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="807">
-          <caret line="148" column="53" lean-forward="true" selection-start-line="122" selection-start-column="47" selection-end-line="148" selection-end-column="53" />
+        <state relative-caret-position="535">
+          <caret line="268" selection-start-line="268" selection-end-line="269" />
           <folding>
             <element signature="e#8264#8324#0#HTML" expanded="true" />
             <element signature="e#26886#26934#0#HTML" expanded="true" />
@@ -827,17 +848,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/steps/third-step.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="146" column="53" selection-start-line="146" selection-start-column="53" selection-end-line="146" selection-end-column="53" />
+        <state relative-caret-position="2717">
+          <caret line="234" column="185" selection-start-line="234" selection-start-column="170" selection-end-line="234" selection-end-column="185" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/edit-steps/second-step.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/Applications/steps/third-step.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="239" column="272" selection-start-line="239" selection-start-column="272" selection-end-line="239" selection-end-column="272" />
+        <state relative-caret-position="541">
+          <caret line="277" column="78" selection-start-line="277" selection-start-column="78" selection-end-line="277" selection-end-column="78" />
         </state>
       </provider>
     </entry>

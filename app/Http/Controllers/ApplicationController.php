@@ -490,23 +490,33 @@ class ApplicationController extends Controller
             $application->cost_service = $cost_service;
             $application->cost_to_courier = $cost_to_courier;
 
-            if($request->from_pay_courier == 'on'){
+        if ($request->cost_from_courier == null || $request->cost_from_courier == 0){
+            $application->from_pay_courier = null;
+        }else {
+            if ($request->from_pay_courier == 'on') {
                 $application->from_pay_courier = 'sender';
-            }else{
+            } else {
                 $application->from_pay_courier = 'receiver';
             }
-
+        }
+        if ($request->cost_service == null || $request->cost_service == 0){
+            $application->pay_service = null;
+        }else{
             if($request->pay_service == 'on'){
                 $application->pay_service = 'sender';
             }else{
                 $application->pay_service = 'receiver';
             }
-
+        }
+        if ($request->cost_to_courier == null || $request->cost_to_courier == 0){
+            $application->to_pay_courier = null;
+        }else{
             if($request->to_pay_courier == 'on'){
                 $application->to_pay_courier = 'sender';
             }else{
                 $application->to_pay_courier = 'receiver';
             }
+        }
 
             $application->category_pay_from_courier = $request->category_pay_from_courier;
             $application->category_pay_to_courier = $request->category_pay_to_courier;
@@ -834,22 +844,32 @@ class ApplicationController extends Controller
         $application->cost_to_courier = $cost_to_courier;
 
 
-        if($request->from_pay_courier == 'on'){
-            $application->from_pay_courier = 'sender';
-        }else{
-            $application->from_pay_courier = 'receiver';
+        if ($request->cost_from_courier == null || $request->cost_from_courier == 0){
+            $application->from_pay_courier = null;
+        }else {
+            if ($request->from_pay_courier == 'on') {
+                $application->from_pay_courier = 'sender';
+            } else {
+                $application->from_pay_courier = 'receiver';
+            }
         }
-
-        if($request->pay_service == 'on'){
-            $application->pay_service = 'sender';
+        if ($request->cost_service == null || $request->cost_service == 0){
+            $application->pay_service = null;
         }else{
-            $application->pay_service = 'receiver';
+            if($request->pay_service == 'on'){
+                $application->pay_service = 'sender';
+            }else{
+                $application->pay_service = 'receiver';
+            }
         }
-
-        if($request->to_pay_courier == 'on'){
-            $application->to_pay_courier = 'sender';
+        if ($request->cost_to_courier == null || $request->cost_to_courier == 0){
+            $application->to_pay_courier = null;
         }else{
-            $application->to_pay_courier = 'receiver';
+            if($request->to_pay_courier == 'on'){
+                $application->to_pay_courier = 'sender';
+            }else{
+                $application->to_pay_courier = 'receiver';
+            }
         }
         if ($application->cost_from_courier){
             $application->category_pay_from_courier = $request->category_pay_from_courier;

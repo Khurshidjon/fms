@@ -122,8 +122,10 @@
                                                     <i>
                                                         @if($application->from_pay_courier == 'sender')
                                                             Отправитель
-                                                        @else
+                                                        @elseif($application->from_pay_courier == "receiver")
                                                             Получатель
+                                                        @else
+                                                            -
                                                         @endif
                                                     </i>
                                                 </td>
@@ -131,8 +133,10 @@
                                                     <i>
                                                         @if($application->pay_service == "sender")
                                                             Отправитель
-                                                        @else
+                                                        @elseif($application->pay_service == "receiver")
                                                             Получатель
+                                                        @else
+                                                            -
                                                         @endif
                                                     </i>
                                                 </td>
@@ -140,8 +144,10 @@
                                                     <i>
                                                         @if($application->to_pay_courier == "sender")
                                                             Отправитель
-                                                        @else
+                                                        @elseif($application->to_pay_courier == "receiver")
                                                             Получатель
+                                                        @else
+                                                            -
                                                         @endif
                                                     </i>
                                                 </td>
@@ -247,8 +253,10 @@
                                                     <i>
                                                         @if($application->from_pay_courier == 'sender')
                                                             Отправитель
-                                                        @else
+                                                        @elseif($application->from_pay_courier == "receiver")
                                                             Получатель
+                                                        @else
+                                                            -
                                                         @endif
                                                     </i>
                                                 </td>
@@ -256,8 +264,10 @@
                                                     <i>
                                                         @if($application->pay_service == "sender")
                                                             Отправитель
-                                                        @else
+                                                        @elseif($application->pay_service == "receiver")
                                                             Получатель
+                                                        @else
+                                                            -
                                                         @endif
                                                     </i>
                                                 </td>
@@ -265,8 +275,10 @@
                                                     <i>
                                                         @if($application->to_pay_courier == "sender")
                                                             Отправитель
-                                                        @else
+                                                        @elseif($application->to_pay_courier == "receiver")
                                                             Получатель
+                                                        @else
+                                                            -
                                                         @endif
                                                     </i>
                                                 </td>

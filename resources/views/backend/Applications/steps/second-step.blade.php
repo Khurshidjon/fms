@@ -111,7 +111,7 @@
                                                        <td class="form-group">
                                                            <div class="checkbox">
                                                                <label>
-                                                                   <input type="checkbox" data-toggle="toggle" name="from_pay_courier" data-on="Отправитель" data-off="Получатель" class="form-control">
+                                                                   <input type="checkbox" data-toggle="toggle" name="from_pay_courier" data-on="Отправитель" data-off="Получатель" class="form-control" {{ $application->cost_from_courier==null?"disabled":"" }}>
                                                                </label>
                                                            </div>
                                                        </td>
@@ -190,7 +190,7 @@
                                                        <td class="form-group">
                                                            <div class="checkbox">
                                                                <label>
-                                                                   <input type="checkbox" data-toggle="toggle" name="pay_service" data-on="Отправитель" data-off="Получатель" class="form-control">
+                                                                   <input type="checkbox" data-toggle="toggle" name="pay_service" data-on="Отправитель" data-off="Получатель" class="form-control" {{ $application->cost_service==null?"disabled":"" }}>
                                                                </label>
                                                            </div>
                                                        </td>
@@ -228,7 +228,7 @@
                                                        <td class="form-group">
                                                            <div class="checkbox">
                                                                <label>
-                                                                   <input type="checkbox" data-toggle="toggle" name="to_pay_courier" data-on="Отправитель" data-off="Получатель" class="form-control">
+                                                                   <input type="checkbox" data-toggle="toggle" name="to_pay_courier" data-on="Отправитель" data-off="Получатель" class="form-control" {{ $application->cost_to_courier==null?"disabled":"" }}>
                                                                </label>
                                                            </div>
                                                        </td>
