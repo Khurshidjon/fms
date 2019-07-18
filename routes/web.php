@@ -90,6 +90,6 @@ Route::group(['middleware' => 'auth'], function (){
     Route::post('/attach-country-to-zone/{categories_techno}/{country}', 'CategoryInterTechController@attach_country_to_zone')->name('attach_country_to_zone');
     Route::post('/detach-country-from-zone/{categories_techno}/{country}', 'CategoryInterTechController@detach_country_from_zone')->name('detach_country_from_zone');
     Route::resource('/categories-techno', 'CategoryInterTechController');
-
+    Route::resource('/reports', 'ReportController');
 });
 Auth::routes();

@@ -28,7 +28,7 @@ class UserController extends Controller
         $users = User::latest()->paginate(10);
 
         return view('backend.Users.index', [
-            'is_active' => 'users',
+            'is_active' => 'settings',
             'users' => $users
         ]);
     }
@@ -95,7 +95,7 @@ class UserController extends Controller
         $roles = Role::all();
         return view('backend.Users.show', [
             'user' => $user,
-            'is_active' => 'users',
+            'is_active' => 'settings',
             'permissions' => $permissions,
             'roles' => $roles
         ]);

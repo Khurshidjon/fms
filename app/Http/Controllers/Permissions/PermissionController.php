@@ -24,7 +24,7 @@ class PermissionController extends Controller
         $permissions = Permission::latest()->paginate(10);
         return view('backend.Permissions.index', [
             'permissions' => $permissions,
-            'is_active' => 'permissions'
+            'is_active' => 'settings'
         ]);
     }
 
@@ -36,7 +36,7 @@ class PermissionController extends Controller
     public function create()
     {
         return view('backend.Permissions.create', [
-            'is_active' => 'permissions'
+            'is_active' => 'settings'
         ]);
     }
 
@@ -66,7 +66,7 @@ class PermissionController extends Controller
         $permission = Permission::find($id);
         $roles = Role::all();
         return view('backend.Permissions.show', [
-            'is_active' => 'permissions',
+            'is_active' => 'settings',
             'roles' => $roles,
             'permission' => $permission,
         ]);
@@ -82,7 +82,7 @@ class PermissionController extends Controller
     {
         $permission = Permission::findById($id);
         return view('backend.Permissions.edit', [
-            'is_active' => 'permissions',
+            'is_active' => 'settings',
             'permission' => $permission
         ]);
     }

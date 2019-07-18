@@ -216,6 +216,17 @@
                             </a>
                         </li>
                         @endcan
+                        @can(['report'])
+                            <li class="{{ $is_active=='report'?'active':'' }}">
+                                <a href="{{ route('reports.index')}}">
+                                    <i class="fa fa-bar-chart"></i>
+                                    <span class="title">Бухгалтерский учет </span>
+                                    @if($is_active == 'texnolog')
+                                        <span class="selected"></span>
+                                    @endif
+                                </a>
+                            </li>
+                        @endcan
                         @can(['application create'])
                         <li class="{{ $is_active=='steps'?'active':'' }}">
                             <a href="{{ route('applications.index')}}">
@@ -239,7 +250,7 @@
                         </li>
                         @endcan
                         @can('settings')
-                        <li>
+                        <li class="{{ $is_active=='settings'?'active':'' }}">
                             <a href="javascript:;">
                                 <i class="fa fa-cog"></i>
                                 <span class="title">Настройка</span>

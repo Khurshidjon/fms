@@ -113,16 +113,40 @@
                                                 <td colspan="3" style="border:1px solid black;padding-left:5px;"><b> Организация: </b> <i> {{ $application->from_organ_name }} </i> </td>
                                                 <td style="border:1px solid black; text-align:center;"><i>{{ $application->weight }}</i></td>
                                                 <td colspan="2" style="border:1px solid black; text-align:center;"><i>{{ $application->pieces }}</i></td>
-                                                <td style="border:1px solid black; text-align:center; color:red"><i>{{ $application->volume*6000 }} </i></td>
+                                                <td style="border:1px solid black; text-align:center;"><i>{{ $application->volume*6000 }} </i></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" rowspan="2" style="border:1px solid black;padding-left:5px;"><b>Город:</b> <i>{{ $from_city->name_ru }}</i></td>
                                                 <td colspan="4" style="border:1px solid black;padding-left:5px;"><b>Контракт №:</b> <i></i></td>
                                             </tr>
                                             <tr>
-                                                <td style="border:1px solid black;text-align:center;"><i>Отправитель</i></td>
-                                                <td colspan="2" style="border:1px solid black;text-align:center;"><i>Отправитель</i></td>
-                                                <td style="border:1px solid black;text-align:center;"><i>Получатель</i></td>
+                                                <td style="border:1px solid black;text-align:center;">
+                                                    <i>
+                                                        @if($application->from_pay_courier == 'sender')
+                                                            Отправитель
+                                                        @else
+                                                            Получатель
+                                                        @endif
+                                                    </i>
+                                                </td>
+                                                <td colspan="2" style="border:1px solid black;text-align:center;">
+                                                    <i>
+                                                        @if($application->pay_service == "sender")
+                                                            Отправитель
+                                                        @else
+                                                            Получатель
+                                                        @endif
+                                                    </i>
+                                                </td>
+                                                <td style="border:1px solid black;text-align:center;">
+                                                    <i>
+                                                        @if($application->to_pay_courier == "sender")
+                                                            Отправитель
+                                                        @else
+                                                            Получатель
+                                                        @endif
+                                                    </i>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" rowspan="2" style="border:1px solid black;padding-left:5px;"><b>Адрес: </b><i> {{ $application->from_address }}</i></td>
@@ -221,9 +245,33 @@
                                                 <td colspan="4" style="border:1px solid black;padding-left:5px;"><b>Контракт №:</b> <i></i></td>
                                             </tr>
                                             <tr>
-                                                <td style="border:1px solid black;text-align:center;"><i>Отправитель</i></td>
-                                                <td colspan="2" style="border:1px solid black;text-align:center;"><i>Отправитель</i></td>
-                                                <td style="border:1px solid black;text-align:center;"><i>Получатель</i></td>
+                                                <td style="border:1px solid black;text-align:center;">
+                                                    <i>
+                                                        @if($application->from_pay_courier == "sender")
+                                                            Отправитель
+                                                        @else
+                                                            Получатель
+                                                        @endif
+                                                    </i>
+                                                </td>
+                                                <td colspan="2" style="border:1px solid black;text-align:center;">
+                                                    <i>
+                                                        @if($application->pay_service == "sender")
+                                                            Отправитель
+                                                        @else
+                                                            Получатель
+                                                        @endif
+                                                    </i>
+                                                </td>
+                                                <td style="border:1px solid black;text-align:center;">
+                                                    <i>
+                                                        @if($application->to_pay_courier == "sender")
+                                                            Отправитель
+                                                        @else
+                                                            Получатель
+                                                        @endif
+                                                    </i>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" rowspan="2" style="border:1px solid black;padding-left:5px;"><b>Адрес: </b><i> {{ $application->from_address }}</i></td>

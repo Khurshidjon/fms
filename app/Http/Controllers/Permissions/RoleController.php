@@ -23,7 +23,7 @@ class RoleController extends Controller
         $roles = Role::latest()->paginate(10);
         return view('backend.Roles.index', [
             'roles' => $roles,
-            'is_active' => 'roles'
+            'is_active' => 'settings'
         ]);
     }
 
@@ -35,7 +35,7 @@ class RoleController extends Controller
     public function create()
     {
         return view('backend.Roles.create', [
-            'is_active' => 'roles'
+            'is_active' => 'settings'
         ]);
     }
 
@@ -65,7 +65,7 @@ class RoleController extends Controller
         $role = Role::findById($id);
         $permissions = Permission::all();
         return view('backend.Roles.show', [
-            'is_active' => 'roles',
+            'is_active' => 'settings',
             'role' => $role,
             'permissions' => $permissions
         ]);
