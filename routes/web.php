@@ -14,7 +14,9 @@
 /* -----------------------------------  Abdullo shu yerdan pastga routelaringizni yozing ------------------------------------*/ 
 
 Route::get('/', function(){
-    return "Контент в настоящее время неактивен";
+    $aa = "Ayni paytda biz FMS PostService sayti ustida ishlayapmiz. tizimga kirish uchun yuqoridagi havolaga o'tishingiz mumkin noqulayliklar uchun uzr so'raymiz";
+    $result = "<a href='http://post.exurshid.uz/admin'> fms.uz </a>";
+    return $aa . ' ' . $result;
 });
 
 /* -----------------------------------  Abdullo bundan pastdagi routelarga tegmang ------------------------------------*/ 
