@@ -11,7 +11,16 @@
 |
 */
 
-Route::get('/', function (){
+/* -----------------------------------  Abdullo shu yerdan pastga routelaringizni yozing ------------------------------------*/ 
+
+Route::get('/', function(){
+    return "Контент в настоящее время неактивен";
+});
+
+/* -----------------------------------  Abdullo bundan pastdagi routelarga tegmang ------------------------------------*/ 
+
+
+Route::get('/admin', function (){
     return redirect()->route('admin.index');
 });
 
@@ -21,8 +30,8 @@ Route::get('index/{lang}', function ($lang) {
 })->name('locale');
 
 
-Route::group(['middleware' => 'auth'], function (){
-    Route::get('/admin', 'AdminController@index')->name('admin.index');
+Route::group(['prefix'=> 'admin', 'middleware' => 'auth'], function (){
+    Route::get('/', 'AdminController@index')->name('admin.index');
     
     Route::get('/add/new-user', 'AdminController@addUser')->name('add-new-user');
 
