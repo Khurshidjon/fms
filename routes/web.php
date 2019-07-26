@@ -13,12 +13,52 @@
 
 /* -----------------------------------  Abdullo shu yerdan pastga routelaringizni yozing ------------------------------------*/ 
 
-Route::get('/', function(){
-    $aa = "Ayni paytda biz FMS PostService sayti ustida ishlayapmiz. tizimga kirish uchun yuqoridagi havolaga o'tishingiz mumkin noqulayliklar uchun uzr so'raymiz";
-    $result = "<a href='http://post.exurshid.uz/admin'> fms.uz </a>";
-    return $aa . ' ' . $result;
+// Route::get('/', function(){
+    // $aa = "Ayni paytda biz FMS PostService sayti ustida ishlayapmiz. tizimga kirish uchun yuqoridagi havolaga o'tishingiz mumkin noqulayliklar uchun uzr so'raymiz";
+    // $result = "<a href='http://post.exurshid.uz/admin'> fms.uz </a>";
+    // return $aa . ' ' . $result;
+// });
+/*------------------------------------------Websayt Frontend qismi boshlandi-------------------------------------*/ 
+Route::get('/',function(){
+    return view('frontend.index');
 });
-
+Route::get('/news',function(){
+return view('frontend.news');
+});
+Route::get('/news_blog',function(){
+return view('frontend.news_blog');
+});
+Route::get('/fast_mail',function(){
+    return view('frontend.fast_mail');
+});
+Route::get('cargo_transportation',function(){
+    return view('frontend.cargo_transportation');
+});
+Route::get('international_express_mail',function(){
+    return view('frontend.international_express_mail');
+});
+Route::get('registeration',function(){
+    return view('frontend.registeration');
+});
+Route::get('about_us',function(){
+    return view('frontend.about_us');
+});
+Route::get('enter_login',function(){
+    return view('frontend.enter_login');
+});
+/* -----------------------------------  Websaytni Backend qismi boshlandi ------------------------------------*/ 
+ Route::get('/main', 'MainController@getLogin')->name('admin.login');
+Route::post('/main', 'MainController@postLogin')->name('admin.login');
+Route::get('/main/dashboard', 'MainController@getDashboard')->name('admin.dashboard');
+ Route::get('/admin_one',function(){
+     return view('web_backend.index');
+ });
+ Route::resource('/post', 'PostController');
+ 
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+   Route::get('/admin_one',function(){
+   }) ;
+});
 /* -----------------------------------  Abdullo bundan pastdagi routelarga tegmang ------------------------------------*/ 
 
 
@@ -34,7 +74,7 @@ Route::get('index/{lang}', function ($lang) {
 
 Route::group(['prefix'=> 'admin', 'middleware' => 'auth'], function (){
     Route::get('/', 'AdminController@index')->name('admin.index');
-    
+
     Route::get('/add/new-user', 'AdminController@addUser')->name('add-new-user');
 
     Route::get('/admin/from-city-index', 'ApplicationController@indexFromCity')->name('admin.index-from-city');
