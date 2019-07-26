@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Image;
 
 class CountryController extends Controller
 {
@@ -67,7 +68,7 @@ class CountryController extends Controller
      */
     public function show(Country $country)
     {
-        //
+        Image::make();
     }
 
     /**
