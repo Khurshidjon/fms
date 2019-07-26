@@ -10,6 +10,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // asdasdasdasda
         $this->call(MainsTablesSeeder::class);
     }
 }

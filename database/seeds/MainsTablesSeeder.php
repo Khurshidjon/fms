@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\Main;
 
+
 class MainsTablesSeeder extends Seeder
 {
     /**

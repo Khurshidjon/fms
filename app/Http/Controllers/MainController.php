@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 
 class MainController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('role:Moderator');
+    }
     public function getLogin()
     {
         return view('admin.login');
