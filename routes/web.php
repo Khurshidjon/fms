@@ -55,10 +55,10 @@ Route::get('/main/dashboard', 'MainController@getDashboard')->name('admin.dashbo
  });
  Route::resource('/post', 'PostController');
  
-Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
-   Route::get('/admin_one',function(){
-   }) ;
-});
+// Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+//    Route::get('/admin_one',function(){
+//    }) ;
+// });
 /* -----------------------------------  Abdullo bundan pastdagi routelarga tegmang ------------------------------------*/ 
 
 
