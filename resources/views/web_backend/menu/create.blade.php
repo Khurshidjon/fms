@@ -16,8 +16,8 @@
             </div>
             <div class="col-md-3">
                 <label for="form1">Name_ўз</label>
-                <input type="text" id="form1" class="form-control @error('name_ўз') is-invalid @enderror " name="name_ўз" value="{{old('name_ўз')}}">
-                @error('name_ўз')
+                <input type="text" id="form1" class="form-control @error('name_cyrl') is-invalid @enderror " name="name_cyrl" value="{{old('name_cyrl')}}">
+                @error('name_cyrl')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -45,7 +45,12 @@
         <div class="row pt-2">
             <div class="col-md-6">
                 <label for="form1">Parent</label>
-                <input type="number" id="form1" class="form-control @error('parent') is-invalid @enderror " name="parent" value="{{old('parent')}}">
+                <select name="parent" id="" class="form-control @error('parent') is-invalid @enderror">
+                    <option selected disabled>-- @lang('pages.select_one') --</option>
+                    @foreach($menus as $menu)
+                        <option value="{{ $menu->id }}">{{ $menu->name_ru }}</option>
+                    @endforeach
+                </select>
                 @error('parent')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -54,7 +59,7 @@
             </div>
             <div class="col-md-6">
                 <label for="form1">Order_by</label>
-                <input type="number" id="form1" class="form-control @error('order_by') is-invalid @enderror " name="order_by" value="{{old('order_by')}}">
+                <input type="number" id="form1" class="form-control @error('order_by') is-invalid @enderror " name="order_by" value="{{old('order_by', $order!=null?$order->order_by+1:0)}}">
                 @error('order_by')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -62,21 +67,7 @@
                 @enderror
             </div>
         </div>
-        <div class="row ">
-            <div class="col-md-6">
-                <label for="nationality">Status</label>
-                <select id="nationality" type="date" class="form-control select2 @error('status') is-invalid @enderror" name="status">
-                    <option selected disabled>-- status tanlang --</option>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-
-                </select>
-                @error('status')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{$message}}</strong>
-                </span>
-                @enderror
-            </div>
+        <div class="form-group">
             <div class="col-md-6 pt-5">
                 <button class="btn btn-info form-control" type="submit">Save</button>
             </div>

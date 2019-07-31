@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\User;
+use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -39,46 +40,29 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $postRrequest)
     {
-        $request->validate([
-
-            'title_uz' => 'required|string',
-            'title_ўз' => 'required|string',
-            'title_ru' => 'required|string',
-            'title_en' => 'required|string',
-            'description_uz' => 'required',
-            'description_ўз' => 'required',
-            'description_ru' => 'required',
-            'description_en' => 'required',
-            'body_uz' => 'required',
-            'body_ўз' => 'required',
-            'body_ru' => 'required',
-            'body_en' => 'required',
-            'status' => 'required',
-            'banner' => 'required',
-            'image' => 'required|image|mimes:jpg,jpeg,png|max:10240'
-           
-        ]);
-        $post = New Post();
+        $post = new Post();
         $post->user_id = Auth::id();
-        $post->title_uz = $request->title_uz;
-        $post->title_ўз = $request->title_ўз;
-        $post->title_ru = $request->title_ru;
-        $post->title_en = $request->title_en;
-        $post->description_uz = $request->description_uz;
-        $post->description_ўз = $request->description_ўз;
-        $post->description_ru = $request->description_ru;
-        $post->description_en = $request->description_en;
-        $post->body_uz = $request->body_uz;
-        $post->body_ўз = $request->body_ўз;
-        $post->body_ru = $request->body_ru;
-        $post->body_en = $request->body_en;
-        $post->status = $request->get('status');
-        $post->status = $request->banner;
-        $post->image = $request->file('image')->store('imageFolder', 'public');
+        $post->title_uz = $postRrequest->title_uz;
+        $post->title_cyrl = $postRrequest->title_cyrl;
+        $post->title_ru = $postRrequest->title_ru;
+        $post->title_en = $postRrequest->title_en;
+        $post->description_uz = $postRrequest->description_uz;
+        $post->description_cyrl = $postRrequest->description_cyrl;
+        $post->description_ru = $postRrequest->description_ru;
+        $post->description_en = $postRrequest->description_en;
+        $post->body_uz = $postRrequest->body_uz;
+        $post->body_cyrl = $postRrequest->body_cyrl;
+        $post->body_ru = $postRrequest->body_ru;
+        $post->body_en = $postRrequest->body_en;
+        if($postRrequest->banner == 'on'){
+            $post->banner = 1;
+        }
+        $post->image = $postRrequest->file('image')->store('imageFolder', 'public');
         $post->save();
-        return redirect()->route('post.index')->with('message','Post has been created Successfully!:)');
+
+        return redirect()->route('post.index')->with('message', 'Post has been created Successfully!');
     }
 
     /**
@@ -109,44 +93,27 @@ class PostController extends Controller
      * @param  \App\web\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $postRequest, Post $post)
     {
-        $request->validate([
-            'user_id'=>'required',
-            'title_uz'=>'required|string',
-            'title_ўз'=>'required|string',
-            'title_ru'=>'required|string',
-            'title_en'=>'required|string',
-            'description_uz'=>'required',
-            'description_ўз'=>'required',
-            'description_ru'=>'required',
-            'description_en'=>'required',
-            'body_uz'=>'required',
-            'body_ўз'=>'required',
-            'body_ru'=>'required',
-            'body_en'=>'required',
-            'status'=>'required',
-            'image' => 'required|image|mimes:jpg,jpeg,png|max:10240'
-        ]);
-        $post->user_id = $request->get('user_id');
-        $post->title_uz = $request->title_uz; 
-        $post->title_ўз = $request->title_ўз; 
-        $post->title_ru = $request->title_ru; 
-        $post->title_en = $request->title_en; 
-        $post->description_uz = $request->description_uz; 
-        $post->description_ўз = $request->description_ўз; 
-        $post->description_ru = $request->description_ru; 
-        $post->description_en = $request->description_en; 
-        $post->body_uz = $request->body_uz;
-        $post->body_ўз = $request->body_ўз;
-        $post->body_ru = $request->body_ru;
-        $post->body_en = $request->body_en;
-        $post->status = $request->get('status');
-        if($request->file('image')){
-            $post->image = $request->file('image')->store('imageFolder', 'public');
+        $post->user_id = $postRequest->get('user_id');
+        $post->title_uz = $postRequest->title_uz; 
+        $post->title_cyrl = $postRequest->title_cyrl; 
+        $post->title_ru = $postRequest->title_ru; 
+        $post->title_en = $postRequest->title_en; 
+        $post->description_uz = $postRequest->description_uz; 
+        $post->description_cyrl = $postRequest->description_cyrl; 
+        $post->description_ru = $postRequest->description_ru; 
+        $post->description_en = $postRequest->description_en; 
+        $post->body_uz = $postRequest->body_uz;
+        $post->body_cyrl = $postRequest->body_cyrl;
+        $post->body_ru = $postRequest->body_ru;
+        $post->body_en = $postRequest->body_en;
+        $post->status = $postRequest->get('status');
+        if($postRequest->file('image')){
+            $post->image = $postRequest->file('image')->store('imageFolder', 'public');
         } 
          $post->save();
-        return redirect()->route('post.index')->with('message','Post has been created Successfully!:)');
+        return redirect()->route('post.index')->with('message','Post has been updated Successfully!');
     }
 
     /**

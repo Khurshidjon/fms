@@ -1,3 +1,6 @@
+@php 
+  $lang = App::getLocale();
+@endphp
 <header id="header">
     <div class="container-fluid">
 
@@ -7,26 +10,31 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="{{asset('/')}}">Bosh Sahifa</a></li>
-          <li class=""><a href="{{asset('about_us')}}">Biz Haqimizda</a></li>
-          <li class="menu-has-children"><a href="">Xizmatlar</a>
+        @foreach($menus as $menu)
+          <li class="{{ $menu->hasParent!=null?'menu-has-children':'' }} ">
+            <a href="{{ $menu->url }}">{{ $menu->{'name_'.$lang} }}</a>
+            @if($menu->hasParent)
             <ul>
-              <li><a href="{{asset('fast_mail')}}">Tezkor pochta</a></li>
-              <li><a href="{{asset('cargo_transportation')}}">Yuk tashish xizmati</a></li>
-              <li><a href="{{asset('international_express_mail')}}">Xalqaro tezkor pochta</a></li>
-              <li><a href="#">Xalqaro junatmalar narxlari</a></li>
-              <li><a href="#">Narxlar</a></li>
-              <li><a href="#">Xavfli yuklar</a></li>
+                @foreach($menu->submenu as $submenu)
+                  <li>
+                    <a href="{{ $submenu->url }}">{{ $submenu->{'name_'.$lang} }}</a>
+                  </li>
+                @endforeach
             </ul>
-          </li>
+            @endif
+          </li>          
+        @endforeach
           <li><a href="news">Yangiliklar</a></li>
           <li><a href="tel:+998 71 207 08 09"><i class="fa fa-headphones"></i> <span>Call</span> +998 71 207 0809 </a></li>
-          <li class="menu-has-children"><a href="">Ру</a>
+          <li class="menu-has-children">
+          <a href="">
+            {{ $lang }}
+          </a>
             <ul>
-              <li><a href="#">Ру</a></li>
-              <li><a href="#">Uz</a></li>
-              <li><a href="#">Ўз</a></li>
-              <li><a href="#">Eng</a></li>
+              <li><a href="{{ route('locale', ['lang' => 'ru']) }}">Ру</a></li>
+              <li><a href="{{ route('locale', ['lang' => 'uz']) }}">Uz</a></li>
+              <li><a href="{{ route('locale', ['lang' => 'cyrl']) }}">Ўз</a></li>
+              <li><a href="{{ route('locale', ['lang' => 'en']) }}">Eng</a></li>
             </ul>
           </li>
           <li ><a href="{{asset('enter_login')}}" ><i class="fa fa-sign-in"></i> <span>Kirish</span></a></li>

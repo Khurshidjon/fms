@@ -27,7 +27,7 @@
         },
         methods: {
             update: function () {
-                axios.get('/line-chart-js').then((response) => {
+                axios.get('admin/line-chart-js').then((response) => {
                     this.data = response.data;
                 })
             }

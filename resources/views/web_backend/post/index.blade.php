@@ -58,7 +58,7 @@
                         <td>{{$i++}}</td>
                         <td>{{$one->title_uz}}</td>
                         <td>{{$one->description_uz}}</td>
-                        <td>{{$one->image}}</td>
+                        <td><img src="{{ asset('storage') .'/'. $one->image}}" style="width:100px" alt=""></td>
                         <td>
 
                             <a class="btn btn-info btn-sm text-white" href="">

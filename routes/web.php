@@ -19,6 +19,16 @@
     // return $aa . ' ' . $result;
 // });
 /*------------------------------------------Websayt Frontend qismi boshlandi-------------------------------------*/ 
+
+View::composer('layouts.front_main', function($view){
+    $menus = App\Menu::where('status', 1)->where('parent', null)->get();
+    return $view->with([
+        'menus' => $menus
+    ]);
+});
+
+
+
 Route::get('/',function(){
     return view('frontend.index');
 });
@@ -47,10 +57,15 @@ Route::get('enter_login',function(){
     return view('frontend.enter_login');
 });
 /* -----------------------------------  Websaytni Backend qismi boshlandi ------------------------------------*/ 
+
+
  Route::get('/main', 'MainController@getLogin')->name('admin.login');
 Route::post('/main', 'MainController@postLogin')->name('admin.login');
-Route::get('/main/dashboard', 'MainController@getDashboard')->name('admin.dashboard');
- Route::group(['prefix'=>'backend','middleware'=>'auth'],function(){
+ Route::get('/backends', function(){
+     return redirect()->route('backend.index');
+ })->name('backend')->middleware('role:Moderator');
+ Route::group(['prefix'=>'backend/panel',['middleware'=> 'auth', 'role:Moderator']],function(){
+    Route::get('/', 'BackendController@index')->name('backend.index');
     Route::resource('/post', 'PostController');
     Route::resource('/menu', 'MenuController');
     Route::resource('/settings', 'SettingsController');
@@ -61,7 +76,7 @@ Route::get('/main/dashboard', 'MainController@getDashboard')->name('admin.dashbo
 /* -----------------------------------  Abdullo bundan pastdagi routelarga tegmang ------------------------------------*/ 
 
 
-Route::get('/admin', function (){
+Route::get('/login', function (){
     return redirect()->route('admin.index');
 });
 
@@ -71,7 +86,7 @@ Route::get('index/{lang}', function ($lang) {
 })->name('locale');
 
 
-Route::group(['prefix'=> 'admin', 'middleware' => 'auth'], function (){
+Route::group(['prefix'=> 'admin', 'middleware' => ['auth', 'role:Admin|Operator|texnolog|courier']], function (){
     Route::get('/', 'AdminController@index')->name('admin.index');
 
     Route::get('/add/new-user', 'AdminController@addUser')->name('add-new-user');

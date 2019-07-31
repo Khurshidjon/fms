@@ -74,8 +74,10 @@ $i = 1;
                     @endforelse
                 </tbody>
             </table>
+            <div class="ml-auto">
+                {{ $menu->links('vendor.pagination.simple-bootstrap-4') }}            
+            </div>
         </div>
-        {{$menu->links()}}
     </div>
 </div>
 <script>

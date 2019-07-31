@@ -17,14 +17,14 @@ class CreateSettingsTable extends Migration
             $table->bigIncrements('id');
             $table->string('key');
             $table->string('title_uz')->nullable();
-            $table->string('title_ўз')->nullable();
+            $table->string('title_cyrl')->nullable();
             $table->string('title_ru')->nullable();
             $table->string('title_en')->nullable();
             $table->text('value_uz')->nullable();
-            $table->text('value_ўз')->nullable();
+            $table->text('value_cyrl')->nullable();
             $table->text('value_ru')->nullable();
             $table->text('value_en')->nullable();
-            $table->integer('status');
+            $table->integer('status')->nullable()->default(0);
             $table->string('image')->nullable();
             $table->timestamps();
         });

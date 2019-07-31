@@ -119,7 +119,11 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        //
+        if($user->hasRole('Moderator')){
+            return redirect()->route('backend');
+        }elseif($user->hasRole('Admin|Operator|texnolog|courier')){
+            return redirect()->route('admin.index');
+        }
     }
 
     /**

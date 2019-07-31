@@ -26,7 +26,12 @@ class MenuController extends Controller
      */
     public function create()
     {
-        return view('web_backend.menu.create');
+        $menus = Menu::all();
+        $order = Menu::latest()->first();
+        return view('web_backend.menu.create', [
+            'menus' => $menus,
+            'order' => $order
+        ]);
     }
 
     /**
@@ -38,25 +43,18 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
             'name_uz' => 'required|string',
-            'name_ўз' => 'required|string',
+            'name_cyrl' => 'required|string',
             'name_ru' => 'required|string',
             'name_en' => 'required|string',
-            'parent' => 'required',
-            'order_by'=>'required',
-            'status' => 'required',
-            
         ]);
-        $menu = New Menu();
+        $menu = new Menu();
         $menu->name_uz = $request->name_uz;
-        $menu->name_ўз = $request->name_ўз;
+        $menu->name_cyrl = $request->name_cyrl;
         $menu->name_ru = $request->name_ru;
         $menu->name_en = $request->name_en;
-        $menu->parent = $request->parent;
-        $menu->order_by = $request->order_by;
-        $menu->status = $request->get('status');
-       
+        $menu->parent = $request->get('parent');
+        $menu->order_by = $request->order_by;       
         $menu->save();
         return redirect()->route('menu.index')->with('message', 'Post has been created Successfully!:)');
     }

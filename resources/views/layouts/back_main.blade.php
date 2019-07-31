@@ -14,6 +14,8 @@
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{{ asset('web_backend/frontend/style5.css') }}">
     <link rel="stylesheet" href="{{ asset('web_backend/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script> -->
 
@@ -30,6 +32,7 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6/js/select2.min.js"></script>
+    <script src="{{ asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
     <!-- @stack('script') -->
 </head>
 
