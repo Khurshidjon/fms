@@ -21,6 +21,7 @@
         "phpoffice/phpword": "^0.16.0",
         "spatie/laravel-permission": "^2.37",
         "unisharp/laravel-ckeditor": "^4.7",
+        "unisharp/laravel-filemanager": "^1.9",
         "yoeunes/toastr": "^1.2"
     },
     "require-dev": {

@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
+use App\Post;
 
 class User extends Authenticatable
 {
@@ -16,6 +17,12 @@ class User extends Authenticatable
      *
      * @var array
      */
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
+    
+    
     protected $fillable = [
         'name', 'email', 'password',
     ];

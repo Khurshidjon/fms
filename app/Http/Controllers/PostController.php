@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -25,9 +27,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('web_backend.post.create');
+    public function create($user_id=null)
+    {       
+       
+        return view('web_backend.post.create',['user_id'=>$user_id]);
     }
 
     /**
@@ -39,19 +42,42 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required|string',
-            'description'=>'required',
-            'body'=>'required',
+
+            'title_uz' => 'required|string',
+            'title_ўз' => 'required|string',
+            'title_ru' => 'required|string',
+            'title_en' => 'required|string',
+            'description_uz' => 'required',
+            'description_ўз' => 'required',
+            'description_ru' => 'required',
+            'description_en' => 'required',
+            'body_uz' => 'required',
+            'body_ўз' => 'required',
+            'body_ru' => 'required',
+            'body_en' => 'required',
+            'status' => 'required',
+            'banner' => 'required',
             'image' => 'required|image|mimes:jpg,jpeg,png|max:10240'
            
         ]);
         $post = New Post();
-        $post->title = $request->title; 
-        $post->description = $request->description; 
-        $post->body = $request->body; 
+        $post->user_id = Auth::id();
+        $post->title_uz = $request->title_uz;
+        $post->title_ўз = $request->title_ўз;
+        $post->title_ru = $request->title_ru;
+        $post->title_en = $request->title_en;
+        $post->description_uz = $request->description_uz;
+        $post->description_ўз = $request->description_ўз;
+        $post->description_ru = $request->description_ru;
+        $post->description_en = $request->description_en;
+        $post->body_uz = $request->body_uz;
+        $post->body_ўз = $request->body_ўз;
+        $post->body_ru = $request->body_ru;
+        $post->body_en = $request->body_en;
+        $post->status = $request->get('status');
+        $post->status = $request->banner;
         $post->image = $request->file('image')->store('imageFolder', 'public');
-         $post->save();
-        
+        $post->save();
         return redirect()->route('post.index')->with('message','Post has been created Successfully!:)');
     }
 
@@ -74,10 +100,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-
         return view('web_backend.post.edit',['post'=>$post]);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -88,22 +112,41 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $request->validate([
-            'title'=>'required|string',
-            'description'=>'required',
-            'body'=>'required',
+            'user_id'=>'required',
+            'title_uz'=>'required|string',
+            'title_ўз'=>'required|string',
+            'title_ru'=>'required|string',
+            'title_en'=>'required|string',
+            'description_uz'=>'required',
+            'description_ўз'=>'required',
+            'description_ru'=>'required',
+            'description_en'=>'required',
+            'body_uz'=>'required',
+            'body_ўз'=>'required',
+            'body_ru'=>'required',
+            'body_en'=>'required',
+            'status'=>'required',
             'image' => 'required|image|mimes:jpg,jpeg,png|max:10240'
-           
         ]);
-        $post->title = $request->title; 
-        $post->description = $request->description; 
-        $post->body = $request->body;
+        $post->user_id = $request->get('user_id');
+        $post->title_uz = $request->title_uz; 
+        $post->title_ўз = $request->title_ўз; 
+        $post->title_ru = $request->title_ru; 
+        $post->title_en = $request->title_en; 
+        $post->description_uz = $request->description_uz; 
+        $post->description_ўз = $request->description_ўз; 
+        $post->description_ru = $request->description_ru; 
+        $post->description_en = $request->description_en; 
+        $post->body_uz = $request->body_uz;
+        $post->body_ўз = $request->body_ўз;
+        $post->body_ru = $request->body_ru;
+        $post->body_en = $request->body_en;
+        $post->status = $request->get('status');
         if($request->file('image')){
             $post->image = $request->file('image')->store('imageFolder', 'public');
         } 
          $post->save();
-        
         return redirect()->route('post.index')->with('message','Post has been created Successfully!:)');
-    
     }
 
     /**

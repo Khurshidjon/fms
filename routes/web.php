@@ -54,6 +54,8 @@ Route::get('/main/dashboard', 'MainController@getDashboard')->name('admin.dashbo
      return view('web_backend.index');
  });
  Route::resource('/post', 'PostController');
+ Route::resource('/menu', 'MenuController');
+ Route::resource('/settings', 'SettingsController');
  
 // Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 //    Route::get('/admin_one',function(){

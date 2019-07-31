@@ -45,8 +45,8 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Title</th>
-                        <th>Description</th>
+                        <th>Title_uz</th>
+                        <th>Description_uz</th>
                         <th>Phots</th>
                         <th>Actions</th>
                     </tr>
@@ -56,8 +56,8 @@
                 @forelse($post as $one)
                     <tr>
                         <td>{{$i++}}</td>
-                        <td>{{$one->title}}</td>
-                        <td>{{$one->description}}</td>
+                        <td>{{$one->title_uz}}</td>
+                        <td>{{$one->description_uz}}</td>
                         <td>{{$one->image}}</td>
                         <td>
 
