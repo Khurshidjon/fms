@@ -53,16 +53,15 @@ Route::get('/main/dashboard', 'MainController@getDashboard')->name('admin.dashbo
  Route::get('/admin_one',function(){
      return view('web_backend.index');
  });
- Route::resource('/post', 'PostController');
- Route::resource('/menu', 'MenuController');
- Route::resource('/settings', 'SettingsController');
- Route::get('/contact','FrontContactController@create');
- Route::post('/contact','FrontContactController@store');
  
-// Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
-//    Route::get('/admin_one',function(){
-//    }) ;
-// });
+ Route::group(['prefix'=>'backend','middleware'=>'auth'],function(){
+    Route::resource('/post', 'PostController');
+    Route::resource('/menu', 'MenuController');
+    Route::resource('/settings', 'SettingsController');
+    Route::get('/contact','FrontContactController@create');
+    Route::post('/contact','FrontContactController@store');
+   
+});
 /* -----------------------------------  Abdullo bundan pastdagi routelarga tegmang ------------------------------------*/ 
 
 
