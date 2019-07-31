@@ -78,7 +78,7 @@ class InternationalTechController extends Controller
      */
     public function update(Request $request, InternationalTech $internationalTech)
     {
-        //
+       
     }
 
     /**

@@ -15,7 +15,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return view('web_backend.menu.index');
+        $menu= Menu::latest()->paginate(3);
+        return view('web_backend.menu.index',['menu'=>$menu]);
     }
 
     /**
@@ -48,7 +49,6 @@ class MenuController extends Controller
             
         ]);
         $menu = New Menu();
-       
         $menu->name_uz = $request->name_uz;
         $menu->name_ўз = $request->name_ўз;
         $menu->name_ru = $request->name_ru;
@@ -78,9 +78,9 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( Menu $menu)
     {
-        //
+        return view('web_backend.menu.edit',['menu'=>$menu]);
     }
 
     /**
@@ -90,9 +90,29 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Menu  $menu)
     {
-        //
+        $request->validate([
+
+            'name_uz' => 'required|string',
+            'name_ўз' => 'required|string',
+            'name_ru' => 'required|string',
+            'name_en' => 'required|string',
+            'parent' => 'required',
+            'order_by' => 'required',
+            'status' => 'required',
+
+        ]);
+        $menu->name_uz = $request->name_uz;
+        $menu->name_ўз = $request->name_ўз;
+        $menu->name_ru = $request->name_ru;
+        $menu->name_en = $request->name_en;
+        $menu->parent = $request->parent;
+        $menu->order_by = $request->order_by;
+        $menu->status = $request->get('status');
+
+        $menu->save();
+        return redirect()->route('menu.index')->with('message', 'Post has been created Successfully!:)');
     }
 
     /**
@@ -101,8 +121,9 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Menu $menu)
     {
-        //
+        $menu->delete();
+        return redirect()->back();
     }
 }

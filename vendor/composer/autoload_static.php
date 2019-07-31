@@ -613,6 +613,7 @@ class ComposerStaticInit9db29b799323e340e4b5588fab35c3b3
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CountryController' => __DIR__ . '/../..' . '/app/Http/Controllers/CountryController.php',
         'App\\Http\\Controllers\\CourierController' => __DIR__ . '/../..' . '/app/Http/Controllers/CourierController.php',
+        'App\\Http\\Controllers\\FrontContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontContactController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\InternationalTechController' => __DIR__ . '/../..' . '/app/Http/Controllers/InternationalTechController.php',
         'App\\Http\\Controllers\\MainController' => __DIR__ . '/../..' . '/app/Http/Controllers/MainController.php',

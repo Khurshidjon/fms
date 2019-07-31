@@ -56,6 +56,8 @@ Route::get('/main/dashboard', 'MainController@getDashboard')->name('admin.dashbo
  Route::resource('/post', 'PostController');
  Route::resource('/menu', 'MenuController');
  Route::resource('/settings', 'SettingsController');
+ Route::get('/contact','FrontContactController@create');
+ Route::post('/contact','FrontContactController@store');
  
 // Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 //    Route::get('/admin_one',function(){

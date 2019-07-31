@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class FrontContactController extends Controller
+{
+    public function create()
+    {
+        return view('frontend.index');
+    }
+    public function store()
+    {
+     dd("ok");
+    }
+}

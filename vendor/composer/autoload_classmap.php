@@ -28,6 +28,7 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\CountryController' => $baseDir . '/app/Http/Controllers/CountryController.php',
     'App\\Http\\Controllers\\CourierController' => $baseDir . '/app/Http/Controllers/CourierController.php',
+    'App\\Http\\Controllers\\FrontContactController' => $baseDir . '/app/Http/Controllers/FrontContactController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\InternationalTechController' => $baseDir . '/app/Http/Controllers/InternationalTechController.php',
     'App\\Http\\Controllers\\MainController' => $baseDir . '/app/Http/Controllers/MainController.php',

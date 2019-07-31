@@ -15,7 +15,10 @@ class SettingsController extends Controller
      */
     public function index()
     {
-         return view('web_backend.settings.index');
+        $settings = Setting::latest()->paginate(3);
+         return view('web_backend.settings.index',[
+            'settings'=>$settings
+         ]);
     }
 
     /**
@@ -49,19 +52,19 @@ class SettingsController extends Controller
             'status' => 'required',
             'image' => 'required|image|mimes:jpg,jpeg,png|max:10240'
         ]);
-        $settings = new Setting();
-        $settings->key = $request->key;
-        $settings->title_uz = $request->title_uz;
-        $settings->title_ўз = $request->title_ўз;
-        $settings->title_ru = $request->title_ru;
-        $settings->title_en = $request->title_en;
-        $settings->value_uz = $request->value_uz;
-        $settings->value_ўз = $request->value_ўз;
-        $settings->value_ru = $request->value_ru;
-        $settings->value_en = $request->value_en;
-        $settings->status = $request->get('status');
-        $settings->image = $request->file('image')->store('imageFolder', 'public');
-        $settings->save();
+        $setting = new Setting();
+        $setting->key = $request->key;
+        $setting->title_uz = $request->title_uz;
+        $setting->title_ўз = $request->title_ўз;
+        $setting->title_ru = $request->title_ru;
+        $setting->title_en = $request->title_en;
+        $setting->value_uz = $request->value_uz;
+        $setting->value_ўз = $request->value_ўз;
+        $setting->value_ru = $request->value_ru;
+        $setting->value_en = $request->value_en;
+        $setting->status = $request->get('status');
+        $setting->image = $request->file('image')->store('imageFolder', 'public');
+        $setting->save();
         return redirect()->route('settings.index')->with('message', 'Post has been created Successfully!:)');
     }
 
@@ -82,9 +85,11 @@ class SettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Setting $setting)
     {
-        //
+        return view('web_backend.settings.edit',[
+        'setting'=>$setting
+            ]);
     }
 
     /**
@@ -94,9 +99,37 @@ class SettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Setting $setting)
     {
-        //
+        $request->validate([
+            'key'     => 'required',
+            'title_uz' => 'required|string',
+            'title_ўз' => 'required|string',
+            'title_ru' => 'required|string',
+            'title_en' => 'required|string',
+            'value_uz' => 'required|string',
+            'value_ўз' => 'required|string',
+            'value_ru' => 'required|string',
+            'value_en' => 'required|string',
+            'status' => 'required',
+            'image' => 'required|image|mimes:jpg,jpeg,png|max:10240'
+        ]);
+       
+        $setting->key = $request->key;
+        $setting->title_uz = $request->title_uz;
+        $setting->title_ўз = $request->title_ўз;
+        $setting->title_ru = $request->title_ru;
+        $setting->title_en = $request->title_en;
+        $setting->value_uz = $request->value_uz;
+        $setting->value_ўз = $request->value_ўз;
+        $setting->value_ru = $request->value_ru;
+        $setting->value_en = $request->value_en;
+        $setting->status = $request->get('status');
+        if ($request->file('image')) {
+            $setting->image = $request->file('image')->store('imageFolder', 'public');
+        } 
+        $setting->save();
+        return redirect()->route('settings.index')->with('message', 'Post has been created Successfully!:)');
     }
 
     /**
@@ -105,8 +138,9 @@ class SettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Setting $setting)
     {
-        //
+        $setting->delete();
+        return redirect()->back();
     }
 }
