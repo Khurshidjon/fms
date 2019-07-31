@@ -50,10 +50,6 @@ Route::get('enter_login',function(){
  Route::get('/main', 'MainController@getLogin')->name('admin.login');
 Route::post('/main', 'MainController@postLogin')->name('admin.login');
 Route::get('/main/dashboard', 'MainController@getDashboard')->name('admin.dashboard');
- Route::get('/admin_one',function(){
-     return view('web_backend.index');
- });
- 
  Route::group(['prefix'=>'backend','middleware'=>'auth'],function(){
     Route::resource('/post', 'PostController');
     Route::resource('/menu', 'MenuController');

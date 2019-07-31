@@ -27,7 +27,7 @@
         },
         methods: {
             update: function () {
-                axios.get('/radar-chart-js').then((response) => {
+                axios.get('admin/radar-chart-js').then((response) => {
                     this.data = response.data;
                 })
             }

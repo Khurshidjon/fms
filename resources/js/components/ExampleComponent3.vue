@@ -24,7 +24,7 @@
         },
         methods: {
             update: function () {
-                axios.get('/bar-chart-js').then((response) => {
+                axios.get('admin/bar-chart-js').then((response) => {
                     this.data = response.data;
                 })
             }

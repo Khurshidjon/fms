@@ -31,12 +31,12 @@
         },
         methods: {
             update: function () {
-                axios.get('/pie-chart-js').then((response) => {
+                axios.get('admin/pie-chart-js').then((response) => {
                     this.data = response.data;
                 })
             },
             barUpdate: function () {
-                axios.get('/bar-chart-js').then((response) => {
+                axios.get('admin/bar-chart-js').then((response) => {
                     this.bar = response.data;
                 })
             }
