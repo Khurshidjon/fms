@@ -128,10 +128,10 @@ class MenuController extends Controller
         $menu->delete();
         return redirect()->back();
     }
-    public function menuStatus(Menu $menu)
+    public function menuStatus(Menu $menu, Request $request)
     {
-        $menu->status =1;
+        $menu->status = $request->status;
         $menu->save();
-        return redirect()->back()->with('success', 'Контракт было успешно обновлен');
+        return redirect()->back()->with('success', 'Меню было успешно обновлен');
     }
 }

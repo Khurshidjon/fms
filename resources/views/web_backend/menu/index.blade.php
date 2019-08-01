@@ -55,24 +55,21 @@ $i = 1;
                         <td>{{$one->name_uz}}</td>
                         <td>{{$one->parent}}</td>
                         <td>{{$one->order_by}}</td>
-                        <td class="contract-update" data-toggle="modal" data-target="#statusModal" style="cursor: pointer" data-url="{{ route('status.menu', ['one' => $one]) }}">
-                          
-                                @if($one->status == 1)
-                                <span class="badge badge-success">Исполнено</span>
-                                @elseif($one->status == 0)
-                                <span class="badge badge-warning">На исполнено</span>
-                                @endif
-                           
+                        <td class="menu-update" data-toggle="modal" data-target="#statusModal" style="cursor: pointer" data-url="{{ route('status.menu', ['one' => $one]) }}">
+                            @if($one->status == 1)
+                                <span class="badge badge-success">активный</span>
+                            @elseif($one->status == 0)
+                                <span class="badge badge-danger">неактивный</span>
+                            @endif
                         </td>
                         <td>
-
                             <a class="btn btn-info btn-sm text-white" href="">
                                 <i class="fa fa-eye"></i>
                             </a>
                             <a class="btn btn-success btn-sm text-white" href="{{route('menu.edit',['one'=>$one])}}">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <a href="#" class="btn btn-danger btn-sm delete-student text-white" data-toggle="modal" data-target="#fullHeightModalRight" data-item="{{$one}}" data-url="{{route('menu.destroy',['one'=>$one])}}"> <i class="fa fa-trash"></i></a>
+                            <a href="#" class="btn btn-danger btn-sm delete-menu text-white" data-toggle="modal" data-target="#fullHeightModalRight" data-item="{{$one}}" data-url="{{route('menu.destroy',['one'=>$one])}}"> <i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @empty
@@ -91,15 +88,18 @@ $i = 1;
 
 <script>
     $(function() {
-        $('.delete-student').on('click', function() {
+        $('.delete-menu').on('click', function() {
             // $(this).preventDefault();
-
             var url = $(this).attr('data-url');
             var data = JSON.parse($(this).attr('data-item'));
             $('#myModalLabel').text(data.name_uz);
-            $('.permission-delete-form').attr('action', url);
+            $('.menu-delete-form').attr('action', url);
             $('.delete-question').find('span').text(data.name_uz);
-        })
+        });
+        $('.menu-update').on('click', function() {
+            var url = $(this).attr('data-url');
+            $('.menu-update-form').attr('action', url);
+        });
     })
 </script>
 
@@ -119,7 +119,7 @@ $i = 1;
                 <p class="text-danger font-weight-bold delete-question"> <span></span> ga tegisli postni tizimdan o'chirishni hohlaysizmi?</p>
             </div>
             <div class="modal-footer justify-content-center">
-                <form action="" class="permission-delete-form" method="post">
+                <form action="" class="menu-delete-form" method="post">
                     @csrf
                     @method('delete')
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Yopish</button>
@@ -134,17 +134,17 @@ $i = 1;
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title text-danger"><b>Update confirm</b></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <form action="" class="contract-update-form" method="post">
+            <form action="" class="menu-update-form" method="post">
                 @csrf
                 <div class="modal-body text-danger">
                     <label style="margin-right: 20px">
-                        <input type="radio" name="status" value="0" checked> На исполнено
+                        <input type="radio" name="status" value="0" checked> неактивный
                     </label>
                     <label style="margin-left: 20px">
-                        <input type="radio" name="status" value="1"> Исполнено
+                        <input type="radio" name="status" value="1"> активный
                     </label>
                 </div>
                 <div class="modal-footer">
