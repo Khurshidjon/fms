@@ -4,6 +4,18 @@
 <form action="{{route('menu.store')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="container">
+        <div class="row p-3">
+            <select name="position" class="form-control @error('position') is-invalid @enderror "  id="">
+                <option selected disabled>---Position select---</option>
+                <option value="1">Navbar</option>
+                <option value="0">Footer</option>
+            </select>
+            @error('position')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
         <div class="row">
             <div class="col-md-3">
                 <label for="form1">Name_uz</label>
@@ -48,7 +60,7 @@
                 <select name="parent" id="" class="form-control @error('parent') is-invalid @enderror">
                     <option selected disabled>-- @lang('pages.select_one') --</option>
                     @foreach($menus as $menu)
-                        <option value="{{ $menu->id }}">{{ $menu->name_ru }}</option>
+                    <option value="{{ $menu->id }}">{{ $menu->name_ru }}</option>
                     @endforeach
                 </select>
                 @error('parent')

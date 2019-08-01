@@ -95,7 +95,7 @@ class PostController extends Controller
      */
     public function update(PostRequest $postRequest, Post $post)
     {
-        $post->user_id = $postRequest->get('user_id');
+        $post->user_id = Auth::id();
         $post->title_uz = $postRequest->title_uz; 
         $post->title_cyrl = $postRequest->title_cyrl; 
         $post->title_ru = $postRequest->title_ru; 

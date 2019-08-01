@@ -55,7 +55,15 @@ $i = 1;
                         <td>{{$one->name_uz}}</td>
                         <td>{{$one->parent}}</td>
                         <td>{{$one->order_by}}</td>
-                        <td>{{$one->status}}</td>
+                        <td class="contract-update" data-toggle="modal" data-target="#statusModal" style="cursor: pointer" data-url="{{ route('status.menu', ['one' => $one]) }}">
+                          
+                                @if($one->status == 1)
+                                <span class="badge badge-success">Исполнено</span>
+                                @elseif($one->status == 0)
+                                <span class="badge badge-warning">На исполнено</span>
+                                @endif
+                           
+                        </td>
                         <td>
 
                             <a class="btn btn-info btn-sm text-white" href="">
@@ -75,11 +83,12 @@ $i = 1;
                 </tbody>
             </table>
             <div class="ml-auto">
-                {{ $menu->links('vendor.pagination.simple-bootstrap-4') }}            
+                {{ $menu->links('vendor.pagination.simple-bootstrap-4') }}
             </div>
         </div>
     </div>
 </div>
+
 <script>
     $(function() {
         $('.delete-student').on('click', function() {
@@ -93,6 +102,7 @@ $i = 1;
         })
     })
 </script>
+
 <!-- Full Height Modal Right -->
 @endsection
 <div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -116,6 +126,32 @@ $i = 1;
                     <button type="submit" class="btn btn-danger">Ha, hohlayman!</button>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="statusModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-danger"><b>Update confirm</b></h4>
+            </div>
+            <form action="" class="contract-update-form" method="post">
+                @csrf
+                <div class="modal-body text-danger">
+                    <label style="margin-right: 20px">
+                        <input type="radio" name="status" value="0" checked> На исполнено
+                    </label>
+                    <label style="margin-left: 20px">
+                        <input type="radio" name="status" value="1"> Исполнено
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Update</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

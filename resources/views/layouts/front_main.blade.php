@@ -1,38 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-     <!-- Favicons -->
-    <link href="{{asset('frontend/img/favicon.png')}}" rel="icon">
-    <link href="{{asset('frontend/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- Favicons -->
+  <link href="{{asset('frontend/img/favicon.png')}}" rel="icon">
+  <link href="{{asset('frontend/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
-    <!-- Bootstrap CSS File -->
-    <link href="{{asset('frontend/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <!-- Bootstrap CSS File -->
+  <link href="{{asset('frontend/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
-    <!-- Libraries CSS Files -->
-    <link href="{{asset('frontend/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{asset('frontend/lib/animate/animate.min.css')}}" rel="stylesheet">
-    <link href="{{asset('frontend/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
-    <link href="{{asset('frontend/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
-    <link href="{{asset('frontend/lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
+  <!-- Libraries CSS Files -->
+  <link href="{{asset('frontend/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+  <link href="{{asset('frontend/lib/animate/animate.min.css')}}" rel="stylesheet">
+  <link href="{{asset('frontend/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
+  <link href="{{asset('frontend/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+  <link href="{{asset('frontend/lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
 
-    <!-- Main Stylesheet File -->
-    <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet">
-  
+  <!-- Main Stylesheet File -->
+  <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet">
 
+  <style>
+    div.box {
+      position: relative;
+
+    }
+
+    div.alert {
+      position: absolute;
+      top: 650px;
+      right: 50px;
+      z-index: 100;
+      background-color: #2196F3;
+    }
+  </style>
 </head>
+
 <body>
-    @include('includes.header')
-    <main id="main">
+  <div class="box">
+    @if(session()->has('message'))
+    <div class="alert" style="border-radius:5px" role="alert">
+      <Strong>{{ session()->get('message') }}</Strong><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    </div>
+    @endif
+  </div>
+  @include('includes.header')
+
+  <main id="main">
     @yield('content')
-    </main>
-    @include('includes.footer')
+  </main>
+  @include('includes.footer')
 
 
   <script src="{{asset('frontend/lib/jquery/jquery.min.js')}}"></script>
@@ -49,9 +72,9 @@
   <script src="{{asset('frontend/lib/lightbox/js/lightbox.min.js')}}"></script>
   <script src="{{asset('frontend/lib/touchSwipe/jquery.touchSwipe.min.js')}}"></script>
   <!-- Contact Form JavaScript File -->
-  <script src="{{asset('frontend/contactform/contactform.js')}}"></script>
 
   <!-- Template Main Javascript File -->
   <script src="{{asset('frontend/js/main.js')}}"></script>
 </body>
+
 </html>

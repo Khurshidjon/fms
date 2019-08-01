@@ -1,6 +1,29 @@
 @extends('layouts.front_main')
+<style>
+  .alert {
+    padding: 20px;
+    background-color: #2196F3;
+    color: white;
+  }
+
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .closebtn:hover {
+    color: black;
+  }
+</style>
 @section('content')
 <section id="intro">
+
   <div class="intro-container">
     <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
 
@@ -294,29 +317,34 @@
     </div>
 
     <div class="form">
-    
-      <form action="/" method="post" enctype="multipart/form-data" class="contactForm">
-        @csrf
+
+      <form action="/contact" method="post" enctype="multipart/form-data" class="contactForm">
+
         <div class="form-row">
           <div class="form-group col-md-6">
-            <input type="text" name="name" class="form-control"  placeholder="Your Name" />
+            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror " value="{{old('name')}}" placeholder="Your Name" />
+            @error('name')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
           </div>
           <div class="form-group col-md-6">
-            <input type="email" class="form-control" name="email"  placeholder="Your Email"  />
+            <input type="email" class="form-control" name="email" placeholder="Your Email" />
           </div>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" name="subject"  placeholder="Subject" />
+          <input type="text" class="form-control" name="subject" placeholder="Subject" />
         </div>
         <div class="form-group">
-          <textarea class="form-control" name="message" rows="5"  placeholder="Message"></textarea>
-        </div>  
+          <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+        </div>
+        @csrf
         <div class="text-center"><button type="submit">Send Message</button></div>
       </form>
     </div>
 
   </div>
 </section><!-- #contact -->
-
 
 @endsection

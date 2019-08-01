@@ -21,6 +21,7 @@ class CreateMenusTable extends Migration
             $table->string('name_en');
             $table->string('url')->nullable()->default('/');
             $table->integer('status')->nullable()->default(0);
+            $table->integer('position');
             $table->integer('parent')->nullable();
             $table->integer('order_by')->nullable();
             $table->timestamps();

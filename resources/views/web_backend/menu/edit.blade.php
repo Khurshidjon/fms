@@ -16,9 +16,9 @@
                 @enderror
             </div>
             <div class="col-md-3">
-                <label for="form1">Name_ўз</label>
-                <input type="text" id="form1" class="form-control @error('name_ўз') is-invalid @enderror " name="name_ўз" value="{{old('name_ўз',$menu->name_ўз)}}">
-                @error('name_ўз')
+                <label for="form1">Name_cyrl</label>
+                <input type="text" id="form1" class="form-control @error('name_cyrl') is-invalid @enderror " name="name_cyrl" value="{{old('name_cyrl',$menu->name_cyrl)}}">
+                @error('name_cyrl')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

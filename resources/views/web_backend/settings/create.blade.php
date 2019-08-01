@@ -37,18 +37,18 @@
         </div>
         <div class="row">
             <div class="col-md-6 pt-5">
-                <label for="form1">Title_ўз</label>
-                <input type="text" id="form1" class="form-control @error('title_ўз') is-invalid @enderror " name="title_ўз" value="{{old('title_ўз')}}">
-                @error('title_ўз')
+                <label for="form1">Title_cyrl</label>
+                <input type="text" id="form1" class="form-control @error('title_cyrl') is-invalid @enderror " name="title_cyrl" value="{{old('title_cyrl')}}">
+                @error('title_cyrl')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
             </div>
             <div class="col-md-6">
-                <label for="">Value_ўз</label>
-                <textarea name="value_ўз" cols="20" rows="5" class="form-control @error('value_ўз') is-invalid @enderror">{{old('value_ўз')}}</textarea>
-                @error('value_ўз')
+                <label for="">Value_cyrl</label>
+                <textarea name="value_cyrl" cols="20" rows="5" class="form-control @error('value_cyrl') is-invalid @enderror">{{old('value_cyrl')}}</textarea>
+                @error('value_cyrl')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

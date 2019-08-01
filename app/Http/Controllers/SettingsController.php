@@ -42,11 +42,11 @@ class SettingsController extends Controller
         $request->validate([
             'key'     => 'required',
             'title_uz' => 'required|string',
-            'title_ўз' => 'required|string',
+            'title_cyrl' => 'required|string',
             'title_ru' => 'required|string',
             'title_en' => 'required|string',
             'value_uz' => 'required|string',
-            'value_ўз' => 'required|string',
+            'value_cyrl' => 'required|string',
             'value_ru' => 'required|string',
             'value_en' => 'required|string',
             'status' => 'required',
@@ -55,11 +55,11 @@ class SettingsController extends Controller
         $setting = new Setting();
         $setting->key = $request->key;
         $setting->title_uz = $request->title_uz;
-        $setting->title_ўз = $request->title_ўз;
+        $setting->title_cyrl = $request->title_cyrl;
         $setting->title_ru = $request->title_ru;
         $setting->title_en = $request->title_en;
         $setting->value_uz = $request->value_uz;
-        $setting->value_ўз = $request->value_ўз;
+        $setting->value_cyrl = $request->value_cyrl;
         $setting->value_ru = $request->value_ru;
         $setting->value_en = $request->value_en;
         $setting->status = $request->get('status');
@@ -104,11 +104,11 @@ class SettingsController extends Controller
         $request->validate([
             'key'     => 'required',
             'title_uz' => 'required|string',
-            'title_ўз' => 'required|string',
+            'title_cyrl' => 'required|string',
             'title_ru' => 'required|string',
             'title_en' => 'required|string',
             'value_uz' => 'required|string',
-            'value_ўз' => 'required|string',
+            'value_cyrl' => 'required|string',
             'value_ru' => 'required|string',
             'value_en' => 'required|string',
             'status' => 'required',
@@ -117,11 +117,11 @@ class SettingsController extends Controller
        
         $setting->key = $request->key;
         $setting->title_uz = $request->title_uz;
-        $setting->title_ўз = $request->title_ўз;
+        $setting->title_cyrl = $request->title_cyrl;
         $setting->title_ru = $request->title_ru;
         $setting->title_en = $request->title_en;
         $setting->value_uz = $request->value_uz;
-        $setting->value_ўз = $request->value_ўз;
+        $setting->value_cyrl = $request->value_cyrl;
         $setting->value_ru = $request->value_ru;
         $setting->value_en = $request->value_en;
         $setting->status = $request->get('status');

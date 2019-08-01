@@ -29,9 +29,9 @@ View::composer('layouts.front_main', function($view){
 
 
 
-Route::get('/',function(){
-    return view('frontend.index');
-});
+Route::view('/','frontend.index');
+Route::get('/contact', 'FrontContactController@create')->name('contact');
+Route::post('/contact', 'FrontContactController@store')->name('cont');
 Route::get('/news',function(){
 return view('frontend.news');
 });
@@ -56,6 +56,7 @@ Route::get('about_us',function(){
 Route::get('enter_login',function(){
     return view('frontend.enter_login');
 });
+
 /* -----------------------------------  Websaytni Backend qismi boshlandi ------------------------------------*/ 
 
 
@@ -68,9 +69,8 @@ Route::post('/main', 'MainController@postLogin')->name('admin.login');
     Route::get('/', 'BackendController@index')->name('backend.index');
     Route::resource('/post', 'PostController');
     Route::resource('/menu', 'MenuController');
+    Route::post('/menu/{menu}', 'MenuController@menuStatus')->name('status.menu');
     Route::resource('/settings', 'SettingsController');
-    Route::get('/contact','FrontContactController@create');
-    Route::post('/contact','FrontContactController@store');
    
 });
 /* -----------------------------------  Abdullo bundan pastdagi routelarga tegmang ------------------------------------*/ 

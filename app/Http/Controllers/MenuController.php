@@ -47,6 +47,7 @@ class MenuController extends Controller
             'name_cyrl' => 'required|string',
             'name_ru' => 'required|string',
             'name_en' => 'required|string',
+            'position'=>'required'
         ]);
         $menu = new Menu();
         $menu->name_uz = $request->name_uz;
@@ -54,6 +55,7 @@ class MenuController extends Controller
         $menu->name_ru = $request->name_ru;
         $menu->name_en = $request->name_en;
         $menu->parent = $request->get('parent');
+        $menu->position = $request->get('position');
         $menu->order_by = $request->order_by;       
         $menu->save();
         return redirect()->route('menu.index')->with('message', 'Post has been created Successfully!:)');
@@ -93,21 +95,23 @@ class MenuController extends Controller
         $request->validate([
 
             'name_uz' => 'required|string',
-            'name_ўз' => 'required|string',
+            'name_cyrl' => 'required|string',
             'name_ru' => 'required|string',
             'name_en' => 'required|string',
             'parent' => 'required',
             'order_by' => 'required',
+            'position'=>'required',
             'status' => 'required',
 
         ]);
         $menu->name_uz = $request->name_uz;
-        $menu->name_ўз = $request->name_ўз;
+        $menu->name_cyrl = $request->name_cyrl;
         $menu->name_ru = $request->name_ru;
         $menu->name_en = $request->name_en;
         $menu->parent = $request->parent;
         $menu->order_by = $request->order_by;
         $menu->status = $request->get('status');
+        $menu->position = $request->get('position');
 
         $menu->save();
         return redirect()->route('menu.index')->with('message', 'Post has been created Successfully!:)');
@@ -123,5 +127,11 @@ class MenuController extends Controller
     {
         $menu->delete();
         return redirect()->back();
+    }
+    public function menuStatus(Menu $menu)
+    {
+        $menu->status =1;
+        $menu->save();
+        return redirect()->back()->with('success', 'Контракт было успешно обновлен');
     }
 }
