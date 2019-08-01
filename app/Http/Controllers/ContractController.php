@@ -199,7 +199,6 @@ class ContractController extends Controller
             'inn' => 'required|numeric',
             'phone' => 'required',
             'oked' => 'required',
-            'email' => 'email',
         ]);
 
         $contract_start = Carbon::parse($request->contract_start);
