@@ -115,10 +115,10 @@
                             </div>
                             <div class="form-body">
                                 <div class="form-group @error('nds') has-error @enderror">
-                                    <label class="control-label">НДС <span class="text-danger">*</span></label>
+                                    <label class="control-label">НДС <span class="text-success">*</span></label>
                                     <input type="text" name="nds" class="form-control" value="{{ old('nds') }}">
                                     @error('nds')
-                                    <span class="text-danger" role="alert">{{ $message }}</span>
+                                        <span class="text-danger" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -196,7 +196,7 @@
                             </div>
                             <div class="form-body">
                                 <div class="form-group @error('email') has-error @enderror">
-                                    <label class="control-label">email <span class="text-danger">*</span></label>
+                                    <label class="control-label">email <span class="text-success">*</span></label>
                                     <input type="email" name="email" class="form-control" value="{{ old('email') }}">
                                     @error('email')
                                         <span class="text-danger" role="alert">{{ $message }}</span>

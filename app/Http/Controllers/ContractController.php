@@ -69,8 +69,6 @@ class ContractController extends Controller
             'inn' => 'required|numeric',
             'phone' => 'required',
             'oked' => 'required',
-            'nds' => 'required',
-            'email' => 'required|email|unique:contracts',
         ]);
 
         $contract_start = Carbon::parse($request->contract_start);
@@ -201,7 +199,7 @@ class ContractController extends Controller
             'inn' => 'required|numeric',
             'phone' => 'required',
             'oked' => 'required',
-            'email' => 'required|email',
+            'email' => 'email',
         ]);
 
         $contract_start = Carbon::parse($request->contract_start);
@@ -222,6 +220,7 @@ class ContractController extends Controller
             'inn' => $request->inn,
             'phone' => $request->phone,
             'oked' => $request->oked,
+            'nds' => $request->nds,
             'email' => $request->email,
             'status' => 1
         ]);

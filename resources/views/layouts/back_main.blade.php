@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{{ asset('web_backend/frontend/style5.css') }}">
-    <link rel="stylesheet" href="{{ asset('web_backend/app.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('web_backend/app.css') }}"> -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
@@ -34,10 +34,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6/js/select2.min.js"></script>
     <script src="{{ asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
     <!-- @stack('script') -->
+    <style>
+        .list-unstyled li:hover a{
+            color: #ffffff !important
+        }
+        .navbar, #sidebarCollapse{
+            background-color: #113372 !important;
+        }
+        #sidebarCollapse span{
+            background: #ff5e00 !important;
+        }
+        .nav-item a{
+            color: #ff5e00 !important;
+            font-weight: bold
+        }
+        #content{
+            padding: 0 !important;
+        }
+        .sidebar-header{
+            background: #113372 !important;
+        }
+        .sidebar-header img{
+            background: white !important;
+            border-radius: 50%;
+            border:1px solid #ff5e00 !important;
+        }
+    </style>
 </head>
 
 <body>
-
+<div id="app"></div>
     <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar" style="background:#113372">
@@ -45,7 +71,7 @@
                 <h3 class="text-center"><img src="{{asset('frontend/img/logo.png')}}" class="" alt="" width="90px" height="90px"></h3>
             </div>
             <ul class="list-unstyled components">
-                <p class="font-weight-bold text-center" style="color:#ff5e00;font-size:24px"><a href="">F M S</a></p>
+                <p class="font-weight-bold text-center" style="color:#ff5e00;font-size:24px"><a href="">Fly Mail Service</a></p>
                 <li class="">
                     <a href="{{asset('admin_one')}}" class="color">Bosh Sahifa</a>
                 </li>
@@ -106,8 +132,9 @@
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link bg-transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">
-                                    {{ Auth::user()->name }}
-                                    <i class="fas fa-sign-out-alt"></i>
+                                    {{ Auth::user()->username . ' ' }}
+
+                                    <i class="ml-2 fas fa-sign-out-alt"></i>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown">
@@ -125,7 +152,9 @@
                     </div>
                 </div>
             </nav>
-            @yield('content')
+            <div class="container-fluid">
+                @yield('content')                            
+            </div>
         </div>
     </div>
 
