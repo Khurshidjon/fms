@@ -38,6 +38,15 @@
                 @foreach($menu->submenu as $submenu)
                   <li>
                     <a href="{{ $submenu->url }}">{{ $submenu->{'name_'.$lang} }}</a>
+                    @if($submenu->hasParent)
+                      <ul>
+                          @foreach($submenu->submenu as $subSubMenu)
+                            <li>
+                              <a href="{{ $subSubMenu->url }}">{{ $subSubMenu->{'name_'.$lang} }}</a>
+                            </li>
+                          @endforeach
+                      </ul>
+                      @endif
                   </li>
                 @endforeach
             </ul>

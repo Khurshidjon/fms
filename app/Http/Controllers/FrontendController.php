@@ -12,8 +12,8 @@ class FrontendController extends Controller
 {
     public function index()
     {
-
         $post=Post::where('banner',1)->get();
+<<<<<<< HEAD
         $card1=Setting::where('key','card1')->first();
         $card2 = Setting::where('key', 'card2')->first();
         $card3 = Setting::where('key', 'card3')->first();
@@ -49,4 +49,18 @@ class FrontendController extends Controller
             'partners'=>$partners
             ]);
         }
+=======
+        $setting_one = Setting::where('key', 4)->first();
+
+        return view('frontend.index', [
+            'post'=>$post,
+            'set_one' => $setting_one
+        ]);
+    }
+    public function settings()
+    {
+        
+    }
+
+>>>>>>> 1093dc124cfcf98bfe61c37934e8e7bda11fdcb1
 }
