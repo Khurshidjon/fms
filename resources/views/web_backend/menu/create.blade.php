@@ -5,7 +5,7 @@
     @csrf
     <div class="container">
         <div class="row p-3">
-            <select name="position" class="form-control @error('position') is-invalid @enderror "  id="">
+            <select name="position" class="form-control @error('position') is-invalid @enderror " id="">
                 <option selected disabled>---Position select---</option>
                 <option value="1">Navbar</option>
                 <option value="0">Footer</option>
@@ -48,6 +48,17 @@
                 <label for="form1">Name_en</label>
                 <input type="text" id="form1" class="form-control @error('name_en') is-invalid @enderror " name="name_en" value="{{old('name_en')}}">
                 @error('name_en')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="form-group w-100 p-3">
+                <label for="form1">Url</label>
+                <input type="text" id="form1" class="form-control @error('url') is-invalid @enderror " name="url" value="{{old('url')}}">
+                @error('url')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

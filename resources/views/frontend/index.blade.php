@@ -30,19 +30,19 @@
       <ol class="carousel-indicators"></ol>
 
       <div class="carousel-inner" role="listbox">
-
-        <div class="carousel-item active">
-          <div class="carousel-background"><img src="img/intro-carousel/1.jpg" alt=""></div>
+        @foreach($post as $one)
+        <div class="carousel-item  <?= $one->id == 1 ? 'active' : '' ?> ">
+          <div class="carousel-background"><img src="{{asset('storage').'/'. $one->image}}" alt=""></div>
           <div class="carousel-container">
             <div class="carousel-content">
-              <h2>We are professional</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+              <h2>{{$one->title_uz}}</h2>
+              <p>{{$one->description_uz}}</p>
+              <a href="#" class="btn-get-started scrollto">Get Started</a>
             </div>
           </div>
         </div>
-
-        <div class="carousel-item">
+        @endforeach
+        <!-- <div class="carousel-item">
           <div class="carousel-background"><img src="img/intro-carousel/2.jpg" alt=""></div>
           <div class="carousel-container">
             <div class="carousel-content">
@@ -52,7 +52,7 @@
             </div>
           </div>
         </div>
-
+        
         <div class="carousel-item">
           <div class="carousel-background"><img src="img/intro-carousel/3.jpg" alt=""></div>
           <div class="carousel-container">
@@ -84,7 +84,7 @@
               <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
 
@@ -114,26 +114,30 @@
   <div class="container">
 
     <header class="section-header">
-      <h3>About Us</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <h3>{{$set->title_uz}}</h3>
+      <p>{{$set->value_uz}}</p>
     </header>
-
-    <div class="row about-cols">
-
-      <div class="col-md-4 wow fadeInUp">
-        <div class="about-col">
-          <div class="img">
-            <img src="{{asset('frontend/img/about-mission.jpg')}}" alt="" class="img-fluid">
-            <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+    <? $i = 0; ?>
+    <? foreach ($set as $one) { ?>
+      <? if ($i % 3 == 0) { ?>
+        <div class="row about-cols">
+        <? } ?>
+        <div class="col-md-4 wow fadeInUp">
+          <div class="about-col">
+            <div class="img">
+              <img src="{{asset('storage').'/'. $set->image}}" alt="" class="img-fluid">
+              <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+            </div>
+            <h2 class="title"><a href="#">{{$set->title_cyrl}}</a></h2>
+            <p>
+              {{$set->value_cyrl}}
+            </p>
           </div>
-          <h2 class="title"><a href="#">Our Mission</a></h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
         </div>
-      </div>
+        <? $i++ ?>
+        <? if ($i % 3 == 0) { ?>
 
-      <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+          <!-- <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
         <div class="about-col">
           <div class="img">
             <img src="{{asset('frontend/img/about-plan.jpg')}}" alt="" class="img-fluid">
@@ -157,10 +161,17 @@
             Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores eos qui ratione voluptatem sequi nesciunt Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
           </p>
         </div>
-      </div>
+      </div> -->
 
     </div>
-
+    <? } ?>
+    <? } ?>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+    </div>
   </div>
 </section><!-- #about -->
 

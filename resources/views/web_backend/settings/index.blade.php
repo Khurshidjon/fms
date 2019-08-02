@@ -35,7 +35,7 @@ $i = 1;
             </div>
         </div>
         <div class="table-responsive">
-           
+
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -54,7 +54,7 @@ $i = 1;
                         <td>{{$one->key}}</td>
                         <td>{{$one->title_uz}}</td>
                         <td>{{$one->value_uz}}</td>
-                        <td>{{$one->image}}</td>
+                        <td><img src="{{asset('storage').'/'.$one->image}}" alt="" width="100px"></td>
                         <td>
 
                             <a class="btn btn-info btn-sm text-white" href="">
@@ -74,7 +74,7 @@ $i = 1;
                 </tbody>
             </table>
         </div>
-        {{$settings->links()}}
+        {{$settings->links('vendor.pagination.simple-bootstrap-4')}}
     </div>
 </div>
 <script>
