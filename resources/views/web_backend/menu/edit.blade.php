@@ -44,9 +44,25 @@
             </div>
         </div>
         <div class="row pt-2">
+            <div class="form-group w-100 p-3">
+                <label for="form1">Url</label>
+                <input type="text" id="form1" class="form-control @error('url') is-invalid @enderror " name="url" value="{{old('url',$menu->url)}}">
+                @error('url')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+        </div>
+        <div class="row pt-2">
             <div class="col-md-6">
                 <label for="form1">Parent</label>
-                <input type="number" id="form1" class="form-control @error('parent') is-invalid @enderror " name="parent" value="{{old('parent',$menu->parent)}}">
+                <select name="parent" id="" class="form-control @error('parent') is-invalid @enderror">
+                    <option selected disabled>-- @lang('pages.select_one') --</option>
+                    @foreach($menus as $menu)
+                    <option value="{{ $menu->id }}">{{ $menu->name_ru }}</option>
+                    @endforeach
+                </select>
                 @error('parent')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

@@ -73,7 +73,7 @@
             <ul class="list-unstyled components">
                 <p class="font-weight-bold text-center" style="color:#ff5e00;font-size:24px"><a href="">Fly Mail Service</a></p>
                 <li class="">
-                    <a href="{{asset('admin_one')}}" class="color">Bosh Sahifa</a>
+                    <a href="{{route('backend.index')}}" class="color">Bosh Sahifa</a>
                 </li>
                 <li class="">
                     <a href="{{route('post.index')}}" class="color">Post</a>

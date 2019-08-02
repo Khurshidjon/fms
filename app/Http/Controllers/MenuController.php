@@ -54,6 +54,7 @@ class MenuController extends Controller
         $menu->name_cyrl = $request->name_cyrl;
         $menu->name_ru = $request->name_ru;
         $menu->name_en = $request->name_en;
+        $menu->url = $request->url;
         $menu->parent = $request->get('parent');
         $menu->position = $request->get('position');
         $menu->order_by = $request->order_by;       
@@ -80,7 +81,8 @@ class MenuController extends Controller
      */
     public function edit( Menu $menu)
     {
-        return view('web_backend.menu.edit',['menu'=>$menu]);
+        $menus=Menu::all();
+        return view('web_backend.menu.edit',['menu'=>$menu,'menus'=>$menus]);
     }
 
     /**
@@ -99,15 +101,16 @@ class MenuController extends Controller
             'name_ru' => 'required|string',
             'name_en' => 'required|string',
             'parent' => 'required',
-            'order_by' => 'required',
+            // 'order_by' => 'required',
             'position'=>'required',
-            'status' => 'required',
+            // 'status' => 'required',
 
         ]);
         $menu->name_uz = $request->name_uz;
         $menu->name_cyrl = $request->name_cyrl;
         $menu->name_ru = $request->name_ru;
         $menu->name_en = $request->name_en;
+        $menu->url = $request->url;
         $menu->parent = $request->parent;
         $menu->order_by = $request->order_by;
         $menu->status = $request->get('status');
