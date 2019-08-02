@@ -33,6 +33,8 @@ Route::view('/','frontend.index');
 Route::get('/','FrontendController@index');
 Route::get('/contact', 'FrontContactController@create')->name('contact');
 Route::post('/contact', 'FrontContactController@store')->name('cont');
+Route::get('/subscribe', 'SubscribeController@create')->name('subscribe');
+Route::post('/subscribe', 'SubscribeController@store');
 Route::get('/news',function(){
 return view('frontend.news');
 });
@@ -72,7 +74,8 @@ Route::post('/main', 'MainController@postLogin')->name('admin.login');
     Route::resource('/menu', 'MenuController');
     Route::post('/menu/{menu}', 'MenuController@menuStatus')->name('status.menu');
     Route::resource('/settings', 'SettingsController');
-   
+    Route::resource('/partners', 'PartnerController');
+    
 });
 /* -----------------------------------  Abdullo bundan pastdagi routelarga tegmang ------------------------------------*/ 
 

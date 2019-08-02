@@ -7,12 +7,7 @@
         <div class="row">
             <div class="col-md-12">
                 <label for="form1">Key</label>
-                <select name="key" id="" class="form-control @error('key') is-invalid @enderror">
-                    <option selected disabled>-- @lang('pages.select_one') --</option>
-                    @foreach($setting as $one)
-                    <option value="{{ $one->id }}">{{ $one->title_ru}}</option>
-                    @endforeach
-                </select>
+                <input type="text" id="form1" class="form-control @error('key') is-invalid @enderror " name="key" value="{{old('key')}}">
                 @error('key')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

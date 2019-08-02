@@ -84,6 +84,9 @@
                 <li class="">
                     <a href="{{route('menu.index')}}" class="color">Menus</a>
                 </li>
+                <li class="">
+                    <a href="{{route('partners.index')}}" class="color">Partners</a>
+                </li>
 
             </ul>
 

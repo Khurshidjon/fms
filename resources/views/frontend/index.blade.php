@@ -112,40 +112,39 @@
     ============================-->
 <section id="about">
   <div class="container">
-
     <header class="section-header">
-      <h3>{{$set->title_uz}}</h3>
-      <p>{{$set->value_uz}}</p>
+      <h3>{{$card1->title_uz}}</h3>
+      <p>{{$card1->value_uz}}</p>
     </header>
-    <? $i = 0; ?>
-    <? foreach ($set as $one) { ?>
-      <? if ($i % 3 == 0) { ?>
-        <div class="row about-cols">
-        <? } ?>
-        <div class="col-md-4 wow fadeInUp">
-          <div class="about-col">
-            <div class="img">
-              <img src="{{asset('storage').'/'. $set->image}}" alt="" class="img-fluid">
-              <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
-            </div>
-            <h2 class="title"><a href="#">{{$set->title_cyrl}}</a></h2>
-            <p>
-              {{$set->value_cyrl}}
-            </p>
-          </div>
-        </div>
-        <? $i++ ?>
-        <? if ($i % 3 == 0) { ?>
 
-          <!-- <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="row about-cols">
+      <div class="col-md-4 wow fadeInUp">
         <div class="about-col">
           <div class="img">
-            <img src="{{asset('frontend/img/about-plan.jpg')}}" alt="" class="img-fluid">
+            <div style="width:100%; height:200px; overflow:hidden">
+              <img src="{{asset('storage').'/'. $card1->image}}" alt="" class="img-fluid">
+            </div>
+            <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+          </div>
+          <h2 class="title"><a href="#">{{$card1->title_uz}}</a></h2>
+          <p>
+            {{$card1->value_uz}}
+          </p>
+        </div>
+      </div>
+
+
+      <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="about-col">
+          <div class="img">
+            <div style="width:100%; height:200px; overflow:hidden">
+              <img src="{{asset('storage').'/'. $card2->image}}" alt="" class="img-fluid">
+            </div>
             <div class="icon"><i class="ion-ios-list-outline"></i></div>
           </div>
-          <h2 class="title"><a href="#">Our Plan</a></h2>
+          <h2 class="title"><a href="#">{{$card2->title_uz}}</a></h2>
           <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+            {{$card2->value_uz}}
           </p>
         </div>
       </div>
@@ -153,19 +152,20 @@
       <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
         <div class="about-col">
           <div class="img">
-            <img src="{{asset('frontend/img/about-vision.jpg')}}" alt="" class="img-fluid">
+            <div style="width:100%; height:200px; overflow:hidden">
+              <img src="{{asset('storage').'/'. $card3->image}}" alt="" class="img-fluid">
+            </div>
             <div class="icon"><i class="ion-ios-eye-outline"></i></div>
           </div>
-          <h2 class="title"><a href="#">Our Vision</a></h2>
+          <h2 class="title"><a href="#">{{$card3->title_uz}}</a></h2>
           <p>
-            Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores eos qui ratione voluptatem sequi nesciunt Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+            {{$card3->value_uz}}
           </p>
         </div>
-      </div> -->
+      </div>
 
     </div>
-    <? } ?>
-    <? } ?>
+
   </div>
   <div class="row">
     <div class="col-md-4"></div>
@@ -182,41 +182,41 @@
   <div class="container">
 
     <header class="section-header wow fadeInUp">
-      <h3>Services</h3>
-      <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus, ad pro quaestio laboramus. Ei ubique vivendum pro. At ius nisl accusam lorenta zanos paradigno tridexa panatarel.</p>
+      <h3>{{$services->title_uz}}</h3>
+      <p>{{$services->value_uz}}</p>
     </header>
 
     <div class="row">
 
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
-        <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-        <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+        <h4 class="title"><a href="">{{$services_card1->title_uz}}</a></h4>
+        <p class="description">{{$services_card1->value_uz}}</p>
       </div>
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-bookmarks-outline"></i></div>
-        <h4 class="title"><a href="">Dolor Sitema</a></h4>
-        <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+        <h4 class="title"><a href="">{{$services_card2->title_uz}}</a></h4>
+        <p class="description">{{$services_card2->value_uz}}</p>
       </div>
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-paper-outline"></i></div>
-        <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-        <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+        <h4 class="title"><a href="">{{$services_card3->title_uz}}</a></h4>
+        <p class="description">{{$services_card3->value_uz}}</p>
       </div>
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
-        <h4 class="title"><a href="">Magni Dolores</a></h4>
-        <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+        <h4 class="title"><a href="">{{$services_card4->title_uz}}</a></h4>
+        <p class="description">{{$services_card4->value_uz}}</p>
       </div>
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-barcode-outline"></i></div>
-        <h4 class="title"><a href="">Nemo Enim</a></h4>
-        <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+        <h4 class="title"><a href="">{{$services_card5->title_uz}}</a></h4>
+        <p class="description">{{$services_card5->value_uz}}</p>
       </div>
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-people-outline"></i></div>
-        <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-        <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+        <h4 class="title"><a href="">{{$services_card6->title_uz}}</a></h4>
+        <p class="description">{{$services_card6->value_uz}}</p>
       </div>
 
     </div>
@@ -233,23 +233,23 @@
     <div class="row counters">
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">274</span>
-        <p>Clients</p>
+        <span data-toggle="counter-up">{{$statistics->value_uz}}</span>
+        <p>{{$statistics->title_uz}}</p>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">421</span>
-        <p>Projects</p>
+        <span data-toggle="counter-up">{{$statistics1->value_uz}}</span>
+        <p>{{$statistics1->title_uz}}</p>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">1,364</span>
-        <p>Hours Of Support</p>
+        <span data-toggle="counter-up">{{$statistics2->value_uz}}</span>
+        <p>{{$statistics2->title_uz}}</p>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">18</span>
-        <p>Hard Workers</p>
+        <span data-toggle="counter-up">{{$statistics3->value_uz}}</span>
+        <p>{{$statistics3->title_uz}}</p>
       </div>
 
     </div>
@@ -266,14 +266,16 @@
     </header>
 
     <div class="owl-carousel clients-carousel">
-      <img src="{{asset('frontend/img/clients/client-1.png')}}" alt="">
-      <img src="{{asset('frontend/img/clients/client-2.png')}}" alt="">
+      @foreach($partners as $one)
+      <a href="{{$one->url}}"><img src="{{asset('storage').'/'.$one->image}}"  height="200" title="{{$one->name}}"></a>
+      @endforeach
+      <!-- <img src="{{asset('frontend/img/clients/client-2.png')}}" alt="">
       <img src="{{asset('frontend/img/clients/client-3.png')}}" alt="">
       <img src="{{asset('frontend/img/clients/client-4.png')}}" alt="">
       <img src="{{asset('frontend/img/clients/client-5.png')}}" alt="">
       <img src="{{asset('frontend/img/clients/client-6.png')}}" alt="">
       <img src="{{asset('frontend/img/clients/client-7.png')}}" alt="">
-      <img src="{{asset('frontend/img/clients/client-8.png')}}" alt="">
+      <img src="{{asset('frontend/img/clients/client-8.png')}}" alt=""> -->
     </div>
 
   </div>
@@ -305,7 +307,7 @@
         <div class="contact-address">
           <i class="ion-ios-location-outline"></i>
           <h3>Address</h3>
-          <address>A108 Adam Street, NY 535022, USA</address>
+          <address>Toshkent</address>
         </div>
       </div>
 
@@ -313,7 +315,7 @@
         <div class="contact-phone">
           <i class="ion-ios-telephone-outline"></i>
           <h3>Phone Number</h3>
-          <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+          <p><a href="tel:+155895548855">+998941234567</a></p>
         </div>
       </div>
 

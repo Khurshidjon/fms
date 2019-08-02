@@ -42,8 +42,9 @@
           <div class="col-lg-3 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit"  value="Subscribe">
+            <form action="/subscribe" method="post">
+            @csrf
+              <input type="email" name="email" class="@error('email') is-invalid @enderror" value="{{old('email')}}"><input type="submit"  value="Subscribe">
             </form>
           </div>
 

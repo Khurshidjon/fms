@@ -109,14 +109,14 @@ class SettingsController extends Controller
         $request->validate([
             'key'     => 'required',
             'title_uz' => 'required|string',
-            'title_cyrl' => 'required|string',
-            'title_ru' => 'required|string',
-            'title_en' => 'required|string',
+            // 'title_cyrl' => 'required|string',
+            // 'title_ru' => 'required|string',
+            // 'title_en' => 'required|string',
             'value_uz' => 'required|string',
-            'value_cyrl' => 'required|string',
-            'value_ru' => 'required|string',
-            'value_en' => 'required|string',
-            'status' => 'required',
+            // 'value_cyrl' => 'required|string',
+            // 'value_ru' => 'required|string',
+            // 'value_en' => 'required|string',
+            // 'status' => 'required',
             'image' => 'required|image|mimes:jpg,jpeg,png|max:10240'
         ]);
        
