@@ -116,7 +116,6 @@
 <section id="about">
   <div class="container">
     <header class="section-header">
-<<<<<<< HEAD
       <h3>{{$card1->title_uz}}</h3>
       <p>{{$card1->value_uz}}</p>
     </header>
@@ -129,33 +128,14 @@
               <img src="{{asset('storage').'/'. $card1->image}}" alt="" class="img-fluid">
             </div>
             <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
-=======
-      <h3> {{ $set_one!=null?$set_one->{'title_'.$lang}:'' }}</h3>
-      <p> {{ $set_one!=null?$set_one->{'value_'.$lang}:'' }}</p>
-    </header>
-        <div class="row about-cols">
-        <div class="col-md-4 wow fadeInUp">
-          <div class="about-col">
-            <div class="img">
-              <img src="{{ asset('storage') . '/'. $set_one->image }}" alt="" class="img-fluid">
-              <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
-            </div>
-            <h2 class="title"><a href="#">{{ $set_one!=null?$set_one->{'title_'.$lang}:'' }}</a></h2>
-            <p>
-              {{ $set_one!=null?$set_one->{ 'value_'.$lang }:'' }}
-            </p>
->>>>>>> 1093dc124cfcf98bfe61c37934e8e7bda11fdcb1
           </div>
           <h2 class="title"><a href="#">{{$card1->title_uz}}</a></h2>
           <p>
             {{$card1->value_uz}}
           </p>
         </div>
-<<<<<<< HEAD
       </div>
 
-=======
->>>>>>> 1093dc124cfcf98bfe61c37934e8e7bda11fdcb1
 
       <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
         <div class="about-col">
@@ -188,10 +168,7 @@
       </div>
 
     </div>
-<<<<<<< HEAD
 
-=======
->>>>>>> 1093dc124cfcf98bfe61c37934e8e7bda11fdcb1
   </div>
   <div class="row">
     <div class="col-md-4"></div>
