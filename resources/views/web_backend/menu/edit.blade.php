@@ -4,6 +4,7 @@
 <form action="{{route('menu.update',['menu'=>$menu])}}" method="post" enctype="multipart/form-data">
     @csrf
     @method('Put')
+    <!-- menu ga tiososososossoosos -->
     <div class="container">
         <div class="row">
             <div class="col-md-3">
