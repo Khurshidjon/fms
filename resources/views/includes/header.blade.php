@@ -1,11 +1,31 @@
 @php 
   $lang = App::getLocale();
 @endphp
+<style>
+  .scrollto{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font: italic;
+    position:relative;
+    top:-15px;
+    text-transform: lowercase !important; 
+    letter-spacing: 3px !important;
+  }
+  .scrollto img{
+    background: white;
+    border-radius:50%;
+    position:relative;
+    /* top:-15px; */
+  }
+</style>
 <header id="header">
     <div class="container-fluid">
 
       <div id="logo" class="pull-left">
-        <h5><a href="#intro" class="scrollto">F<span>M</span>S</a></h5>
+        <h5 style="max-width:36em">
+          <a href="#intro" class="scrollto" style="border:none; text-decoration:none">
+            <img src="{{ asset('frontend/img/logo.png') }}" width="63" alt=""> Fly Mail Service            
+          </a>
+        </h5>
       </div>
 
       <nav id="nav-menu-container">
