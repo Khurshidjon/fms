@@ -1,4 +1,7 @@
 @extends('layouts.front_main')
+@php 
+  $lang = App::getLocale();
+@endphp
 <style>
   .alert {
     padding: 20px;
@@ -73,7 +76,7 @@
               <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
             </div>
           </div>
-        </div>
+        </div>set_one
 
         <div class="carousel-item">
           <div class="carousel-background"><img src="img/intro-carousel/5.jpg" alt=""></div>
@@ -82,7 +85,7 @@
               <h2>Magnam aliquam quaerat</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
               <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-            </div>
+            </div>set_one
           </div>
         </div> -->
 
@@ -114,28 +117,22 @@
   <div class="container">
 
     <header class="section-header">
-      <h3>{{$set->title_uz}}</h3>
-      <p>{{$set->value_uz}}</p>
+      <h3> {{ $set_one!=null?$set_one->{'title_'.$lang}:'' }}</h3>
+      <p> {{ $set_one!=null?$set_one->{'value_'.$lang}:'' }}</p>
     </header>
-    <? $i = 0; ?>
-    <? foreach ($set as $one) { ?>
-      <? if ($i % 3 == 0) { ?>
         <div class="row about-cols">
-        <? } ?>
         <div class="col-md-4 wow fadeInUp">
           <div class="about-col">
             <div class="img">
-              <img src="{{asset('storage').'/'. $set->image}}" alt="" class="img-fluid">
+              <img src="{{ asset('storage') . '/'. $set_one->image }}" alt="" class="img-fluid">
               <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
             </div>
-            <h2 class="title"><a href="#">{{$set->title_cyrl}}</a></h2>
+            <h2 class="title"><a href="#">{{ $set_one!=null?$set_one->{'title_'.$lang}:'' }}</a></h2>
             <p>
-              {{$set->value_cyrl}}
+              {{ $set_one!=null?$set_one->{ 'value_'.$lang }:'' }}
             </p>
           </div>
         </div>
-        <? $i++ ?>
-        <? if ($i % 3 == 0) { ?>
 
           <!-- <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
         <div class="about-col">
@@ -164,8 +161,6 @@
       </div> -->
 
     </div>
-    <? } ?>
-    <? } ?>
   </div>
   <div class="row">
     <div class="col-md-4"></div>

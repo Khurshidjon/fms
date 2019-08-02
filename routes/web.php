@@ -29,7 +29,9 @@ View::composer('layouts.front_main', function($view){
 
 
 
-Route::view('/','frontend.index');
+Route::get('/aa', function(){
+    return view('frontend.index');
+});
 Route::get('/','FrontendController@index');
 Route::get('/contact', 'FrontContactController@create')->name('contact');
 Route::post('/contact', 'FrontContactController@store')->name('cont');

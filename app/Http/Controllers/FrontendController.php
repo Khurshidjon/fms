@@ -11,16 +11,13 @@ class FrontendController extends Controller
 {
     public function index()
     {
-
         $post=Post::where('banner',1)->get();
-        $setting=Setting::where('key',4)->latest()->paginate(3);
-        foreach ($setting as $set) {
-        
-            return view('frontend.index',[
-                'post'=>$post,
-                'set'=>$set
-                ]);
-        }
+        $setting_one = Setting::where('key', 4)->first();
+
+        return view('frontend.index', [
+            'post'=>$post,
+            'set_one' => $setting_one
+        ]);
     }
     public function settings()
     {
