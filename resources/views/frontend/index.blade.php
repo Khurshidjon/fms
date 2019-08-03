@@ -1,6 +1,7 @@
 @extends('layouts.front_main')
 @php 
   $lang = App::getLocale();
+  $i = 1;
 @endphp
 <style>
   .alert {
@@ -23,6 +24,9 @@
   .closebtn:hover {
     color: black;
   }
+  #intro, .carousel-inner, .carousel-item {
+    max-height: 43em;
+  }
 </style>
 @section('content')
 <section id="intro">
@@ -31,64 +35,22 @@
     <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
 
       <ol class="carousel-indicators"></ol>
-
       <div class="carousel-inner" role="listbox">
-        @foreach($post as $one)
-        <div class="carousel-item  <?= $one->id == 1 ? 'active' : '' ?> ">
-          <div class="carousel-background"><img src="{{asset('storage').'/'. $one->image}}" alt=""></div>
-          <div class="carousel-container">
-            <div class="carousel-content">
-              <h2>{{$one->title_uz}}</h2>
-              <p>{{$one->description_uz}}</p>
-              <a href="#" class="btn-get-started scrollto">Get Started</a>
+        @foreach($banners as $banner)
+          <div class="carousel-item <?= $i == 1 ? 'active' : '' ?> ">
+            <div class="carousel-background"><img src="{{asset('storage').'/'. $banner->image}}" alt=""></div>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2>{{$banner->{'title_'.$lang} }}</h2>
+                <p>{{$banner->{'description_'.$lang} }}</p>
+                <a href="{{ route('single.news', ['post' => $banner]) }}" class="btn-get-started scrollto">@lang('pages.read_more')</a>
+              </div>
             </div>
           </div>
-        </div>
+          @php 
+            $i++
+          @endphp 
         @endforeach
-        <!-- <div class="carousel-item">
-          <div class="carousel-background"><img src="img/intro-carousel/2.jpg" alt=""></div>
-          <div class="carousel-container">
-            <div class="carousel-content">
-              <h2>At vero eos et accusamus</h2>
-              <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut.</p>
-              <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="carousel-item">
-          <div class="carousel-background"><img src="img/intro-carousel/3.jpg" alt=""></div>
-          <div class="carousel-container">
-            <div class="carousel-content">
-              <h2>Temporibus autem quibusdam</h2>
-              <p>Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt omnis iste natus error sit voluptatem accusantium.</p>
-              <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <div class="carousel-background"><img src="img/intro-carousel/4.jpg" alt=""></div>
-          <div class="carousel-container">
-            <div class="carousel-content">
-              <h2>Nam libero tempore</h2>
-              <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum.</p>
-              <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-            </div>
-          </div>
-        </div>set_one
-
-        <div class="carousel-item">
-          <div class="carousel-background"><img src="img/intro-carousel/5.jpg" alt=""></div>
-          <div class="carousel-container">
-            <div class="carousel-content">
-              <h2>Magnam aliquam quaerat</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-            </div>set_one
-          </div>
-        </div> -->
-
       </div>
 
       <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
@@ -109,15 +71,14 @@
   <div class="container">
   </div>
 </section><!-- #featured-services -->
-
 <!--==========================
       About Us Section
     ============================-->
 <section id="about">
   <div class="container">
     <header class="section-header">
-      <h3>{{$card1->title_uz}}</h3>
-      <p>{{$card1->value_uz}}</p>
+      <h3>{{$about!=null?$about->title_uz:'' }}</h3>
+      <p>{{$about!=null?$about->value_uz:'' }}</p>
     </header>
 
     <div class="row about-cols">
@@ -125,13 +86,13 @@
         <div class="about-col">
           <div class="img">
             <div style="width:100%; height:200px; overflow:hidden">
-              <img src="{{asset('storage').'/'. $card1->image}}" alt="" class="img-fluid">
+              <img src="{{ $card1!=null?asset('storage').'/'. $card1->image:'' }} " alt="" class="img-fluid">
             </div>
             <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
           </div>
-          <h2 class="title"><a href="#">{{$card1->title_uz}}</a></h2>
+          <h2 class="title"><a href="#">{{ $card1!=null?$card1->title_uz:''}}</a></h2>
           <p>
-            {{$card1->value_uz}}
+            {{ $card1!=null?$card1->value_uz:'' }}
           </p>
         </div>
       </div>
@@ -141,13 +102,13 @@
         <div class="about-col">
           <div class="img">
             <div style="width:100%; height:200px; overflow:hidden">
-              <img src="{{asset('storage').'/'. $card2->image}}" alt="" class="img-fluid">
+              <img src="{{ $card2!=null?asset('storage').'/'. $card2->image:''}}" alt="" class="img-fluid">
             </div>
             <div class="icon"><i class="ion-ios-list-outline"></i></div>
           </div>
-          <h2 class="title"><a href="#">{{$card2->title_uz}}</a></h2>
+          <h2 class="title"><a href="#">{{ $card2!=null?$card2->title_uz:''}}</a></h2>
           <p>
-            {{$card2->value_uz}}
+            {{ $card2!=null?$card2->value_uz:''}}
           </p>
         </div>
       </div>
@@ -156,13 +117,13 @@
         <div class="about-col">
           <div class="img">
             <div style="width:100%; height:200px; overflow:hidden">
-              <img src="{{asset('storage').'/'. $card3->image}}" alt="" class="img-fluid">
+              <img src="{{ $card3!=null?asset('storage').'/'. $card3->image:'' }}" alt="" class="img-fluid">
             </div>
             <div class="icon"><i class="ion-ios-eye-outline"></i></div>
           </div>
-          <h2 class="title"><a href="#">{{$card3->title_uz}}</a></h2>
+          <h2 class="title"><a href="#">{{ $card3!=null?$card3->title_uz:'' }}</a></h2>
           <p>
-            {{$card3->value_uz}}
+            {{ $card3!=null?$card3->value_uz:''}}
           </p>
         </div>
       </div>
@@ -185,41 +146,41 @@
   <div class="container">
 
     <header class="section-header wow fadeInUp">
-      <h3>{{$services->title_uz}}</h3>
-      <p>{{$services->value_uz}}</p>
+      <h3>{{ $services!=null?$services->title_uz:'' }}</h3>
+      <p>{{ $services!=null?$services->value_uz:'' }}</p>
     </header>
 
     <div class="row">
 
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
-        <h4 class="title"><a href="">{{$services_card1->title_uz}}</a></h4>
-        <p class="description">{{$services_card1->value_uz}}</p>
+        <h4 class="title"><a href="">{{ $services_card1!=null?$services_card1->title_uz:''}}</a></h4>
+        <p class="description">{{ $services_card1!=null?$services_card1->value_uz:''}}</p>
       </div>
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-bookmarks-outline"></i></div>
-        <h4 class="title"><a href="">{{$services_card2->title_uz}}</a></h4>
-        <p class="description">{{$services_card2->value_uz}}</p>
+        <h4 class="title"><a href="">{{  $services_card2!=null?$services_card2->title_uz:'' }}</a></h4>
+        <p class="description">{{  $services_card2!=null?$services_card2->value_uz:'' }}</p>
       </div>
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-paper-outline"></i></div>
-        <h4 class="title"><a href="">{{$services_card3->title_uz}}</a></h4>
-        <p class="description">{{$services_card3->value_uz}}</p>
+        <h4 class="title"><a href="">{{ $services_card3!=null?$services_card3->title_uz:'' }}</a></h4>
+        <p class="description">{{ $services_card3!=null?$services_card3->value_uz:'' }}</p>
       </div>
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
-        <h4 class="title"><a href="">{{$services_card4->title_uz}}</a></h4>
-        <p class="description">{{$services_card4->value_uz}}</p>
+        <h4 class="title"><a href="">{{ $services_card4!=null?$services_card4->title_uz:'' }}</a></h4>
+        <p class="description">{{ $services_card4!=null?$services_card4->value_uz:'' }}</p>
       </div>
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-barcode-outline"></i></div>
-        <h4 class="title"><a href="">{{$services_card5->title_uz}}</a></h4>
-        <p class="description">{{$services_card5->value_uz}}</p>
+        <h4 class="title"><a href="">{{ $services_card5!=null?$services_card5->title_uz:'' }}</a></h4>
+        <p class="description">{{ $services_card5!=null?$services_card5->value_uz:'' }}</p>
       </div>
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-people-outline"></i></div>
-        <h4 class="title"><a href="">{{$services_card6->title_uz}}</a></h4>
-        <p class="description">{{$services_card6->value_uz}}</p>
+        <h4 class="title"><a href="">{{ $services_card6!=null?$services_card6->title_uz:'' }}</a></h4>
+        <p class="description">{{ $services_card6!=null?$services_card6->value_uz:'' }}</p>
       </div>
 
     </div>
@@ -236,29 +197,26 @@
     <div class="row counters">
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">{{$statistics->value_uz}}</span>
-        <p>{{$statistics->title_uz}}</p>
+        <span data-toggle="counter-up">{{ $statistics!=null?$statistics->value_uz:'' }}</span>
+        <p>{{ $statistics!=null?$statistics->title_uz:'' }}</p>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">{{$statistics1->value_uz}}</span>
-        <p>{{$statistics1->title_uz}}</p>
+        <span data-toggle="counter-up">{{ $statistics1!=null?$statistics1->value_uz:'' }}</span>
+        <p>{{ $statistics1!=null?$statistics1->title_uz:'' }}</p>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">{{$statistics2->value_uz}}</span>
-        <p>{{$statistics2->title_uz}}</p>
+        <span data-toggle="counter-up">{{ $statistics2!=null?$statistics2->value_uz:'' }}</span>
+        <p>{{ $statistics2!=null?$statistics2->title_uz:'' }}</p>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">{{$statistics3->value_uz}}</span>
-        <p>{{$statistics3->title_uz}}</p>
+        <span data-toggle="counter-up">{{ $statistics3!=null?$statistics3->value_uz:'' }}</span>
+        <p>{{ $statistics3!=null?$statistics3->title_uz:'' }}</p>
       </div>
 
     </div>
-
-
-
   </div>
 </section>
 <section id="clients" class="wow fadeInUp">

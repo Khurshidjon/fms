@@ -27,4 +27,7 @@ return [
     'product_category' => 'Mahsulot kategoriyasi',
     'contract_number' => 'Shartnoma raqami',
     'type_pay_for_service' => 'To\'lov turi',
+    'read_more' => 'Batafsil',
+    'add_new' => 'Yangi qo\'shish',
+
 ];

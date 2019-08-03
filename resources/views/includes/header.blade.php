@@ -22,7 +22,7 @@
 
       <div id="logo" class="pull-left">
         <h5 style="max-width:36em">
-          <a href="#intro" class="scrollto" style="border:none; text-decoration:none">
+          <a href="{{ route('index') }}" class="scrollto" style="border:none; text-decoration:none">
             <img src="{{ asset('frontend/img/logo.png') }}" width="63" alt=""> Fly Mail Service            
           </a>
         </h5>
@@ -32,17 +32,17 @@
         <ul class="nav-menu">
         @foreach($menus as $menu)
           <li class="{{ $menu->hasParent!=null?'menu-has-children':'' }} ">
-            <a href="{{ $menu->url }}">{{ $menu->{'name_'.$lang} }}</a>
+            <a href="{{ $menu->url==null?'javascript:void(0);':route('page.inforamtion', ['menu' => $menu->url]) }}">{{ $menu->{'name_'.$lang} }}</a>
             @if($menu->hasParent)
             <ul>
                 @foreach($menu->submenu as $submenu)
                   <li>
-                    <a href="{{ $submenu->url }}">{{ $submenu->{'name_'.$lang} }}</a>
+                    <a href="{{ $submenu->url==null?'javascript:void(0);':route('page.inforamtion', ['menu' => $submenu->url]) }}">{{ $submenu->{'name_'.$lang} }}</a>
                     @if($submenu->hasParent)
                       <ul>
                           @foreach($submenu->submenu as $subSubMenu)
                             <li>
-                              <a href="{{ $subSubMenu->url }}">{{ $subSubMenu->{'name_'.$lang} }}</a>
+                              <a href="{{ $subSubMenu->url==null?'javascript:void(0);':route('page.inforamtion', ['menu' => $subSubMenu->url]) }}">{{ $subSubMenu->{'name_'.$lang} }}</a>
                             </li>
                           @endforeach
                       </ul>
@@ -53,7 +53,6 @@
             @endif
           </li>          
         @endforeach
-          <li><a href="news">Yangiliklar</a></li>
           <li><a href="tel:+998 71 207 08 09"><i class="fa fa-headphones"></i> <span>Call</span> +998 71 207 0809 </a></li>
           <li class="menu-has-children">
           <a href="">

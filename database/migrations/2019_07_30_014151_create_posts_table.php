@@ -31,6 +31,7 @@ class CreatePostsTable extends Migration
             $table->string('image')->nullable();
             $table->integer('status')->nullable()->default(0);
             $table->integer('banner')->nullable();
+            $table->integer('view_count')->nullable()->default(0);
             $table->timestamps();
         });
     }

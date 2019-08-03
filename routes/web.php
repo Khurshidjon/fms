@@ -1,5 +1,6 @@
 <?php
-
+use App\Menu;
+use App\Setting;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,46 +22,61 @@
 /*------------------------------------------Websayt Frontend qismi boshlandi-------------------------------------*/ 
 
 View::composer('layouts.front_main', function($view){
-    $menus = App\Menu::where('status', 1)->where('parent', null)->get();
+    $menus = Menu::where('status', 1)->where('position', 1)->where('parent', null)->get();
+    $footer_menus = Menu::where('status', 1)->where('position', 0)->where('parent', null)->get();
+    $footer_left_side = Setting::where('key', 'foo_left_side')->first();
+    $footer_right_side = Setting::where('key', 'foo_right_side')->first();
+    $phone_number = Setting::where('key', 'phone_number')->first();
+    $email = Setting::where('key', 'email')->first();    
+    $address = Setting::where('key', 'address')->first();
     return $view->with([
-        'menus' => $menus
+        'menus' => $menus,
+        'footer_menus' => $footer_menus,
+        'footer_left_side' => $footer_left_side,
+        'footer_right_side' => $footer_right_side,
+        'phone_number' => $phone_number,
+        'email' => $email,
+        'address' => $address
     ]);
 });
 
-
-
-Route::get('/aa', function(){
-    return view('frontend.index');
-});
-Route::get('/','FrontendController@index');
+Route::get('/','FrontendController@index')->name('index');
 Route::get('/contact', 'FrontContactController@create')->name('contact');
 Route::post('/contact', 'FrontContactController@store')->name('cont');
 Route::get('/subscribe', 'SubscribeController@create')->name('subscribe');
 Route::post('/subscribe', 'SubscribeController@store');
-Route::get('/news',function(){
-return view('frontend.news');
-});
-Route::get('/news_blog',function(){
-return view('frontend.news_blog');
-});
+
+Route::get('/page/news/show','FrontendController@news')->name('news.index');
+
+Route::get('/news_blog/{post}', 'FrontendController@single_news')->name('single.news');
+
 Route::get('/fast_mail',function(){
     return view('frontend.fast_mail');
 });
+
 Route::get('cargo_transportation',function(){
     return view('frontend.cargo_transportation');
 });
+
 Route::get('international_express_mail',function(){
     return view('frontend.international_express_mail');
 });
+
 Route::get('registeration',function(){
     return view('frontend.registeration');
 });
+
 Route::get('about_us',function(){
     return view('frontend.about_us');
 });
+
 Route::get('enter_login',function(){
     return view('frontend.enter_login');
 });
+
+Route::get('/page/{menu}/show', 'FrontendController@page')->name('page.inforamtion');
+
+Route::get('/news/render/ajax', 'FrontendController@renderNews')->name('render.news');
 
 /* -----------------------------------  Websaytni Backend qismi boshlandi ------------------------------------*/ 
 
@@ -77,7 +93,8 @@ Route::post('/main', 'MainController@postLogin')->name('admin.login');
     Route::post('/menu/{menu}', 'MenuController@menuStatus')->name('status.menu');
     Route::resource('/settings', 'SettingsController');
     Route::resource('/partners', 'PartnerController');
-    
+    Route::post('/pages/status/{page}/edit', 'PageController@status')->name('pages.status');
+    Route::resource('/pages', 'PageController');    
 });
 /* -----------------------------------  Abdullo bundan pastdagi routelarga tegmang ------------------------------------*/ 
 

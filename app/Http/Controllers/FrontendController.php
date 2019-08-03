@@ -7,13 +7,15 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\Setting;
 use App\Partner;
+use App\Page;
+use App\Menu;
 
 class FrontendController extends Controller
 {
     public function index()
     {
-        $post=Post::where('banner',1)->get();
-        $card1=Setting::where('key','card1')->first();
+        $banners = Post::where('banner', 1)->where('status', 1)->get();
+        $card1 = Setting::where('key', 'card1')->first();
         $card2 = Setting::where('key', 'card2')->first();
         $card3 = Setting::where('key', 'card3')->first();
         $services = Setting::where('key','services')->first(); 
@@ -27,26 +29,79 @@ class FrontendController extends Controller
         $statistics1 = Setting::where('key', 'statistics1')->first();
         $statistics2 = Setting::where('key', 'statistics2')->first();
         $statistics3 = Setting::where('key', 'statistics3')->first();
+        $about = Setting::where('key', 'about')->first();
+
         $partners = Partner::get();
         
             return view('frontend.index',[
-                'post'=>$post,
-                'card1'=>$card1,
-                'card2'=>$card2,
-                'card3'=>$card3,
-                'services'=>$services,
-                'services_card1'=> $services_card1,
-                'services_card2'=>$services_card2,
-                'services_card3'=>$services_card3,
-                'services_card4'=>$services_card4,
-                'services_card5'=>$services_card5,
-                'services_card6'=>$services_card6,
-            'statistics'=> $statistics,
-            'statistics1'=> $statistics1,
-            'statistics2'=> $statistics2,
-            'statistics3'=> $statistics3,
-            'partners'=>$partners
+                'banners' => $banners,
+                'card1' => $card1,
+                'card2' => $card2,
+                'card3' => $card3,
+                'services' => $services,
+                'services_card1' => $services_card1,
+                'services_card2' => $services_card2,
+                'services_card3' => $services_card3,
+                'services_card4' => $services_card4,
+                'services_card5' => $services_card5,
+                'services_card6' => $services_card6,
+                'statistics'=> $statistics,
+                'statistics1'=> $statistics1,
+                'statistics2'=> $statistics2,
+                'statistics3'=> $statistics3,
+                'partners' => $partners,
+                'about' => $about
             ]);
+    }
+    public function page($menu)
+    {
+        $menu_id = Menu::where('url', $menu)->first();
+        $page = Page::where('menu_id', $menu_id->id)->first();
+        
+        return view('frontend.page', [
+            'page' => $page
+        ]);
+    }
+    public function news()
+    {
+        $posts = Post::where('status', 1)->take(2)->get();
+        $skip = 2;
+        return view('frontend.news', [
+            'posts' => $posts,
+            'skip' => $skip
+        ]);
+    }
+    public function single_news(Post $post)
+    {
+        if (!isset($_COOKIE[$post->id])){
+            $post->increment('view_count');
+            setcookie($post->id, $post->id, time()+60*60*24*30);
         }
+        return view('frontend.news_blog', [
+            'post' => $post
+        ]);
+    }
+    public function renderNews(Request $request)
+    {
+        $skip = $request->skip;
+        $take = 2;
+        $posts = Post::where('status', 1)->skip($skip)->take($take)->get();
+        $skip += $take;
+        $lang = \App::getLocale();
+        if(is_null($posts)){
+            return 'error';
+        }
+    
+        $result = view('frontend.news-render', [
+            'posts' => $posts,
+            'lang' => $lang
+        ])->render();
 
+        $array = array([
+            'result' => $result,
+            'skip' => $skip
+        ]);
+        $res = json_encode($array);
+        return $res;
+    }
 }

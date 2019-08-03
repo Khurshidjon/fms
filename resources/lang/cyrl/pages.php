@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'back_to_list' => 'Вернуться к списку ',
+
+    'back_to_list' => 'Back to list',
     'continue' => 'Продолжить',
     'back_to_home' => 'Вернуться на главную страницу',
     'back_to_prev' => 'Назад к предыдущему',
@@ -25,8 +26,10 @@ return [
     'weight' => 'Вес',
     'volume' => 'Объем',
     'product_category' => 'Категория продукта',
-    'contract_number' => 'Контрактный номер',
+    'contract_number' => 'Контактный номер',
     'type_pay_for_service' => 'Категория оплаты',
-    'read_more' => 'Подробнее',
-    'add_new' => 'Добовить',
+    'read_more' => 'Батафсил',
+    'add_new' => 'Янги қўшиш',
+
+
 ];

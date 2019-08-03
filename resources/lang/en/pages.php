@@ -28,6 +28,8 @@ return [
     'product_category' => 'Категория продукта',
     'contract_number' => 'Контактный номер',
     'type_pay_for_service' => 'Категория оплаты',
+    'read_more' => 'Read more',
+    'add_new' => 'Create',
 
 
 ];

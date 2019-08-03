@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>FMS | Fly Mail Service</title>
   <!-- Favicons -->
-  <link href="{{asset('frontend/img/favicon.png')}}" rel="icon">
+  <link href="{{asset('frontend/img/logo.png')}}" rel="icon">
   <link href="{{asset('frontend/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -22,14 +22,13 @@
   <link href="{{asset('frontend/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
   <link href="{{asset('frontend/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
   <link href="{{asset('frontend/lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
-
+  <script src="{{asset('frontend/lib/jquery/jquery.min.js')}}"></script>
+  @stack('script')
   <!-- Main Stylesheet File -->
   <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet">
-
   <style>
     div.box {
       position: relative;
-
     }
 
     div.alert {
@@ -57,8 +56,6 @@
   </main>
   @include('includes.footer')
 
-
-  <script src="{{asset('frontend/lib/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('frontend/lib/jquery/jquery-migrate.min.js')}}"></script>
   <script src="{{asset('frontend/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('frontend/lib/easing/easing.min.js')}}"></script>

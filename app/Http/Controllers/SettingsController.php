@@ -53,7 +53,7 @@ class SettingsController extends Controller
             // 'value_ru' => 'required|string',
             // 'value_en' => 'required|string',
             // 'status' => 'required',
-            'image' => 'required|image|mimes:jpg,jpeg,png|max:10240'
+            'image' => 'image|mimes:jpg,jpeg,png|max:10240'
         ]);
         $setting = new Setting();
         $setting->key = $request->key;
@@ -66,7 +66,9 @@ class SettingsController extends Controller
         $setting->value_ru = $request->value_ru;
         $setting->value_en = $request->value_en;
         $setting->status = $request->get('status');
-        $setting->image = $request->file('image')->store('imageFolder', 'public');
+        if($request->file('image')){
+            $setting->image = $request->file('image')->store('imageFolder', 'public');
+        }
         $setting->save();
         return redirect()->route('settings.index')->with('message', 'Post has been created Successfully!:)');
     }
@@ -108,16 +110,16 @@ class SettingsController extends Controller
     {
         $request->validate([
             'key'     => 'required',
-            'title_uz' => 'required|string',
+            // 'title_uz' => 'required|string',
             // 'title_cyrl' => 'required|string',
             // 'title_ru' => 'required|string',
             // 'title_en' => 'required|string',
-            'value_uz' => 'required|string',
+            // 'value_uz' => 'required|string',
             // 'value_cyrl' => 'required|string',
             // 'value_ru' => 'required|string',
             // 'value_en' => 'required|string',
             // 'status' => 'required',
-            'image' => 'required|image|mimes:jpg,jpeg,png|max:10240'
+            'image' => 'image|mimes:jpg,jpeg,png|max:10240'
         ]);
        
         $setting->key = $request->key;
