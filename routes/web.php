@@ -86,7 +86,8 @@ Route::post('/main', 'MainController@postLogin')->name('admin.login');
  Route::get('/backends', function(){
      return redirect()->route('backend.index');
  })->name('backend')->middleware('role:Moderator');
- Route::group(['prefix'=>'backend/panel',['middleware'=> 'auth', 'role:Moderator']],function(){
+
+ Route::group(['prefix'=>'backend/panel', 'middleware' => 'auth', 'middleware' => 'role:Moderator'],function(){
     Route::get('/', 'BackendController@index')->name('backend.index');
     Route::resource('/post', 'PostController');
     Route::resource('/menu', 'MenuController');
