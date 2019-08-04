@@ -16,7 +16,8 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade  " id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="container card mb-4 p-5">
-                        <form action="" method="get">
+                        <form action="{{ route('register') }}" method="post">
+                            @csrf
                             <label for="">To'liq simi</label>
                             <input type="text" name="username" class="form-control my-2" id="">
                             <label for="">Telefon raqami</label>
