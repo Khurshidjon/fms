@@ -1,7 +1,7 @@
 @extends('layouts.front_main')
-@php 
-  $lang = App::getLocale();
-  $i = 1;
+@php
+$lang = App::getLocale();
+$i = 1;
 @endphp
 <style>
   .alert {
@@ -24,7 +24,10 @@
   .closebtn:hover {
     color: black;
   }
-  #intro, .carousel-inner, .carousel-item {
+
+  #intro,
+  .carousel-inner,
+  .carousel-item {
     max-height: 43em;
   }
 </style>
@@ -37,19 +40,19 @@
       <ol class="carousel-indicators"></ol>
       <div class="carousel-inner" role="listbox">
         @foreach($banners as $banner)
-          <div class="carousel-item <?= $i == 1 ? 'active' : '' ?> ">
-            <div class="carousel-background"><img src="{{asset('storage').'/'. $banner->image}}" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>{{$banner->{'title_'.$lang} }}</h2>
-                <p>{{$banner->{'description_'.$lang} }}</p>
-                <a href="{{ route('single.news', ['post' => $banner]) }}" class="btn-get-started scrollto">@lang('pages.read_more')</a>
-              </div>
+        <div class="carousel-item <?= $i == 1 ? 'active' : '' ?> ">
+          <div class="carousel-background"><img src="{{asset('storage').'/'. $banner->image}}" alt=""></div>
+          <div class="carousel-container">
+            <div class="carousel-content">
+              <h2>{{$banner->{'title_'.$lang} }}</h2>
+              <p>{{$banner->{'description_'.$lang} }}</p>
+              <a href="{{ route('single.news', ['post' => $banner]) }}" class="btn-get-started scrollto">@lang('pages.read_more')</a>
             </div>
           </div>
-          @php 
-            $i++
-          @endphp 
+        </div>
+        @php
+        $i++
+        @endphp
         @endforeach
       </div>
 
@@ -77,8 +80,8 @@
 <section id="about">
   <div class="container">
     <header class="section-header">
-      <h3>{{$about!=null?$about->title_uz:'' }}</h3>
-      <p>{{$about!=null?$about->value_uz:'' }}</p>
+      <h3>{{$about!=null?$about->{'title_'.$lang}:'' }}</h3>
+      <p>{{$about!=null?$about->{'value_'.$lang}:'' }}</p>
     </header>
 
     <div class="row about-cols">
@@ -90,9 +93,9 @@
             </div>
             <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
           </div>
-          <h2 class="title"><a href="#">{{ $card1!=null?$card1->title_uz:''}}</a></h2>
+          <h2 class="title"><a href="#">{{ $card1!=null?$card1->{'title_'.$lang}:''}}</a></h2>
           <p>
-            {{ $card1!=null?$card1->value_uz:'' }}
+            {{ $card1!=null?$card1->{'value_'.$lang}:'' }}
           </p>
         </div>
       </div>
@@ -106,9 +109,9 @@
             </div>
             <div class="icon"><i class="ion-ios-list-outline"></i></div>
           </div>
-          <h2 class="title"><a href="#">{{ $card2!=null?$card2->title_uz:''}}</a></h2>
+          <h2 class="title"><a href="#">{{ $card2!=null?$card2->{'title_'.$lang}:''}}</a></h2>
           <p>
-            {{ $card2!=null?$card2->value_uz:''}}
+            {{ $card2!=null?$card2->{'value_'.$lang}:''}}
           </p>
         </div>
       </div>
@@ -121,9 +124,9 @@
             </div>
             <div class="icon"><i class="ion-ios-eye-outline"></i></div>
           </div>
-          <h2 class="title"><a href="#">{{ $card3!=null?$card3->title_uz:'' }}</a></h2>
+          <h2 class="title"><a href="#">{{ $card3!=null?$card3->{'title_'.$lang}:'' }}</a></h2>
           <p>
-            {{ $card3!=null?$card3->value_uz:''}}
+            {{ $card3!=null?$card3->{'value_'.$lang}:''}}
           </p>
         </div>
       </div>
@@ -146,41 +149,41 @@
   <div class="container">
 
     <header class="section-header wow fadeInUp">
-      <h3>{{ $services!=null?$services->title_uz:'' }}</h3>
-      <p>{{ $services!=null?$services->value_uz:'' }}</p>
+      <h3>{{ $services!=null?$services->{'title_'.$lang}:'' }}</h3>
+      <p>{{ $services!=null?$services->{'value_'.$lang}:'' }}</p>
     </header>
 
     <div class="row">
 
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
-        <h4 class="title"><a href="">{{ $services_card1!=null?$services_card1->title_uz:''}}</a></h4>
-        <p class="description">{{ $services_card1!=null?$services_card1->value_uz:''}}</p>
+        <h4 class="title"><a href="">{{ $services_card1!=null?$services_card1->{'title_'.$lang}:''}}</a></h4>
+        <p class="description">{{ $services_card1!=null?$services_card1->{'value_'.$lang}:''}}</p>
       </div>
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-bookmarks-outline"></i></div>
-        <h4 class="title"><a href="">{{  $services_card2!=null?$services_card2->title_uz:'' }}</a></h4>
-        <p class="description">{{  $services_card2!=null?$services_card2->value_uz:'' }}</p>
+        <h4 class="title"><a href="">{{ $services_card2!=null?$services_card2->{'title_'.$lang}:'' }}</a></h4>
+        <p class="description">{{ $services_card2!=null?$services_card2->{'value_'.$lang}:'' }}</p>
       </div>
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-paper-outline"></i></div>
-        <h4 class="title"><a href="">{{ $services_card3!=null?$services_card3->title_uz:'' }}</a></h4>
-        <p class="description">{{ $services_card3!=null?$services_card3->value_uz:'' }}</p>
+        <h4 class="title"><a href="">{{ $services_card3!=null?$services_card3->{'title_'.$lang}:'' }}</a></h4>
+        <p class="description">{{ $services_card3!=null?$services_card3->{'value_'.$lang}:'' }}</p>
       </div>
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
-        <h4 class="title"><a href="">{{ $services_card4!=null?$services_card4->title_uz:'' }}</a></h4>
-        <p class="description">{{ $services_card4!=null?$services_card4->value_uz:'' }}</p>
+        <h4 class="title"><a href="">{{ $services_card4!=null?$services_card4->{'title_'.$lang}:'' }}</a></h4>
+        <p class="description">{{ $services_card4!=null?$services_card4->{'value_'.$lang}:'' }}</p>
       </div>
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-barcode-outline"></i></div>
-        <h4 class="title"><a href="">{{ $services_card5!=null?$services_card5->title_uz:'' }}</a></h4>
-        <p class="description">{{ $services_card5!=null?$services_card5->value_uz:'' }}</p>
+        <h4 class="title"><a href="">{{ $services_card5!=null?$services_card5->{'title_'.$lang}:'' }}</a></h4>
+        <p class="description">{{ $services_card5!=null?$services_card5->{'value_'.$lang}:'' }}</p>
       </div>
       <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-people-outline"></i></div>
-        <h4 class="title"><a href="">{{ $services_card6!=null?$services_card6->title_uz:'' }}</a></h4>
-        <p class="description">{{ $services_card6!=null?$services_card6->value_uz:'' }}</p>
+        <h4 class="title"><a href="">{{ $services_card6!=null?$services_card6->{'title_'.$lang}:'' }}</a></h4>
+        <p class="description">{{ $services_card6!=null?$services_card6->{'value_'.$lang}:'' }}</p>
       </div>
 
     </div>
@@ -197,23 +200,23 @@
     <div class="row counters">
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">{{ $statistics!=null?$statistics->value_uz:'' }}</span>
-        <p>{{ $statistics!=null?$statistics->title_uz:'' }}</p>
+        <span data-toggle="counter-up">{{ $statistics!=null?$statistics->{'value_'.$lang}:'' }}</span>
+        <p>{{ $statistics!=null?$statistics->{'title_'.$lang}:'' }}</p>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">{{ $statistics1!=null?$statistics1->value_uz:'' }}</span>
-        <p>{{ $statistics1!=null?$statistics1->title_uz:'' }}</p>
+        <span data-toggle="counter-up">{{ $statistics1!=null?$statistics1->{'value_'.$lang}:'' }}</span>
+        <p>{{ $statistics1!=null?$statistics1->{'title_'.$lang}:'' }}</p>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">{{ $statistics2!=null?$statistics2->value_uz:'' }}</span>
-        <p>{{ $statistics2!=null?$statistics2->title_uz:'' }}</p>
+        <span data-toggle="counter-up">{{ $statistics2!=null?$statistics2->{'value_'.$lang}:'' }}</span>
+        <p>{{ $statistics2!=null?$statistics2->{'title_'.$lang}:'' }}</p>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">{{ $statistics3!=null?$statistics3->value_uz:'' }}</span>
-        <p>{{ $statistics3!=null?$statistics3->title_uz:'' }}</p>
+        <span data-toggle="counter-up">{{ $statistics3!=null?$statistics3->{'value_'.$lang}:'' }}</span>
+        <p>{{ $statistics3!=null?$statistics3->{'title_'.$lang}:'' }}</p>
       </div>
 
     </div>
@@ -228,7 +231,7 @@
 
     <div class="owl-carousel clients-carousel">
       @foreach($partners as $one)
-      <a href="{{$one->url}}"><img src="{{asset('storage').'/'.$one->image}}"  height="200" title="{{$one->name}}"></a>
+      <a href="{{$one->url}}"><img src="{{asset('storage').'/'.$one->image}}" height="200" title="{{$one->name}}"></a>
       @endforeach
       <!-- <img src="{{asset('frontend/img/clients/client-2.png')}}" alt="">
       <img src="{{asset('frontend/img/clients/client-3.png')}}" alt="">
@@ -245,9 +248,9 @@
 </section>
 <section id="call-to-action" class="wow fadeIn">
   <div class="container text-center">
-    <h3>Operator bilan bog'lanish</h3>
-    <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <a class="cta-btn" href="tel: +998936888499">Call To Action</a>
+    <h3>{{ $call_to_action!=null?$call_to_action->{'title_'.$lang}:'' }}</h3>
+    <p>{{ $call_to_action!=null?$call_to_action->{'value_'.$lang}:'' }}</p>
+    <a class="cta-btn" href="{{route('contact')}}">Call To Action</a>
   </div>
 </section>
 
@@ -258,8 +261,8 @@
   <div class="container">
 
     <div class="section-header">
-      <h3>Contact Us</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+      <h3>{{ $contact_us!=null?$contact_us->{'title_'.$lang}:'' }}</h3>
+      <p>{{$contact_us!=null?$contact_us->{'value_'.$lang}:''}}</p>
     </div>
 
     <div class="row contact-info">
@@ -267,24 +270,24 @@
       <div class="col-md-4">
         <div class="contact-address">
           <i class="ion-ios-location-outline"></i>
-          <h3>Address</h3>
-          <address>Toshkent</address>
+          <h3>{{$address!=null?$address->{'title_'.$lang}:''}}</h3>
+          <address>{{$address!=null?$address->{'value_'.$lang}:''}} </address>
         </div>
       </div>
 
       <div class="col-md-4">
         <div class="contact-phone">
           <i class="ion-ios-telephone-outline"></i>
-          <h3>Phone Number</h3>
-          <p><a href="tel:+155895548855">+998941234567</a></p>
+          <h3>{{ $phone_number!=null?$phone_number->{'title_'.$lang}:'' }}</h3>
+          <p><a href="tel:{{$phone_number!=null?$phone_number->{'value_'.$lang}:''}}">{{$phone_number!=null?$phone_number->{'value_'.$lang}:''}}</a></p>
         </div>
       </div>
 
       <div class="col-md-4">
         <div class="contact-email">
           <i class="ion-ios-email-outline"></i>
-          <h3>Email</h3>
-          <p><a href="mailto:info@example.com">info@example.com</a></p>
+          <h3>{{$email!=null?$email->{'title_'.$lang}:''}}</h3>
+          <p><a href="mailto:{{$email!=null?$email->{'value_'.$lang}:''}}">{{$email!=null?$email->{'value_'.$lang}:''}}</a></p>
         </div>
       </div>
 
@@ -305,10 +308,20 @@
           </div>
           <div class="form-group col-md-6">
             <input type="email" class="form-control" name="email" placeholder="Your Email" />
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
           </div>
         </div>
         <div class="form-group">
           <input type="text" class="form-control" name="subject" placeholder="Subject" />
+          @error('subject')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
         </div>
         <div class="form-group">
           <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>

@@ -6,6 +6,18 @@
     @method('Put')
     <!-- menu ga tiososososossoosos -->
     <div class="container">
+        <div class="row p-3">
+            <select name="position" class="form-control @error('position') is-invalid @enderror " id="">
+                <option selected disabled>---Position select---</option>
+                <option value="1">Navbar</option>
+                <option value="0">Footer</option>
+            </select>
+            @error('position')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
         <div class="row">
             <div class="col-md-3">
                 <label for="form1">Name_uz</label>
@@ -61,7 +73,7 @@
                 <select name="parent" id="" class="form-control @error('parent') is-invalid @enderror">
                     <option selected disabled>-- @lang('pages.select_one') --</option>
                     @foreach($menus as $menu)
-                    <option value="{{ $menu->id }}">{{ $menu->name_ru }}</option>
+                    <option value="{{ $menu->id }}" {{ $menu->id==true?'selected':'' }}>{{ $menu->name_ru }}</option>
                     @endforeach
                 </select>
                 @error('parent')
@@ -85,8 +97,8 @@
                 <label for="nationality">Status</label>
                 <select id="nationality" type="date" class="form-control select2 @error('status') is-invalid @enderror" name="status">
                     <option selected disabled>-- status tanlang --</option>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
+                    <option value="1">Active</option>
+                    <option value="0">InActive</option>
 
                 </select>
                 @error('status')

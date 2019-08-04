@@ -19,7 +19,7 @@
 <h4 class="text-center font-weight-bold" style="color:grey">Update page</h4>
 <form action="{{route('pages.update',['page'=>$page])}}" method="post" enctype="multipart/form-data">
     @csrf
-    @method('put')
+    @method('PUT')
     <div class="container">
         <div class="row">
             <div class="col-md-3">

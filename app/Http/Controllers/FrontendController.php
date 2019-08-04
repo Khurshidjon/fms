@@ -30,7 +30,11 @@ class FrontendController extends Controller
         $statistics2 = Setting::where('key', 'statistics2')->first();
         $statistics3 = Setting::where('key', 'statistics3')->first();
         $about = Setting::where('key', 'about')->first();
-
+        $call_to_action = Setting::where('key','call_to_action')->first();
+        $contact_us = Setting::where('key','contact_us')->first();
+        $phone_number = Setting::where('key', 'phone_number')->first();
+        $email = Setting::where('key', 'email')->first();
+        $address = Setting::where('key', 'address')->first();
         $partners = Partner::get();
         
             return view('frontend.index',[
@@ -50,7 +54,12 @@ class FrontendController extends Controller
                 'statistics2'=> $statistics2,
                 'statistics3'=> $statistics3,
                 'partners' => $partners,
-                'about' => $about
+                'about' => $about,
+                'call_to_action'=>$call_to_action,
+                'contact_us'=>$contact_us,
+                'phone_number'=> $phone_number,
+                'email'=>$email,
+                'address'=>$address
             ]);
     }
     public function page($menu)
@@ -103,5 +112,20 @@ class FrontendController extends Controller
         ]);
         $res = json_encode($array);
         return $res;
+    }
+    public function contact()
+    {
+        $call_to_action = Setting::where('key', 'call_to_action')->first();
+        $contact_us = Setting::where('key', 'contact_us')->first();
+        $phone_number = Setting::where('key', 'phone_number')->first();
+        $email = Setting::where('key', 'email')->first();
+        $address = Setting::where('key', 'address')->first();
+        return view('frontend.contact',[
+            'call_to_action' => $call_to_action,
+            'contact_us' => $contact_us,
+            'phone_number' => $phone_number,
+            'email' => $email,
+            'address' => $address
+        ]);
     }
 }

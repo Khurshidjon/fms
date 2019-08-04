@@ -33,22 +33,17 @@
 
     div.alert {
       position: absolute;
-      top: 650px;
+      top: 0px;
       right: 50px;
       z-index: 100;
       background-color: #2196F3;
+      color: #ffffff;
     }
   </style>
 </head>
 
 <body>
-  <div class="box">
-    @if(session()->has('message'))
-    <div class="alert" style="border-radius:5px" role="alert">
-      <Strong>{{ session()->get('message') }}</Strong><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    </div>
-    @endif
-  </div>
+ 
   @include('includes.header')
 
   <main id="main">

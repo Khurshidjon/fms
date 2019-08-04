@@ -11,7 +11,7 @@
         resize:none
     }
 </style>
-<h4 class="text-center font-weight-bold" style="color:grey">New Post</h4>
+<h4 class="text-center font-weight-bold" style="color:grey">New Pages</h4>
 <form action="{{route('pages.store')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="container-fluid">

@@ -53,7 +53,7 @@
             @endif
           </li>          
         @endforeach
-          <li><a href="tel:+998 71 207 08 09"><i class="fa fa-headphones"></i> <span>Call</span> +998 71 207 0809 </a></li>
+          <li><a href="{{route('contact')}}"><i class="fa fa-headphones"></i> <span>Contact</span></a></li>
           <li class="menu-has-children">
           <a href="">
             {{ $lang }}

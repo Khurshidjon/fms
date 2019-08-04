@@ -5,7 +5,7 @@ $i = 1;
 @endphp
 <div class="container-fluid ml-3 mr-3">
     <div class="container-fluid ">
-        <h2 class="text-center">Posts</h2>
+        <h2 class="text-center text-uppercase font-weight-bold">Posts</h2>
     </div>
     <div class="container">
         <div class="row">
@@ -17,7 +17,7 @@ $i = 1;
         </div>
     </div>
     <div class="table-responsive">
-        <div class="container-fluid"><a href="{{route('post.create')}}"><button class="btn btn-success text-white">Create</button></a></div>
+        <div class="container-fluid"><a href="{{route('post.create')}}"><button class="btn btn-success btn-lg text-white">@lang('pages.add_new')</button></a></div>
         <br>
         <div class="container">
             <div class="row">
@@ -33,13 +33,13 @@ $i = 1;
             </div>
         </div>
         <div class="table-responsive">
-            <h3>Data searching <span id="total_records"></span></h3>
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Title_uz</th>
                         <th>Description_uz</th>
+                        <th>Status</th>
                         <th>Phots</th>
                         <th>Actions</th>
                     </tr>
@@ -51,6 +51,13 @@ $i = 1;
                         <td>{{$i++}}</td>
                         <td>{{$one->title_uz}}</td>
                         <td>{{$one->description_uz}}</td>
+                        <td class="menu-update" data-toggle="modal" data-target="#statusModal" style="cursor: pointer" data-url="{{ route('status.post', ['one' => $one]) }}">
+                            @if($one->status == 1)
+                            <span class="badge badge-success">активный</span>
+                            @elseif($one->status == 0)
+                            <span class="badge badge-danger">неактивный</span>
+                            @endif
+                        </td>
                         <td><img src="{{ asset('storage') .'/'. $one->image}}" style="width:100px" alt=""></td>
                         <td>
 
@@ -84,7 +91,11 @@ $i = 1;
             $('#myModalLabel').text(data.title);
             $('.permission-delete-form').attr('action', url);
             $('.delete-question').find('span').text(data.title);
-        })
+        });
+        $('.menu-update').on('click', function() {
+            var url = $(this).attr('data-url');
+            $('.menu-update-form').attr('action', url);
+        });
     })
 </script>
 <!-- Full Height Modal Right -->
@@ -110,6 +121,33 @@ $i = 1;
                     <button type="submit" class="btn btn-danger">Ha, hohlayman!</button>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="statusModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-danger"><b>Update confirm</b></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form action="" class="menu-update-form" method="post">
+                @csrf
+                <div class="modal-body text-danger">
+                    <label style="margin-right: 20px">
+                        <input type="radio" name="status" value="0" checked> неактивный
+                    </label>
+                    <label style="margin-left: 20px">
+                        <input type="radio" name="status" value="1"> активный
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Update</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

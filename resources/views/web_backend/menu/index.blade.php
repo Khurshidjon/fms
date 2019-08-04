@@ -1,7 +1,7 @@
 @extends('layouts.back_main')
 @section('content')
 <h1 class="font-weight-bold text-center">Menu</h1>
-<a href="{{route('menu.create')}}" class="btn btn-success">Create</a>
+<a href="{{route('menu.create')}}" class="btn btn-success text-light ml-4 btn-lg ">@lang('pages.add_new')</a>
 
 @php
 $i = 1;
@@ -57,9 +57,9 @@ $i = 1;
                         <td>{{$one->order_by}}</td>
                         <td class="menu-update" data-toggle="modal" data-target="#statusModal" style="cursor: pointer" data-url="{{ route('status.menu', ['one' => $one]) }}">
                             @if($one->status == 1)
-                                <span class="badge badge-success">активный</span>
+                            <span class="badge badge-success">активный</span>
                             @elseif($one->status == 0)
-                                <span class="badge badge-danger">неактивный</span>
+                            <span class="badge badge-danger">неактивный</span>
                             @endif
                         </td>
                         <td>

@@ -100,10 +100,7 @@ class MenuController extends Controller
             'name_cyrl' => 'required|string',
             'name_ru' => 'required|string',
             'name_en' => 'required|string',
-            'parent' => 'required',
-            // 'order_by' => 'required',
             'position'=>'required',
-            // 'status' => 'required',
 
         ]);
         $menu->name_uz = $request->name_uz;

@@ -97,7 +97,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <label for="img">Post Image</label>
                 <input id="img" type="file" name="image" class="form-control @error('image') is-invalid @enderror">
                 @error('image')
@@ -109,12 +109,12 @@
         </div>
 
         <div class="row pt-4">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <label for="nationality">Status</label>
                 <select id="nationality" type="date" class="form-control select2 @error('status') is-invalid @enderror" name="status">
                     <option selected disabled>-- status tanlang --</option>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
+                    <option value="1">Active</option>
+                    <option value="0">InActive</option>
 
                 </select>
                 @error('status')
@@ -123,9 +123,11 @@
                 </span>
                 @enderror
             </div>
-            <div class="col-md-6 pt-5">
-                <button class="btn btn-info form-control" type="submit">Save</button>
-            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="float-right w-25 pt-5 pb-5">
+            <button class="btn btn-info form-control" type="submit">Save</button>
         </div>
     </div>
 </form>

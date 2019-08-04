@@ -127,4 +127,10 @@ class PostController extends Controller
         $post->delete();
         return redirect()->back();
     }
+    public function postStatus(Post $post, Request $request)
+    {
+        $post->status = 1 * $request->status;
+        $post->save();
+        return redirect()->route('post.index')->with('success', 'Страница была успешно обновлена');
+    }
 }

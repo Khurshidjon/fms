@@ -11,7 +11,7 @@ $lang = App::getLocale();
 </style>
 <div class="container-fluid">
     <div class="container-fluid ">
-        <h2 class="text-center">Pages</h2>
+        <h2 class="text-center text-uppercase font-weight-bold">Pages</h2>
     </div>
     <div class="container">
         <div class="row">
@@ -23,7 +23,7 @@ $lang = App::getLocale();
         </div>
     </div>
     <div class="table-responsive">
-        <div class="container-fluid"><a href="{{route('pages.create')}}"><button class="btn btn-success text-white">@lang('pages.add_new')</button></a></div>
+        <div class="container-fluid"><a href="{{route('pages.create')}}"><button class="btn btn-success text-white btn-lg">@lang('pages.add_new')</button></a></div>
         <br>
         <div class="container">
             <div class="row">

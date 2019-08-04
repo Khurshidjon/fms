@@ -123,7 +123,9 @@
                 @enderror
             </div>
         </div>
-        <div class="col-md-6 pt-5">
+    </div>
+    <div class="container">
+        <div class="float-right w-25 pt-5 pb-5">
             <button class="btn btn-info form-control" type="submit">Save</button>
         </div>
     </div>

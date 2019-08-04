@@ -29,6 +29,12 @@ View::composer('layouts.front_main', function($view){
     $phone_number = Setting::where('key', 'phone_number')->first();
     $email = Setting::where('key', 'email')->first();    
     $address = Setting::where('key', 'address')->first();
+    $telegram = Setting::where('key', 'telegram')->first();
+    $facebook = Setting::where('key', 'facebook')->first();
+    $instagram = Setting::where('key', 'instagram')->first();
+    $google = Setting::where('key', 'google_plus')->first();
+    $twitter= Setting::where('key', 'twitter')->first();
+
     return $view->with([
         'menus' => $menus,
         'footer_menus' => $footer_menus,
@@ -36,7 +42,12 @@ View::composer('layouts.front_main', function($view){
         'footer_right_side' => $footer_right_side,
         'phone_number' => $phone_number,
         'email' => $email,
-        'address' => $address
+        'address' => $address,
+        'telegram' => $telegram,
+        'facebook' => $facebook,
+        'instagram'=>$instagram,
+        'google'=>$google,
+        'twitter'=>$twitter
     ]);
 });
 
@@ -49,6 +60,8 @@ Route::post('/subscribe', 'SubscribeController@store');
 Route::get('/page/news/show','FrontendController@news')->name('news.index');
 
 Route::get('/news_blog/{post}', 'FrontendController@single_news')->name('single.news');
+Route::get('/contact', 'FrontendController@contact')->name('contact');
+
 
 Route::get('/fast_mail',function(){
     return view('frontend.fast_mail');
@@ -90,6 +103,7 @@ Route::post('/main', 'MainController@postLogin')->name('admin.login');
  Route::group(['prefix'=>'backend/panel', 'middleware' => 'auth', 'middleware' => 'role:Moderator'],function(){
     Route::get('/', 'BackendController@index')->name('backend.index');
     Route::resource('/post', 'PostController');
+    Route::post('/post/{post}', 'PostController@postStatus')->name('status.post');
     Route::resource('/menu', 'MenuController');
     Route::post('/menu/{menu}', 'MenuController@menuStatus')->name('status.menu');
     Route::resource('/settings', 'SettingsController');

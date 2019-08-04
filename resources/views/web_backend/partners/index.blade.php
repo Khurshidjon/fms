@@ -1,7 +1,7 @@
 @extends('layouts.back_main')
 @section('content')
-<h1 class="font-weight-bold text-center">Settings</h1>
-<a href="{{route('partners.create')}}" class="btn btn-success">Create</a>
+<h1 class="font-weight-bold text-center">Hamkorlar</h1>
+<a href="{{route('partners.create')}}" class="btn btn-success text-light btn-lg ml-4">@lang('pages.add_new')</a>
 
 @php
 $i = 1;
