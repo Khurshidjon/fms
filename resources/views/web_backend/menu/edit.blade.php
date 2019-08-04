@@ -71,9 +71,9 @@
             <div class="col-md-6">
                 <label for="form1">Parent</label>
                 <select name="parent" id="" class="form-control @error('parent') is-invalid @enderror">
-                    <option selected disabled>-- @lang('pages.select_one') --</option>
-                    @foreach($menus as $menu)
-                    <option value="{{ $menu->id }}" {{ $menu->id==true?'selected':'' }}>{{ $menu->name_ru }}</option>
+                    <option value="">-- @lang('pages.select_one') --</option>
+                    @foreach($menus as $menuu)
+                    <option value="{{ $menuu->id }}" {{ $menuu->id==$menu->parent?'selected':'' }}>{{ $menuu->name_ru }}</option>
                     @endforeach
                 </select>
                 @error('parent')
