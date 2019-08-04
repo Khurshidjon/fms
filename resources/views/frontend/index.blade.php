@@ -200,8 +200,8 @@ $i = 1;
     <div class="row counters">
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">{{ $statistics!=null?$statistics->{'value_'.$lang}:'' }}</span>
-        <p>{{ $statistics!=null?$statistics->{'title_'.$lang}:'' }}</p>
+        <span data-toggle="counter-up">{{ $statistics!=null?$statistics->{'title_'.$lang}:'' }}</span>
+        <p>{{ $statistics!=null?$statistics->{'value_'.$lang}:'' }}</p>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
