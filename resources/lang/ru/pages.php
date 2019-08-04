@@ -29,4 +29,5 @@ return [
     'type_pay_for_service' => 'Категория оплаты',
     'read_more' => 'Подробнее',
     'add_new' => 'Добовить',
+    'home_page' => 'ГЛАВНАЯ',
 ];

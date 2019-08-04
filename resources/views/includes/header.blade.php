@@ -30,6 +30,9 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
+          <li>
+            <a href="{{ route('index') }}">@lang('pages.home_page')</a>
+          </li>
         @foreach($menus as $menu)
           <li class="{{ $menu->hasParent!=null?'menu-has-children':'' }} ">
             <a href="{{ $menu->url==null?'javascript:void(0);':route('page.inforamtion', ['menu' => $menu->url]) }}">{{ $menu->{'name_'.$lang} }}</a>

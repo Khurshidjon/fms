@@ -30,6 +30,7 @@ return [
     'type_pay_for_service' => 'Категория оплаты',
     'read_more' => 'Батафсил',
     'add_new' => 'Янги қўшиш',
+    'home_page' => 'БОШ САҲИФА',
 
 
 ];

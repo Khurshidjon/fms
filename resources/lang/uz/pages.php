@@ -29,5 +29,6 @@ return [
     'type_pay_for_service' => 'To\'lov turi',
     'read_more' => 'Batafsil',
     'add_new' => 'Yangi qo\'shish',
+    'home_page' => 'Bosh sahifa',
 
 ];
