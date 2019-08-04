@@ -52,7 +52,7 @@ $lang = App::getLocale();
 
   <div class="container">
     <div class="copyright">
-       <strong>fayl mail service</strong>
+       <strong>fly mail service</strong>
     </div>
     <div class="credits">
       
