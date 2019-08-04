@@ -30,6 +30,7 @@ return [
     'type_pay_for_service' => 'Категория оплаты',
     'read_more' => 'Read more',
     'add_new' => 'Create',
+    'home_page' => 'Home',
 
 
 ];
