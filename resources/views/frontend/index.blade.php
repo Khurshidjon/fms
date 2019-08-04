@@ -205,18 +205,18 @@ $i = 1;
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">{{ $statistics1!=null?$statistics1->{'value_'.$lang}:'' }}</span>
-        <p>{{ $statistics1!=null?$statistics1->{'title_'.$lang}:'' }}</p>
+        <span data-toggle="counter-up">{{ $statistics1!=null?$statistics1->{'title_'.$lang}:'' }}</span>
+        <p>{{ $statistics1!=null?$statistics1->{'value_'.$lang}:'' }}</p>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">{{ $statistics2!=null?$statistics2->{'value_'.$lang}:'' }}</span>
-        <p>{{ $statistics2!=null?$statistics2->{'title_'.$lang}:'' }}</p>
+        <span data-toggle="counter-up">{{ $statistics2!=null?$statistics2->{'title_'.$lang}:'' }}</span>
+        <p>{{ $statistics2!=null?$statistics2->{'value_'.$lang}:'' }}</p>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">{{ $statistics3!=null?$statistics3->{'value_'.$lang}:'' }}</span>
-        <p>{{ $statistics3!=null?$statistics3->{'title_'.$lang}:'' }}</p>
+        <span data-toggle="counter-up">{{ $statistics3!=null?$statistics3->{'title_'.$lang}:'' }}</span>
+        <p>{{ $statistics3!=null?$statistics3->{'value_'.$lang}:'' }}</p>
       </div>
 
     </div>
