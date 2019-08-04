@@ -17,7 +17,8 @@ class PartnerController extends Controller
     {
         $partners = Partner::latest()->paginate(3);
         return view('web_backend.partners.index',[
-            'partners'=>$partners
+            'partners' => $partners,
+            'is_active' => 'partners',
         ]);
     }
 
@@ -29,7 +30,10 @@ class PartnerController extends Controller
     public function create()
     {
         $partner =Partner::all();
-        return view('web_backend.partners.create',['partner'=>$partner]);
+        return view('web_backend.partners.create',[
+            'partner' => $partner,
+            'is_active' => 'partners',
+            ]);
     }
 
     /**
@@ -72,7 +76,10 @@ class PartnerController extends Controller
      */
     public function edit(Partner $partner)
     {   
-        return view('web_backend.partners.edit',['partner'=>$partner]);
+        return view('web_backend.partners.edit',[ 
+            'partner' => $partner,
+            'is_active' => 'partners',
+        ]);
     }
 
     /**

@@ -2,8 +2,9 @@
 @section('content')
 @php
 $i = 1;
+$lang = App::getLocale()
 @endphp
-<div class="container-fluid ml-3 mr-3">
+<div class="container-fluid">
     <div class="container-fluid ">
         <h2 class="text-center text-uppercase font-weight-bold">Posts</h2>
     </div>
@@ -49,8 +50,8 @@ $i = 1;
                     @forelse($post as $one)
                     <tr>
                         <td>{{$i++}}</td>
-                        <td>{{$one->title_uz}}</td>
-                        <td>{{$one->description_uz}}</td>
+                        <td>{{$one->{'title_'.$lang} }}</td>
+                        <td>{{$one->{'description_'.$lang} }}</td>
                         <td class="menu-update" data-toggle="modal" data-target="#statusModal" style="cursor: pointer" data-url="{{ route('status.post', ['one' => $one]) }}">
                             @if($one->status == 1)
                             <span class="badge badge-success">активный</span>
@@ -67,7 +68,7 @@ $i = 1;
                             <a class="btn btn-success btn-sm text-white" href="{{route('post.edit',['one'=>$one])}}">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <a href="#" class="btn btn-danger btn-sm delete-student text-white" data-toggle="modal" data-target="#fullHeightModalRight" data-item="{{$one}}" data-url="{{route('post.destroy',['one'=>$one])}}"> <i class="fa fa-trash"></i></a>
+                            <a href="#" class="btn btn-danger btn-sm delete-post text-white" data-toggle="modal" data-target="#fullHeightModalRightPost" data-item="{{$one}}" data-url="{{route('post.destroy',['one'=>$one])}}"> <i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @empty
@@ -83,14 +84,15 @@ $i = 1;
 </div>
 <script>
     $(function() {
-        $('.delete-student').on('click', function() {
-            // $(this).preventDefault();
-
+        $('.delete-post').on('click', function() {
+            var lang = '{{ App::getLocale() }}'
+            var title = title + '_' + '{{ App::getLocale() }}'
             var url = $(this).attr('data-url');
+
             var data = JSON.parse($(this).attr('data-item'));
-            $('#myModalLabel').text(data.title);
+            $('#myModalLabelPost').text(data.title_uz);
             $('.permission-delete-form').attr('action', url);
-            $('.delete-question').find('span').text(data.title);
+            $('.delete-question').find('span').text(data.title_uz);
         });
         $('.menu-update').on('click', function() {
             var url = $(this).attr('data-url');
@@ -100,54 +102,3 @@ $i = 1;
 </script>
 <!-- Full Height Modal Right -->
 @endsection
-<div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
-    <div class="modal-dialog modal-full-height modal-top" role="document" style="">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title w-100 text-danger" id="myModalLabel"></h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p class="text-danger font-weight-bold delete-question"> <span></span> ga tegisli postni tizimdan o'chirishni hohlaysizmi?</p>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <form action="" class="permission-delete-form" method="post">
-                    @csrf
-                    @method('delete')
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Yopish</button>
-                    <button type="submit" class="btn btn-danger">Ha, hohlayman!</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="statusModal" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-danger"><b>Update confirm</b></h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <form action="" class="menu-update-form" method="post">
-                @csrf
-                <div class="modal-body text-danger">
-                    <label style="margin-right: 20px">
-                        <input type="radio" name="status" value="0" checked> неактивный
-                    </label>
-                    <label style="margin-left: 20px">
-                        <input type="radio" name="status" value="1"> активный
-                    </label>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger">Update</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>

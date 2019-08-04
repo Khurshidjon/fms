@@ -22,7 +22,7 @@ a, a:hover, a:focus {
     text-decoration: none !important;
     transition: all 0.3s;
 }
-.list-unstyled li a:hover {
+/* .list-unstyled li a:hover {
     color: #6d7fcc !important;
 }
 .list-unstyled li.active a:hover {
@@ -30,7 +30,7 @@ a, a:hover, a:focus {
 }
 .list-unstyled li.active ul li a:hover {
     color: #6d7fcc !important;
-}
+} */
 .navbar {
     padding: 15px 10px;
     background: #fff;
@@ -107,7 +107,7 @@ a, a:hover, a:focus {
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
     color: #fff;
-    background: #6d7fcc;
+    background: #ff5e00;
 }
 
 

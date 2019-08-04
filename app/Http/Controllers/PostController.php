@@ -19,7 +19,10 @@ class PostController extends Controller
     public function index()
     {
         $post = Post::latest()->paginate(3);
-        return view('web_backend.post.index',['post'=>$post]);
+        return view('web_backend.post.index',[
+            'post' => $post, 
+            'is_active' => 'posts',
+            ]);
         
     }
 
@@ -31,7 +34,10 @@ class PostController extends Controller
     public function create($user_id=null)
     {       
        
-        return view('web_backend.post.create',['user_id'=>$user_id]);
+        return view('web_backend.post.create',[
+            'user_id' => $user_id,
+            'is_active' => 'posts',
+            ]);
     }
 
     /**
@@ -84,7 +90,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('web_backend.post.edit',['post'=>$post]);
+        return view('web_backend.post.edit',[ 
+            'post' => $post,
+            'is_active' => 'posts',
+        ]);
     }
     /**
      * Update the specified resource in storage.

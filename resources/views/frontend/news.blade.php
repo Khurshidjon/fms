@@ -1,7 +1,6 @@
 @extends('layouts.front_main')
 @section('content')
 @push('script')
-    <script type="text/javascript" src="{{ asset('frontend/js/scripts.js') }}"></script> 
 @endpush
 @php 
     $lang = App::getLocale()

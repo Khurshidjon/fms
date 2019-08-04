@@ -22,4 +22,14 @@ $(function(){
             }
         });
     });
+    $('#refreshcaptcha').on('click', function(){
+        var url = $(this).attr('data-url');
+        $.ajax({
+          type:'GET',
+          url:url,
+          success:function(data){
+              $(".captcha span").html(data);
+          }
+        });
+      });
 });

@@ -13,7 +13,9 @@ class BackendController extends Controller
      */
     public function index()
     {
-        return view('web_backend.index');
+        return view('web_backend.index', [
+            'is_active' => 'index',
+        ]);
     }
 
     /**

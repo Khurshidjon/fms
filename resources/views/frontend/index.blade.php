@@ -295,42 +295,54 @@ $i = 1;
 
     <div class="form">
 
-      <form action="/contact" method="post" enctype="multipart/form-data" class="contactForm">
-
+      <form action="{{ route('cont') }}" method="post" enctype="multipart/form-data" class="contactForm">
+        @csrf
         <div class="form-row">
           <div class="form-group col-md-6">
             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror " value="{{old('name')}}" placeholder="Your Name" />
             @error('name')
-            <span class="invalid-feedback" role="alert">
-              <strong>{{ $message }}</strong>
-            </span>
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
             @enderror
           </div>
           <div class="form-group col-md-6">
-            <input type="email" class="form-control" name="email" placeholder="Your Email" />
-            @error('email')
+            <input type="email" class="form-control" name="email" placeholder="Your Email" value="{{ old('email') }}" />
+              @error('email')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="subject" placeholder="Subject" value="{{ old('subject') }}"/>
+            @error('subject')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
             </span>
             @enderror
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" name="message" rows="5" placeholder="Message">{{ old('message') }}</textarea>
+        </div>
+        <div class="float-left row">
+          <div class="form-group col-md-6">
+             <div class="captcha">
+               <span>{!! captcha_img('flat') !!}</span>
+               <button type="button" class="btn btn-success" data-url="{{ route('refreshcaptcha') }}" id="refreshcaptcha"><i class="fa fa-refresh"></i></button>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+            @error('captcha')
+              <span rel="alert" class="text-danger">{{ $message }}</span>
+            @enderror
           </div>
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control" name="subject" placeholder="Subject" />
-          @error('subject')
-          <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div>
-        <div class="form-group">
-          <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
-        </div>
-        @csrf
-        <div class="text-center"><button type="submit">Send Message</button></div>
+        <div class="float-right"><button type="submit">Отправить</button></div>
       </form>
     </div>
-
   </div>
 </section><!-- #contact -->
 

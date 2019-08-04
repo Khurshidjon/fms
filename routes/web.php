@@ -24,16 +24,16 @@ use App\Setting;
 View::composer('layouts.front_main', function($view){
     $menus = Menu::where('status', 1)->where('position', 1)->where('parent', null)->get();
     $footer_menus = Menu::where('status', 1)->where('position', 0)->where('parent', null)->get();
-    $footer_left_side = Setting::where('key', 'foo_left_side')->first();
-    $footer_right_side = Setting::where('key', 'foo_right_side')->first();
-    $phone_number = Setting::where('key', 'phone_number')->first();
-    $email = Setting::where('key', 'email')->first();    
-    $address = Setting::where('key', 'address')->first();
-    $telegram = Setting::where('key', 'telegram')->first();
-    $facebook = Setting::where('key', 'facebook')->first();
-    $instagram = Setting::where('key', 'instagram')->first();
-    $google = Setting::where('key', 'google_plus')->first();
-    $twitter= Setting::where('key', 'twitter')->first();
+    $footer_left_side = Setting::where('key', 'foo_left_side')->where('status', 1)->first();
+    $footer_right_side = Setting::where('key', 'foo_right_side')->where('status', 1)->first();
+    $phone_number = Setting::where('key', 'phone_number')->where('status', 1)->first();
+    $email = Setting::where('key', 'email')->where('status', 1)->first();    
+    $address = Setting::where('key', 'address')->where('status', 1)->first();
+    $telegram = Setting::where('key', 'telegram')->where('status', 1)->first();
+    $facebook = Setting::where('key', 'facebook')->where('status', 1)->first();
+    $instagram = Setting::where('key', 'instagram')->where('status', 1)->first();
+    $google = Setting::where('key', 'google_plus')->where('status', 1)->first();
+    $twitter= Setting::where('key', 'twitter')->where('status', 1)->first();
 
     return $view->with([
         'menus' => $menus,
@@ -52,8 +52,8 @@ View::composer('layouts.front_main', function($view){
 });
 
 Route::get('/','FrontendController@index')->name('index');
-Route::get('/contact', 'FrontContactController@create')->name('contact');
-Route::post('/contact', 'FrontContactController@store')->name('cont');
+// Route::get('/contact', 'FrontContactController@create')->name('contact');
+Route::post('/contact', 'FrontendController@subjectStore')->name('cont');
 Route::get('/subscribe', 'SubscribeController@create')->name('subscribe');
 Route::post('/subscribe', 'SubscribeController@store');
 
@@ -61,6 +61,7 @@ Route::get('/page/news/show','FrontendController@news')->name('news.index');
 
 Route::get('/news_blog/{post}', 'FrontendController@single_news')->name('single.news');
 Route::get('/contact', 'FrontendController@contact')->name('contact');
+Route::get('/refreshcaptcha', 'FrontendController@refreshCaptcha')->name('refreshcaptcha');
 
 
 Route::get('/fast_mail',function(){

@@ -6,8 +6,8 @@
 @php
 $i = 1;
 @endphp
-<div class="container-fluid ml-3 mr-3">
-    <div class="container-fluid ">
+<div class="container-fluid">
+    <div class="container-fluid">
         <h2 class="text-center"></h2>
     </div>
     <div class="container">
@@ -105,53 +105,3 @@ $i = 1;
 
 <!-- Full Height Modal Right -->
 @endsection
-<div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
-    <div class="modal-dialog modal-full-height modal-top" role="document" style="">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title w-100 text-danger" id="myModalLabel"></h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p class="text-danger font-weight-bold delete-question"> <span></span> ga tegisli postni tizimdan o'chirishni hohlaysizmi?</p>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <form action="" class="menu-delete-form" method="post">
-                    @csrf
-                    @method('delete')
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Yopish</button>
-                    <button type="submit" class="btn btn-danger">Ha, hohlayman!</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="statusModal" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-danger"><b>Update confirm</b></h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <form action="" class="menu-update-form" method="post">
-                @csrf
-                <div class="modal-body text-danger">
-                    <label style="margin-right: 20px">
-                        <input type="radio" name="status" value="0" checked> неактивный
-                    </label>
-                    <label style="margin-left: 20px">
-                        <input type="radio" name="status" value="1"> активный
-                    </label>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger">Update</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>

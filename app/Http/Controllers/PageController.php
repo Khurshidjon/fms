@@ -18,7 +18,8 @@ class PageController extends Controller
     {
         $pages = Page::where('status', '!=', 2)->paginate(10);
         return view('web_backend.pages.index', [
-            'pages' => $pages
+            'pages' => $pages,
+            'is_active' => 'pages',
         ]);
     }
 
@@ -31,7 +32,8 @@ class PageController extends Controller
     {
         $menus = Menu::all();
         return view('web_backend.pages.create', [
-            'menus' => $menus
+            'menus' => $menus,
+            'is_active' => 'pages',
         ]);
     }
 
@@ -69,7 +71,8 @@ class PageController extends Controller
         $menus = Menu::all();
         return view('web_backend.pages.edit', [
             'menus' => $menus,
-            'page' => $page
+            'page' => $page,
+            'is_active' => 'pages',
         ]);
     }
 

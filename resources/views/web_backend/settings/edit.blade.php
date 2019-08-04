@@ -112,10 +112,9 @@
             <div class="col-md-12">
                 <label for="nationality">Status</label>
                 <select id="nationality" type="date" class="form-control select2 @error('status') is-invalid @enderror" name="status">
-                    <option selected disabled>-- status tanlang --</option>
-                    <option value="1">Active</option>
-                    <option value="0">InActive</option>
-
+                    <option disabled>-- status tanlang --</option>
+                    <option value="1" {{ $setting->status==1?'selected':'' }}>Active</option>
+                    <option value="0" {{ $setting->status==0?'selected':'' }}>InActive</option>
                 </select>
                 @error('status')
                 <span class="invalid-feedback" role="alert">

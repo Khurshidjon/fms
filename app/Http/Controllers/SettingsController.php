@@ -17,7 +17,8 @@ class SettingsController extends Controller
     {
         $settings = Setting::latest()->paginate(3);
          return view('web_backend.settings.index',[
-            'settings'=>$settings
+            'settings'=>$settings,
+            'is_active' => 'settings',
          ]);
     }
 
@@ -30,7 +31,8 @@ class SettingsController extends Controller
     {
         $setting =Setting::all();
         return view('web_backend.settings.create',[
-            'setting'=>$setting
+            'setting'=>$setting,
+            'is_active' => 'settings',
         ]);
     }
 
@@ -44,15 +46,6 @@ class SettingsController extends Controller
     {
         $request->validate([
             'key'     => 'required',
-            // 'title_uz' => 'required|string',
-            // 'title_cyrl' => 'required|string',
-            // 'title_ru' => 'required|string',
-            // 'title_en' => 'required|string',
-            // 'value_uz' => 'required|string',
-            // 'value_cyrl' => 'required|string',
-            // 'value_ru' => 'required|string',
-            // 'value_en' => 'required|string',
-            // 'status' => 'required',
             'image' => 'image|mimes:jpg,jpeg,png|max:10240'
         ]);
         $setting = new Setting();
@@ -94,8 +87,9 @@ class SettingsController extends Controller
     {
         $settings = Setting::all();
         return view('web_backend.settings.edit',[
-        'setting'=>$setting,
-        'settings'=>$settings
+                'setting'=>$setting,
+                'settings'=>$settings,
+                'is_active' => 'settings',
             ]);
     }
 
@@ -110,15 +104,6 @@ class SettingsController extends Controller
     {
         $request->validate([
             'key'     => 'required',
-            // 'title_uz' => 'required|string',
-            // 'title_cyrl' => 'required|string',
-            // 'title_ru' => 'required|string',
-            // 'title_en' => 'required|string',
-            // 'value_uz' => 'required|string',
-            // 'value_cyrl' => 'required|string',
-            // 'value_ru' => 'required|string',
-            // 'value_en' => 'required|string',
-            // 'status' => 'required',
             'image' => 'image|mimes:jpg,jpeg,png|max:10240'
         ]);
        

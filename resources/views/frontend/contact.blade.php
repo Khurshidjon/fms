@@ -70,27 +70,52 @@ $lang = App::getLocale();
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" name="name" id="name" class="form-control">
+                            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror">
+                            @error('name')
+                                <span rel="alert" class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
-
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" name="email" id="email" class="form-control">
+                            <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror">
+                            @error('email')
+                                <span rel="alert" class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="subject">Subject</label>
-                    <input type="text" name="subject" id="subject" class="form-control">
+                    <input type="text" name="subject" id="subject" class="form-control @error('subject') is-invalid @enderror">
+                    @error('subject')
+                    <span rel="alert" class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+                    <textarea name="message" id="message" cols="30" rows="10" class="form-control @error('message') is-invalid @enderror"></textarea>
+                    @error('message')
+                    <span rel="alert" class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
+                <div class="float-left row">
+                    <div class="form-group col-md-6">
+                        <div class="captcha">
+                            <span>{!! captcha_img('flat') !!}</span>
+                            <button type="button" class="btn btn-success btn-sm" data-url="{{ route('refreshcaptcha') }}" id="refreshcaptcha"><i class="fa fa-refresh"></i></button>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror" placeholder="Enter Captcha" name="captcha">
+                        @error('captcha')
+                        <span rel="alert" class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    </div>
                 <div class="form-group text-center">
-                    <button class="btn btn-warning text-light btn-lg" type="submit">Submit <i class="fa fa-paper-plane-o"></i></button>
+                    <button class="btn btn-warning text-light" type="submit">Отправить <i class="fa fa-paper-plane-o"></i></button>
                 </div>
             </form>
         </div>

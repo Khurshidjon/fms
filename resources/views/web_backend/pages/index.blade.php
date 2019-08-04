@@ -71,7 +71,7 @@ $lang = App::getLocale();
                                     <i class="fa fa-edit"></i>
                                 </a>
 
-                                <a href="#" class="btn btn-danger btn-sm delete-page text-white" data-toggle="modal" data-target="#fullHeightModalRight" data-item="{{$page}}" data-url="{{route('pages.destroy',['page'=>$page])}}"> <i class="fa fa-trash"></i></a>
+                                <a href="#" class="btn btn-danger btn-sm delete-page text-white" data-toggle="modal" data-target="#fullHeightModalRightPage" data-item="{{$page}}" data-url="{{route('pages.destroy',['page'=>$page])}}"> <i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @empty
@@ -117,54 +117,3 @@ $lang = App::getLocale();
     });
 </script>
 @endsection
-<div class="modal fade" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabelOne" aria-hidden="true">
-    <div class="modal-dialog modal-full-height modal-top" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title w-100 text-danger" id="myModalLabelOne"></h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p class="text-danger font-weight-bold page-delete-question"> <span></span> ga tegishli sahifani tizimdan o'chirishni hohlaysizmi?</p>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <form action="" class="page-delete-form" method="post">
-                    @csrf
-                    @method('delete')
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Yopish</button>
-                    <button type="submit" class="btn btn-danger">Ha, hohlayman!</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="pageStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabelTwo" aria-hidden="true">
-    <div class="modal-dialog modal-full-height modal-top" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title w-100 text-danger" id="myModalLabelTwo"></h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="" class="status-update-form" method="post">
-                @csrf
-                <div class="modal-body">
-                    <div class="form-group text-center">
-                        <label for="unpublish">неактивный</label>
-                        <input type="radio" id="unpublish" class="mr-5" checked name="status" value="0">
-                        <label for="publish">активный</label>
-                        <input type="radio" id="publish" class="" name="status" value="1">
-                    </div>
-                </div>
-                <div class="modal-footer justify-content-center">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрить</button>
-                    <button type="submit" class="btn btn-danger">Отправить</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>

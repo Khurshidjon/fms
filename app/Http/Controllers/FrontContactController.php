@@ -13,20 +13,4 @@ class FrontContactController extends Controller
     {
         return view('frontend.index');
     }
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name'     => 'required',
-            'email' => 'required|string',
-            'subject'=>'required',
-            'message' => 'required',
-        ]);
-        $content = new FrontContact();
-        $content->name = $request->name;
-        $content->email = $request->email;
-        $content->message= $request->message;
-        $content->save();
-        return redirect()->back()->with('message', 'Contact has been created Successfully!:)');
-
-    }
 }

@@ -16,7 +16,10 @@ class MenuController extends Controller
     public function index()
     {
         $menu= Menu::latest()->paginate(3);
-        return view('web_backend.menu.index',['menu'=>$menu]);
+        return view('web_backend.menu.index',[
+            'menu' => $menu,
+            'is_active' => 'menus',
+            ]);
     }
 
     /**
@@ -30,7 +33,8 @@ class MenuController extends Controller
         $order = Menu::latest()->first();
         return view('web_backend.menu.create', [
             'menus' => $menus,
-            'order' => $order
+            'order' => $order,
+            'is_active' => 'menus',
         ]);
     }
 
@@ -82,7 +86,11 @@ class MenuController extends Controller
     public function edit( Menu $menu)
     {
         $menus=Menu::all();
-        return view('web_backend.menu.edit',['menu'=>$menu,'menus'=>$menus]);
+        return view('web_backend.menu.edit',[
+            'menu'=>$menu, 
+            'menus'=>$menus,
+            'is_active' => 'menus',
+            ]);
     }
 
     /**
