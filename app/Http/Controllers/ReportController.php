@@ -122,8 +122,11 @@ class ReportController extends Controller
             $sheet->setCellValue("I".$i, $application->performed_date);
 
            
-
-            $sheet->setCellValue("J".$i, $application->cost_from_courier);
+            if($application->cost_from_courier == '0'){
+                $sheet->setCellValue("J".$i, '');
+            }else{
+                $sheet->setCellValue("J".$i, $application->cost_from_courier);
+            }
             
             if($application->category_pay_from_courier == 'cash'){
                 $sheet->setCellValue("K".$i, 'Наличные деньги');
@@ -135,7 +138,12 @@ class ReportController extends Controller
                 $sheet->setCellValue("K".$i, 'Терминал');
             }
 
-            $sheet->setCellValue("L".$i, $application->cost_service);
+            if($application->cost_service == '0'){
+                $sheet->setCellValue("L".$i, '');
+                
+            }else{
+                $sheet->setCellValue("L".$i, $application->cost_service);
+            }
             
             if($application->category_pay_service == 'cash'){
                 $sheet->setCellValue("M".$i, 'Наличные деньги');
@@ -147,7 +155,11 @@ class ReportController extends Controller
                 $sheet->setCellValue("M".$i, 'Терминал');
             }
             
-            $sheet->setCellValue("N".$i, $application->cost_to_courier);
+            if($application->cost_to_courier == '0'){
+                $sheet->setCellValue("N".$i, '');
+            }else{
+                $sheet->setCellValue("N".$i, $application->cost_to_courier);
+            }
             
             if($application->category_pay_to_courier == 'cash'){
                 $sheet->setCellValue("O".$i, 'Наличные деньги');
