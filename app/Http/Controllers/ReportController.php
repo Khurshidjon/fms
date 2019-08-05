@@ -120,27 +120,30 @@ class ReportController extends Controller
             }
             $sheet->setCellValue("H".$i, $application->to_city->name_ru);
             $sheet->setCellValue("I".$i, $application->performed_date);
-            $sheet->setCellValue("J".$i, $application->cost_service);
 
-            if($application->category_pay_service == 'cash'){
+           
+
+            $sheet->setCellValue("J".$i, $application->cost_from_courier);
+            
+            if($application->category_pay_from_courier == 'cash'){
                 $sheet->setCellValue("K".$i, 'Наличные деньги');
-            }elseif($application->category_pay_service == 'payme'){
+            }elseif($application->category_pay_from_courier == 'payme'){
                 $sheet->setCellValue("K".$i, 'Payme');
-            }elseif($application->category_pay_service == 'transfer'){
+            }elseif($application->category_pay_from_courier == 'transfer'){
                 $sheet->setCellValue("K".$i, 'Перечисление');
-            }elseif($application->category_pay_service == 'terminal'){
+            }elseif($application->category_pay_from_courier == 'terminal'){
                 $sheet->setCellValue("K".$i, 'Терминал');
             }
 
-            $sheet->setCellValue("L".$i, $application->cost_from_courier);
+            $sheet->setCellValue("L".$i, $application->cost_service);
             
-            if($application->category_pay_from_courier == 'cash'){
+            if($application->category_pay_service == 'cash'){
                 $sheet->setCellValue("M".$i, 'Наличные деньги');
-            }elseif($application->category_pay_from_courier == 'payme'){
+            }elseif($application->category_pay_service == 'payme'){
                 $sheet->setCellValue("M".$i, 'Payme');
-            }elseif($application->category_pay_from_courier == 'transfer'){
+            }elseif($application->category_pay_service == 'transfer'){
                 $sheet->setCellValue("M".$i, 'Перечисление');
-            }elseif($application->category_pay_from_courier == 'terminal'){
+            }elseif($application->category_pay_service == 'terminal'){
                 $sheet->setCellValue("M".$i, 'Терминал');
             }
             
