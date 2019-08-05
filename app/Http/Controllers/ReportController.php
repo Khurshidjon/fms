@@ -53,13 +53,16 @@ class ReportController extends Controller
         $to = strtotime(date_create($to_date)->format("Y-m-d"));
         
         $result = Application::all();
-        if($number_contract){
+        if($number_contract && $request->contract == '1'){
             if($from_date == null && $to_date == null){
-                $applications = Application::where('number_contract', $number_contract)->get();            
+                $applications = Application::where('number_contract', $number_contract)
+                ->where('from_city_id', $city)
+                ->get();            
             }else{
                 $applications = Application::where('number_contract', $number_contract)
                 ->where('created_at', '>=', date('Y-m-d', $from))
                 ->where('created_at', '<=', date('Y-m-d', $to))
+                ->orWhere('from_city_id', $city)
                 ->get();
             }
         }else{
@@ -87,7 +90,7 @@ class ReportController extends Controller
         $i = 4;
         $k = 1;
         $d = 4;
-        if($request->contact){
+        if($request->contract == '1'){
             $sheet->mergeCells('A1:E1')->setCellValue("A1", 'Номер контракт №'  .' '. $number_contract);
         }else{
             $sheet->setCellValue("B1", 'до');
@@ -200,8 +203,6 @@ class ReportController extends Controller
         $streamedResponse->headers->set('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         $streamedResponse->headers->set('Content-Disposition', 'attachment; filename="report.xls"');
         return $streamedResponse->send();
-
-        return $result;
     }
 
     /**

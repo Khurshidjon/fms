@@ -104,6 +104,10 @@ class ContractController extends Controller
     public function contractPrice(Request $request)
     {
         $contractSession = $request->session()->get('contract');
+        // if($contractSession == null)
+        // {
+        //     $contractSession = \Session::get('contract');
+        // }
         $prices = Texnolog::all();
         return view('backend.Contracts.contract-price', [
             'is_active' => 'contracts',
@@ -127,7 +131,12 @@ class ContractController extends Controller
         $contract_id = $data['contract_id'];
 
         $sessionContract = $request->session()->get('contract');
-        $contract = ContractPrice::where('contract_id', $sessionContract->contract_id)->first();
+
+        if($sessionContract == null){
+            $contract = ContractPrice::where('contract_id', $contract_id)->first();
+        }else{
+            $contract = ContractPrice::where('contract_id', $sessionContract->contract_id)->first();
+        }
         if ($contract == null){
             foreach($inputLengs as $key => $value){
                 ContractPrice::create([
@@ -146,16 +155,19 @@ class ContractController extends Controller
         }else{
             return redirect()->back()->with('error', 'Kechirasiz shartnoma allaqchon qabul qilib bo\'ingan');
         }
-        $contract_prices = ContractPrice::where('contract_id', $sessionContract->contract_id)->get();
-        $pdf = PDF::loadView('backend.Contracts.ready-contract', ['contract_prices' => $contract_prices, 'contract' => $sessionContract])->setPaper('a4', 'portrait');
+        
+        if($sessionContract == null){
+            $contract_prices = ContractPrice::where('contract_id', $contract_id)->get();
+            $contract_old = Contract::where('contract_id', $contract_id)->first();
+            $pdf = PDF::loadView('backend.Contracts.ready-contract', ['contract_prices' => $contract_prices, 'contract' => $contract_old])->setPaper('a4', 'portrait');
+        }else{
+            $contract_prices = ContractPrice::where('contract_id', $sessionContract->contract_id)->get();
+            $pdf = PDF::loadView('backend.Contracts.ready-contract', ['contract_prices' => $contract_prices, 'contract' => $sessionContract])->setPaper('a4', 'portrait');
+        }
+
         return $pdf->stream('contract.pdf');
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Contract  $contract
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show(Contract $contract)
     {
         $contract_prices = ContractPrice::where('contract_id', $contract->contract_id)->get();
@@ -204,7 +216,7 @@ class ContractController extends Controller
         $contract_start = Carbon::parse($request->contract_start);
         $contract_expiration = Carbon::parse($request->contract_expiration);
 
-        $contract = $contract->update([
+        $contract->update([
             'company_name' => $request->company_name,
             'user_id' => \Auth::id(),
             'contract_id' => (integer)$request->contract_id,
@@ -225,16 +237,27 @@ class ContractController extends Controller
         ]);
 
         toastr()->success('Contract has been saved successfully!');
+        // dd($contract);
         return redirect()->route('contract.price-edit', ['contract' => $contract]);
     }
     public function contractPriceEdit(Contract $contract)
     {
         $prices = ContractPrice::where('contract_id', $contract->contract_id)->get();
 
-        return view('backend.Contracts.contract-price-edit', [
-            'is_active' => 'contracts',
-            'prices' => $prices,
-        ]);
+        if((count($prices) > 0) == false){
+            $prices = Texnolog::all();
+            return view('backend.Contracts.contract-price', [
+                'is_active' => 'contracts',
+                'prices' => $prices,
+                'contractSession' => $contract
+            ]);
+           
+        }else{
+            return view('backend.Contracts.contract-price-edit', [
+                'is_active' => 'contracts',
+                'prices' => $prices,
+            ]);
+        }
     }
     public function contractPriceUpdate(Request $request, $id)
     {

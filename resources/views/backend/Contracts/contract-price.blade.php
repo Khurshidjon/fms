@@ -83,7 +83,7 @@
                                     <td>
                                         {{ $i++ }}
                                         <input type="hidden" value="{{ $price->id }}" name="id[]">
-                                        <input type="hidden" value="{{ $contractSession!=null?$contractSession['id']:'' }}" name="contract_id[]">
+                                        <input type="hidden" value="{{ $contractSession!=null?$contractSession['contract_id']:'' }}" name="contract_id[]">
                                     </td>
                                     <td>
                                         {{ $price->from_city->name_ru }}

@@ -46,10 +46,19 @@
                 <div class="row">
                     <div class="col-md-3">
                         <label for=""><b>Выберите город</b></label>
-                        <input type="hidden" name="contact" value="1">
+                        <select name="city" id="" class="form-control select2">
+                            <option value="">-- @lang('pages.select_one') --</option>
+                            @foreach($cities as $city)
+                                <option value="{{ $city->id }}">{{ $city->name_ru }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for=""><b>Выберите город</b></label>
+                        <input type="hidden" name="contract" value="1">
                         <input type="text" class="form-control" placeholder="@lang('pages.contract_number')" name="number_contract">
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <div class="row">
                             <div class="form-group">
                                 <label for=""><b>Выберите интервал времени</b></label>
