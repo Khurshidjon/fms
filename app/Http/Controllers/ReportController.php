@@ -47,26 +47,32 @@ class ReportController extends Controller
         $city =  $request->get('city');
         $from_date =  $request->get('from');
         $to_date =  $request->get('to');
+        $number_contract = $request->input('number_contract');
 
         $from = strtotime(date_create($from_date)->format("Y-m-d"));
         $to = strtotime(date_create($to_date)->format("Y-m-d"));
         
         $result = Application::all();
-        
-        if($from_date == null && $to_date == null){
-            $applications = Application::where('from_city_id', $city)->get();            
+        if($number_contract){
+            if($from_date == null && $to_date == null){
+                $applications = Application::where('number_contract', $number_contract)->get();            
+            }else{
+                $applications = Application::where('number_contract', $number_contract)
+                ->where('created_at', '>=', date('Y-m-d', $from))
+                ->where('created_at', '<=', date('Y-m-d', $to))
+                ->get();
+            }
         }else{
-            $applications = Application::where('from_city_id', $city)
-            ->where('created_at', '>=', date('Y-m-d', $from))
-            ->where('created_at', '<=', date('Y-m-d', $to))
-            ->get();
+            if($from_date == null && $to_date == null){
+                $applications = Application::where('from_city_id', $city)->get();            
+            }else{
+                $applications = Application::where('from_city_id', $city)
+                ->where('created_at', '>=', date('Y-m-d', $from))
+                ->where('created_at', '<=', date('Y-m-d', $to))
+                ->get();
+            }
         }
         
-        if(is_null($applications))
-        {
-            return 'ok';
-        }
-
         $spread = new Spreadsheet();
         $spread->getDefaultStyle()->getFont()->setName('Arial')->setSize(10);
         $spread->getActiveSheet()->getStyle("A1:O1")->getFont()->setBold( true );
@@ -81,10 +87,15 @@ class ReportController extends Controller
         $i = 4;
         $k = 1;
         $d = 4;
-        $sheet->setCellValue("B1", 'до');
-        $sheet->setCellValue("C1", $from_date);
-        $sheet->setCellValue("D1", 'с');
-        $sheet->setCellValue("E1", $to_date);
+        if($request->contact){
+            $sheet->mergeCells('A1:E1')->setCellValue("A1", 'Номер контракт №'  .' '. $number_contract);
+        }else{
+            $sheet->setCellValue("B1", 'до');
+            $sheet->setCellValue("C1", $from_date);
+            $sheet->setCellValue("D1", 'с');
+            $sheet->setCellValue("E1", $to_date);
+        }
+   
         $sheet->mergeCells('A2:G2')->setCellValue('A2', 'Отправитель');
         $sheet->mergeCells('H2:I2')->setCellValue('H2', 'Получатель');
         $sheet->mergeCells('J2:O2')->setCellValue('J2', 'Финансовый');
@@ -113,17 +124,20 @@ class ReportController extends Controller
             $sheet->setCellValue("D".$i, $application->from_city->name_ru);
             $sheet->setCellValue("E".$i, $application->weight);
             $sheet->setCellValue("F".$i, $application->pieces);
-            if($application->volume == 0){
+            
+            if($application->volume == 0)
+            {
                 $sheet->setCellValue("G".$i, '-');
             }else{
                 $sheet->setCellValue("G".$i, $application->volume);
             }
+            
             $sheet->setCellValue("H".$i, $application->to_city->name_ru);
             $sheet->setCellValue("I".$i, $application->performed_date);
 
-           
-            if($application->cost_from_courier == '0'){
-                $sheet->setCellValue("J".$i, '');
+            if($application->cost_from_courier == '0')
+            {
+                $sheet->setCellValue("J".$i, '-');
             }else{
                 $sheet->setCellValue("J".$i, $application->cost_from_courier);
             }
@@ -139,7 +153,7 @@ class ReportController extends Controller
             }
 
             if($application->cost_service == '0'){
-                $sheet->setCellValue("L".$i, '');
+                $sheet->setCellValue("L".$i, '-');
                 
             }else{
                 $sheet->setCellValue("L".$i, $application->cost_service);
@@ -156,11 +170,11 @@ class ReportController extends Controller
             }
             
             if($application->cost_to_courier == '0'){
-                $sheet->setCellValue("N".$i, '');
+                $sheet->setCellValue("N".$i, '-');
             }else{
                 $sheet->setCellValue("N".$i, $application->cost_to_courier);
             }
-            
+
             if($application->category_pay_to_courier == 'cash'){
                 $sheet->setCellValue("O".$i, 'Наличные деньги');
             }elseif($application->category_pay_to_courier == 'payme'){
@@ -170,21 +184,15 @@ class ReportController extends Controller
             }elseif($application->category_pay_to_courier == 'terminal'){
                 $sheet->setCellValue("O".$i, 'Терминал');
             }
-            // if ($application->status == 2){
-            //     $sheet->setCellValue("H".$i, 'Исполнено');
-            // }elseif($application->status == 1){
-            //     $sheet->setCellValue("H".$i, 'На исполнено');
-            // }
+
             $i++;
             $k++;
             $d++;
         }
 
         $writer = new Xlsx($spread);
-
         $streamedResponse = new StreamedResponse();
         $streamedResponse->setCallback(function () use ($spread) {
-            // $spreadsheet = //create you spreadsheet here;
             $writer =  new Xlsx($spread);
             $writer->save('php://output');
         });

@@ -5,12 +5,12 @@
     @endphp
     <div class="page-content">
         <div class="container-fluid" style="margin-bottom: 35px">
+            <div style="margin-bottom:50px">
+                <span style="font-size: 22px"><b>Бухгалтерский учет</b></span>
+            </div>
             <form action="{{ route('reports.store') }}" method="post">
                 @csrf
                 <div class="row">
-                    <div class="col-md-2">
-                        <span style="font-size: 22px"><b>Бухгалтерский учет</b></span>
-                    </div>
                     <div class="col-md-3">
                         <label for=""><b>Выберите город</b></label>
                         <select name="city" id="" class="form-control select2">
@@ -38,10 +38,39 @@
                     </div>
                 </div>
             </form>
+            <br>
+            <hr>
+            <br>
+            <form action="{{ route('reports.store') }}" method="post">
+                @csrf
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for=""><b>Выберите город</b></label>
+                        <input type="hidden" name="contact" value="1">
+                        <input type="text" class="form-control" placeholder="@lang('pages.contract_number')" name="number_contract">
+                    </div>
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="form-group">
+                                <label for=""><b>Выберите интервал времени</b></label>
+                                <div class="input-group date-picker input-daterange" data-date="10/11/2012" data-date-format="mm/dd/yyyy">
+                                    <input type="text" class="form-control" name="from" autocomplete="off">
+                                    <span class="input-group-addon">
+                                            до </span>
+                                    <input type="text" class="form-control" name="to" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2" style="padding-top: 25px">
+                        <button class="btn btn-success">Отправить</button>
+                    </div>
+                </div>
+            </form>
         </div>
 
         <div class="container table-responsive">
-            <table class="table table-striped">
+            <!-- <table class="table table-striped">
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -53,7 +82,7 @@
                 <tbody id="myTable">
 
                 </tbody>
-            </table>
+            </table> -->
             <div id="kottaxoleng">
                 <!-- <example-component></example-component> -->
             </div>
