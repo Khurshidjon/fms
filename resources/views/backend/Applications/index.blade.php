@@ -16,10 +16,10 @@
                         <strong>{{ $message }}</strong>
                     </div>
                 @elseif ($message = Session::get('error'))
-                        <div class="alert alert-danger alert-block">
-                            <button style="margin-top: 5px !important;" type="button" class="close" data-dismiss="alert">×</button>
-                            <strong>{{ $message }}</strong>
-                        </div>
+                    <div class="alert alert-danger alert-block">
+                        <button style="margin-top: 5px !important;" type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>{{ $message }}</strong>
+                    </div>
                 @endif
             </div>
             <div class="col-md-3">
@@ -109,7 +109,7 @@
             </table>
             {{ $applications->links('vendor.pagination.bootstrap-4') }}
             <!-- Modal -->
-            <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal fade" id="myModalApp" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
                     <div class="modal-content">
@@ -131,11 +131,11 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="statusModal" role="dialog">
+            <div class="modal fade" id="statusModalApp" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
                     <div class="modal-content">
-                        <form class="application-status-form" action="" method="post">
+                        <form class="applications-status-form" action="" method="post">
                             @csrf
                             @method('PUT')
                             <div class="modal-header">
@@ -171,15 +171,15 @@
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
-            $('.remove-application').on('click', function (e) {
+            $('.remove-applications').on('click', function (e) {
                 e.preventDefault();
                 var url = $(this).attr('data-url');
-                $('.application-remove-form').attr('action', url);
+                $('.applications-remove-form').attr('action', url);
             });
-            $('.status-application').on('click', function (e) {
+            $('.status-applications').on('click', function (e) {
                 e.preventDefault();
                 var url = $(this).attr('data-url');
-                $('.application-status-form').attr('action', url);
+                $('.applications-status-form').attr('action', url);
             });
         });
     </script>

@@ -29,7 +29,7 @@
                     <span><i class="fa fa-check-circle text-success"></i></span>
                 @endif
             </td>
-            <td data-toggle="modal" class="status-application" data-target="#statusModal" data-url="{{ route('applications.update', ['application' => $application]) }}" style="cursor: pointer">
+            <td data-toggle="modal" class="status-applications" data-target="#statusModalApp" data-url="{{ route('applications.update', ['application' => $application]) }}" style="cursor: pointer">
                 @if($application->status == 1)
                     <span class="badge badge-warning"><b>На исполнено</b></span>
                 @elseif($application->status == 2)
@@ -52,7 +52,7 @@
                         </a>
                     @endcan
                     @role('Admin')
-                        <a class="btn blue remove-application" data-toggle="modal" data-target="#myModal" data-url="{{ route('applications.destroy', ['application' => $application]) }}">
+                        <a class="btn blue remove-applications" data-toggle="modal" data-target="#myModalApp" data-url="{{ route('applications.destroy', ['application' => $application]) }}">
                             <i class="fa fa-trash"></i>
                         </a>
                     @endrole

@@ -139,8 +139,9 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, Application $application)
     {
+      
         $application->status = $request->status;
-        $application->performed_date = now();
+        $application->performed_date = date('Y-m-d');
         $application->who_performed = Auth::id();
         $application->save();
         return redirect()->back()->with('success', 'Заявка было успешно обновлен');
