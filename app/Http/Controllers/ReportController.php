@@ -56,13 +56,11 @@ class ReportController extends Controller
         if($number_contract && $request->contract == '1'){
             if($from_date == null && $to_date == null){
                 $applications = Application::where('number_contract', $number_contract)
-                ->where('from_city_id', $city)
                 ->get();            
             }else{
                 $applications = Application::where('number_contract', $number_contract)
                 ->where('created_at', '>=', date('Y-m-d', $from))
                 ->where('created_at', '<=', date('Y-m-d', $to))
-                ->orWhere('from_city_id', $city)
                 ->get();
             }
         }else{
