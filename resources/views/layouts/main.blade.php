@@ -17,7 +17,7 @@
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <script src="{{ asset('js/app.js') }}" ></script>
     <link rel="shortcut icon" href="{{ asset('ContractFiles/logo.png') }}"/>
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+    <!-- <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/> -->
     <link href="{{ asset('backend/assets/global/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('backend/assets/global/plugins/simple-line-icons/simple-line-icons.min.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('backend/assets/global/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
@@ -29,12 +29,11 @@
     <link href="{{ asset('backend/assets/admin/layout/css/layout.css') }}" rel="stylesheet" type="text/css"/>
     <link id="style_color" href="{{ asset('backend/assets/admin/layout/css/themes/darkblue.css') }}" rel="stylesheet" type="text/css"/>
     <link id="style_color" href="{{ asset('backend/assets/global/plugins/bootstrap-datepicker/css/datepicker.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="favicon.ico"/>
     <script src="{{ asset('backend/assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
     <script type="text/javascript" src="{{ asset('backend/assets/global/plugins/select2/select2.min.js') }}"></script>
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="{{ asset('backend/js/bootstrap-toggle.js') }}"></script>
 
     <script src="{{ asset('backend/js/scripts.js') }}"></script>
     <script src="{{ asset('backend/js/datepicker.js') }}"></script>
@@ -52,7 +51,7 @@
     <script src="{{ asset('backend/assets/global/plugins/jquery.sparkline.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('backend/assets/global/scripts/metronic.js') }}" type="text/javascript"></script>
     <script src="{{ asset('backend/assets/admin/layout/scripts/layout.js') }}" type="text/javascript"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="{{ asset('backend/js/wayponts.js') }}"></script>
     <script src="{{ asset('backend/js/jquery.counterup.js') }}" type="text/javascript"></script>
     <script type="text/javascript" src="{{ asset('backend/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
     @toastr_js
@@ -61,6 +60,34 @@
         .toggle-group span.toggle-handle{
             border: 1px solid grey !important;
         }
+        /*! ========================================================================
+ * Bootstrap Toggle: bootstrap-toggle.css v2.2.0
+ * http://www.bootstraptoggle.com
+ * ========================================================================
+ * Copyright 2014 Min Hur, The New York Times Company
+ * Licensed under MIT
+ * ======================================================================== */
+.checkbox label .toggle,.checkbox-inline .toggle{margin-left:-20px;margin-right:5px}
+.toggle{position:relative;overflow:hidden}
+.toggle input[type=checkbox]{display:none}
+.toggle-group{position:absolute;width:200%;top:0;bottom:0;left:0;transition:left .35s;-webkit-transition:left .35s;-moz-user-select:none;-webkit-user-select:none}
+.toggle.off .toggle-group{left:-100%}
+.toggle-on{position:absolute;top:0;bottom:0;left:0;right:50%;margin:0;border:0;border-radius:0}
+.toggle-off{position:absolute;top:0;bottom:0;left:50%;right:0;margin:0;border:0;border-radius:0}
+.toggle-handle{position:relative;margin:0 auto;padding-top:0;padding-bottom:0;height:100%;width:0;border-width:0 1px}
+.toggle.btn{min-width:59px;min-height:34px}
+.toggle-on.btn{padding-right:24px}
+.toggle-off.btn{padding-left:24px}
+.toggle.btn-lg{min-width:79px;min-height:45px}
+.toggle-on.btn-lg{padding-right:31px}
+.toggle-off.btn-lg{padding-left:31px}
+.toggle-handle.btn-lg{width:40px}
+.toggle.btn-sm{min-width:50px;min-height:30px}
+.toggle-on.btn-sm{padding-right:20px}
+.toggle-off.btn-sm{padding-left:20px}
+.toggle.btn-xs{min-width:35px;min-height:22px}
+.toggle-on.btn-xs{padding-right:12px}
+.toggle-off.btn-xs{padding-left:12px}
     </style>
 </head>
 <body class="page-header-fixed page-quick-sidebar-over-content ">
@@ -988,16 +1015,16 @@
         </div>
     </div>
     <script>
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-36251023-1']);
-        _gaq.push(['_setDomainName', 'jqueryscript.net']);
-        _gaq.push(['_trackPageview']);
+        // var _gaq = _gaq || [];
+        // _gaq.push(['_setAccount', 'UA-36251023-1']);
+        // _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        // _gaq.push(['_trackPageview']);
 
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
+        // (function() {
+        //     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        //     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        //     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        // })();
     </script>
 </body>
 </html>
