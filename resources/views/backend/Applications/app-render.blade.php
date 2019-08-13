@@ -52,7 +52,7 @@
                         </a>
                     @endcan
                     @role('Admin')
-                        <a class="btn blue remove-applications" data-toggle="modal" data-target="#myModalApp" data-url="{{ route('applications.destroy', ['application' => $application]) }}">
+                        <a class="btn blue remove-applications" data-toggle="modal" data-target="#myModalAppDelete" data-url="{{ route('applications.destroy', ['application' => $application]) }}">
                             <i class="fa fa-trash"></i>
                         </a>
                     @endrole

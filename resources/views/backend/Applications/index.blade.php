@@ -109,7 +109,7 @@
             </table>
             {{ $applications->links('vendor.pagination.bootstrap-4') }}
             <!-- Modal -->
-            <div class="modal fade" id="myModalApp" role="dialog">
+            <div class="modal fade" id="myModalAppDelete" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
                     <div class="modal-content">
@@ -174,7 +174,7 @@
             $('.remove-applications').on('click', function (e) {
                 e.preventDefault();
                 var url = $(this).attr('data-url');
-                $('.applications-remove-form').attr('action', url);
+                $('.application-remove-form').attr('action', url);
             });
             $('.status-applications').on('click', function (e) {
                 e.preventDefault();

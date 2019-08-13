@@ -128,7 +128,7 @@
                 </div>
             </div>
         </div>
-        <br>
+        <!-- <br>
         <hr>
         <br>
         <div class="row">
@@ -155,8 +155,8 @@
         </div>
         <br>
         <hr>
-        <br>
-        <div class="row">
+        <br> -->
+        <!-- <div class="row">
             <div class="col-md-12">
                 <div class="portlet light">
                 <div class="portlet-title">
@@ -176,7 +176,7 @@
                 </div>
                 <example-component-four></example-component-four>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
     <script>
