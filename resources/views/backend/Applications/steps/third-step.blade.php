@@ -88,7 +88,7 @@
                                         <table style="padding-left: 5px;" cellspacing="0" cellpadding-left="0" width="100%">
                                             <tr>
                                                 <td colspan="3" width="30mm;" style="padding-left-right:15px;"><img src="{{ asset('backend/assets/global/img/logo.png') }}" width='240px' style="padding-left:5px;"></td>
-                                                <td colspan="2" style="padding-left: 25px; font-size: 10px" ><span style="font-size:14px;font-weight: bold; color:#002e5b; font-family: Arial;">Тел. +998 91 781-09-99 <br> www.flymail.uz </span></td>
+                                                <td colspan="2" style="padding-left: 25px; font-size: 10px" ><span style="font-size:14px;font-weight: bold; color:#002e5b; font-family: Arial;">Тел. +998 78 147-09-99 <br> Тел. +998 78 148-09-99 <br> Э-почта. www.flymail.uz </span></td>
                                                 <td colspan="3" rowspan="2" style="text-align:center;padding-left-right:15px;"><img style="width: 200px;" src="data:image/png;base64,{!!  \DNS1D::getBarcodePNG($application->guid, 'C128',2,33,array(1,1,1), true) !!}" alt="">
                                                     <br><b>{{ $application->guid }}</b>
                                                 </td>
