@@ -128,11 +128,15 @@
                                                                 @enderror
                                                             </td>
                                                             <td class="form-group">
-                                                                <select name="from_courier_name" class="form-control select2 from_courier_name" {{ $application->cost_from_courier==null?'disabled':'' }}>
-                                                                    <option value="" disabled>--@lang('pages.select_one')--</option>
+                                                                <select name="from_courier_name" class="form-control select2 from_courier_name" {{ $application->cost_from_courier==0?'disabled':'' }}>
+                                                                    <option value="" >--@lang('pages.select_one')--</option>
                                                                     @foreach($couriers as $courier)
                                                                         @if($courier->hasRole('Courier') AND $courier->organ_id == $application->from_city_id)
-                                                                            <option value="{{ $courier->id }}" {{ $courier->organ_id==$application->from_city_id?'selected':'' }}>{{ $courier->username }}</option>
+                                                                            @if($application->cost_from_courier==0)
+                                                                                <option value="" selected>--@lang('pages.select_one')--</option>
+                                                                            @else
+                                                                                <option value="{{ $courier->id }}" {{ $courier->organ_id==$application->from_city_id?'selected':'' }}>{{ $courier->username }}</option>
+                                                                            @endif
                                                                         @endif
                                                                     @endforeach
                                                                 </select>

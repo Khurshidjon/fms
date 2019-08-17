@@ -904,6 +904,9 @@ class ApplicationController extends Controller
             $from_courier = User::find(1*$request->get('from_courier_name'));
             $courier->from_courier_name = $from_courier->username;
             $courier->from_courier_phone = $from_courier->phone;
+        }else{
+            $courier->from_courier_name = null;
+            $courier->from_courier_phone = null;
         }
 
 
@@ -917,6 +920,9 @@ class ApplicationController extends Controller
             $post_courier = User::find(1*$request->get('courier_name'));
             $courier->courier_name  = $post_courier->username;
             $courier->courier_phone = $post_courier->phone;
+        }else{
+            $courier->courier_name = null;
+            $courier->courier_phone = null;
         }
 
 //        if($request->to_courier_type == 'on'){
@@ -928,6 +934,9 @@ class ApplicationController extends Controller
             $to_courier = User::find($request->get('to_courier_name'));
             $courier->to_courier_name = $to_courier->username;
             $courier->to_courier_phone = $to_courier->phone;
+        }else{
+            $courier->to_courier_name = null;
+            $courier->to_courier_phone =  null;
         }
 
 //        }
