@@ -62,11 +62,11 @@ Route::get('/page/news/show','FrontendController@news')->name('news.index');
 Route::get('/news_blog/{post}', 'FrontendController@single_news')->name('single.news');
 Route::get('/contact', 'FrontendController@contact')->name('contact');
 Route::get('/refreshcaptcha', 'FrontendController@refreshCaptcha')->name('refreshcaptcha');
+Route::get('/gallery', 'FrontendController@gallery')->name('gallery');
 
-
-Route::get('/fast_mail',function(){
+Route::get('/calculator',function(){
     return view('frontend.fast_mail');
-});
+})->name('calculator');
 
 Route::get('cargo_transportation',function(){
     return view('frontend.cargo_transportation');
@@ -111,6 +111,12 @@ Route::post('/main', 'MainController@postLogin')->name('admin.login');
     Route::resource('/partners', 'PartnerController');
     Route::post('/pages/status/{page}/edit', 'PageController@status')->name('pages.status');
     Route::resource('/pages', 'PageController');    
+    Route::post('album-status/{album}', 'AlbumController@statusUpdate')->name('album.status');
+    Route::resource('/albums', 'AlbumController');
+    
+    Route::post('album-status/{album}', 'AlbumController@statusUpdate')->name('album.status');    
+    Route::resource('/galleries', 'GalleryController');
+
 });
 /* -----------------------------------  Abdullo bundan pastdagi routelarga tegmang ------------------------------------*/ 
 

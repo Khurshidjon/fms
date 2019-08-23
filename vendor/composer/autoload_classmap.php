@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Album' => $baseDir . '/app/Album.php',
     'App\\Application' => $baseDir . '/app/Application.php',
     'App\\CategoryInterTech' => $baseDir . '/app/CategoryInterTech.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
@@ -17,7 +18,9 @@ return array(
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Exports\\ApplicationExport' => $baseDir . '/app/Exports/ApplicationExport.php',
     'App\\FrontContact' => $baseDir . '/app/FrontContact.php',
+    'App\\Gallery' => $baseDir . '/app/Gallery.php',
     'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
+    'App\\Http\\Controllers\\AlbumController' => $baseDir . '/app/Http/Controllers/AlbumController.php',
     'App\\Http\\Controllers\\ApplicationController' => $baseDir . '/app/Http/Controllers/ApplicationController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',

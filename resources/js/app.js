@@ -23,6 +23,7 @@ Vue.component('example-component-one', require('./components/ExampleComponent.vu
 Vue.component('example-component-two', require('./components/ExampleComponent2.vue').default);
 Vue.component('example-component-three', require('./components/ExampleComponent3.vue').default);
 Vue.component('example-component-four', require('./components/ExampleComponent4.vue').default);
+Vue.component('upload-form', require('./components/Upload.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,5 +33,8 @@ Vue.component('example-component-four', require('./components/ExampleComponent4.
 $(function () {
     const app = new Vue({
         el: '#app',
+    });
+    const upload = new Vue({
+        el: '#upload'
     });
 })

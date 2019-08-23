@@ -9,6 +9,8 @@ use App\Setting;
 use App\Partner;
 use App\Page;
 use App\Menu;
+use App\Album;
+use App\Gallery;
 use App\FrontContact;
 
 class FrontendController extends Controller
@@ -37,6 +39,8 @@ class FrontendController extends Controller
         $email = Setting::where('key', 'email')->where('status', 1)->first();
         $address = Setting::where('key', 'address')->where('status', 1)->first();
         $partners = Partner::get();
+        $albums = Album::where('status', 0)->get();
+        $galleries = Gallery::all();
         
             return view('frontend.index',[
                 'banners' => $banners,
@@ -60,7 +64,9 @@ class FrontendController extends Controller
                 'contact_us'=>$contact_us,
                 'phone_number'=> $phone_number,
                 'email'=>$email,
-                'address'=>$address
+                'address'=>$address,
+                'albums' => $albums,
+                'galleries' => $galleries
             ]);
     }
     public function page($menu)
@@ -150,5 +156,11 @@ class FrontendController extends Controller
     public function refreshCaptcha()
     {
         return captcha_img('flat');
+    }
+    public function gallery()
+    {
+        $albums = Album::where('status', 0)->get();
+        $galleries = Gallery::all();
+        return view('frontend.gallery', compact(['albums', 'galleries']));
     }
 }

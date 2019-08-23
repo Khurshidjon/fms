@@ -16,7 +16,9 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/global/plugins/select2/select2.css') }}"/>
+
 
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- Font Awesome JS -->
@@ -28,7 +30,9 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6/css/select2.min.css" rel="stylesheet" />
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6/css/select2.min.css" rel="stylesheet" /> -->
+    <script type="text/javascript" src="{{ asset('backend/assets/global/plugins/select2/select2.min.js') }}"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6/js/select2.min.js"></script>
     <script src="{{ asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
     <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
@@ -92,6 +96,12 @@
                 </li>
                 <li class="{{ $is_active=='pages'?'active':'' }}">
                     <a href="{{ route('pages.index') }}" >Pages</a>
+                </li>
+                <li class="{{ $is_active=='albums'?'active':'' }}">
+                    <a href="{{ route('albums.index') }}" >Albums</a>
+                </li>
+                <li class="{{ $is_active=='gallery'?'active':'' }}">
+                    <a href="{{ route('galleries.index') }}" >Gallery</a>
                 </li>
             </ul>
 

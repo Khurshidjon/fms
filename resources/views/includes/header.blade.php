@@ -56,6 +56,8 @@
             @endif
           </li>          
         @endforeach
+          <li><a href="{{route('calculator')}}"><i class="fa fa-calculator"></i> <span>Calculator</span></a></li>
+          <li><a href="{{route('gallery')}}"><i class="fa fa-photo"></i> <span>Gallery</span></a></li>
           <li><a href="{{route('contact')}}"><i class="fa fa-headphones"></i> <span>Contact</span></a></li>
           <li class="menu-has-children">
           <a href="">

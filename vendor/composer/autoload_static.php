@@ -617,6 +617,7 @@ class ComposerStaticInit9db29b799323e340e4b5588fab35c3b3
     );
 
     public static $classMap = array (
+        'App\\Album' => __DIR__ . '/../..' . '/app/Album.php',
         'App\\Application' => __DIR__ . '/../..' . '/app/Application.php',
         'App\\CategoryInterTech' => __DIR__ . '/../..' . '/app/CategoryInterTech.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -628,7 +629,9 @@ class ComposerStaticInit9db29b799323e340e4b5588fab35c3b3
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Exports\\ApplicationExport' => __DIR__ . '/../..' . '/app/Exports/ApplicationExport.php',
         'App\\FrontContact' => __DIR__ . '/../..' . '/app/FrontContact.php',
+        'App\\Gallery' => __DIR__ . '/../..' . '/app/Gallery.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
+        'App\\Http\\Controllers\\AlbumController' => __DIR__ . '/../..' . '/app/Http/Controllers/AlbumController.php',
         'App\\Http\\Controllers\\ApplicationController' => __DIR__ . '/../..' . '/app/Http/Controllers/ApplicationController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',

@@ -190,6 +190,42 @@ $i = 1;
 
   </div>
 </section>
+<section id="portfolio"  class="section-bg" >
+      <div class="container">
+
+        <header class="section-header">
+          <h3 class="section-title">Our Albums</h3>
+        </header>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              @foreach($albums as $album)
+                <li data-filter=".{{ $album->id }}">{{ $album->{'album_title_'.$lang} }}</li>
+              @endforeach
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container">
+
+        @foreach($galleries as $gallery)
+            <div class="col-lg-4 col-md-6 portfolio-item {{ $gallery->album_id }} wow fadeInUp">
+              <div class="portfolio-wrap">
+                <figure>
+                  <img src="{{ asset('storage') .'/'. $gallery->filename }}" class="img-fluid" alt="">
+                  <a href="{{ asset('storage') .'/'. $gallery->filename }}" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                </figure>
+              </div>
+            </div>
+          @endforeach
+        </div>
+
+      </div>
+    </section><!-- #portfolio -->
+
 <section id="facts" class="wow fadeIn">
   <div class="container">
 
