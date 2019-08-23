@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gallery extends Model
 {
-    public function album()
+    public function albumm()
     {
-        $this->hasMany(Album::class);
+        // $this->hasMany('App\Album');
     }
 }

@@ -52,10 +52,13 @@ $lang = App::getLocale();
                 <tbody>
 
                     @forelse($galleries as $gallery)
+                        @php 
+                            $menu = App\Album::find($gallery->id);
+                        @endphp
                         <tr>
                             <td>{{ $i++ }}</td>
                             <td><img src="{{ asset('storage') .'/'. $gallery->filename }}" style="width:70px" alt=""></td>
-                            <td></td>
+                            <td>{{ $menu?$menu->album_title_uz:'' }}</td>
                             <td>{{ $gallery->title }}</td>
                             <td>
                                 <a class="btn btn-info btn-sm text-white" href="{{ route('galleries.show', [$gallery ]) }}">
@@ -65,7 +68,7 @@ $lang = App::getLocale();
                                     <i class="fa fa-edit"></i>
                                 </a>
 
-                                <a href="#" class="btn btn-danger btn-sm delete-page text-white" data-toggle="modal" data-target="#fullHeightModalRightPage" data-item="{{$album}}" data-url="{{route('albums.destroy',['album'=>$album])}}"> <i class="fa fa-trash"></i></a>
+                                <a href="#" class="btn btn-danger btn-sm delete-page text-white" data-toggle="modal" data-target="#fullHeightModalRightPage" data-item="{{$gallery}}" data-url="{{route('galleries.destroy',['gallery'=>$gallery])}}"> <i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @empty
