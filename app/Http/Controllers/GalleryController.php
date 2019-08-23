@@ -30,7 +30,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        $albums = Album::where('status', 0)->get();
+        $albums = Album::where('status', 1)->get();
         return view('web_backend.gallery.create', [
             'albums' => $albums,
             'is_active' => 'gallery',

@@ -39,7 +39,7 @@ class FrontendController extends Controller
         $email = Setting::where('key', 'email')->where('status', 1)->first();
         $address = Setting::where('key', 'address')->where('status', 1)->first();
         $partners = Partner::get();
-        $albums = Album::where('status', 0)->get();
+        $albums = Album::where('status', 1)->get();
         $galleries = Gallery::all();
         
             return view('frontend.index',[
@@ -159,7 +159,7 @@ class FrontendController extends Controller
     }
     public function gallery()
     {
-        $albums = Album::where('status', 0)->get();
+        $albums = Album::where('status', 1)->get();
         $galleries = Gallery::all();
         return view('frontend.gallery', compact(['albums', 'galleries']));
     }
