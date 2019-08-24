@@ -100,7 +100,7 @@
             <span class="close">
               <i class="fa fa-close"></i>
             </span>
-            <video playsinline id="video" autoplay controls>
+            <video id="video" playsinline autoplay controls>
               <source src="{{ asset('frontend/video/reklama.MP4') }}" type="video/mp4">
             </video>
           </div>
@@ -130,8 +130,8 @@
       })
       
       $(window).load(function(){
-          // var content = $('.video-alert-message');
-          // $('#video').get(0).play();
+        $("#video")[0].play();
+        // $("#video_player")[0].autoplay = true;
       })      
     })
   </script>
