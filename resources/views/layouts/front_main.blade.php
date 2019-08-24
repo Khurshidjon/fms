@@ -101,6 +101,7 @@
               <i class="fa fa-close"></i>
             </span>
             <video id="video">
+              <source src="{{ asset('frontend/video/reklama.MP4') }}" type="video/mp4">
             </video>
           </div>
     </div>
@@ -127,14 +128,11 @@
       $('.video-alert-message ').on('click', '.close', function(){
           $(this).parent().remove();
       })
-
-      function playFile() {
-          var video = $("#video");
-          video[0].src = "{{ asset('frontend/video/reklama.MP4') }}";
-          video[0].load();
-          video[0].play();
-      };     
-      playFile();
+      
+      $(window).on('load', function(){
+        $("#video").attr('autoplay', true);
+        $("#video").attr('controls', true);
+      })      
     })
   </script>
 
