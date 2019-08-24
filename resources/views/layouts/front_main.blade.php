@@ -57,7 +57,7 @@
     @media (max-width: 600px) {
       .video-alert-message video{
           max-height: 17.2em;
-          max-width: 18.5em;
+          /* max-width: 20.5em; */
           border-radius: 10px;
           right:1.5em;
           bottom: 30px;
