@@ -54,6 +54,19 @@
       z-index: 1000000;
       border: 10px solid #ff5e00;
     }
+    @media only screen and (max-width: 600px) {
+      .video-alert-message video{
+          max-height: 17.2em;
+          max-width: 22.2em;
+          border-radius: 10px;
+          right:0;
+          bottom: 30px;
+          position:fixed;
+          background: darkgrey;
+          z-index: 100;
+          border: 10px solid #ff5e00;
+      }  
+    }
     .video-alert-message span.close{
         position: absolute;
         border: 3px solid #ff5e00;
@@ -64,7 +77,7 @@
         cursor:pointer;
         padding: 5px;
         right: 0;
-        z-index: 1;
+        z-index: 101;
         background: #ffffff;
     }
     .video-alert-message span.close:hover{
@@ -82,15 +95,16 @@
   <main id="main">
     @yield('content')
   </main>
-
-  <div class="video-alert-message">
-    <span class="close">
-      <i class="fa fa-close"></i>
-    </span>
-    <video autoplay>
-      <source src="{{ asset('frontend/video/reklama.MP4') }}" type="video/mp4">
-    </video>
-  </div>
+    <div class="">
+          <div class="video-alert-message">
+            <span class="close">
+              <i class="fa fa-close"></i>
+            </span>
+            <video autoplay controls>
+              <source src="{{ asset('frontend/video/reklama.MP4') }}" type="video/mp4">
+            </video>
+          </div>
+    </div>
 
   @include('includes.footer')
 
