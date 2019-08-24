@@ -44,7 +44,7 @@
       color: #ffffff;
     }
     .video-alert-message{
-      max-height: 20em;
+      max-height: 17.2em;
       max-width: 35em;
       border-radius: 10px;
       right:0;
@@ -52,7 +52,7 @@
       position:fixed;
       background: darkgrey;
       z-index: 1000000;
-      border: 10px solid #002e5b;
+      border: 10px solid #ff5e00;
     }
     .video-alert-message span.close{
         position: absolute;
