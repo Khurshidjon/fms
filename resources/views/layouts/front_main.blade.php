@@ -43,6 +43,35 @@
       background-color: #2196F3;
       color: #ffffff;
     }
+    .video-alert-message{
+      max-height: 20em;
+      max-width: 35em;
+      border-radius: 10px;
+      right:0;
+      bottom: 30px;
+      position:fixed;
+      background: darkgrey;
+      z-index: 1000000;
+      border: 10px solid #002e5b;
+    }
+    .video-alert-message span.close{
+        position: absolute;
+        border: 3px solid #ff5e00;
+        border-radius: 50%;
+        width:40px;
+        color:#ff5e00;
+        text-align:center;
+        cursor:pointer;
+        padding: 5px;
+        right: 0;
+        z-index: 1;
+        background: #ffffff;
+    }
+    .video-alert-message span.close:hover{
+      background: #002e5b;
+      color: #ffffff;
+      border: 3px solid #ffffff;
+    }
   </style>
 </head>
 
@@ -53,6 +82,16 @@
   <main id="main">
     @yield('content')
   </main>
+
+  <div class="video-alert-message">
+    <span class="close">
+      <i class="fa fa-close"></i>
+    </span>
+    <video autoplay>
+      <source src="{{ asset('frontend/video/reklama.MP4') }}" type="video/mp4">
+    </video>
+  </div>
+
   @include('includes.footer')
 
   <script src="{{asset('frontend/lib/jquery/jquery-migrate.min.js')}}"></script>
@@ -68,9 +107,19 @@
   <script src="{{asset('frontend/lib/lightbox/js/lightbox.min.js')}}"></script>
   <script src="{{asset('frontend/lib/touchSwipe/jquery.touchSwipe.min.js')}}"></script>
   <!-- Contact Form JavaScript File -->
-
   <!-- Template Main Javascript File -->
   <script src="{{asset('frontend/js/main.js')}}"></script>
+  <script>
+    $(function(){
+      $('.video-alert-message ').on('click', '.close', function(){
+          $(this).parent().remove();
+      })
+      $(window).load(function(){
+          var content = $('.video-alert-message');
+      })      
+    })
+  </script>
+
 </body>
 
 </html>

@@ -53,7 +53,7 @@ $lang = App::getLocale();
 
                     @forelse($galleries as $gallery)
                         @php 
-                            $menu = App\Album::find($gallery->id);
+                            $menu = App\Album::find($gallery->album_id);
                         @endphp
                         <tr>
                             <td>{{ $i++ }}</td>
