@@ -100,8 +100,8 @@
             <span class="close">
               <i class="fa fa-close"></i>
             </span>
-            <video id="video" src="{{ asset('frontend/video/reklama.MP4') }}" autoplay controls>
-              <!-- <source  type="video/mp4"> -->
+            <video playsinline id="video" autoplay controls>
+              <source src="{{ asset('frontend/video/reklama.MP4') }}" type="video/mp4">
             </video>
           </div>
     </div>
