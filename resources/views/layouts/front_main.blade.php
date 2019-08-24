@@ -54,18 +54,32 @@
       z-index: 1000000;
       border: 10px solid #ff5e00;
     }
-    @media only screen and (max-width: 600px) {
+    @media (max-width: 600px) {
       .video-alert-message video{
           max-height: 17.2em;
-          max-width: 22.2em;
+          max-width: 18.5em;
           border-radius: 10px;
-          right:0;
+          right:1.5em;
           bottom: 30px;
           position:fixed;
           background: darkgrey;
           z-index: 100;
           border: 10px solid #ff5e00;
-      }  
+      }
+      .video-alert-message span.close{
+        position: absolute;
+        border: 3px solid #ff5e00;
+        border-radius: 50%;
+        width:40px;
+        color:#ff5e00;
+        text-align:center;
+        cursor:pointer;
+        padding: 5px;
+        right: 1em !important;
+        top: -6em !important;
+        z-index: 101;
+        background: #ffffff;
+    }  
     }
     .video-alert-message span.close{
         position: absolute;
