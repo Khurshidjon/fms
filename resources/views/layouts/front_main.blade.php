@@ -57,7 +57,7 @@
     @media (max-width: 600px) {
       .video-alert-message video{
           max-height: 17.2em;
-          /* max-width: 20.5em; */
+          max-width: 20.9em;
           border-radius: 10px;
           right:1.5em;
           bottom: 30px;
@@ -76,7 +76,7 @@
         cursor:pointer;
         padding: 5px;
         right: 1em !important;
-        top: -6em !important;
+        top: -7em !important;
         z-index: 101;
         background: #ffffff;
     }  
