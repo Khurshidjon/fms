@@ -114,8 +114,10 @@
             <span class="close">
               <i class="fa fa-close"></i>
             </span>
-            <video id="video" controls autoplay>
-              <source class="src_one" src="{{ asset('frontend/video/reklama.webm') }}" type="video/webm">
+            <video id="video" loop>
+              <source src="{{ asset('frontend/video/reklama.MP4') }}" type="video/mp4">
+              <source src="{{ asset('frontend/video/reklama.webm') }}" type="video/webm">
+              <source src="{{ asset('frontend/video/reklama.ogg') }}" type="audio/ogg">
             </video>
           </div>
     </div>
@@ -143,12 +145,10 @@
           $(this).parent().remove();
       })
       
-      $(window).on('load', function(){
-        // $("#video").find('.src_one').attr('src', "");
-        // $("#video").find('.src_two').attr('src', "");
-        document.getElementById('video').controls = false;
-        document.getElementById('video').autoplay = true;
-      });      
+      $(window).load(function(){
+        $("#video").attr('autoplay', true);
+        $("#video").attr('controls', true);
+      })      
     })
   </script>
 
