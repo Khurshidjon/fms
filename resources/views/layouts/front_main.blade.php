@@ -114,8 +114,8 @@
             <span class="close">
               <i class="fa fa-close"></i>
             </span>
-            <video id="video">
-              <source src="" type="video/mp4">
+            <video id="video" controls autoplay>
+              <source class="src_one" src="{{ asset('frontend/video/reklama.webm') }}" type="video/webm">
             </video>
           </div>
     </div>
@@ -144,9 +144,10 @@
       })
       
       $(window).on('load', function(){
-        $("#video").attr('src', "{{ asset('frontend/video/reklama.MP4') }}");
-        $("#video").attr('autoplay', true);
-        $("#video").attr('controls', true);
+        // $("#video").find('.src_one').attr('src', "");
+        // $("#video").find('.src_two').attr('src', "");
+        document.getElementById('video').controls = false;
+        document.getElementById('video').autoplay = true;
       });      
     })
   </script>
