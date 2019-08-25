@@ -28,8 +28,7 @@
               <div class="portfolio-wrap">
                 <figure>
                   <img src="{{ asset('storage') .'/'. $gallery->filename }}" class="img-fluid" alt="">
-                  <a href="{{ asset('storage') .'/'. $gallery->filename }}" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
-                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                  <a href="{{ asset('storage') .'/'. $gallery->filename }}" data-lightbox="portfolio" data-title="{{ $gallery->title }}" class="link-preview" title="Preview"><i class="fa fa-search-plus"></i></a>
                 </figure>
               </div>
             </div>

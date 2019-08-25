@@ -99,6 +99,12 @@
       color: #ffffff;
       border: 3px solid #ffffff;
     }
+    figure .link-preview{
+      left: calc(50%) !important;
+    } 
+    figure:hover .link-preview{
+      left: calc(50%) !important;
+    } 
   </style>
 </head>
 
