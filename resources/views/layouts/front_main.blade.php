@@ -115,7 +115,7 @@
               <i class="fa fa-close"></i>
             </span>
             <video id="video">
-              <source src="{{ asset('frontend/video/reklama.MP4') }}" type="video/mp4">
+              <source src="" type="video/mp4">
             </video>
           </div>
     </div>
@@ -144,9 +144,10 @@
       })
       
       $(window).on('load', function(){
+        $("#video").attr('src', "{{ asset('frontend/video/reklama.MP4') }}");
         $("#video").attr('autoplay', true);
         $("#video").attr('controls', true);
-      })      
+      });      
     })
   </script>
 
