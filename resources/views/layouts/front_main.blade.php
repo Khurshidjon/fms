@@ -119,7 +119,7 @@
               <source src="{{ asset('frontend/video/reklama.MP4') }}" type="video/mp4">
 
             </video> -->
-            <video controls id="myVideo" >
+            <video controls autoplay id="myVideo" >
  
             </video>
           </div>
