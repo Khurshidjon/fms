@@ -114,10 +114,13 @@
             <span class="close">
               <i class="fa fa-close"></i>
             </span>
-            <video id="video" loop>
+            <!-- <video id="video" loop>
+              <source src="{{ asset('frontend/video/reklama2.mp4') }}" type="video/mp4">
               <source src="{{ asset('frontend/video/reklama.MP4') }}" type="video/mp4">
-              <source src="{{ asset('frontend/video/reklama.webm') }}" type="video/webm">
-              <source src="{{ asset('frontend/video/reklama.ogg') }}" type="audio/ogg">
+
+            </video> -->
+            <video controls id="myVideo" >
+ 
             </video>
           </div>
     </div>
@@ -150,6 +153,31 @@
         $("#video").attr('controls', true);
       })      
     })
+      var videoSource = new Array();
+      videoSource[0]="{{ asset('frontend/video/reklama2.mp4') }}";
+      videoSource[1]="{{ asset('frontend/video/reklama.MP4') }}";
+      var videoCount = videoSource.length;
+      document.getElementById("myVideo").setAttribute("src",videoSource[0]);
+      
+      // Create a function to load and play the videos.
+
+      function videoPlay(videoNum)
+      {
+          document.getElementById("myVideo").setAttribute("src",videoSource[videoNum]);
+          document.getElementById("myVideo").load();
+          document.getElementById("myVideo").play();
+      }
+      document.getElementById('myVideo').addEventListener('ended',myHandler,false);
+        function myHandler() {
+          i = 1;
+          if(i == (videoCount-1)){
+            videoPlay(i);
+          }
+            else{
+              videoPlay(i);
+          }
+             i++;
+       }
   </script>
 
 </body>
