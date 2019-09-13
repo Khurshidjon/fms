@@ -12,7 +12,7 @@ $lang = App::getLocale();
         </div>
 
         <div class="col-lg-3 col-md-6 footer-links">
-          <h4>Useful Links</h4>
+          <h4>@lang('pages.foot_menu')</h4>
           <ul>
             @foreach($footer_menus as $menu)
             <li><i class="ion-ios-arrow-right"></i> <a href="{{ $menu->url }}">{{ $menu->{'name_'.$lang} }}</a></li>
@@ -21,7 +21,7 @@ $lang = App::getLocale();
         </div>
 
         <div class="col-lg-3 col-md-6 footer-contact">
-          <h4>Contact Us</h4>
+          <h4>@lang('pages.contact_us')</h4>
           <p><strong>Address: </strong>{{ $address!=null?$address->{'value_'.$lang}:'' }} <br>
             <strong>Phone:</strong> {{ $phone_number!=null?$phone_number->{'value_'.$lang}:'' }} <br>
             <strong>Email:</strong> {{ $email!=null?$email->{'value_'.$lang}:'' }}<br>
@@ -38,7 +38,8 @@ $lang = App::getLocale();
         </div>
 
         <div class="col-lg-3 col-md-6 footer-newsletter">
-          <h4>Our Newsletter</h4>
+          <h4>@lang('pages.our_new')</h4>
+          
           <p>{{ $footer_right_side!=null?$footer_right_side->{'value_'.$lang}:'' }}</p>
           <form action="/subscribe" method="post">
             @csrf

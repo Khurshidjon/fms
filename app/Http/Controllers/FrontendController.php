@@ -38,6 +38,8 @@ class FrontendController extends Controller
         $phone_number = Setting::where('key', 'phone_number')->where('status', 1)->first();
         $email = Setting::where('key', 'email')->where('status', 1)->first();
         $address = Setting::where('key', 'address')->where('status', 1)->first();
+        $img_one = Setting::where('key','img_one')->where('status',1)->first();
+        $img_two = Setting::where('key','img_two')->where('status',1)->first();
         $partners = Partner::get();
         $albums = Album::where('status', 1)->get();
         $galleries = Gallery::all();
@@ -66,7 +68,9 @@ class FrontendController extends Controller
                 'email'=>$email,
                 'address'=>$address,
                 'albums' => $albums,
-                'galleries' => $galleries
+                'galleries' => $galleries,
+                'img_one'=>$img_one,
+                'img_two'=>$img_two
             ]);
     }
     public function page($menu)

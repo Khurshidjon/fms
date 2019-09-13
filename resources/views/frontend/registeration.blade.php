@@ -6,10 +6,10 @@
         <div class="col-md-8">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item w-50">
-                    <a class="nav-link text-center active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Ro'yxatdan o'tish</a>
+                    <a class="nav-link text-center active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">@lang('pages.regis')</a>
                 </li>
                 <li class="nav-item w-50">
-                    <a class="nav-link ok  text-center" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Kirish</a>
+                    <a class="nav-link ok  text-center" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">@lang('pages.enter')</a>
                 </li>
 
             </ul>

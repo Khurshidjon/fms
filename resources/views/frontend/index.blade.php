@@ -1,3 +1,6 @@
+<?php
+use Mews\Captcha\Facades\Captcha;
+?>
 @extends('layouts.front_main')
 @php
 $lang = App::getLocale();
@@ -30,6 +33,161 @@ $i = 1;
   .carousel-item {
     max-height: 43em;
   }
+ 
+
+div.blogbox {
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+  margin: 15px;
+  /* padding: 8px; */
+}
+
+div.blogbox .blogimg {
+  width: 100%;
+  /* height: 260px; */
+  position: relative;
+  overflow: hidden;
+}
+
+div.blogbox .blogimg .blogspan {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  width: 100%;
+  height: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease-in-out;
+}
+
+div.blogbox .blogimg .blogspan i {
+  /* background-color: #16A085; */
+  /* padding: 12px; */
+  /* font-size: 18px; */
+  /* border-radius: 50%; */
+  color: #FFFFFF;
+  transition: all 0.4s ease-in;
+  opacity: 0;
+}
+/* 
+div.blogbox .blogimg .blogspan i:hover {
+  background-color: #666666;
+} */
+
+div.blogbox:hover .blogimg .blogspan  {
+  height: 100%;
+}
+div.blogbox:hover .blogimg .blogspan i {
+  opacity: 1;
+}
+
+div.blogbox:hover .blogimg img {
+  transform: scale(1.2, 1.2);
+}
+
+div.blogbox .blogimg img {
+  width: 100%;
+  /* height: 100%; */
+  transition: all 0.4s ease-in-out;
+}
+
+
+
+div.blogbox .blogdown .blogh5 {
+  /* font-size: 18px; */
+  word-spacing: 5px;
+  margin-top: 14px;
+}
+
+div.blogbox .blogdown .blogh5 a {
+  text-decoration: none;
+  transition: all 0.4s ease-in-out;
+  color: black;
+}
+
+
+
+div.blogbox .blogdown .blogh5 a:hover {
+  color: #16A085;
+}
+
+div.blogbox .blogdown .blogicon span {
+  color: #666666;
+} 
+
+div.blogbox .blogdown .blogicon span i {
+  color: #16A085;
+  margin-right: 5px;
+  display: inline-block;
+} 
+
+/* div.blogbox .blogdown p {
+  color: #666666;
+  font-size: 16px;
+  margin-top: 8px;
+} */
+
+div.blogbox .blogdown .bloga {
+  text-decoration: none;
+  color:#16A085;
+  font-size: 12px;
+  transition: all 0.4s ease-in-out;
+}
+
+div.blogbox .blogdown .bloga:hover {
+  color: black;
+}
+
+
+div.blog .blogheadh {
+  color: #16A085;
+  text-align: center;
+  font-weight: 600;
+}
+div.blog .blogheadp {
+  color: #666666;
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+div.paginationblog .blbox {
+  display: inline-block;
+  padding: 8px 26px;
+  border: 1px solid #DDDDDD;
+  background-color: #FFFFFF;
+  color: black;
+  transition: all 0.4s ease-in-out;
+  text-decoration: none;
+}
+
+div.paginationblog .blbox:hover {
+ background-color: #16A085;
+ color: #FFFFFF;
+}
+
+div.paginationblog .blbox:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px; 
+}
+
+div.paginationblog .blbox:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px; 
+}
+
+.activepagblog {
+  background-color: #16A085 !important;
+  color: #FFFFFF !important;
+}
+
+
+/* Our Blog */
 </style>
 @section('content')
 <section id="intro">
@@ -170,7 +328,7 @@ $i = 1;
         <h4 class="title"><a href="">{{ $services_card3!=null?$services_card3->{'title_'.$lang}:'' }}</a></h4>
         <p class="description">{{ $services_card3!=null?$services_card3->{'value_'.$lang}:'' }}</p>
       </div>
-      <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+      <!-- <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
         <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
         <h4 class="title"><a href="">{{ $services_card4!=null?$services_card4->{'title_'.$lang}:'' }}</a></h4>
         <p class="description">{{ $services_card4!=null?$services_card4->{'value_'.$lang}:'' }}</p>
@@ -184,12 +342,40 @@ $i = 1;
         <div class="icon"><i class="ion-ios-people-outline"></i></div>
         <h4 class="title"><a href="">{{ $services_card6!=null?$services_card6->{'title_'.$lang}:'' }}</a></h4>
         <p class="description">{{ $services_card6!=null?$services_card6->{'value_'.$lang}:'' }}</p>
-      </div>
+      </div> -->
 
     </div>
 
   </div>
 </section>
+ 
+  <section>
+  <div class="container">
+    <div class="row">
+    <div class="col-lg-6 col-md-6 col-xs-12 blogcol wow bounceInLeft " data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="blogbox">
+              <div class="blogimg">
+                <img src="{{ asset('storage') .'/'. $img_one->image }}"class="img-fluid img-thumbnail">
+                <span class="blogspan">
+                <a href="{{ asset('storage') .'/'. $img_one->image }}" data-lightbox="portfolio" data-title="" class="link-preview text-center" style="display:block; " title="Preview"><i class=" fa fa-plus fa-2x text-center" style="color:#fff;"></i></a>
+                </span>
+              </div>
+            </div>
+          </div>
+    <div class="col-lg-6 col-md-6 col-xs-12 blogcol wow bounceInRight" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="blogbox">
+              <div class="blogimg">
+                <img src="{{ asset('storage') .'/'. $img_two->image }}"class="img-fluid img-thumbnail">
+                <span class="blogspan">
+                <a href="{{ asset('storage') .'/'. $img_two->image }}" data-lightbox="portfolio" data-title="" class="link-preview text-center" style="display:block; " title="Preview"><i class=" fa fa-plus fa-2x text-center" style="color:#fff;"></i></a>
+                </span>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+
+  </section>
 <section id="portfolio"  class="section-bg" >
       <div class="container">
 
@@ -223,13 +409,13 @@ $i = 1;
         </div>
 
       </div>
-    </section><!-- #portfolio -->
+</section><!-- #portfolio -->
 
 <section id="facts" class="wow fadeIn">
   <div class="container">
 
     <header class="section-header">
-      <h3>Statistika</h3>
+      <h3>@lang('pages.statistic')</h3>
     </header>
 
     <div class="row counters">
@@ -261,7 +447,7 @@ $i = 1;
   <div class="container">
 
     <header class="section-header">
-      <h3>Bizning Hamkorlar</h3>
+      <h3>@lang('pages.xamkor')</h3>
     </header>
 
     <div class="owl-carousel clients-carousel">
@@ -364,7 +550,7 @@ $i = 1;
         <div class="float-left row">
           <div class="form-group col-md-6">
              <div class="captcha">
-               <span>{!! captcha_img('flat') !!}</span>
+             <span>{!! captcha_img('flat') !!}</span>
                <button type="button" class="btn btn-success" data-url="{{ route('refreshcaptcha') }}" id="refreshcaptcha"><i class="fa fa-refresh"></i></button>
             </div>
           </div>

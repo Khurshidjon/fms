@@ -22,6 +22,7 @@
   <link href="{{asset('frontend/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
   <link href="{{asset('frontend/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
   <link href="{{asset('frontend/lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
+  <link href="{{asset('frontend/css/animated.css')}}" rel="stylesheet">
   
   <script src="{{asset('frontend/lib/jquery/jquery.min.js')}}"></script>
   <script type="text/javascript" src="{{ asset('frontend/js/scripts.js') }}"></script> 

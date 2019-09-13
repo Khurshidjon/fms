@@ -31,6 +31,15 @@ return [
     'read_more' => 'Read more',
     'add_new' => 'Create',
     'home_page' => 'Home',
+    'statistic'=>'statistics',
+    'xamkor'=>'Our partners',
+    'contact_us'=>'Contact Us',
+    'calculator'=>'Calculator',
+    'gallery'=>'Gallery',
+    'regis'=>'Registration',
+    'enter'=>'Login',
+    'foot_menu'=>'Menu',
+    'our_new'=>'OUR NEWSLETTER'
 
 
 ];

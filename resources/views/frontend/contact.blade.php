@@ -59,7 +59,7 @@ $lang = App::getLocale();
         <div class="col-md-6 p-2">
             <h3 class="text-center font-weight-bold "> FMS MAP</h3>
             <div class="card">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47971.57799543475!2d69.20845928453299!3d41.282237294214205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8a8b2eef294b%3A0x74d629c3b43f5834!2zWWFra2FzYXJveSB0dW1hbmksINCi0L7RiNC60LXQvdGCLCBPYHpiZWtpc3Rvbg!5e0!3m2!1suz!2s!4v1564841019681!5m2!1suz!2s" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2998.6996133141934!2d69.25803911485275!3d41.27187587927493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1suz!2s!4v1568307066944!5m2!1suz!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
             </div>
         </div>
         <div class="col-md-6">
@@ -103,7 +103,7 @@ $lang = App::getLocale();
                 <div class="float-left row">
                     <div class="form-group col-md-6">
                         <div class="captcha">
-                            <span>{!! captcha_img('flat') !!}</span>
+                        <span>{!! captcha_img('flat') !!}</span>
                             <button type="button" class="btn btn-success btn-sm" data-url="{{ route('refreshcaptcha') }}" id="refreshcaptcha"><i class="fa fa-refresh"></i></button>
                         </div>
                     </div>

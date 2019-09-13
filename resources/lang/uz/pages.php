@@ -30,5 +30,15 @@ return [
     'read_more' => 'Batafsil',
     'add_new' => 'Yangi qo\'shish',
     'home_page' => 'Bosh sahifa',
+    'con'=>'Aloqa',
+    'statistic'=>'statistika',
+    'xamkor'=>'Bizning Hamkorlar',
+    'contact_us'=>'Biz bilan aloqa',
+    'calculator'=>'Kalkulyator',
+    'gallery'=>'galereya',
+    'regis'=>'Ro\'yxatdan O\'tish',
+    'enter'=>'Kirish',
+    'foot_menu'=>'Menyu',
+    'our_new'=>'Bizning Yangiliklar',
 
 ];

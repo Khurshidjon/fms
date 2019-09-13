@@ -56,9 +56,9 @@
             @endif
           </li>          
         @endforeach
-          <li><a href="{{route('calculator')}}"><i class="fa fa-calculator"></i> <span>Calculator</span></a></li>
-          <li><a href="{{route('gallery')}}"><i class="fa fa-photo"></i> <span>Gallery</span></a></li>
-          <li><a href="{{route('contact')}}"><i class="fa fa-headphones"></i> <span>Contact</span></a></li>
+          <li><a href="{{route('calculator')}}"><i class="fa fa-calculator"></i> <span>@lang('pages.calculator')</span></a></li>
+          <li><a href="{{route('gallery')}}"><i class="fa fa-photo"></i> <span>@lang('pages.gallery')</span></a></li>
+          <li><a href="{{route('contact')}}"><i class="fa fa-headphones"></i> <span>@lang('pages.con')</span></a></li>
           <li class="menu-has-children">
           <a href="">
             {{ $lang }}
@@ -70,8 +70,8 @@
               <li><a href="{{ route('locale', ['lang' => 'en']) }}">Eng</a></li>
             </ul>
           </li>
-          <li ><a href="{{asset('enter_login')}}" ><i class="fa fa-sign-in"></i> <span>Kirish</span></a></li>
-          <li><a href="{{asset('registeration')}}"><i class="fa fa-user"></i> <span>Ro'yxatdan o'tish</span></a></li>
+          <li ><a href="{{asset('enter_login')}}" ><i class="fa fa-sign-in"></i> <span>@lang('pages.enter')</span></a></li>
+          <li><a href="{{asset('registeration')}}"><i class="fa fa-user"></i> <span>@lang('pages.regis')</span></a></li>
         
         </ul>
       </nav><!-- #nav-menu-container -->
