@@ -355,9 +355,9 @@ div.paginationblog .blbox:last-child {
     <div class="col-lg-6 col-md-6 col-xs-12 blogcol wow bounceInLeft " data-wow-delay="0.1s" data-wow-duration="1.4s">
             <div class="blogbox">
               <div class="blogimg">
-                <img src="{{ asset('storage') .'/'. $img_one->image }}"class="img-fluid img-thumbnail">
+                <img src="{{ $img_one!=null?asset('storage').'/'. $img_one->image:'' }} "class="img-fluid img-thumbnail">
                 <span class="blogspan">
-                <a href="{{ asset('storage') .'/'. $img_one->image }}" data-lightbox="portfolio" data-title="" class="link-preview text-center" style="display:block; " title="Preview"><i class=" fa fa-plus fa-2x text-center" style="color:#fff;"></i></a>
+                <a href="{{ $img_one!=null?asset('storage').'/'. $img_one->image:'' }}" data-lightbox="portfolio" data-title="" class="link-preview text-center" style="display:block; " title="Preview"><i class=" fa fa-plus fa-2x text-center" style="color:#fff;"></i></a>
                 </span>
               </div>
             </div>
@@ -365,9 +365,9 @@ div.paginationblog .blbox:last-child {
     <div class="col-lg-6 col-md-6 col-xs-12 blogcol wow bounceInRight" data-wow-delay="0.1s" data-wow-duration="1.4s">
             <div class="blogbox">
               <div class="blogimg">
-                <img src="{{ asset('storage') .'/'. $img_two->image }}"class="img-fluid img-thumbnail">
+                <img src="{{ $img_two!=null?asset('storage').'/'. $img_two->image:'' }}"class="img-fluid img-thumbnail">
                 <span class="blogspan">
-                <a href="{{ asset('storage') .'/'. $img_two->image }}" data-lightbox="portfolio" data-title="" class="link-preview text-center" style="display:block; " title="Preview"><i class=" fa fa-plus fa-2x text-center" style="color:#fff;"></i></a>
+                <a href="{{ $img_two!=null?asset('storage').'/'. $img_two->image:'' }}" data-lightbox="portfolio" data-title="" class="link-preview text-center" style="display:block; " title="Preview"><i class=" fa fa-plus fa-2x text-center" style="color:#fff;"></i></a>
                 </span>
               </div>
             </div>
