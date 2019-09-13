@@ -43,7 +43,6 @@ div.blogbox {
 
 div.blogbox .blogimg {
   width: 100%;
-  /* height: 260px; */
   position: relative;
   overflow: hidden;
 }
@@ -57,7 +56,7 @@ div.blogbox .blogimg .blogspan {
   background-color: rgba(0, 0, 0, 0.5);
   display: inline-block;
   width: 100%;
-  height: 0%;
+  /* height: 0%; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,18 +64,11 @@ div.blogbox .blogimg .blogspan {
 }
 
 div.blogbox .blogimg .blogspan i {
-  /* background-color: #16A085; */
-  /* padding: 12px; */
-  /* font-size: 18px; */
-  /* border-radius: 50%; */
   color: #FFFFFF;
   transition: all 0.4s ease-in;
   opacity: 0;
 }
-/* 
-div.blogbox .blogimg .blogspan i:hover {
-  background-color: #666666;
-} */
+
 
 div.blogbox:hover .blogimg .blogspan  {
   height: 100%;
@@ -88,17 +80,20 @@ div.blogbox:hover .blogimg .blogspan i {
 div.blogbox:hover .blogimg img {
   transform: scale(1.2, 1.2);
 }
+.image-three div.blogbox:hover a.link-preview {
+  display: none !important;
+  color: red;
+}
+
 
 div.blogbox .blogimg img {
   width: 100%;
-  /* height: 100%; */
   transition: all 0.4s ease-in-out;
 }
 
 
 
 div.blogbox .blogdown .blogh5 {
-  /* font-size: 18px; */
   word-spacing: 5px;
   margin-top: 14px;
 }
@@ -119,17 +114,12 @@ div.blogbox .blogdown .blogicon span {
   color: #666666;
 } 
 
+
 div.blogbox .blogdown .blogicon span i {
   color: #16A085;
   margin-right: 5px;
   display: inline-block;
 } 
-
-/* div.blogbox .blogdown p {
-  color: #666666;
-  font-size: 16px;
-  margin-top: 8px;
-} */
 
 div.blogbox .blogdown .bloga {
   text-decoration: none;
@@ -352,26 +342,60 @@ div.paginationblog .blbox:last-child {
   <section>
   <div class="container">
     <div class="row">
-    <div class="col-lg-6 col-md-6 col-xs-12 blogcol wow bounceInLeft " data-wow-delay="0.1s" data-wow-duration="1.4s">
-            <div class="blogbox">
-              <div class="blogimg">
-                <img src="{{ $img_one!=null?asset('storage').'/'. $img_one->image:'' }} "class="img-fluid img-thumbnail">
-                <span class="blogspan">
-                <a href="{{ $img_one!=null?asset('storage').'/'. $img_one->image:'' }}" data-lightbox="portfolio" data-title="" class="link-preview text-center" style="display:block; " title="Preview"><i class=" fa fa-plus fa-2x text-center" style="color:#fff;"></i></a>
-                </span>
-              </div>
+      <div class="col-lg-6 col-md-6 col-xs-12 blogcol wow bounceInLeft " data-wow-delay="0.1s" data-wow-duration="1.4s">
+        <div class="blogbox">
+          <div class="blogimg">
+            <img src="{{ $img_one!=null?asset('storage').'/'. $img_one->image:'' }} "class="img-fluid img-thumbnail">
+            <span class="blogspan">
+            <a href="{{ $img_one!=null?asset('storage').'/'. $img_one->image:'' }}" data-lightbox="portfolio" data-title="" class="link-preview text-center" style="display:block; " title="Preview"><i class=" fa fa-plus fa-2x text-center" style="color:#fff;"></i></a>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-xs-12 blogcol wow bounceInRight" data-wow-delay="0.1s" data-wow-duration="1.4s">
+        <div class="blogbox">
+          <div class="blogimg">
+            <img src="{{ $img_two!=null?asset('storage').'/'. $img_two->image:'' }}"class="img-fluid img-thumbnail">
+            <span class="blogspan">
+            <a href="{{ $img_two!=null?asset('storage').'/'. $img_two->image:'' }}" data-lightbox="portfolio" data-title="" class="link-preview text-center" style="display:block; " title="Preview"><i class=" fa fa-plus fa-2x text-center" style="color:#fff;"></i></a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center image-three">
+      <div class="col-lg-8 col-md-8 col-xs-8 blogcol wow" data-wow-delay="0.1s" data-wow-duration="1.4s">
+          <div class="blogbox">
+            <div class="blogimg">
+              <img src="{{ $img_three!=null?asset('storage').'/'. $img_three->image:'' }}" class="img-fluid img-thumbnail">
+              <span class="blogspan">
+                  <span class="text-white hover-text p-3">
+                  Мы рады доставить любой необходимый груз для вас, за исключением того, что мы не принимаем к перевозке ни при каких условиях. Такие ограничения — результат мер безопасности и этики.
+                    Итак, список грузов, которые FMS не перевозит: 
+                    <br>
+                    ⛔️ Скоропортящиеся продукты питания
+                    <br>
+                    ⛔️ Товары, запрещенные к легальному ввозу/вывозу в той или иной стране и/или по всему миру, контрафактная продукция
+                    <br>                    
+                    ⛔️ Антиквариат
+                    <br>
+                    ⛔️ Ядовитые животные и растения
+                    <br>
+                    ⛔️ Огнестрельное оружие, в том числе его части и боеприпасы
+                    <br>
+                    ⛔️ Меха
+                    <br>
+                    ⛔️ Опасные или горючие материалы (как определено в инструкциях IATA)
+                    <br>
+                    ⛔️ Ювелирные украшения, драг. металлы, драгоценные камни
+                    <br>
+                    ⛔️ Наркотические средства
+                    <br>
+                  </span>
+              </span>
             </div>
           </div>
-    <div class="col-lg-6 col-md-6 col-xs-12 blogcol wow bounceInRight" data-wow-delay="0.1s" data-wow-duration="1.4s">
-            <div class="blogbox">
-              <div class="blogimg">
-                <img src="{{ $img_two!=null?asset('storage').'/'. $img_two->image:'' }}"class="img-fluid img-thumbnail">
-                <span class="blogspan">
-                <a href="{{ $img_two!=null?asset('storage').'/'. $img_two->image:'' }}" data-lightbox="portfolio" data-title="" class="link-preview text-center" style="display:block; " title="Preview"><i class=" fa fa-plus fa-2x text-center" style="color:#fff;"></i></a>
-                </span>
-              </div>
-            </div>
-          </div>
+      </div>
     </div>
   </div>
 
@@ -396,7 +420,7 @@ div.paginationblog .blbox:last-child {
 
         <div class="row portfolio-container">
 
-        @foreach($galleries as $gallery)
+          @foreach($galleries as $gallery)
             <div class="col-lg-4 col-md-6 portfolio-item {{ $gallery->album_id }} wow fadeInUp">
               <div class="portfolio-wrap">
                 <figure>
